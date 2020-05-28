@@ -11,6 +11,7 @@ public class mainController {
 	@RequestMapping("index.do")
 	public ModelAndView index (ModelAndView mav) {
 		mav.setViewName("main/index");
+		System.out.println("test control");
 		return mav;
 	}
 	
