@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans 
+	xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<!-- 트랜잭션의 경우 aop로 관리 -->
+
+	<!-- 1. 트랜잭션 관리를 위한 manager bean 생성 -->
+   <beans:bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+   		<beans:property name="dataSource" ref="dataSource"></beans:property>
+   </beans:bean>
+   
+   <!-- 2. 트랜잭션 advisor bean 지정 -->
+   <tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<!-- 실행중인 트랜잭션이 있으면 해당 트랜잭션에 포함 , 없으면 새롭게 트랜잭션 생성 -->
+		<!-- 실제 쓰는 방법. -->
+		<tx:attributes>
+			<tx:method name="insert*" propagation="REQUIRED" rollback-for="Exception"/>
+			<tx:method name="update*" propagation="REQUIRED" rollback-for="Exception"/>
+			<tx:method name="delete*" propagation="REQUIRED" rollback-for="Exception"/>
+		</tx:attributes>   
+   </tx:advice>
+   
+   <aop:config>
+   		<aop:pointcut id="requiredTx" expression="execution(* com.spring.springmvc..*.*ServiceImpl.*(..))"/>
+   		<aop:advisor advice-ref="txAdvice" pointcut-ref="requiredTx"/>
+   </aop:config>
+   
+   <tx:annotation-driven transaction-manager="transactionManager"/>
+
+</beans:beans>
+	

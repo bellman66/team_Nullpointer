@@ -92,3 +92,5 @@ local.properties
 .sts4-cache/
 
 # End of https://www.gitignore.io/api/eclipse
+target/m2e-wtp/web-resources/META-INF/maven/com.khfinal/project/pom.xml
+target/m2e-wtp/web-resources/META-INF/maven/com.khfinal/project/pom.properties
