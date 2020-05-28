@@ -23,6 +23,9 @@
 	
 	<context:component-scan base-package="com.khfinal.project" />
 	
-	
+	   <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+   		<beans:property name="maxUploadSize" value="100000000"></beans:property>
+   		<beans:property name="maxInMemorySize" value="100000000"></beans:property>
+   </beans:bean>
 	
 </beans:beans>
