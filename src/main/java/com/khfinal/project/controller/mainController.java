@@ -9,10 +9,10 @@ import org.springframework.web.servlet.ModelAndView;
 public class mainController {
 
 	@RequestMapping("index.do")
-	public ModelAndView index (ModelAndView mav) {
+	public ModelAndView index () {
+		ModelAndView mav = new ModelAndView();
 		mav.setViewName("main/index");
 		System.out.println("test control");
 		return mav;
 	}
-	
 }
