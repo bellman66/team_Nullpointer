@@ -3,3 +3,15 @@
 
 /* main  */
 @import "main.css";
+
+/* member */
+@import "member/login.css";
+@import "member/memberJoin.css";
+@import "member/mypage.css";
+
+/* artist */
+@import "artist/artist.css";
+
+/* board */
+@import "board/board.css";
+@import "board/schedule.css";
