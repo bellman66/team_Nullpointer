@@ -16,10 +16,13 @@
 						<a href="#">로그아웃</a>
 					</c:if>
 				</div>
-				<div class="header_tit">
+				<div class="header_tit" id="header_tit" onclick="reload()">
 					<h1>Insert The Title</h1>
 				</div>
 			</div>
 		</div>
 	</div>
+	<!-- js 링크 -->
+	<!-- title 부분 클릭 시 메인화면 리로드 -->
+	<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/title.js"></script>
 </header>
