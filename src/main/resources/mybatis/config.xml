@@ -6,11 +6,11 @@
 <configuration>
 
 	<typeAliases>
-		
+		<typeAlias type="com.khfinal.project.artist.model.vo.Artist" alias="Artist"/>
 	</typeAliases>
 	
 	<mappers>
-
+		<mapper resource="/mybatis/mapper/artistMapper.xml"/>
 	</mappers>
 	
 </configuration>

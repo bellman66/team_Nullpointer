@@ -194,7 +194,7 @@ body {
 	/* border:1px solid #828282; */
 }
 
-.todayVideo #tv1, .todayVideo #tv2, .todayVideo #tv3, .todayVideo #tv4 {
+.todayVideo #tv0, .todayVideo #tv1, .todayVideo #tv2, .todayVideo #tv3 {
 	width: 24%;
 	height: 180px;
 	float: left;

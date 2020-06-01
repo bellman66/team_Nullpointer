@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset=UTF-8">
+<meta charset=UTF-8>
 <meta name="author" content="Team_Nullpointer">
 <title>Main</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/style.css" />
 <!-- 웹 폰트 -->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic"
 	rel="stylesheet">
@@ -40,7 +41,8 @@
 					<div class="main_rent">
 						<h1>Artist 홍보 영상</h1>
 						<div class="rentVideo">
-							<img alt="test" src="<%=request.getContextPath()%>/resources/img/maintest.jpg" />
+							<img alt="test"
+								src="<%=request.getContextPath()%>/resources/img/maintest.jpg" />
 						</div>
 					</div>
 				</div>
@@ -57,10 +59,9 @@
 					<div class="todaylist">
 						<h2>Today Video</h2>
 						<div class="todayVideo">
-							<div id="tv1"></div>
-							<div id="tv2"></div>
-							<div id="tv3"></div>
-							<div id="tv4"></div>
+							<c:forEach items="${todayList}" var="list" varStatus="listnum">
+								<div id="tv${listnum.index}">${list.au_file}</div>
+							</c:forEach>
 						</div>
 					</div>
 				</div>
@@ -90,15 +91,15 @@
 			<div class="container">
 				<div class="row">
 					<div class="categorylist">
-					<h2>Artist 카테고리</h2>
-					<div class="categoryArtist">
-						<div id="ca1"></div>
-						<div id="ca2"></div>
-						<div id="ca3"></div>
-						<div id="ca4"></div>
-						<div id="ca5"></div>
-						<div id="ca6"></div>
-					</div>	
+						<h2>Artist 카테고리</h2>
+						<div class="categoryArtist">
+							<div id="ca1"></div>
+							<div id="ca2"></div>
+							<div id="ca3"></div>
+							<div id="ca4"></div>
+							<div id="ca5"></div>
+							<div id="ca6"></div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -109,6 +110,6 @@
 	<!-- footer부분 시작 -->
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 	<!-- footer부분 끝 -->
-	
+
 </body>
 </html>
