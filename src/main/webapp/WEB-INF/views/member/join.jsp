@@ -38,6 +38,8 @@
 			<div class="container">
 				<div class="row">
 					<div class="join_table">
+						<h2>회원가입 정보</h2>
+						<div class="join_list">
 						<table>
 							<tr>
 								<td class="join-text">아이디</td>
@@ -204,8 +206,16 @@
 									<input type="text" id="ADDRESS_ETC" name="ADDRESS_ETC" placeholder="나머지 주소" value="" class="inputText" style="width: 240px;" />
 								</td>
 							</tr>
+							<tr>
+								<td colspan="2" id="join-agree"><input type="checkbox">14세 이상입니다.(필수)</td>
+							</tr>
+							<tr>
+								<td colspan="2" id="join-agreetext">* 회원가입에 필요한 최소한의 정보만 입력 받음으로써 고객님의 개인정보 수집을 최소화하고 편리한 회원가입을 제공합니다.</td>
+							</tr>
 						</table>
+						</div>
 						<button id="joinButton" name="joinButton">가입하기</button>
+						
 					</div>
 				</div>
 			</div>

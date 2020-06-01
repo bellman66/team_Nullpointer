@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="author" content="Team_Nullpointer">
-<title>Login</title>
+<title>MemberFind</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/style.css" />
 <!-- 웹 폰트 -->
@@ -24,6 +24,7 @@
     <![endif]-->
 </head>
 <body>
+
 	<!-- header부분 시작  -->
 	<%@ include file="/WEB-INF/views/include/header.jsp"%>
 	<!-- header부분 끝 -->
@@ -33,35 +34,17 @@
 	<!-- nav부분 끝 -->
 
 	<!-- content부분 시작 -->
-	<section id="content_login">
-		<article class="login_box">
+	<section id="content">
+		<article class="memberfind_box">
 			<div class="container">
 				<div class="row">
-					<div class="log_table">
-						<h2>로그인</h2>
-						<div class="logtable">
-							<table>
-								<tr>
-									<th id="userId">아이디</th>
-									<td><input type="text" class="log_text" name="USER_ID"
-										maxlength="20" /></td>
-								</tr>
-								<tr>
-									<th id="userPw">비밀번호</th>
-									<td><input type="password" class="log_text"
-										name="USER_PWD" maxlength="30" /></td>
-								</tr>
-							</table>
-
-							<div class="findUser">
-								<ul>
-									<li class="find_text"><a href="<%=request.getContextPath()%>/member/memberFind.do">아이디찾기</a>&nbsp;|&nbsp;</li>
-									<li class="find_text"><a href="<%=request.getContextPath()%>/member/memberFind.do">비밀번호찾기</a>&nbsp;|&nbsp;</li>
-									<li class="find_text"><a href="<%=request.getContextPath()%>/member/join.do">회원가입</a></li>
-								</ul>
-							</div>
+					<div class="memberfind">
+						<div class="idfind_box">
+							<h2>아이디 찾기</h2>
 						</div>
-						<button id="logBut" type="button" onclick="login">로그인</button>
+						<div class="pwdfind_box">
+							<h2>비밀번호 찾기</h2>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -72,5 +55,7 @@
 	<!-- footer부분 시작 -->
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 	<!-- footer부분 끝 -->
+	
+
 </body>
 </html>
