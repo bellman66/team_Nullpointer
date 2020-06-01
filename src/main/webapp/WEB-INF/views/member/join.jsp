@@ -33,7 +33,7 @@
 	<!-- nav부분 끝 -->
 
 	<!-- content부분 시작 -->
-	<section id="content">
+	<section id="content_join">
 		<article class="join_box">
 			<div class="container">
 				<div class="row">
