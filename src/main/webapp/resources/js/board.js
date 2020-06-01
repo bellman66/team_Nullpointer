@@ -6,6 +6,10 @@ var promotion = document.querySelector('.promotion');
 var sharing = document.querySelector('.sharing');
 var listTitle = document.querySelector('.listTitle');
 var listWriter = document.querySelector('.listWriter');
+var num = document.querySelector('.num');
+var subject = document.querySelector('.subject');
+var writer = document.querySelector('.writer');
+var date = document.querySelector('.date');
 
 
 promotion.addEventListener('click',function(e){
@@ -16,6 +20,8 @@ promotion.addEventListener('click',function(e){
     
     listTitle.textContent = "홍보내용";
     listWriter.textContent = "아티스트";
+    
+    
 });
 
 sharing.addEventListener('click',function(e){
