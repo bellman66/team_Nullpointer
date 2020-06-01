@@ -1,12 +1,18 @@
 package com.khfinal.project.member.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.khfinal.project.member.model.service.MemberService;
+
 @Controller
 public class MemberController {
 
+	@Autowired
+	MemberService ms;
+	
 	@RequestMapping("/member/join.do")
 	public ModelAndView join() {
 		ModelAndView mav = new ModelAndView();
