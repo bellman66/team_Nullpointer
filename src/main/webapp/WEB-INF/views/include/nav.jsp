@@ -7,6 +7,7 @@
 		<div class="row">
 			<div class="menu">
 				<ul>
+					<li><a href="<%=request.getContextPath()%>/stream/index.do">Live On</a></li>
 					<li><a href="<%=request.getContextPath()%>/artist/artist.do">Artist</a></li>
 					<li><a href="<%=request.getContextPath()%>/board/schedule.do">스케줄</a></li>
 					<li><a href="<%=request.getContextPath()%>/board/board.do">게시판</a></li>
