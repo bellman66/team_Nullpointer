@@ -55,14 +55,123 @@
 					        </thead>
 					        
 					        <tbody>
-					            <c:forEach items="${mdata.nlist}" var="notice">
+					            <%-- <c:forEach items="${mdata.nlist}" var="notice">
 						            <tr>
 						                <td class="num">${notice.noticeNo}</td>
 						                <td class="subject"><a href="<%= request.getContextPath() %>/notice/noticedetail.do?noticeNo=${notice.noticeNo}">${notice.noticeTitle}</a></td>
 						                <td class="writer">${notice.noticeDate}</td>
 						                <td class="date">${notice.noticeDate}</td>
 						            </tr>
-					         </c:forEach>
+					         </c:forEach> --%>
+					         
+					          	<tr>
+						              	<td class="num">1</td>
+						                <td class="subject">테스트 입니다. 테스트 입니다. 테스트 입니다.</td>
+						                <td class="writer">김경호</td>
+						                <td class="date">20.06.01</td>
+						       </tr>
+						       
+						       <tr>
+						              	<td class="num">2</td>
+						                <td class="subject">테스트 입니다. 테스트 입니다. 테스트 입니다.</td>
+						                <td class="writer">김경호</td>
+						                <td class="date">20.06.01</td>
+						       </tr>
+						       
+						       <tr>
+						              	<td class="num">3</td>
+						                <td class="subject">테스트 입니다. 테스트 입니다. 테스트 입니다.</td>
+						                <td class="writer">김경호</td>
+						                <td class="date">20.06.01</td>
+						       </tr>
+						       
+						       <tr>
+						              	<td class="num">4</td>
+						                <td class="subject">테스트 입니다. 테스트 입니다. 테스트 입니다.</td>
+						                <td class="writer">김경호</td>
+						                <td class="date">20.06.01</td>
+						       </tr>
+						       
+						       <tr>
+						              	<td class="num">5</td>
+						                <td class="subject">테스트 입니다. 테스트 입니다. 테스트 입니다.</td>
+						                <td class="writer">김경호</td>
+						                <td class="date">20.06.01</td>
+						       </tr>
+						       
+						       <tr>
+						              	<td class="num">6</td>
+						                <td class="subject">테스트 입니다. 테스트 입니다. 테스트 입니다.</td>
+						                <td class="writer">김경호</td>
+						                <td class="date">20.06.01</td>
+						       </tr>
+						       
+						       <tr>
+						              	<td class="num">7</td>
+						                <td class="subject">테스트 입니다. 테스트 입니다. 테스트 입니다.</td>
+						                <td class="writer">김경호</td>
+						                <td class="date">20.06.01</td>
+						       </tr>
+						       
+						       <tr>
+						              	<td class="num">8</td>
+						                <td class="subject">테스트 입니다. 테스트 입니다. 테스트 입니다.</td>
+						                <td class="writer">김경호</td>
+						                <td class="date">20.06.01</td>
+						       </tr>
+						       
+						       <tr>
+						              	<td class="num">9</td>
+						                <td class="subject">테스트 입니다. 테스트 입니다. 테스트 입니다.</td>
+						                <td class="writer">김경호</td>
+						                <td class="date">20.06.01</td>
+						       </tr>
+						       
+						       <tr>
+						              	<td class="num">10</td>
+						                <td class="subject">테스트 입니다. 테스트 입니다. 테스트 입니다.</td>
+						                <td class="writer">김경호</td>
+						                <td class="date">20.06.01</td>
+						       </tr>
+						       
+						       <tr>
+						              	<td class="num">11</td>
+						                <td class="subject">테스트 입니다. 테스트 입니다. 테스트 입니다.</td>
+						                <td class="writer">김경호</td>
+						                <td class="date">20.06.01</td>
+						       </tr>
+						       
+						       <tr>
+						              	<td class="num">12</td>
+						                <td class="subject">테스트 입니다. 테스트 입니다. 테스트 입니다.</td>
+						                <td class="writer">김경호</td>
+						                <td class="date">20.06.01</td>
+						       </tr>
+						       
+						       <tr>
+						              	<td class="num">13</td>
+						                <td class="subject">테스트 입니다. 테스트 입니다. 테스트 입니다.</td>
+						                <td class="writer">김경호</td>
+						                <td class="date">20.06.01</td>
+						       </tr>
+						       
+						       <tr>
+						              	<td class="num">14</td>
+						                <td class="subject">테스트 입니다. 테스트 입니다. 테스트 입니다.</td>
+						                <td class="writer">김경호</td>
+						                <td class="date">20.06.01</td>
+						       </tr>
+						       
+						       <tr>
+						              	<td class="num">15</td>
+						                <td class="subject">테스트 입니다. 테스트 입니다. 테스트 입니다.</td>
+						                <td class="writer">김경호</td>
+						                <td class="date">20.06.01</td>
+						       </tr>
+					         
+					         
+					         
+					         
 					        </tbody>
         				</table>
 
@@ -96,7 +205,23 @@
 						        <a href="<%= request.getContextPath() %>/notice/noticelist.do?cPage=${paging.lastPage}" class="nav last"><i class="fas fa-angle-double-right"></i></a>
 						  </div>
 						  
-						  <div class="section-button">
+						<div class="search">
+							<form action="<%=request.getContextPath()%>/book/search.do">
+								<select class="searchCategori">
+										<option value="" selected disabled hidden>분류</option>
+										<option value="write">작성자</option>
+										<option value="title">제목</option>
+										<option value="wrti">작성자 + 제목</option>
+										
+								</select>			
+								<input Type ="text" name="search" placeholder="검색어를 입력하세요">
+								<div class="searchButton">
+						        	<a href="<%= request.getContextPath() %>/notice/noticewrite.do">검색</a>
+						  		</div>
+							</form>
+						</div>
+						  
+						  <div class="write">
 						        <a href="<%= request.getContextPath() %>/notice/noticewrite.do">글쓰기</a>
 						  </div>
 					
