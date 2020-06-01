@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+#content_join{background-color:#fff;}
+
+/* content_join */
+.join_box{height:750px;}
+
+.join_table{
+    width:90%; 
+    height:700px; 
+    margin-top:3%;
+    margin-left:5%;
+    position:relative;
+    border:1px solid red;
+}
+
+.join_table .join-text{
+	font-size:15px;
+	font-family: sans-serif;
+	font-weight: 900;
+	color: #0c0c13;
+}

@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
-Built-By: Hyeyeon
-=======
 Built-By: user2
->>>>>>> 00d8debc22e392a2485045b30bb26a48ade5d3fe
 Build-Jdk: 1.8.0_221
 Created-By: Maven Integration for Eclipse
 

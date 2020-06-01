@@ -1,5 +1,5 @@
 package com.khfinal.project.board.controller;
 
-public class boardController {
+public class BoardController {
 
 }
