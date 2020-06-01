@@ -1,8 +1,12 @@
 package com.khfinal.project.board.model.vo;
 
+
 import java.sql.Date;
 
-public class board {
+
+
+public class Board {
+
 
 	private int noticeNo;
 	private String noticeTitle;
@@ -13,9 +17,9 @@ public class board {
 	private String rename_filepath;
 	private String noticePassword; 
 	
-	public board() {}
+	public Board() {}
 
-	public board(int noticeNo, String noticeTitle, String noticeWriter, Date noticeDate, String noticeContent,
+	public Board(int noticeNo, String noticeTitle, String noticeWriter, Date noticeDate, String noticeContent,
 			String original_filepath, String rename_filepath, String noticePassword) {
 		super();
 		this.noticeNo = noticeNo;
