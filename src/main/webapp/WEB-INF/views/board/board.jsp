@@ -178,31 +178,31 @@
   
 
 						<div class="paging">
-							<a href="<%= request.getContextPath() %>/notice/noticelist.do" class="nav first"><i class="fas fa-angle-double-left"></i></a>
+							<a href="<%= request.getContextPath() %>/board/board.do" class="nav first"><i class="fas fa-angle-double-left"></i></a>
 						 	<c:choose>
 						       <c:when test="${paging.blockStart > 1 }">
-						            <a href="<%= request.getContextPath() %>/notice/noticelist.do?cPage=${paging.blockStart-1}" class="nav prev"><i class="fas fa-angle-left"></i></a>
+						            <a href="<%= request.getContextPath() %>/board/board.do?cPage=${paging.blockStart-1}" class="nav prev"><i class="fas fa-angle-left"></i></a>
 						       </c:when>
 						       <c:otherwise>
-						           <a href="<%= request.getContextPath() %>/notice/noticelist.do?cPage=${paging.blockStart}" class="nav prev"><i class="fas fa-angle-left"></i></a>
+						           <a href="<%= request.getContextPath() %>/board/board.do?cPage=${paging.blockStart}" class="nav prev"><i class="fas fa-angle-left"></i></a>
 						       </c:otherwise>
 						   </c:choose>
 						   
 						   <c:forEach begin="${paging.blockStart}" end="${paging.blockEnd}" var="page">
-						   		<a href="<%= request.getContextPath() %>/notice/noticelist.do?cPage=${page}" class="num active"><span>${page}</span></a>
+						   		<a href="<%= request.getContextPath() %>/board/board.do?cPage=${page}" class="num active"><span>${page}</span></a>
 						   </c:forEach> 
 						   
 						   <c:choose>
 						       <c:when test="${paging.blockEnd+1 > paging.lastPage }">
-						            <a href="<%= request.getContextPath() %>/notice/noticelist.do?cPage=${paging.blockEnd}" class="nav next"><i class="fas fa-angle-right"></i></a>
+						            <a href="<%= request.getContextPath() %>/board/board.do?cPage=${paging.blockEnd}" class="nav next"><i class="fas fa-angle-right"></i></a>
 						       </c:when>
 						       
 						       <c:otherwise>
-						            <a href="<%= request.getContextPath() %>/notice/noticelist.do?cPage=${paging.blockEnd+1}" class="nav next"><i class="fas fa-angle-right"></i></a>
+						            <a href="<%= request.getContextPath() %>/board/board.do?cPage=${paging.blockEnd+1}" class="nav next"><i class="fas fa-angle-right"></i></a>
 						       </c:otherwise>
 						   </c:choose>
 						        
-						        <a href="<%= request.getContextPath() %>/notice/noticelist.do?cPage=${paging.lastPage}" class="nav last"><i class="fas fa-angle-double-right"></i></a>
+						        <a href="<%= request.getContextPath() %>/board/board.do?cPage=${paging.lastPage}" class="nav last"><i class="fas fa-angle-double-right"></i></a>
 						  </div>
 						  
 						<div class="search">
