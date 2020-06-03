@@ -6,7 +6,7 @@
 <head>
 <meta charset=UTF-8">
 <meta name="author" content="Team_Nullpointer">
-<title>Artist</title>
+<title>ArtistPhoto_list</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/style.css" />
 <!-- 웹 폰트 -->
@@ -33,27 +33,12 @@
 	<!-- nav부분 끝 -->
 
 	<!-- content부분 시작 -->
-	<section id="content_art">
-		<article class="artist_box">
+	<section id="content_artphoto">
+		<article class="artphoto_box">
 			<div class="container">
 				<div class="row">
-					<div class="artist_list">
-						<div class="at-box">
-							<!-- tab메뉴 부분 시작 -->
-							<div id="atTitle">
-								<ul id="atTab">
-									<li><a href="#" title="atTab1">인디뮤지션</a></li>
-									<li><a href="#" title="atTab1">타투이스트</a></li>
-								</ul>
-							</div>
-							
-							<div id="subTab">
-								<div id="atTab1">
-								</div>
-								<div id="atTab2">
-								</div>
-							</div>
-							<!-- tab메뉴 부분 끝 -->
+					<div class="artphoto_list">
+						<div class="">
 						</div>
 					</div>
 				</div>
