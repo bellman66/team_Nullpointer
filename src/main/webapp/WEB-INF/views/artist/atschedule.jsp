@@ -33,7 +33,7 @@
 	<!-- nav부분 끝 -->
 
 	<!-- content부분 시작 -->
-	<section id="content_artschedule">
+	<section id="content_art">
 		<article class="artschedule_box">
 			<div class="container">
 				<div class="row">

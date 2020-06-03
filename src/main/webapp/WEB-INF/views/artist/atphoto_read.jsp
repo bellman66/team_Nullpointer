@@ -33,7 +33,7 @@
 	<!-- nav부분 끝 -->
 
 	<!-- content부분 시작 -->
-	<section id="content_artphoto_rd">
+	<section id="content_art">
 		<article class="artphoto_rd_box">
 			<div class="container">
 				<div class="row">
