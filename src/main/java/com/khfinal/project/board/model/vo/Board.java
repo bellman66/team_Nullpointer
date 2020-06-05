@@ -1,108 +1,109 @@
 package com.khfinal.project.board.model.vo;
 
 
+import java.io.Serializable;
 import java.sql.Date;
 
 
 
-public class Board {
+public class Board implements Serializable{
 
 
-	private int noticeNo;
-	private String noticeTitle;
-	private String noticeWriter;
-	private Date noticeDate;
-	private String noticeContent;
-	private String original_filepath;
-	private String rename_filepath;
-	private String noticePassword; 
 	
-	public Board() {}
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2570643417583448527L;
+	
+	private int b_category;
+	private int b_num;
+	private String m_id;
+	private Date b_date;
+	private String b_title;
+	private String b_content;
+	private String b_file;
+	
+	public Board(){}
 
-	public Board(int noticeNo, String noticeTitle, String noticeWriter, Date noticeDate, String noticeContent,
-			String original_filepath, String rename_filepath, String noticePassword) {
+	public Board(int b_category, int b_num, String m_id, Date b_date, String b_title, String b_content, String b_file) {
 		super();
-		this.noticeNo = noticeNo;
-		this.noticeTitle = noticeTitle;
-		this.noticeWriter = noticeWriter;
-		this.noticeDate = noticeDate;
-		this.noticeContent = noticeContent;
-		this.original_filepath = original_filepath;
-		this.rename_filepath = rename_filepath;
-		this.noticePassword = noticePassword;
+		this.b_category = b_category;
+		this.b_num = b_num;
+		this.m_id = m_id;
+		this.b_date = b_date;
+		this.b_title = b_title;
+		this.b_content = b_content;
+		this.b_file = b_file;
 	}
 
-	public int getNoticeNo() {
-		return noticeNo;
+	public int getB_category() {
+		return b_category;
 	}
 
-	public void setNoticeNo(int noticeNo) {
-		this.noticeNo = noticeNo;
+	public void setB_category(int b_category) {
+		this.b_category = b_category;
 	}
 
-	public String getNoticeTitle() {
-		return noticeTitle;
+	public int getB_num() {
+		return b_num;
 	}
 
-	public void setNoticeTitle(String noticeTitle) {
-		this.noticeTitle = noticeTitle;
+	public void setB_num(int b_num) {
+		this.b_num = b_num;
 	}
 
-	public String getNoticeWriter() {
-		return noticeWriter;
+	public String getM_id() {
+		return m_id;
 	}
 
-	public void setNoticeWriter(String noticeWriter) {
-		this.noticeWriter = noticeWriter;
+	public void setM_id(String m_id) {
+		this.m_id = m_id;
 	}
 
-	public Date getNoticeDate() {
-		return noticeDate;
+	public Date getB_date() {
+		return b_date;
 	}
 
-	public void setNoticeDate(Date noticeDate) {
-		this.noticeDate = noticeDate;
+	public void setB_date(Date b_date) {
+		this.b_date = b_date;
 	}
 
-	public String getNoticeContent() {
-		return noticeContent;
+	public String getB_title() {
+		return b_title;
 	}
 
-	public void setNoticeContent(String noticeContent) {
-		this.noticeContent = noticeContent;
+	public void setB_title(String b_title) {
+		this.b_title = b_title;
 	}
 
-	public String getOriginal_filepath() {
-		return original_filepath;
+	public String getB_content() {
+		return b_content;
 	}
 
-	public void setOriginal_filepath(String original_filepath) {
-		this.original_filepath = original_filepath;
+	public void setB_content(String b_content) {
+		this.b_content = b_content;
 	}
 
-	public String getRename_filepath() {
-		return rename_filepath;
+	public String getB_file() {
+		return b_file;
 	}
 
-	public void setRename_filepath(String rename_filepath) {
-		this.rename_filepath = rename_filepath;
+	public void setB_file(String b_file) {
+		this.b_file = b_file;
 	}
 
-	public String getNoticePassword() {
-		return noticePassword;
-	}
-
-	public void setNoticePassword(String noticePassword) {
-		this.noticePassword = noticePassword;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	@Override
 	public String toString() {
-		return "board [noticeNo=" + noticeNo + ", noticeTitle=" + noticeTitle + ", noticeWriter=" + noticeWriter
-				+ ", noticeDate=" + noticeDate + ", noticeContent=" + noticeContent + ", original_filepath="
-				+ original_filepath + ", rename_filepath=" + rename_filepath + ", noticePassword=" + noticePassword
-				+ "]";
+		return "Board [b_category=" + b_category + ", b_num=" + b_num + ", m_id=" + m_id + ", b_date=" + b_date
+				+ ", b_title=" + b_title + ", b_content=" + b_content + ", b_file=" + b_file + "]";
 	}
+
+	
+	
 	
 	
 }
