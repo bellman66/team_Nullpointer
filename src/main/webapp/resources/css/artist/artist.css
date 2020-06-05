@@ -1,1 +1,66 @@
 @charset "UTF-8";
+
+#content_art{background-color: #fff;}
+
+/* content_art */
+.artist_box{
+	height: 900px;
+}
+
+.artist_box .artist_list{
+	height: 850px;
+	margin-top: 3%;
+	margin-left: 2%;
+	position: relative;
+}
+
+.artist_list .at-box{
+	border:1px solid red;
+}
+
+/* artTab */
+.artist_list .at-box #atTitle{
+	height:60px;
+}
+
+.artist_list .at-box .atTab{
+    font-family: sans-serif;
+	font-weight: 700;
+	font-size: 20px;
+	line-height:46px;
+	display:block;
+	color:#0c0c13;
+	border-bottom:3px solid #0c0c13;
+}
+
+.artist_list .at-box .atTab:first-child{float:left;}
+.artist_list .at-box .atTab.active{
+	color:#f5b041;
+	border-color:#f5b041;
+}
+
+.artist_list .at-box #artTab{
+	height:800px;
+}
+
+/* artist 페이지보여주기 부분 */
+.art_list #grid{
+	overflow:hidden;
+}
+
+.art_list #grid .btn_link{
+	position:relative;
+	display: block;
+	width:22%;
+	float:left;
+	margin: 0 20px 50px 0;
+}
+
+.art_list #grid .btn_link .img_box{
+	width:230px;
+	height:230px;
+	position:relative;
+	display:block;
+	vertical-align:middle;
+	background-color:purple;
+}
