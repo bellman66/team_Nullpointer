@@ -16,18 +16,17 @@ import org.springframework.web.socket.config.annotation.WebSocketTransportRegist
 
 import com.khfinal.project.websocket.handler.chatHandler;
 
-@Configuration
-@EnableWebSocket
-@EnableWebMvc
-public class WebSocketConfig extends WebMvcConfigurerAdapter implements WebSocketConfigurer{
+//@Configuration
+//@EnableWebSocket
+//@EnableWebMvc
+//public class WebSocketConfig extends WebMvcConfigurerAdapter implements WebSocketConfigurer{
 
-	@Autowired
-	private chatHandler chathandler;
+	//@Autowired
+	//private chatHandler chathandler;
 	
-	@Override
-	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-		registry.addHandler(chathandler, "/chatHandler").setAllowedOrigins("*").withSockJS();
-	}
+	//@Override
+	//public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
+		//registry.addHandler(chathandler, "/chatHandler.do").setAllowedOrigins("*");
+	//}
 
-
-}
+//}

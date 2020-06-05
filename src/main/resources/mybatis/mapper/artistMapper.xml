@@ -6,7 +6,7 @@
 <mapper namespace="Artist">
 
 	<select id="todayList" resultType="Artist">
-		select * from tb_artist_upload
+		select * from TB_ARTIST_UPLOAD
 	</select>
 	
 </mapper>
