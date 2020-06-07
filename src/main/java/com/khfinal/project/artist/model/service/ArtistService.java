@@ -7,5 +7,6 @@ import com.khfinal.project.artist.model.vo.Artist;
 public interface ArtistService {
 	
 	public List<Artist> todayList();
+	public List<Artist> bestContent();
 
 }

@@ -43,7 +43,7 @@ public class ArtistServiceImple implements ArtistService {
 					
 				} else {
 					// 조건 1 > res에 들어가 있는 인덱스 값의 m_id 변수 값 비교
-					if()
+					
 				}
 			} else {
 				// res에 값이 없다면 바로 list.get()으로 넣기
@@ -52,6 +52,19 @@ public class ArtistServiceImple implements ArtistService {
 		}
 
 		return res;
+	}
+
+	@Override
+	public List<Artist> bestContent() {
+		
+		List<Artist> res = ad.bestContent();
+		List<Artist> bcon = new ArrayList<>();
+		bcon.add(res.get(0));
+		bcon.add(res.get(1));
+		bcon.add(res.get(2));
+		bcon.add(res.get(3));
+
+		return bcon;
 	}
 
 }

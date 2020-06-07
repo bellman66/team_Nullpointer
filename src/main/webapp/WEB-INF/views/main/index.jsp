@@ -71,12 +71,11 @@
 			<div class="container">
 				<div class="row">
 					<div class="bestlist">
-						<h2>Best Video</h2>
+						<h2>Best Content</h2>
 						<div class="bestVideo">
-							<div id="bv1"></div>
-							<div id="bv2"></div>
-							<div id="bv3"></div>
-							<div id="bv4"></div>
+							<c:forEach items="${bestContent}" var="bcon" varStatus="listnum">
+								<div id="tv${listnum.index}">${bcon.au_file}</div>
+							</c:forEach>
 						</div>
 					</div>
 				</div>

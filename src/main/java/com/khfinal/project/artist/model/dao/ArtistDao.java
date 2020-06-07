@@ -17,5 +17,9 @@ public class ArtistDao {
 	public List<Artist> todayList() {
 		return session.selectList("Artist.todayList");
 	}
+	
+	public List<Artist> bestContent() {
+		return session.selectList("Artist.bestContent");
+	}
 
 }

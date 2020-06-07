@@ -21,6 +21,10 @@ public class mainController {
 		// 수정 : 박혜연
 		mav.addObject("todayList", as.todayList());
 		
+		// 메인 화면에 진입할 때, best content 노출
+		// 수정 : 박혜연
+		mav.addObject("bestContent", as.bestContent());
+		
 		mav.setViewName("main/index");
 		System.out.println("test control");
 		return mav;
