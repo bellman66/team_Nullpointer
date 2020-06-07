@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+   <bean id="chatHandler" class="com.khfinal.project.websocket.handler.chatHandler"/>
+   <websocket:handlers>
+   		<websocket:mapping handler="chatHandler" path="/chatHandler.do"/>
+   		<!-- <websocket:handshake-interceptors>
+   			<beans:bean class="com.khfinal.project.websocket.interceptor.chatInterceptor"></beans:bean>-->
+   			<!-- <websocket:sockjs></websocket:sockjs> -->
+   </websocket:handlers>
+
+</beans>

@@ -1,25 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-  
-  
-  <mapper namespace="Board">
-  		  <select id="contentCnt" resultType="int">
-    		  select count(*) from tb_board
-  		 </select>
-  
-		<select id="selectNoticeList" resultType="Board">
-		      select * 
-		            from(
-		               select rownum rnum, n1.* 
-		                     from(
-		                        select * from
-		                        tb_board
-		                        order by ${orderby} asc        
-		                         )n1
-		               )
-		            where rnum between #{page.start} and #{page.end}
- 	  </select>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+
+<mapper namespace="Board">
+	<select id="contentCnt" resultType="int">
+		select count(*) from tb_board
+	</select>
+
+	<select id="selectBoardListPr" resultType="Board">
+		select *
+		from(
+		select rownum rnum, n1.*
+		from(
+		select * from
+		tb_board
+		order by ${orderby} asc
+		)n1
+		)
+		where b_num like 1 and rnum between #{page.start} and #{page.end}
+	</select>
+
+	<select id="selectBoardListSh" resultType="Board">
+		select *
+		from(
+		select rownum rnum, n1.*
+		from(
+		select * from
+		tb_board
+		order by ${orderby} asc
+		)n1
+		)
+		where b_num like 0 and rnum between #{page.start} and #{page.end}
+
+	</select>
 </mapper> 

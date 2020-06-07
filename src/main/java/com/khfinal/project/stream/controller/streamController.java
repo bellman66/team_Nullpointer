@@ -13,7 +13,7 @@ public class streamController {
 		
 		
 		
-		mav.setViewName("stream/index");
+		mav.setViewName("stream/index2");
 		return mav;
 	}
 	

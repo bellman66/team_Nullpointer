@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="author" content="Team_Nullpointer">
-<title>notice</title>
+<title>Notice</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/style.css" />
 <!-- 웹 폰트 -->
@@ -33,18 +33,26 @@
 	<!-- nav부분 끝 -->
 	
 	<!-- content부분 시작 -->
-	<section id="content_notice_list">
-		<article class="notice_box">
+	<section id="content_board_list">
+		<article class="board_box">
 			<div class="container">
 				<div class="row">
+				<!-- 게시판 헤더 기능 -->
 					<div class="boardTitle">
-				        <div class="promotion"><strong>홍보 게시판</strong></div>
-				
-				        <div class="sharing"><strong>공유 게시판</strong></div>
+					<form action="<%=request.getContextPath()%>/board/boardPR.do"> 
+				        <button class="promotionBt"></button>
+				        <div class="promotion">홍보 게시판</div>
+				     </form>   
+				     <form action="<%=request.getContextPath()%>/board/boardSH.do">   
+				        <button class="sharingBt"></button>
+				        <div class="sharing">공유 게시판</div>
+				     </form>
+				     </div>
 	  				</div>
 	  				
-					<div class="notice_list">
-						<table class="boardListTable">
+	  				<!-- 게시판 리스트 기능 -->
+					<div class="board_list">
+						 <table class="boardListTable">
 					        <thead>
 					            <tr>
 					                <th class="listNum"><span>번호</span></th>
@@ -55,158 +63,83 @@
 					        </thead>
 					        
 					        <tbody>
-					            <%-- <c:forEach items="${mdata.nlist}" var="notice">
+					          	<c:forEach items="${boardList.nlist}" var="board">
 						            <tr>
-						                <td class="num">${notice.noticeNo}</td>
-						                <td class="subject"><a href="<%= request.getContextPath() %>/notice/noticedetail.do?noticeNo=${notice.noticeNo}">${notice.noticeTitle}</a></td>
-						                <td class="writer">${notice.noticeDate}</td>
-						                <td class="date">${notice.noticeDate}</td>
+						                <td class="num" style="text-align:center;">${board.b_category}</td>
+						                <td class="subject"><a href="<%= request.getContextPath() %>/board/board.do?b_category=${board.b_category}">${board.b_title}</a></td>
+						                <td class="writer" style="text-align:center;">${board.m_id}</td>
+						                <td class="date" style="text-align:center;">${board.b_date}</td>
 						            </tr>
-					         </c:forEach> --%>
-					         
-					          	<tr>
-						              	<td class="num">1</td>
-						                <td class="subject">테스트 입니다. 테스트 입니다. 테스트 입니다.</td>
-						                <td class="writer">김경호</td>
-						                <td class="date">20.06.01</td>
-						       </tr>
-						       
-						       <tr>
-						              	<td class="num">2</td>
-						                <td class="subject">테스트 입니다. 테스트 입니다. 테스트 입니다.</td>
-						                <td class="writer">김경호</td>
-						                <td class="date">20.06.01</td>
-						       </tr>
-						       
-						       <tr>
-						              	<td class="num">3</td>
-						                <td class="subject">테스트 입니다. 테스트 입니다. 테스트 입니다.</td>
-						                <td class="writer">김경호</td>
-						                <td class="date">20.06.01</td>
-						       </tr>
-						       
-						       <tr>
-						              	<td class="num">4</td>
-						                <td class="subject">테스트 입니다. 테스트 입니다. 테스트 입니다.</td>
-						                <td class="writer">김경호</td>
-						                <td class="date">20.06.01</td>
-						       </tr>
-						       
-						       <tr>
-						              	<td class="num">5</td>
-						                <td class="subject">테스트 입니다. 테스트 입니다. 테스트 입니다.</td>
-						                <td class="writer">김경호</td>
-						                <td class="date">20.06.01</td>
-						       </tr>
-						       
-						       <tr>
-						              	<td class="num">6</td>
-						                <td class="subject">테스트 입니다. 테스트 입니다. 테스트 입니다.</td>
-						                <td class="writer">김경호</td>
-						                <td class="date">20.06.01</td>
-						       </tr>
-						       
-						       <tr>
-						              	<td class="num">7</td>
-						                <td class="subject">테스트 입니다. 테스트 입니다. 테스트 입니다.</td>
-						                <td class="writer">김경호</td>
-						                <td class="date">20.06.01</td>
-						       </tr>
-						       
-						       <tr>
-						              	<td class="num">8</td>
-						                <td class="subject">테스트 입니다. 테스트 입니다. 테스트 입니다.</td>
-						                <td class="writer">김경호</td>
-						                <td class="date">20.06.01</td>
-						       </tr>
-						       
-						       <tr>
-						              	<td class="num">9</td>
-						                <td class="subject">테스트 입니다. 테스트 입니다. 테스트 입니다.</td>
-						                <td class="writer">김경호</td>
-						                <td class="date">20.06.01</td>
-						       </tr>
-						       
-						       <tr>
-						              	<td class="num">10</td>
-						                <td class="subject">테스트 입니다. 테스트 입니다. 테스트 입니다.</td>
-						                <td class="writer">김경호</td>
-						                <td class="date">20.06.01</td>
-						       </tr>
-						       
-						       <tr>
-						              	<td class="num">11</td>
-						                <td class="subject">테스트 입니다. 테스트 입니다. 테스트 입니다.</td>
-						                <td class="writer">김경호</td>
-						                <td class="date">20.06.01</td>
-						       </tr>
-						       
-						       <tr>
-						              	<td class="num">12</td>
-						                <td class="subject">테스트 입니다. 테스트 입니다. 테스트 입니다.</td>
-						                <td class="writer">김경호</td>
-						                <td class="date">20.06.01</td>
-						       </tr>
-						       
-						       <tr>
-						              	<td class="num">13</td>
-						                <td class="subject">테스트 입니다. 테스트 입니다. 테스트 입니다.</td>
-						                <td class="writer">김경호</td>
-						                <td class="date">20.06.01</td>
-						       </tr>
-						       
-						       <tr>
-						              	<td class="num">14</td>
-						                <td class="subject">테스트 입니다. 테스트 입니다. 테스트 입니다.</td>
-						                <td class="writer">김경호</td>
-						                <td class="date">20.06.01</td>
-						       </tr>
-						       
-						       <tr>
-						              	<td class="num">15</td>
-						                <td class="subject">테스트 입니다. 테스트 입니다. 테스트 입니다.</td>
-						                <td class="writer">김경호</td>
-						                <td class="date">20.06.01</td>
-						       </tr>
-					         
-					         
-					         
+					        	</c:forEach>
 					         
 					        </tbody>
-        				</table>
+        				</table> 
 
   
-
-						<div class="paging">
-							<a href="<%= request.getContextPath() %>/board/board.do" class="nav first"><i class="fas fa-angle-double-left"></i></a>
+						<!-- 페이징 처리기능 -->
+						 <div class="paging">
+						 <!-- 홍보게시판 페이징 처리기능 -->
+							<c:if test="${board  eq 'pr'}"> 
+							<a href="<%= request.getContextPath() %>/board/boardPR.do" class="nav first"><i class="fas fa-angle-double-left"></i></a>
 						 	<c:choose>
 						       <c:when test="${paging.blockStart > 1 }">
-						            <a href="<%= request.getContextPath() %>/board/board.do?cPage=${paging.blockStart-1}" class="nav prev"><i class="fas fa-angle-left"></i></a>
+						            <a href="<%= request.getContextPath() %>/board/boardPR.do?cPage=${paging.blockStart-1}" class="nav prev"><i class="fas fa-angle-left"></i></a>
 						       </c:when>
 						       <c:otherwise>
-						           <a href="<%= request.getContextPath() %>/board/board.do?cPage=${paging.blockStart}" class="nav prev"><i class="fas fa-angle-left"></i></a>
+						           <a href="<%= request.getContextPath() %>/board/boardPR.do?cPage=${paging.blockStart}" class="nav prev"><i class="fas fa-angle-left"></i></a>
 						       </c:otherwise>
 						   </c:choose>
 						   
 						   <c:forEach begin="${paging.blockStart}" end="${paging.blockEnd}" var="page">
-						   		<a href="<%= request.getContextPath() %>/board/board.do?cPage=${page}" class="num active"><span>${page}</span></a>
+						   		<a href="<%= request.getContextPath() %>/board/boardPR.do?cPage=${page}" class="num active"><span>${page}</span></a>
 						   </c:forEach> 
 						   
 						   <c:choose>
 						       <c:when test="${paging.blockEnd+1 > paging.lastPage }">
-						            <a href="<%= request.getContextPath() %>/board/board.do?cPage=${paging.blockEnd}" class="nav next"><i class="fas fa-angle-right"></i></a>
+						            <a href="<%= request.getContextPath() %>/board/boardPR.do?cPage=${paging.blockEnd}" class="nav next"><i class="fas fa-angle-right"></i></a>
 						       </c:when>
 						       
 						       <c:otherwise>
-						            <a href="<%= request.getContextPath() %>/board/board.do?cPage=${paging.blockEnd+1}" class="nav next"><i class="fas fa-angle-right"></i></a>
+						            <a href="<%= request.getContextPath() %>/board/boardPR.do?cPage=${paging.blockEnd+1}" class="nav next"><i class="fas fa-angle-right"></i></a>
 						       </c:otherwise>
 						   </c:choose>
 						        
-						        <a href="<%= request.getContextPath() %>/board/board.do?cPage=${paging.lastPage}" class="nav last"><i class="fas fa-angle-double-right"></i></a>
+						        <a href="<%= request.getContextPath() %>/board/boardPR.do?cPage=${paging.lastPage}" class="nav last"><i class="fas fa-angle-double-right"></i></a>
+						   </c:if> 
+						   
+						   <!-- 공유게시판 페이징 처리기능 -->
+						   <c:if test="${board  eq 'sh'}"> 
+							<a href="<%= request.getContextPath() %>/board/boardSH.do" class="nav first"><i class="fas fa-angle-double-left"></i></a>
+						 	<c:choose>
+						       <c:when test="${paging.blockStart > 1 }">
+						            <a href="<%= request.getContextPath() %>/board/boardSH.do?cPage=${paging.blockStart-1}" class="nav prev"><i class="fas fa-angle-left"></i></a>
+						       </c:when>
+						       <c:otherwise>
+						           <a href="<%= request.getContextPath() %>/board/boardSH.do?cPage=${paging.blockStart}" class="nav prev"><i class="fas fa-angle-left"></i></a>
+						       </c:otherwise>
+						   </c:choose>
+						   
+						   <c:forEach begin="${paging.blockStart}" end="${paging.blockEnd}" var="page">
+						   		<a href="<%= request.getContextPath() %>/board/boardSH.do?cPage=${page}" class="num active"><span>${page}</span></a>
+						   </c:forEach> 
+						   
+						   <c:choose>
+						       <c:when test="${paging.blockEnd+1 > paging.lastPage }">
+						            <a href="<%= request.getContextPath() %>/board/boardSH.do?cPage=${paging.blockEnd}" class="nav next"><i class="fas fa-angle-right"></i></a>
+						       </c:when>
+						       
+						       <c:otherwise>
+						            <a href="<%= request.getContextPath() %>/board/boardSH.do?cPage=${paging.blockEnd+1}" class="nav next"><i class="fas fa-angle-right"></i></a>
+						       </c:otherwise>
+						   </c:choose>
+						        
+						        <a href="<%= request.getContextPath() %>/board/boardSH.do?cPage=${paging.lastPage}" class="nav last"><i class="fas fa-angle-double-right"></i></a>
+						   </c:if> 
 						  </div>
 						  
+						  <!-- 게시판 검색기능 -->
 						<div class="search">
-							<form action="<%=request.getContextPath()%>/book/search.do">
+							<form action="<%=request.getContextPath()%>/board/search.do">
 								<select class="searchCategori">
 										<option value="" selected disabled hidden>분류</option>
 										<option value="write">작성자</option>
@@ -216,18 +149,18 @@
 								</select>			
 								<input Type ="text" name="search" placeholder="검색어를 입력하세요">
 								<div class="searchButton">
-						        	<a href="<%= request.getContextPath() %>/notice/noticewrite.do">검색</a>
+						        	<a href="<%= request.getContextPath() %>/board/boardwrite.do">검색</a>
 						  		</div>
 							</form>
 						</div>
-						  
+						
+						  <!-- 게시판 쓰기 기능 -->
 						  <div class="write">
-						        <a href="<%= request.getContextPath() %>/notice/noticewrite.do">글쓰기</a>
+						        <a href="<%= request.getContextPath() %>/board/boardwrite.do">글쓰기</a>
 						  </div>
 					
 					</div>
 				</div>
-			</div>	
 		</article>
 	</section>
 	<!-- content부분 끝 -->

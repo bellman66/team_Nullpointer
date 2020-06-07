@@ -57,7 +57,7 @@ body {
 }
 
 .header .header_menu {
-	text-align: right;
+	text-align: center;
 	display: inline;
 	margin: 0 2px;
 }
@@ -80,6 +80,7 @@ body {
 	text-align: center;
 	text-transform: uppercase;
 	margin-top: 25px;
+	margin-left:8%;
 	font-family: sans-serif;
 }
 
@@ -121,7 +122,7 @@ body {
 	display: inline-block;
 	padding: 3px 0 3px 10px;
 	float: left;
-	left: 17%;
+	left: 12%;
 	font-size: 22px;
 	font-family: sans-serif;
 	font-weight: 900;
