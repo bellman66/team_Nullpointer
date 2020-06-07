@@ -7,7 +7,7 @@
 
 	<typeAliases>
 		<typeAlias type="com.khfinal.project.artist.model.vo.Artist" alias="Artist"/>
-		<typeAlias type="com.khfinal.project.artist.model.vo.Member" alias="Member"/>
+		<typeAlias type="com.khfinal.project.member.model.vo.Member" alias="Member"/>
 	</typeAliases>
 	
 	<mappers>
