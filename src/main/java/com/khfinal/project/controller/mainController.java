@@ -17,8 +17,13 @@ public class mainController {
 	public ModelAndView index () {
 		ModelAndView mav = new ModelAndView();
 		
-		// 메인 화면에 진입할 때마다, 랜덤 영상이 담겨 전달
+		// 메인 화면에 진입할 때마다, 랜덤 영상(Today Video)이 담겨 전달
+		// 수정 : 박혜연
 		mav.addObject("todayList", as.todayList());
+		
+		// 메인 화면에 진입할 때, best content 노출
+		// 수정 : 박혜연
+		mav.addObject("bestContent", as.bestContent());
 		
 		mav.setViewName("main/index");
 		System.out.println("test control");

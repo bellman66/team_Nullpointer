@@ -11,6 +11,7 @@ public class Artist {
 	private Date au_date;
 	private String au_content;
 	private String au_file;
+	private int au_like;
 	
 	public int getAu_num() {
 		return au_num;
@@ -48,10 +49,18 @@ public class Artist {
 	public void setAu_file(String au_file) {
 		this.au_file = au_file;
 	}
+	
+	public int getAu_like() {
+		return au_like;
+	}
+	public void setAu_like(int au_like) {
+		this.au_like = au_like;
+	}
+	
 	@Override
 	public String toString() {
 		return "Artist [au_num=" + au_num + ", m_id=" + m_id + ", m_nickname=" + m_nickname + ", au_date=" + au_date
-				+ ", au_content=" + au_content + ", au_file=" + au_file + "]";
+				+ ", au_content=" + au_content + ", au_file=" + au_file + ", au_like=" + au_like + "]";
 	}
 	
 }
