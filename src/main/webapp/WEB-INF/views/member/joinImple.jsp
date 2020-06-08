@@ -38,7 +38,19 @@
 		<article class="joinImple">
 			<div class="container">
 				<div class="row">
-					<div class="joinImple_box"></div>
+					<div class="joinImple_box">
+						<div class="joinBox">
+							<form>
+								<h2>가입을 환영합니다.</h2>
+								<div class="join-group">
+									<p>"회원님", 회원가입을 축하합니다.</p><br>
+									<p>새로운 아이디는 "회원님 아이디"입니다.</p><br>
+									<p>로그인하시면 INSERT THE TITLE의 다양한 서비스를 이용하실 수 있습니다. </p>
+								</div>
+								<button type="button" onclick="main">시작하기</button>
+							</form>
+						</div>
+					</div>
 				</div>
 			</div>
 		</article>

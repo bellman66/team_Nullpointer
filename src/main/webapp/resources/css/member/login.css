@@ -2,59 +2,77 @@
 
 #content_login {
 	background-color: #0c0c13;
-	height: 800px;
+	height: 850px;
 }
 
 /* content_login */
 .login_box {
 	width:100%;
-	height: 800px;
+	height: 850px;
 	float: left;
-	padding: 50px 0;
+	padding: 60px 0;
 	/* border: 1px solid green; */
 }
 
 .log {
 	height: 600px;
 	position: relative;
-	padding: 50px 30px; 
+	padding: 35px; 
 	margin-top:3%;
-	border-radius : 10px;
+	border-radius : 15px;
 	background-color: #fff;
 	/* border: 1px solid red; */
 }
 
 /* 이미지 자동 슬라이드부분  */
 .log-box{
-	width: 60%;
+	width: 53%;
 	height:600px;
 	float:left;
 	position: relative;
 }
 
-.log-box #log-img {
+.log-box .logImg{
+	width: 100%;
+	height: 600px; 
+	margin:0 auto; 
+	padding:0; 
+	overflow: hidden;
 	border-radius: 10px 0 0 10px;
-	padding:0;
+	position: relative;
 }
 
-#log-img li {
-	position: absolute;
-	top: 0;
-	left: 0;
-	display: none;
-	-webkit-display: block;
+.logImg ul {
+	position: absolute; 
+	margin: 0; 
+	padding-right:30px; 
+	list-style: none; 
 }
 
-#log-img img {
-	width: 60%;
+.logImg ul li {
+	float: left; 
+	margin:0;
+	padding:0; 
+	/* border:1px solid red; */
+}
+
+.logImg ul li img{
+	width: 600px;
 	height: 600px;
-	border:1px solid red;
+	border-radius: 15px;
 }
+
+
+
+
+/* 로그인 부분  */
 
 .log .log-formBox{
-	width:40%;
-	float:left;
+	width:42%;
+	float:right;
+	padding:20px;
 	position:relative;
+	/* border:1px solid red; */
 }
 
 .log .log-formBox h2 {
@@ -66,8 +84,6 @@
 	margin-bottom: 40px;
 }
 
-
-/* 로그인 부분  */
 .log-form {
 	position:relative;
 	margin-bottom:20px;
@@ -92,7 +108,8 @@
 	font-weight:700;
 	font-family: sans-serif;
 	color:#fff;
-	padding:15px 20px;
+	padding:20px;
+	margin-top:40px;
 	transition: all 0.3s ease;
 	border-radius: 25px;
 	background-color: #0c0c13;
@@ -116,7 +133,7 @@
 .findUser .find_text a {
 	position: relative;
 	color: #0c0c13; 
-	font-size: 13px;
+	font-size: 14px;
 	font-family: sans-serif;
 	text-align: center;
 }
