@@ -37,10 +37,44 @@
 		<article class="bread_box">
 			<div class="container">
 				<div class="row">
+					<%-- <form action="<%=request.getContextPath()%>/board/boardDelete.do?b_num=${read.board.b_num}">  --%>	
 					<div class="bread_list">
-						<div class="">
-						</div>
+						<c:if test='${read.board.b_category eq 1}'> 
+                            <div class="read_category"><strong>공유게시판</strong></div>
+                        </c:if> 
+
+                        <c:if test='${read.board.b_category eq 2}'>
+                            <div class="read_category"><strong>홍보게시판</strong></div>
+                        </c:if>
+                        
+
+                        <div class="read_title">${read.board.b_title}</div>
+
+                        <div class="read_info">
+                            <div class="read_id">아이디 : ${read.board.m_id}</div>
+                            <div class="read_day">작성일 : ${read.board.b_date}</div>
+                            <div class="read_file">첨부파일 : ${read.board.b_file}</div>
+                            <div class="read_content">${read.board.b_content}</div>
+                            <div class="read_num" style="display:none;">${read.board.b_num}</div>
+                        </div>
+                        
 					</div>
+					
+					<div class="read_button">
+					<%-- 이코드는 작성자와 아이디가 같다면 버튼을 활성화 해주는 --%>
+					<%-- <c:if test="${logInInfo.m_id eq read.board.m_id}"> --%>	
+							
+				           <div class="read_delete">
+				            	 <a href="<%=request.getContextPath()%>/board/boardDelete.do?b_num=${read.board.b_num}">삭제</a>
+				            	 <!-- <button>삭제</button> -->
+				           </div>
+			        
+			        <%-- </c:if> --%>
+				        <div class="read_list">
+				        	<a href="<%=request.getContextPath()%>/board/boardRead_list.do?b_category=${read.board.b_category}">목록</a>
+				        </div>
+			       <!-- </form> --> 
+			       </div>  
 				</div>
 			</div>	
 		</article>
@@ -50,6 +84,6 @@
 	<!-- footer부분 시작 -->
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 	<!-- footer부분 끝 -->
-
+	<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/board.js"></script>
 </body>
 </html>

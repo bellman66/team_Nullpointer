@@ -5,34 +5,55 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 
 
 <mapper namespace="Board">
-	<select id="contentCnt" resultType="int">
-		select count(*) from tb_board
+	<select id="contentCntPr" resultType="int">
+		select count(*) from tb_board WHERE B_CATEGORY = 2
+	</select>
+	
+	<select id="contentCntSh" resultType="int">
+		select count(*) from tb_board WHERE B_CATEGORY = 1
 	</select>
 
 	<select id="selectBoardListPr" resultType="Board">
-		select *
+<!-- 		select *
 		from(
 		select rownum rnum, n1.*
 		from(
 		select * from
 		tb_board
-		order by ${orderby} asc
+		where b_category like 1
+		order by b_num asc
 		)n1
 		)
-		where b_num like 1 and rnum between #{page.start} and #{page.end}
+		where rnum between #{page.start} and #{page.end} -->
+		
+		SELECT * FROM(
+		SELECT 
+		ROW_NUMBER() OVER(ORDER BY B_NUM ASC) AS RNUM,B_CATEGORY
+		,B_NUM,M_ID,B_DATE,B_CONTENT,B_FILE, B_TITLE 
+		FROM TB_BOARD 
+		WHERE B_CATEGORY = 2 
+		ORDER BY B_NUM ASC)AS TB 
+		where rnum between #{page.start} and #{page.end}
 	</select>
 
 	<select id="selectBoardListSh" resultType="Board">
-		select *
-		from(
-		select rownum rnum, n1.*
-		from(
-		select * from
-		tb_board
-		order by ${orderby} asc
-		)n1
-		)
-		where b_num like 0 and rnum between #{page.start} and #{page.end}
+		SELECT * FROM(
+		SELECT 
+		ROW_NUMBER() OVER(ORDER BY B_NUM ASC) AS RNUM,B_CATEGORY
+		,B_NUM,M_ID,B_DATE,B_CONTENT,B_FILE, B_TITLE 
+		FROM TB_BOARD 
+		WHERE B_CATEGORY = 1
+		ORDER BY B_NUM ASC)AS TB 
+		where rnum between #{page.start} and #{page.end}
 
 	</select>
+	
+	<select id="boardResd" resultType="Board">
+	      select * from tb_board
+	      where b_num = #{b_num}
+   </select>
+   
+   <delete id="boardDelete">
+   		delete from tb_board where b_num = #{b_num}
+   </delete>
 </mapper> 

@@ -43,3 +43,5 @@ sharingBt.addEventListener('click', function(e) {
 	listWriter.textContent = "작성자";
 
 });
+
+

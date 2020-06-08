@@ -28,7 +28,7 @@ public class BoardServiceImple implements BoardService {
 	public Map<String, Object> selectBoardListPR(String orderby, int currentPage, int cntPerPage) {
 
 		Map<String, Object> res = new HashMap<String, Object>();
-		Paging page = new Paging(bd.contentCnt(), currentPage, cntPerPage);
+		Paging page = new Paging(bd.contentCntPr(), currentPage, cntPerPage);
 
 		List<Board> nlist = bd.selectBoardListPr(page, orderby);
 		res.put("paging", page);
@@ -47,12 +47,40 @@ public class BoardServiceImple implements BoardService {
 	@Override
 	public Map<String, Object> selectBoardListSH(String orderby, int currentPage, int cntPerPage) {
 		Map<String, Object> res = new HashMap<String, Object>();
-		Paging page = new Paging(bd.contentCnt(), currentPage, cntPerPage);
+		Paging page = new Paging(bd.contentCntSh(), currentPage, cntPerPage);
 
 		List<Board> nlist = bd.selectBoardListSh(page, orderby);
 		res.put("paging", page);
 		res.put("nlist", nlist);
 
+		return res;
+	}
+
+	/**
+	 * @method : boardResd
+	 * @date : 2020. 6. 6.
+	 * @buildBy : 김경호
+	 * @comment : 게시판 상세보기
+	 */
+	@Override
+	public Map<String, Object> boardResd(int b_num) {
+		Map<String, Object> res = new HashMap<String, Object>();
+		Board board = bd.boardResd(b_num);
+		
+		res.put("board", board);
+		
+		return res;
+	}
+
+	/**
+	 * @method : boardDelete
+	 * @date : 2020. 6. 8.
+	 * @buildBy : 김경호
+	 * @comment : 게시글 삭제
+	 */
+	@Override
+	public int boardDelete(int b_num) {
+		int res = bd.boardDelete(b_num);
 		return res;
 	}
 
