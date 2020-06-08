@@ -165,7 +165,7 @@
 						
 						  <!-- 게시판 쓰기 기능 -->
 						  <div class="write">
-						        <a href="<%= request.getContextPath() %>/board/boardwrite.do">글쓰기</a>
+						        <a href="<%= request.getContextPath() %>/board/boardwrite.do?board=${board}">글쓰기</a>
 						  </div>
 					
 					</div>

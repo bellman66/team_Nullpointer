@@ -56,4 +56,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
    <delete id="boardDelete">
    		delete from tb_board where b_num = #{b_num}
    </delete>
+   
+   <insert id="boardinsertSh">
+   		INSERT INTO TB_BOARD VALUES(
+   		1 ,b_num.nextval, #{m_id}, sysdate(), #{b_content}, 'test/test/test', #{b_title})
+   </insert>
+   
+   <insert id="boardinsertPr">
+   		INSERT INTO TB_BOARD VALUES(
+   		2 ,b_num.nextval, #{m_id}, sysdate(), #{b_content}, 'test/test/test', #{b_title})
+   </insert>
+   
+   
 </mapper> 
