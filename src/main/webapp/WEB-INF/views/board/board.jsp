@@ -55,18 +55,27 @@
 						 <table class="boardListTable">
 					        <thead>
 					            <tr>
+					            <c:if test="${board  eq 'sh'}"> 
 					                <th class="listNum"><span>번호</span></th>
 					                <th class="listTitle"><span>제목</span></th>
 					                <th class="listWriter"><span>작성자</span></th>
 					                <th class="listDay"><span>등록일</span></th>
+					            </c:if>    
+					            
+					            <c:if test="${board  eq 'pr'}"> 
+					                <th class="listNum"><span>번호</span></th>
+					                <th class="listTitle"><span>홍보내용</span></th>
+					                <th class="listWriter"><span>아티스트</span></th>
+					                <th class="listDay"><span>등록일</span></th>
+					            </c:if>
 					            </tr>
 					        </thead>
 					        
 					        <tbody>
 					          	<c:forEach items="${boardList.nlist}" var="board">
 						            <tr>
-						                <td class="num" style="text-align:center;">${board.b_category}</td>
-						                <td class="subject"><a href="<%= request.getContextPath() %>/board/board.do?b_category=${board.b_category}">${board.b_title}</a></td>
+						                <td class="num" style="text-align:center;">${board.rnum}</td>
+						                <td class="subject"><a href="<%= request.getContextPath() %>/board/boardRead.do?b_num=${board.b_num}">${board.b_title}</a></td>
 						                <td class="writer" style="text-align:center;">${board.m_id}</td>
 						                <td class="date" style="text-align:center;">${board.b_date}</td>
 						            </tr>

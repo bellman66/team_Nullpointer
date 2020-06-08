@@ -46,8 +46,8 @@ public class BoardController {
 		ModelAndView mav = new ModelAndView();
 
 		int currentPage = 1;
-		int cntPerPage = 10;
-		String orderby = "b_category";
+		int cntPerPage = 5;
+		String orderby = "b_num";
 
 		if (request.getParameter("cPage") != null) {
 			currentPage = Integer.parseInt(request.getParameter("cPage"));
@@ -84,8 +84,8 @@ public class BoardController {
 		ModelAndView mav = new ModelAndView();
 
 		int currentPage = 1;
-		int cntPerPage = 10;
-		String orderby = "b_category";
+		int cntPerPage = 5;
+		String orderby = "b_num";
 
 		if (request.getParameter("cPage") != null) {
 			currentPage = Integer.parseInt(request.getParameter("cPage"));
@@ -109,5 +109,93 @@ public class BoardController {
 		mav.setViewName("board/board");
 
 		return mav;
+	}
+	
+	/**
+	 * @method : boardResd
+	 * @date : 2020. 6. 6.
+	 * @buildBy : 김경호
+	 * @comment : 게시판 상세보기
+	 */
+	@RequestMapping("/board/boardRead.do")
+	public ModelAndView boardResd(int b_num) {
+		ModelAndView mav = new ModelAndView();
+		
+		Map<String, Object> boardMap = bs.boardResd(b_num);
+		
+		System.out.println("시소 그대로 찍어본값" + boardMap.get("board"));
+		//boardMap에 뭐가 들었는지 확인하는 코드
+		for (String key : boardMap.keySet()) {
+			System.out.println(boardMap.get(key));
+		}
+		mav.addObject("read",boardMap);
+        mav.setViewName("board/board_read");
+		
+		return mav;
+	}
+	
+	/**
+	 * @method : boardDelete
+	 * @date : 2020. 6. 8.
+	 * @buildBy : 김경호
+	 * @comment : 게시글 삭제
+	 */
+	@RequestMapping("/board/boardDelete.do")
+	public ModelAndView boardDelete(int b_num) {
+		ModelAndView mav = new ModelAndView();
+		
+		int res = bs.boardDelete(b_num);
+		System.out.println(b_num);
+		System.out.println(res);
+		if(res > 0) {
+//			if(b_category == 1) {
+				mav.addObject("alertMsg", "게시글이 삭제가 되었습니다");
+				mav.addObject("url", "/springmvc/board/boardSH.do");
+				mav.setViewName("common/result");
+//			}else {
+//				mav.addObject("alertMsg", "게시글이 삭제가 되었습니다");
+//				mav.addObject("url", "/springmvc/board/boardPR.do");
+//				mav.setViewName("common/result");
+//			}
+			
+		}else {
+			mav.addObject("alertMsg", "존재하지 않는 게시물입니다.");
+			mav.addObject("back", "/springmvc/board/boardSH.do");
+			mav.setViewName("common/result");
+		}
+		
+		return mav;
+	}
+	
+	/**
+	 * @method : boardRead_list
+	 * @date : 2020. 6. 8.
+	 * @buildBy : 김경호
+	 * @comment : 게시글 상세보기에서 목록으로 넘어가는 기능
+	 */
+	@RequestMapping("/board/boardRead_list.do")
+	public ModelAndView boardRead_list(int b_category) {
+		ModelAndView mav = new ModelAndView();
+		
+		if(b_category == 1) {
+			mav.addObject("url", "/springmvc/board/boardSH.do");
+			mav.setViewName("common/result");
+		}else {
+			mav.addObject("url", "/springmvc/board/boardPR.do");
+			mav.setViewName("common/result");
+		}
+		
+		return mav;
+	}
+	
+	/**
+	 * @method : boardWrite
+	 * @date : 2020. 6. 8.
+	 * @buildBy : 김경호
+	 * @comment : 게시글 쓰기 페이지로 넘어가는 기능
+	 */
+	@RequestMapping("/board/boardwrite.do")
+	public String boardWrite() {
+		return "board/board_write";
 	}
 }

@@ -22,10 +22,12 @@ public class Board implements Serializable{
 	private String b_title;
 	private String b_content;
 	private String b_file;
+	private int rnum;
 	
 	public Board(){}
 
-	public Board(int b_category, int b_num, String m_id, Date b_date, String b_title, String b_content, String b_file) {
+	public Board(int b_category, int b_num, String m_id, Date b_date, String b_title, String b_content, String b_file,
+			int rnum) {
 		super();
 		this.b_category = b_category;
 		this.b_num = b_num;
@@ -34,6 +36,7 @@ public class Board implements Serializable{
 		this.b_title = b_title;
 		this.b_content = b_content;
 		this.b_file = b_file;
+		this.rnum = rnum;
 	}
 
 	public int getB_category() {
@@ -92,6 +95,14 @@ public class Board implements Serializable{
 		this.b_file = b_file;
 	}
 
+	public int getRnum() {
+		return rnum;
+	}
+
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -99,8 +110,10 @@ public class Board implements Serializable{
 	@Override
 	public String toString() {
 		return "Board [b_category=" + b_category + ", b_num=" + b_num + ", m_id=" + m_id + ", b_date=" + b_date
-				+ ", b_title=" + b_title + ", b_content=" + b_content + ", b_file=" + b_file + "]";
+				+ ", b_title=" + b_title + ", b_content=" + b_content + ", b_file=" + b_file + ", rnum=" + rnum + "]";
 	}
+
+	
 
 	
 	

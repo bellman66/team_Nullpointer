@@ -18,9 +18,15 @@ public class BoardDao {
 	@Autowired
 	SqlSessionTemplate sqlSession;
 
-	public int contentCnt() {
+	public int contentCntPr() {
 
-		return sqlSession.selectOne("Board.contentCnt");
+		return sqlSession.selectOne("Board.contentCntPr");
+
+	}
+	
+	public int contentCntSh() {
+
+		return sqlSession.selectOne("Board.contentCntSh");
 
 	}
 
@@ -56,6 +62,26 @@ public class BoardDao {
 		System.out.println("다오");
 		return sqlSession.selectList("Board.selectBoardListSh", data);
 
+	}
+	
+	/**
+	 * @method : boardResd
+	 * @date : 2020. 6. 6.
+	 * @buildBy : 김경호
+	 * @comment : 게시판 상세페이지
+	 */
+	public Board boardResd(int b_num) {
+		return sqlSession.selectOne("Board.boardResd", b_num);
+	}
+	
+	/**
+	 * @method : boardDelete
+	 * @date : 2020. 6. 8.
+	 * @buildBy : 김경호
+	 * @comment : 게시글 삭제
+	 */
+	public int boardDelete(int b_num) {
+		return sqlSession.delete("Board.boardDelete" ,b_num);
 	}
 
 }
