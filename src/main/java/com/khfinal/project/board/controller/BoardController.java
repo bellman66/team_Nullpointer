@@ -1,5 +1,7 @@
 package com.khfinal.project.board.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -7,9 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.khfinal.project.board.model.service.BoardService;
+import com.khfinal.project.board.model.vo.Board;
 
 @Controller
 public class BoardController {
@@ -187,6 +192,7 @@ public class BoardController {
 		
 		return mav;
 	}
+	String boardCategory;
 	
 	/**
 	 * @method : boardWrite
@@ -195,7 +201,40 @@ public class BoardController {
 	 * @comment : 게시글 쓰기 페이지로 넘어가는 기능
 	 */
 	@RequestMapping("/board/boardwrite.do")
-	public String boardWrite() {
-		return "board/board_write";
+	public ModelAndView boardWrite(String board) {
+		ModelAndView mav = new ModelAndView();
+		
+		boardCategory = board;
+		
+		if(board.equals("sh")) {
+			mav.addObject("board", "sh");
+			mav.setViewName("board/board_write");
+		}else {
+			mav.addObject("board", "pr");
+			mav.setViewName("board/board_write");
+		}
+		
+		return mav;
+	}
+	
+	
+	
+	@RequestMapping("/board/boarduoload.do")
+	public ModelAndView boardUpload(HttpServletRequest request, Board board, @RequestParam List<MultipartFile> boardFile) {
+		ModelAndView mav = new ModelAndView();
+		System.out.println("이게 뭘까?"+boardCategory);
+		
+		List<Map<String, Object>> file = new ArrayList<Map<String,Object>>();
+		
+		if(boardCategory.equals("sh")) {
+			int res = bs.boardUploadSh(board, file);
+			mav.setViewName("/board/boardSH.do");
+		}else {
+			int res = bs.boardUploadPr(board, file);
+			mav.setViewName("/board/boardPR.do");
+		}
+		
+		
+		return mav;
 	}
 }

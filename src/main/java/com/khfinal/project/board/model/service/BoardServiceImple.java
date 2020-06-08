@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.khfinal.project.board.model.dao.BoardDao;
 import com.khfinal.project.board.model.vo.Board;
@@ -82,6 +83,32 @@ public class BoardServiceImple implements BoardService {
 	public int boardDelete(int b_num) {
 		int res = bd.boardDelete(b_num);
 		return res;
+	}
+
+	@Override
+	public int boardUploadSh(Board board, List<Map<String, Object>> file) {
+		int res = bd.boardUploadSh(board);
+		boardFileSh(file);
+		return 0;
+	}
+
+	@Override
+	public int boardUploadPr(Board board, List<Map<String, Object>> file) {
+		int res = bd.boardUploadPr(board);
+		boardFilePr(file);
+		return 0;
+	}
+
+	@Override
+	public int boardFileSh(List<Map<String, Object>> file) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int boardFilePr(List<Map<String, Object>> file) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

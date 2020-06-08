@@ -7,6 +7,7 @@ import java.util.Map;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.khfinal.project.board.model.vo.Board;
 
@@ -82,6 +83,16 @@ public class BoardDao {
 	 */
 	public int boardDelete(int b_num) {
 		return sqlSession.delete("Board.boardDelete" ,b_num);
+	}
+	
+	public int boardUploadSh(Board board) {
+		
+		
+		return sqlSession.insert("Board.boardinsertSh",board);
+	}
+	
+	public int boardUploadPr(Board board) {
+		return sqlSession.insert("Board.boardinsertPr",board);
 	}
 
 }
