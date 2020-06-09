@@ -37,5 +37,7 @@
    		<websocket:handshake-interceptors>
    			<beans:bean class="com.khfinal.project.websocket.interceptor.chatInterceptor"></beans:bean>
    </websocket:handlers> -->
+   
+   <beans:import resource="chat-context.xml"/>
 	
 </beans:beans>
