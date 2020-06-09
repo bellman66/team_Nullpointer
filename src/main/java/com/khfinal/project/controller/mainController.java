@@ -26,7 +26,7 @@ public class mainController {
 		mav.addObject("bestContent", as.bestContent());
 		
 		mav.setViewName("main/index");
-		System.out.println("test control");
+		System.out.println("main control");
 		return mav;
 	}
 
