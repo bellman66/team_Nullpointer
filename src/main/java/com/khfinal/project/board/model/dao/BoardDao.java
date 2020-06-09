@@ -43,7 +43,6 @@ public class BoardDao {
 
 		data.put("page", page);
 		data.put("orderby", orderby);
-		System.out.println("다오");
 		return sqlSession.selectList("Board.selectBoardListPr", data);
 
 	}
@@ -76,6 +75,16 @@ public class BoardDao {
 	}
 	
 	/**
+	 * @method : boardResdFile
+	 * @date : 2020. 6. 9.
+	 * @buildBy : 김경호
+	 * @comment : 게시판 파일 상세페이지
+	 */
+	public List<Map<String, String>> boardResdFile(int b_num){
+		return sqlSession.selectList("Board.boardResdFile", b_num);
+	}
+	
+	/**
 	 * @method : boardDelete
 	 * @date : 2020. 6. 8.
 	 * @buildBy : 김경호
@@ -85,14 +94,48 @@ public class BoardDao {
 		return sqlSession.delete("Board.boardDelete" ,b_num);
 	}
 	
+	/**
+	 * @method : boardDeleteFile
+	 * @date : 2020. 6. 9.
+	 * @buildBy : 김경호
+	 * @comment : 게시판 파일 삭제
+	 */
+	public int boardDeleteFile(int b_num) {
+		return sqlSession.delete("Board.boardDeleteFile");
+	}
+	
+	/**
+	 * @method : boardUploadSh
+	 * @date : 2020. 6. 9.
+	 * @buildBy : 김경호
+	 * @comment : 공유 게시글 업로드 
+	 */
 	public int boardUploadSh(Board board) {
-		
-		
 		return sqlSession.insert("Board.boardinsertSh",board);
 	}
 	
+	/**
+	 * @method : boardUploadPr
+	 * @date : 2020. 6. 9.
+	 * @buildBy : 김경호
+	 * @comment : 홍보 게시글 업로드
+	 */
 	public int boardUploadPr(Board board) {
 		return sqlSession.insert("Board.boardinsertPr",board);
 	}
+	
+	/**
+	 * @method : boardFileSh
+	 * @date : 2020. 6. 9.
+	 * @buildBy : 김경호
+	 * @comment : 게시글 파일 업로드
+	 */
+	public int boardUploadFile(Map<String, Object> file) {
+		return sqlSession.insert("Board.boardinsertFile", file);
+	}
+	
+
+	
+	
 
 }

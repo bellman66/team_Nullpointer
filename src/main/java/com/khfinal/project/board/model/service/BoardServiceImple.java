@@ -1,5 +1,7 @@
 package com.khfinal.project.board.model.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -68,7 +70,11 @@ public class BoardServiceImple implements BoardService {
 		Map<String, Object> res = new HashMap<String, Object>();
 		Board board = bd.boardResd(b_num);
 		
+		//파일 읽어주는 코드
+//		List<Map<String, String>> flist = bd.boardResdFile(b_num);
+		
 		res.put("board", board);
+//		res.put("flist", flist);
 		
 		return res;
 	}
@@ -82,33 +88,51 @@ public class BoardServiceImple implements BoardService {
 	@Override
 	public int boardDelete(int b_num) {
 		int res = bd.boardDelete(b_num);
+		
+//		bd.boardDeleteFile(b_num);
+		
 		return res;
 	}
 
 	@Override
-	public int boardUploadSh(Board board, List<Map<String, Object>> file) {
+	public int boardUploadSh(Board board , List<Map<String, Object>> file) {
 		int res = bd.boardUploadSh(board);
-		boardFileSh(file);
-		return 0;
+		boardFile(file);
+		return res;
 	}
 
 	@Override
-	public int boardUploadPr(Board board, List<Map<String, Object>> file) {
+	public int boardUploadPr(Board board , List<Map<String, Object>> file) {
 		int res = bd.boardUploadPr(board);
-		boardFilePr(file);
-		return 0;
+		boardFile(file);
+		return res;
 	}
 
 	@Override
-	public int boardFileSh(List<Map<String, Object>> file) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int boardFile(List<Map<String, Object>> file) {
+		int res = 0;
+		for(Map<String, Object> fileData : file) {
+			bd.boardUploadFile(fileData);
+			
+			MultipartFile mf = (MultipartFile) fileData.get("file");
+			File f = new File((String) fileData.get("savePath"));
+			
+			try {
+				mf.transferTo(f);
+			} catch (IllegalStateException e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+			
+			
+			
+		}
+		return res;
 	}
 
-	@Override
-	public int boardFilePr(List<Map<String, Object>> file) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+
 
 }
