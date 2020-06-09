@@ -38,7 +38,34 @@
 			<div class="container">
 				<div class="row">
 					<div class="bwrite_table">
-						<div class="">
+					
+						<div class="bwrite_list">
+							 <c:if test="${board eq 'sh'}">
+								<div class="write_category"><strong>공유게시판</strong></div>
+							</c:if>
+							
+							<c:if test="${board eq 'pr'}">
+								<div class="write_category"><strong>홍보게시판</strong></div>
+							</c:if>
+							
+							
+							
+							<form action="<%= request.getContextPath() %>/board/boarduoload.do" mathod="post" enctype="multipart/form-data">
+								<div class="write_detail">
+									<div class="title_file">
+										제목 : <input type="text" name="write_title" class="write_title"/>
+										파일 : <input type="file" name="write_file" class="write_file"/>
+									</div>
+									
+									<div class="write_content">
+										<textarea cols="300" rows="15" name="write_content"></textarea>
+									</div>
+									
+									<div>
+										<button>확인</button>
+									</div>
+								</div>
+							</form>
 						</div>
 					</div>
 				</div>

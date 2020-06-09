@@ -1,1 +1,20 @@
 @charset "UTF-8";
+.write_category {
+	margin-top: 1%;
+	height: 70px;
+    width: 100%;
+    color: black;
+    font-size: 2vw;
+    position: absolute;
+    margin-top: -50px;
+    
+}
+
+.write_category strong {
+	float: right;
+}
+
+.write_detail{
+    width: 100%;
+    height: 400px;
+}

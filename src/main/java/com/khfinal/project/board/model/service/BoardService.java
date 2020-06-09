@@ -1,6 +1,11 @@
 package com.khfinal.project.board.model.service;
 
+import java.util.List;
 import java.util.Map;
+
+import org.springframework.web.multipart.MultipartFile;
+
+import com.khfinal.project.board.model.vo.Board;
 
 public interface BoardService {
 
@@ -13,5 +18,13 @@ public interface BoardService {
 		
 		public int boardDelete(int b_num);
 	
+		public int boardUploadSh(Board board, List<Map<String, Object>> file);
+		
+		public int boardUploadPr(Board board, List<Map<String, Object>> file);
+		
+		public int boardFileSh(List<Map<String, Object>> file);
+		
+		public int boardFilePr(List<Map<String, Object>> file);
+
 }
 
