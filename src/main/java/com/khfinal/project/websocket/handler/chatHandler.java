@@ -1,10 +1,13 @@
 package com.khfinal.project.websocket.handler;
 
-import java.util.ArrayList; 
-import java.util.List; 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.BinaryMessage;
 import org.springframework.web.socket.CloseStatus;
@@ -12,10 +15,16 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import com.khfinal.project.stream.service.streamService;
+import com.khfinal.project.stream.vo.streamVo;
+
 @Component
 public class chatHandler extends TextWebSocketHandler {
 	
-	private List<WebSocketSession> sessionList = new ArrayList<WebSocketSession>();
+	@Autowired
+	private streamService streamservice;
+	
+    // private List<WebSocketSession> sessionList = new ArrayList<WebSocketSession>();
 	private Logger log = LoggerFactory.getLogger(chatHandler.class);
 	
 	public chatHandler() {
@@ -31,17 +40,30 @@ public class chatHandler extends TextWebSocketHandler {
 
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-		// 1. 접속이 완료된 이후 작동되는 메서드 
-		sessionList.add(session);
+		// 1. 접속이 완료된 이후 작동되는 메서드 		
+		// sessionList.add(session);
+
+		String[] originuri = session.getUri().toString().split("id=");
+		String id = originuri[originuri.length-1];
+		
+		if(streamservice.get(id) != null) {
+			List<WebSocketSession> sessionlist = streamservice.get(id).getSessionList();
+			sessionlist.add(session);
+		}
+		
 	}
 	
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 
-		System.out.println("입력된 채팅 : " + message.getPayload());
-		
-		for (WebSocketSession webSocketSession : sessionList) {
-			webSocketSession.sendMessage(new TextMessage(" user : " + message.getPayload()));
+		String[] originuri = session.getUri().toString().split("id=");
+		String id = originuri[originuri.length-1];
+
+		if(streamservice.get(id) != null) {
+			List<WebSocketSession> sessionlist = streamservice.get(id).getSessionList();
+			for (WebSocketSession webSocketSession : sessionlist) {
+				webSocketSession.sendMessage(new TextMessage(" user : " + message.getPayload()));
+			}
 		}
 	}
 
@@ -53,11 +75,13 @@ public class chatHandler extends TextWebSocketHandler {
 
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-		sessionList.remove(session); 
-		log.info("연결 끊김");
-	}
-	
-	
+		String[] originuri = session.getUri().toString().split("id=");
+		String id = originuri[originuri.length-1];
 
-	
+		if(streamservice.get(id) != null) {
+			List<WebSocketSession> sessionlist = streamservice.get(id).getSessionList();
+			sessionlist.remove(session); 
+			log.info("연결 끊김");
+		}
+	}
 }

@@ -16,7 +16,7 @@
 
 	<import resource="db-context.xml"/>
 	<import resource="aop-context.xml"/>
-	<import resource="chat-context.xml"/>
+	<!-- <import resource="chat-context.xml"/> -->
 		
 	<bean id="mailSender"
 		class="org.springframework.mail.javamail.JavaMailSenderImpl">
