@@ -45,3 +45,10 @@ sharingBt.addEventListener('click', function(e) {
 });
 
 
+//tab menu script부분
+
+
+
+
+
+

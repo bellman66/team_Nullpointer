@@ -1,164 +1,118 @@
 @charset "UTF-8";
 
-.boardTitle {
-	margin-top: 5%;
-	height: 70px;
+#content_board {
+	background-color: #fff;
+}
+
+.board {
 	width: 100%;
+	height: 860px;
+	position: relative;
+	border: 1px solid red;
 }
 
-.sharing {
-	width: 54%;
-	height: 70px;
-	text-align: center;
-	position: absolute;
-	padding-top: 17px;
-	font-size: 1.2vw;
-	border: 1px solid black;
-	top: -3%;
+#boardTab {
+	height: 760px;
+	padding-top: 2%;
+	border: 1px solid blue;
 }
 
-.promotion {
-	width: 54%;
-	height: 70px;
-	text-align: center;
-	position: absolute;
-	left: 54%;
-	padding-top: 17px;
-	font-size: 1.2vw;
-	border: 1px solid black;
-	top: -3%;
-}
-
-.sharingBt {
-	width: 55%;
-	height: 70px;
-	position: absolute;
-	padding-top: 17px;
-	color: white;
-	opacity: 0;
-	z-index: 10;
-}
-
-.promotionBt {
-	width: 55%;
-	height: 70px;
-	position: absolute;
-	left: 53%;
-	padding-top: 17px;
-	opacity: 0;
-	z-index: 10;
-}
-
-.boardListTable {
-	width: 108%;
-	height: 50%;
-}
-
-.board_list {
+/* tab메뉴 */
+.tabs {
 	width: 100%;
-	height: 530px;
+	height: 32px;
+	margin: 0;
+	padding: 0;
+	float: left;
+	list-style: none;
+	border-bottom: 1px solid #0c0c13;
+	border-left: 1px solid #0c0c13;
 }
 
-.board_list th {
-	padding: 1%;
+.tabs li {
+	float: left;
+	margin: 0;
+	padding: 0;
+	width: 49.9%; height : 31px;
+	line-height: 31px;
+	border: 1px solid #0c0c13;
+	border-left: none;
+	margin-bottom: -1px;
+	overflow: hidden;
+	position: relative;
+	background-color: #f5b041;
+	height: 31px;
 }
 
-.board_list td {
-	padding: 1%;
+.tabs li a {
+	text-decoration: none;
+	color: #0c0c13;
+	display: block;
+	font-size: 17px;
+	font-weight: 800;
+	font-family: sans-serif;
+	padding: 0 20px;
+	border: 1px solid #fff;
+	outline: none;
 }
 
-.listNum {
-	width: 7%;
-	height: 60px;
+.tabs li a:hover {
+	color: #f5b041;
+	background-color: #0c0c13;
+}
+
+.tabs li.active, .tabs li.active a:hover {
+	background: #fff;
+	border-bottom: 1px solid #fff;
+}
+
+/* tab 게시판 부분 */
+.tab_container {
+	width: 100%;
+	overflow: hidden;
+	clear: both;
+	float: left;
+	background: #fff;
+	border-top: none;
+	border: 1px solid #0c0c13;
+}
+
+.tab_content {
+	height: 680px;
+	padding: 20px;
+	font-size: 15px;
+	font-weight: 800;
+	font-family: sans-serif;
+}
+
+.bd-Table {
+	width: 98%;
+	font-size: 16px;
+	font-family: sans-serif;
 	text-align: center;
+	margin: 1%;
 }
 
-.listTitle {
-	width: 70%;
+.bd-Table th {
+	height: 40px; font-size : 15px;
+	color: #fff;
+	background-color: #0c0c13;
+	font-size: 15px;
 }
 
-.listWriter {
-	width: 12%;
+.bd-Table td {
+	height: 40px;
+	color: #0c0c13;
+	font-size: 14px;
+	font-family: sans-serif;
 	text-align: center;
-}
-
-.container .board_list .listDay {
-	width: 30%;
-	text-align: center;
+	border-bottom: 1px solid #eee;
 }
 
 
 
-.boardListTable th {
-	font-size: 0.8vw;
-	background-color: black;
-	color: white;
-}
+/* 페이지 부분  */
 
-.boardListTable td {
-	border-bottom: 1px solid lightgrey;
-}
 
-.paging {
-	height: 10%;
-	font-size: 1.5vw;
-	text-align: center;
-}
 
-.write {
-	padding-top: 2%;
-	border: 1%;
-	background-color: black;
-	margin-left: 93%;
-	width: 10%;
-	height: 50px;
-	float: right;
-	font-size: 1.2vw;
-	color: white;
-	text-align: center;
-	position: absolute;
-}
-
-.write a {
-	color: white;
-}
-
-.board_list td {
-	font-size: 0.9vw;
-}
-
-.search {
-	margin-top: 2%;
-	left: 30%;
-	width: 40%;
-	height: 12%;
-	background-color: white;
-	position: absolute;
-}
-
-.search input {
-	width: 60%;
-	height: 30px;
-	position: absolute;
-}
-
-.searchsearch select {
-	position: absolute;
-}
-
-.searchButton {
-	padding-top: 2%;
-	border: 1%;
-	background-color: black;
-	margin-left: 83%;
-	width: 17%;
-	height: 50px;
-	float: right;
-	font-size: 1.2vw;
-	text-align: center;
-	position: absolute;
-}
-
-.searchButton a {
-	color: white;
-}
+/* 검색 부분 */
