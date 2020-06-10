@@ -6,21 +6,21 @@
 
 .board {
 	width: 100%;
-	height: 860px;
+	height: 960px;
 	position: relative;
-	border: 1px solid red;
+	/* border: 1px solid red; */
 }
 
 #boardTab {
-	height: 760px;
-	padding-top: 2%;
-	border: 1px solid blue;
+	height: 820px;
+	padding-top: 5%;
+	/* border: 1px solid blue; */
 }
 
 /* tab메뉴 */
 .tabs {
 	width: 100%;
-	height: 32px;
+	height: 43px;
 	margin: 0;
 	padding: 0;
 	float: left;
@@ -33,15 +33,15 @@
 	float: left;
 	margin: 0;
 	padding: 0;
-	width: 49.9%; height : 31px;
-	line-height: 31px;
+	width: 47%;
+	height: 43px;
+	line-height: 43px;
 	border: 1px solid #0c0c13;
 	border-left: none;
 	margin-bottom: -1px;
 	overflow: hidden;
 	position: relative;
 	background-color: #f5b041;
-	height: 31px;
 }
 
 .tabs li a {
@@ -51,7 +51,7 @@
 	font-size: 17px;
 	font-weight: 800;
 	font-family: sans-serif;
-	padding: 0 20px;
+	padding: 3px 10px;
 	border: 1px solid #fff;
 	outline: none;
 }
@@ -78,7 +78,7 @@
 }
 
 .tab_content {
-	height: 680px;
+	height: 740px;
 	padding: 20px;
 	font-size: 15px;
 	font-weight: 800;
@@ -86,33 +86,110 @@
 }
 
 .bd-Table {
-	width: 98%;
+	width: 97%;
 	font-size: 16px;
 	font-family: sans-serif;
 	text-align: center;
-	margin: 1%;
+	margin-top: 25px;
+	margin-left:12px;
+	border: 1px solid 828282;
 }
 
 .bd-Table th {
-	height: 40px; font-size : 15px;
+	height: 45px;
+	font-size: 15px;
 	color: #fff;
 	background-color: #0c0c13;
 	font-size: 15px;
 }
 
 .bd-Table td {
-	height: 40px;
+	height: 45px;
 	color: #0c0c13;
-	font-size: 14px;
+	font-size: 15px;
 	font-family: sans-serif;
 	text-align: center;
 	border-bottom: 1px solid #eee;
 }
 
-
-
 /* 페이지 부분  */
+.bdpage {
+	width: 12%;
+	top:30px;
+	left:45%;
+	margin: 5px;
+	position: relative;
+	/* border: 1px solid red; */
+}
+
+.bdpage .bdpaging {
+	overflow: hidden;
+	display: block;
+}
+
+.bdpage .bdpaging li {
+	float: left;
+	padding-right: 5px;
+}
+
+.bdpage .bdpaging li a {
+	color: #808080;
+	font-size: 14px;
+	font-family: sans-serif;
+	text-align: center;
+	padding: 3px 2px;
+}
+
+.bdpage .bdpaging li a:hover {
+	color: #0c0c13;
+}
+
+/* 검색 부분  */
+.bdsearch {
+	width: 100%;
+	height: 30px;
+	top:58px;
+	left:30%;
+	position:relative;
+	/* border: 1px solid blue; */
+}
+
+.bdsearch select {
+	height: 30px;
+	bottom: 3px;
+	padding:2px;
+	position: relative;
+}
+
+.bdsearch .searchText {
+	width:25%;
+	font-size: 15px;
+	font-family: sans-serif;
+	text-align: center;
+	padding:2px;
+	color: #0c0c13;
+}
+
+.bdsearch .dbSearch {
+	width:120px;
+	font-size: 15px;
+	font-family: sans-serif;
+	text-align: center;
+	padding:2px;
+	color: #fff;
+	background-color: #0c0c13;
+}
+
+#bdWrite{
+	width:120px;
+	height:30px;
+	float:right;
+	margin-top:20px;
+	font-size: 15px;
+	font-family: sans-serif;
+	text-align: center;
+	color: #fff;
+	background-color: #0c0c13;
+}
 
 
-
-/* 검색 부분 */

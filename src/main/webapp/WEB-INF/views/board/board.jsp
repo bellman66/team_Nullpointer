@@ -42,8 +42,8 @@
 						<div id="boardTab">
 							<!--탭 메뉴 영역 -->
 							<ul class="tabs">
-								<li><a href="#tab1">홍보</a></li>
-								<li><a href="#tab2">공유</a></li>
+								<li><a href="#tab1">홍보 게시판</a></li>
+								<li><a href="#tab2">공유 게시판</a></li>
 							</ul>
 
 							<!--탭 콘텐츠 영역 -->
@@ -54,10 +54,10 @@
 										<table class="bd-Table">
 											<colgroup>
 												<!-- 넓이 지정  -->
-												<col width="8%">
-												<col width="37%">
-												<col width="20%">
+												<col width="6%">
+												<col width="45%">
 												<col width="15%">
+												<col width="10%">
 											</colgroup>
 											<thead>
 												<tr>
@@ -105,8 +105,60 @@
 													<td class="shWriter">아티스트</td>
 													<td class="shDate">20.06.10</td>
 												</tr>
+												<tr>
+													<td class="shNo">7</td>
+													<td class="shTitle">홍보내용</td>
+													<td class="shWriter">아티스트</td>
+													<td class="shDate">20.06.10</td>
+												</tr>
+												<tr>
+													<td class="shNo">8</td>
+													<td class="shTitle">홍보내용</td>
+													<td class="shWriter">아티스트</td>
+													<td class="shDate">20.06.10</td>
+												</tr>
+												<tr>
+													<td class="shNo">9</td>
+													<td class="shTitle">홍보내용</td>
+													<td class="shWriter">아티스트</td>
+													<td class="shDate">20.06.10</td>
+												</tr>
+												<tr>
+													<td class="shNo">10</td>
+													<td class="shTitle">홍보내용</td>
+													<td class="shWriter">아티스트</td>
+													<td class="shDate">20.06.10</td>
+												</tr>
 											</tbody>
 										</table>
+
+										<!-- 페이지부분 -->
+										<div class="bdpage">
+											<ul class="bdpaging">
+												<li><a href="#"><</a></li>
+												<li><a href="#">1</a></li>
+												<li><a href="#">2</a></li>
+												<li><a href="#">3</a></li>
+												<li><a href="#">4</a></li>
+												<li><a href="#">></a></li>
+											</ul>
+										</div>
+
+										<!-- 검색 창 -->
+										<div class="bdsearch">
+											<form action="">
+												<select class="searchType">
+													<option value="" selected disabled hidden>분류</option>
+													<option value="write">작성자</option>
+													<option value="title">제목</option>
+													<option value="wrti">작성자 + 제목</option>
+												</select> <input class="searchText" type="text" name="searchWord" />
+												<input class="dbSearch" type="button" value="검색하기" />
+											</form>
+										</div>
+
+										<!-- 버튼 -->
+										<button id="bdWrite" type="button" onclick="write">글쓰기</button>
 									</form>
 								</div>
 
@@ -116,10 +168,10 @@
 										<table class="bd-Table">
 											<colgroup>
 												<!-- 넓이 지정  -->
-												<col width="8%">
-												<col width="37%">
-												<col width="20%">
+												<col width="6%">
+												<col width="45%">
 												<col width="15%">
+												<col width="10%">
 											</colgroup>
 											<thead>
 												<tr>
@@ -179,36 +231,53 @@
 													<td class="prWriter">작성자</td>
 													<td class="prDate">20.06.10</td>
 												</tr>
+												<tr>
+													<td class="prNo">9</td>
+													<td class="prTitle">공유게시판입니다</td>
+													<td class="prWriter">작성자</td>
+													<td class="prDate">20.06.10</td>
+												</tr>
+												<tr>
+													<td class="prNo">10</td>
+													<td class="prTitle">공유게시판입니다</td>
+													<td class="prWriter">작성자</td>
+													<td class="prDate">20.06.10</td>
+												</tr>
 											</tbody>
 										</table>
+
+										<!-- 페이지부분 -->
+										<div class="bdpage">
+											<ul class="bdpaging">
+												<li><a href="#"><</a></li>
+												<li><a href="#">1</a></li>
+												<li><a href="#">2</a></li>
+												<li><a href="#">3</a></li>
+												<li><a href="#">4</a></li>
+												<li><a href="#">></a></li>
+											</ul>
+										</div>
+
+										<!-- 검색 창 -->
+										<div class="bdsearch">
+											<form action="">
+												<select name="searchType">
+													<option value="selected disabled hidden">분류</option>
+													<option value="write">작성자</option>
+													<option value="title">제목</option>
+													<option value="wrti">작성자 + 제목</option>
+												</select> 
+												<input class="searchText" type="text" name="searchWord" />
+												<input class="dbSearch" type="button" value="검색하기" />
+											</form>
+										</div>
+
+										<!-- 버튼  -->
+										<button id="bdWrite" type="button" onclick="write">글쓰기</button>
 									</form>
 								</div>
 								<!-- 홍보게시판 부분 끝  -->
-
 							</div>
-						</div>
-
-						<!-- 페이지 리스트 부분 -->
-						<div id="bdpage">
-							<ul>
-								<li><a href="">1</a></li>
-								<li><a href="">2</a></li>
-								<li><a href="">3</a></li>
-								<li><a href="">4</a></li>
-								<li><a href="">5</a></li>
-							</ul>
-						</div>
-
-						<!-- 검색 창 -->
-						<div class="bdsearch">
-							<form action="">
-								<select name="searchType">
-									<option value="review_title" selected="selected">제목</option>
-									<option value="review_content">글내용</option>
-									<option value="review_writer">닉네임</option>
-								</select> <input id="searchText" type="text" name="searchWord" /> <input
-									id="searchBt" type="button" value="검색하기" id="btnSearch" />
-							</form>
 						</div>
 					</div>
 				</div>
@@ -244,7 +313,6 @@
 				$(activeTab).fadeIn();
 				return false;
 			});
-
 		});
 	</script>
 
