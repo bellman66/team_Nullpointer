@@ -29,4 +29,13 @@ public class MemberServiceImple implements MemberService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Member loginConfirm(Map<String, Object> memberMap) {
+		// TODO Auto-generated method stub
+		
+		return mdao.loginConfirm(memberMap);
+	}
+	
+	
 }

@@ -56,7 +56,7 @@
 								</ul>
 							</div>
 						</div>
-						<form class="log-formBox">
+						<form action="<%=request.getContextPath()%>/member/loginConfirm.do" class="log-formBox">
 							<h2>로그인</h2>
 
 							<div class="log-form">
@@ -79,7 +79,7 @@
 										href="<%=request.getContextPath()%>/member/join.do">회원가입</a></li>
 								</ul>
 							</div>
-							<button id="logBut" type="button" onclick="login">로그인</button>
+							<button id="logBut" type="submit" onclick="login">로그인</button>
 						</form>
 					</div>
 				</div>

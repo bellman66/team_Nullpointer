@@ -9,4 +9,6 @@ public interface MemberService {
 	public int insertMember(Map<String , Object>memberMap);
 	public Member login(Map<String , Object>memberMap);
 	
+	public Member loginConfirm(Map<String , Object>memberMap);
+	
 }

@@ -12,5 +12,10 @@
  	
  	<select id="login" resultType="Member">
  	</select>
+ 	
+ 	<select id="loginConfirm" parameterType="map" resultType="Member">
+ 		select * from tb_member
+ 				 where M_ID = #{userID} AND M_PASS = #{userPWD}
+ 	</select>
  
   </mapper>
