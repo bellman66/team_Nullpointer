@@ -56,8 +56,10 @@ public class streamController {
 			String test = "Please Login";
 			mav.addObject("userHashCode" , test.hashCode() );
 			
+			Map<String,Object> logininfo = (Map<String, Object>) session.getAttribute("loginInfo");
+			
 			// test 부분 
-			mav.addObject("userid" , "m_id");
+			mav.addObject("userid" , (String)logininfo.get("user_name"));
 		}
 		
 		mav.setViewName("stream/usersetting");

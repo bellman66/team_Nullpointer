@@ -1,5 +1,6 @@
 package com.khfinal.project.websocket.handler;
 
+import java.security.URIParameter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -43,8 +44,10 @@ public class chatHandler extends TextWebSocketHandler {
 		// 1. 접속이 완료된 이후 작동되는 메서드 		
 		// sessionList.add(session);
 
-		String[] originuri = session.getUri().toString().split("id=");
-		String id = originuri[originuri.length-1];
+		String[] originuri = session.getUri().getQuery().split("&");
+		
+		String[] splitvalue = originuri[0].split("=");
+		String id = splitvalue[1];
 		
 		if(streamservice.get(id) != null) {
 			List<WebSocketSession> sessionlist = streamservice.get(id).getSessionList();
@@ -56,13 +59,21 @@ public class chatHandler extends TextWebSocketHandler {
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 
-		String[] originuri = session.getUri().toString().split("id=");
-		String id = originuri[originuri.length-1];
-
+		String[] originuri = session.getUri().getQuery().split("&");
+		
+		String[] splitvalue = originuri[0].split("=");
+		String id = splitvalue[1];
+		
+		splitvalue = originuri[1].split("=");
+		String user_name = splitvalue[1];
+		
+		System.out.println("name : " + id + user_name);
+		session.getAttributes();
+		
 		if(streamservice.get(id) != null) {
 			List<WebSocketSession> sessionlist = streamservice.get(id).getSessionList();
 			for (WebSocketSession webSocketSession : sessionlist) {
-				webSocketSession.sendMessage(new TextMessage(" user : " + message.getPayload()));
+				webSocketSession.sendMessage(new TextMessage(user_name + " : " + message.getPayload()));
 			}
 		}
 	}
@@ -75,8 +86,10 @@ public class chatHandler extends TextWebSocketHandler {
 
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-		String[] originuri = session.getUri().toString().split("id=");
-		String id = originuri[originuri.length-1];
+		String[] originuri = session.getUri().getQuery().split("&");
+		
+		String[] splitvalue = originuri[0].split("=");
+		String id = splitvalue[1];
 
 		if(streamservice.get(id) != null) {
 			List<WebSocketSession> sessionlist = streamservice.get(id).getSessionList();
