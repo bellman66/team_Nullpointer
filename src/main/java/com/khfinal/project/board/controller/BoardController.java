@@ -1,10 +1,14 @@
 package com.khfinal.project.board.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.khfinal.project.board.model.service.BoardService;
 import com.khfinal.project.board.model.vo.Board;
+import com.khfinal.project.member.model.vo.Member;
 
 @Controller
 public class BoardController {
@@ -219,21 +224,65 @@ public class BoardController {
 	
 	
 	
+	/**
+	 * @method : boardUpload
+	 * @date : 2020. 6. 9.
+	 * @buildBy : 김경호
+	 * @comment : 게시판 업로드 메서드
+	 */
 	@RequestMapping("/board/boarduoload.do")
-	public ModelAndView boardUpload(HttpServletRequest request, Board board, @RequestParam List<MultipartFile> boardFile) {
+	public ModelAndView boardUpload(HttpServletRequest request, Board board, @RequestParam List<MultipartFile> bfile) {
 		ModelAndView mav = new ModelAndView();
 		System.out.println("이게 뭘까?"+boardCategory);
-		
-		List<Map<String, Object>> file = new ArrayList<Map<String,Object>>();
-		
-		if(boardCategory.equals("sh")) {
-			int res = bs.boardUploadSh(board, file);
-			mav.setViewName("/board/boardSH.do");
-		}else {
-			int res = bs.boardUploadPr(board, file);
-			mav.setViewName("/board/boardPR.do");
+		System.out.println(board);
+		for(int i = 0; i < bfile.size(); i++ ) {
+			System.out.println("bfile 리스트" + bfile.get(i));
 		}
 		
+		//파일을 저장하는 코드
+		List<Map<String, Object>> file = new ArrayList<Map<String,Object>>();
+		String root = request.getSession().getServletContext().getRealPath("/");
+		
+//		int i = 0;
+//		for(MultipartFile mf : bfile) {
+//			String savePath = root + "resources/upload/";
+//			String originFileName = mf.getOriginalFilename();
+//			HashMap<String, Object> data = new HashMap<String, Object>();
+//			
+//			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+//			
+//			String renameFile 
+//			= sdf.format(new Date()) + i + "." + originFileName.substring(originFileName.lastIndexOf(".")+1);
+//		
+//			savePath += renameFile;
+//	         
+//	         data.put("originFileName",originFileName);
+//	         data.put("renameFile",renameFile);
+//	         data.put("savePath",savePath);
+//	         data.put("file",mf);
+//	         
+//	         file.add(data);
+//	         i++;
+//		}
+		
+		
+		
+		
+		
+		
+		
+		//파일을 뺸 나머지 값들 가져오는 코드
+//		HttpSession session = request.getSession();
+//	    Member member = (Member) session.getAttribute("logInInfo");
+//	    board.setBoardWriter(member.getM_id());
+		
+		if(boardCategory.equals("sh")) {
+			int res = bs.boardUploadSh(board , file );
+			mav.setViewName("redirect:boardSH.do");
+		}else {
+			int res = bs.boardUploadPr(board , file );
+			mav.setViewName("redirect:boardPR.do");
+		}
 		
 		return mav;
 	}

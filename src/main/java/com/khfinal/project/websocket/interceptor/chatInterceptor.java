@@ -15,6 +15,5 @@ public class chatInterceptor extends HttpSessionHandshakeInterceptor{
 		System.out.println("hand shake start");
 		return super.beforeHandshake(request, response, wsHandler, attributes);
 	}
-
 	
 }

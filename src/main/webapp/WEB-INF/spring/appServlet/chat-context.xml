@@ -6,11 +6,12 @@
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 	
    <bean id="chatHandler" class="com.khfinal.project.websocket.handler.chatHandler"/>
-   <websocket:handlers>
+   
+   <websocket:handlers allowed-origins="*">
    		<websocket:mapping handler="chatHandler" path="/chatHandler.do"/>
    		<!-- <websocket:handshake-interceptors>
    			<beans:bean class="com.khfinal.project.websocket.interceptor.chatInterceptor"></beans:bean>-->
-   			<!-- <websocket:sockjs></websocket:sockjs> -->
+   		<!-- <websocket:sockjs></websocket:sockjs> -->
    </websocket:handlers>
 
 </beans>

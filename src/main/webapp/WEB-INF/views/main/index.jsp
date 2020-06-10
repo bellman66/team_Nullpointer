@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,7 +75,9 @@
 						<h2>Best Content</h2>
 						<div class="bestVideo">
 							<c:forEach items="${bestContent}" var="bcon" varStatus="listnum">
-								<div id="tv${listnum.index}">${bcon.au_file}</div>
+								<div id="bv${listnum.index+1}">
+									${bcon.au_file}
+								</div>
 							</c:forEach>
 						</div>
 					</div>
