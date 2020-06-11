@@ -58,10 +58,10 @@
 			<div class="container">
 				<div class="row">
 					<div class="todaylist">
-						<h2>Today Video</h2>
+						<h2>Today Content</h2>
 						<div class="todayVideo">
 							<c:forEach items="${todayList}" var="list" varStatus="listnum">
-								<div id="tv${listnum.index}">${list.au_file}</div>
+								<div id="tv${listnum.index}">${list.m_id}, ${list.au_file}</div>
 							</c:forEach>
 						</div>
 					</div>
