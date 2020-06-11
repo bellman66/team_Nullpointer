@@ -63,14 +63,14 @@
 	 
 	  	  <!-- <source src="http://rndso15.synology.me:8080/hls/test_hd720.m3u8" type='application/x-mpegURL' label='720P' res='720'>
 	      <source src="http://rndso15.synology.me:8080/hls/test_mid.m3u8" type='application/x-mpegURL' label='480P' res='480'>
-	      <source src="http://rndso15.synology.me:8080/hls/test_low.m3u8" type='application/x-mpegURL' label='360P' res='360'>
-	      <source src="http://rndso15.synology.me:8080/hls/test.m3u8" type='application/x-mpegURL' label='240P' res='240'> -->
+	      <source src="http://rndso15.synology.me:8080/hls/test_low.m3u8" type='application/x-mpegURL' label='360P' res='360'>-->
+	      <source src="http://rndso15.synology.me:8080/hls/${userHashCode}.m3u8" type='application/x-mpegURL' label='src' res='src'> 
 	      
 	  	  <!-- <source src="http://localhost:8080/hls/test_hd720.m3u8" type='application/x-mpegURL' label='720P' res='720'>
 	      <source src="http://localhost:8080/hls/test_mid.m3u8" type='application/x-mpegURL' label='480P' res='480'>
 	      <source src="http://localhost:8080/hls/test_low.m3u8" type='application/x-mpegURL' label='360P' res='360'> -->
 	      
-	      <source src="http://localhost:8080/hls/test.m3u8" type='application/x-mpegURL' label='100' res='100'>
+	      <!-- <source src="http://localhost:8080/hls/test.m3u8" type='application/x-mpegURL' label='100' res='100'> -->
 
 	  	</video>
   	</article>
@@ -184,20 +184,19 @@
 			}
 	   }
 	   
-	   var sock = new WebSocket("ws://localhost:7070/springmvc/chatHandler.do"); 
+	   var sock = new WebSocket("ws://localhost:7070/springmvc/chatHandler.do?id=${id}&user_name=${user_name}");
 	   /* var sock = new SockJS("http://localhost:7070/springmvc/chatHandler.do"); */
-	   /* var sock = new SockJS("<c:url value="/chatHandler.do"/>");  */
+	   /* var sock = new SockJS("/springmvc/chatHandler.do"); */
 		   console.dir(sock);
 		   sock.onopen = function() {
-			    sock.send('채팅 입장');
-			    
+
 			    sock.onmessage = function(e) {
 					// 본인 확인을 위한 아이디 : splitData[0] 사용자 아이디
 					let splitData = e.data.split(":"); 
 					
 					let chatDiv1 = document.createElement('div');
 					chatDiv1.className = "row msg_container base_receive";
-				    if(splitData[0].trim() == 'user'){
+				    if(splitData[0].trim() == '${user_name}'){
 						// 본인이 보낸것만 걸러내서 다시 className 재정의
 						chatDiv1.className = "row msg_container base_sent";
 					}
@@ -225,7 +224,6 @@
 						alertmsg.removeClass('visable_class').addClass('unvisable_class');
 						$('#charContent').stop().animate({ scrollTop: $('#charContent')[0].scrollHeight }, 1000);
 				    }
-
 			   };
 		   };
 

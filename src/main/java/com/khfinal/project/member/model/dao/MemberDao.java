@@ -36,4 +36,11 @@ public class MemberDao {
 		return session.selectOne("Memeber.login",memberMap);
 	}
 	
+	// ### test
+	public Member loginConfirm(Map<String, Object> memberMap) {
+		// TODO Auto-generated method stub
+		
+		return session.selectOne("Member.loginConfirm", memberMap);
+	}
+	
 }
