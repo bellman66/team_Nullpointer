@@ -95,16 +95,16 @@ public class BoardServiceImple implements BoardService {
 	}
 
 	@Override
-	public int boardUploadSh(Board board , List<Map<String, Object>> file) {
+	public int boardUploadSh(Board board /* , List<Map<String, Object>> file */) {
 		int res = bd.boardUploadSh(board);
-		boardFile(file);
+		/* boardFile(file); */
 		return res;
 	}
 
 	@Override
-	public int boardUploadPr(Board board , List<Map<String, Object>> file) {
+	public int boardUploadPr(Board board /* , List<Map<String, Object>> file */) {
 		int res = bd.boardUploadPr(board);
-		boardFile(file);
+		/* boardFile(file); */
 		return res;
 	}
 

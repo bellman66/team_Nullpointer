@@ -1,1 +1,16 @@
 @charset "UTF-8";
+
+.scAddTitle{
+	width : 100%;
+	text-align: center;
+	font-size: 5em;
+	
+}
+
+.scStart{
+	font-size: 3em;
+}
+
+.scEnd{
+	font-size: 3em;
+}

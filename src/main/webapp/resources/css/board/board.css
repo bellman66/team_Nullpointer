@@ -6,7 +6,7 @@
 
 .board {
 	width: 100%;
-	height: 960px;
+	height: 620px;
 	position: relative;
 	/* border: 1px solid red; */
 }
@@ -45,7 +45,7 @@
 }
 
 .tabs li a {
-	text-decoration: none;
+	/* text-decoration: none; */
 	color: #0c0c13;
 	display: block;
 	font-size: 17px;
@@ -78,7 +78,7 @@
 }
 
 .tab_content {
-	height: 740px;
+	height: 290px;
 	padding: 20px;
 	font-size: 15px;
 	font-weight: 800;
@@ -113,13 +113,16 @@
 }
 
 /* 페이지 부분  */
-.bdpage {
+.bdpage{
+	text-align: center;
+}
+/* .bdpage {
 	width: 12%;
-	top:30px;
+	top:30px;u
 	left:45%;
 	margin: 5px;
 	position: relative;
-	/* border: 1px solid red; */
+	border: 1px solid red;
 }
 
 .bdpage .bdpaging {
@@ -142,7 +145,7 @@
 
 .bdpage .bdpaging li a:hover {
 	color: #0c0c13;
-}
+} */
 
 /* 검색 부분  */
 .bdsearch {
@@ -192,4 +195,7 @@
 	background-color: #0c0c13;
 }
 
-
+#bdWrite a{
+	color : white;
+	board : 1%;
+}

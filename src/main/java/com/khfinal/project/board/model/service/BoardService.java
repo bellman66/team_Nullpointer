@@ -18,9 +18,9 @@ public interface BoardService {
 		
 		public int boardDelete(int b_num);
 	
-		public int boardUploadSh(Board board , List<Map<String, Object>> file);
+		public int boardUploadSh(Board board /* , List<Map<String, Object>> file */);
 		
-		public int boardUploadPr(Board board , List<Map<String, Object>> file);
+		public int boardUploadPr(Board board /* , List<Map<String, Object>> file */);
 		
 		public int boardFile(List<Map<String, Object>> file);
 		
