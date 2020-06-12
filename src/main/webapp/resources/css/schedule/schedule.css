@@ -1,1 +1,22 @@
 @charset "UTF-8";
+
+
+ .sc_main_rent, .schedule_add{
+	background-color: black;
+	color: white;
+	width: 10%;
+	height: 50px;
+	
+	margin:2%;
+	margin-top : -7%;
+}
+
+.schedule_add{
+	margin-left : 80%;
+	position: absolute;
+}
+
+.sc_main_rent{
+	margin-left : 69%;
+	position: absolute;
+}

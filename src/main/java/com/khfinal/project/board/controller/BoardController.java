@@ -38,7 +38,7 @@ public class BoardController {
 	@RequestMapping("/board/board.do")
 	public ModelAndView view() {
 		ModelAndView mav = new ModelAndView();
-		boardListPR(request);
+		boardListSH(request);
 		mav.setViewName("board/board");
 		return mav;
 
@@ -106,14 +106,14 @@ public class BoardController {
 		}
 
 		Map<String, Object> res = bs.selectBoardListSH(orderby, currentPage, cntPerPage);
-		mav.addObject("paging", res.get("paging"));
-		System.out.println(res.get("paging"));
+		System.out.println("///" + res.get("paging"));
 
 //		res에 뭐가 들어있는지 다 보여주는 코드
 		for (String key : res.keySet()) {
 			System.out.println(res.get(key));
 		}
-
+		
+		mav.addObject("paging", res.get("paging"));
 		mav.addObject("boardList", res);
 		mav.addObject("board", "sh");
 		mav.setViewName("board/board");
@@ -231,13 +231,15 @@ public class BoardController {
 	 * @comment : 게시판 업로드 메서드
 	 */
 	@RequestMapping("/board/boarduoload.do")
-	public ModelAndView boardUpload(HttpServletRequest request, Board board, @RequestParam List<MultipartFile> bfile) {
+	public ModelAndView boardUpload(HttpServletRequest request,
+			Board board/* , @RequestParam List<MultipartFile> bfile */) {
 		ModelAndView mav = new ModelAndView();
 		System.out.println("이게 뭘까?"+boardCategory);
 		System.out.println(board);
-		for(int i = 0; i < bfile.size(); i++ ) {
-			System.out.println("bfile 리스트" + bfile.get(i));
-		}
+		/*
+		 * for(int i = 0; i < bfile.size(); i++ ) { System.out.println("bfile 리스트" +
+		 * bfile.get(i)); }
+		 */
 		
 		//파일을 저장하는 코드
 		List<Map<String, Object>> file = new ArrayList<Map<String,Object>>();
@@ -277,10 +279,10 @@ public class BoardController {
 //	    board.setBoardWriter(member.getM_id());
 		
 		if(boardCategory.equals("sh")) {
-			int res = bs.boardUploadSh(board , file );
+			int res = bs.boardUploadSh(board /* , file */ );
 			mav.setViewName("redirect:boardSH.do");
 		}else {
-			int res = bs.boardUploadPr(board , file );
+			int res = bs.boardUploadPr(board /* , file */ );
 			mav.setViewName("redirect:boardPR.do");
 		}
 		
