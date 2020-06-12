@@ -11,7 +11,7 @@
 						<a href="<%=request.getContextPath()%>/member/join.do">회원가입</a>
 					</c:if>	
 					<c:if test="${sessionScope.loginInfo != null }">
-						<a href="#">${sessionScope.loginInfo.user_name}님환영합니다.</a>
+						<a href="#">${sessionScope.loginInfo.m_id}님환영합니다.</a>
 						<a href="<%=request.getContextPath()%>/member/myPage.do">마이페이지</a>
 						<a href="#">로그아웃</a>
 					</c:if>

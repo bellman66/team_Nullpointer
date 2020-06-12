@@ -1,1 +1,24 @@
 @charset "UTF-8";
+
+.mypage_id {
+	
+}
+
+.mypage_id > img {
+	width: 500px;
+	height: 500px;
+	border-radius: 10px;
+	background-color: gray; 
+}
+
+#mypageInput {
+	width:120px;
+	height:30px;
+	float:left;
+	margin-top:20px;
+	font-size: 15px;
+	font-family: sans-serif;
+	text-align: center;
+	color: #fff;
+	background-color: #0c0c13;
+}
