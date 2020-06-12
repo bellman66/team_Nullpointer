@@ -50,15 +50,15 @@
 							
 							
 							
-							<form action="<%= request.getContextPath() %>/board/boarduoload.do" mathod="post" enctype="multipart/form-data">
+							<form action="<%= request.getContextPath() %>/board/boarduoload.do" enctype="multipart/form-data">
 								<div class="write_detail">
 									<div class="title_file">
-										제목 : <input type="text" name="write_title" class="write_title"/>
-										파일 : <input type="file" name="write_file" class="write_file"/>
+										제목 : <input type="text" name="b_title" class="write_title"/>
+										파일 : <input type="file" name="b_file" class="write_file"/>
 									</div>
 									
 									<div class="write_content">
-										<textarea cols="300" rows="15" name="write_content"></textarea>
+										<textarea cols="300" rows="15" name="b_content"></textarea>
 									</div>
 									
 									<div>

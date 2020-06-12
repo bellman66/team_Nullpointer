@@ -6,7 +6,7 @@
     color: black;
     font-size: 2vw;
     position: absolute;
-    margin-top: -50px;
+    margin-top: -70px;
     
 }
 
@@ -17,4 +17,5 @@
 .write_detail{
     width: 100%;
     height: 400px;
+    margin-top: 10%;
 }

@@ -11,6 +11,15 @@ public class ScheduleController {
 	public ModelAndView schedule() {
 		ModelAndView mav = new ModelAndView();
 		
+		mav.setViewName("schedule/schedule");
+		return mav;
+	}
+	
+	@RequestMapping("/schedule/add.do")
+	public ModelAndView scheduleAdd() {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("schedule/schedule_add");
 		return mav;
 	}
 	
