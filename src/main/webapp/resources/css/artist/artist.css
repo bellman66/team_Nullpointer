@@ -1,66 +1,133 @@
 @charset "UTF-8";
 
-#content_art{background-color: #fff;}
-
-/* content_art */
-.artist_box{
-	height: 900px;
+#content_art {
+	background-color: #fff;
+	font-family: sans-serif;
 }
 
-.artist_box .artist_list{
-	height: 850px;
-	margin-top: 3%;
-	margin-left: 2%;
+/* content_art */
+.artist_tab {
+	position: relative;
+	margin: 0 auto;
+	padding: 0 30px;
+}
+
+.artist_tab #artmenu {
+	width: 100%;
+	height: 90px;
+	/* border: 1px solid blue; */
+}
+
+.artist_tab #artmenu #art_sub {
+	overflow: hidden;
+}
+
+/* 메뉴부분 */
+.artist_tab #artmenu #art_sub li {
+	width: 47%;
+	height: 60px;
+	float: left;
+	margin-top: 1%;
+	margin-right: 3%;
+}
+
+.artist_tab #artmenu #art_sub a {
+	width: 100%;
+	height: 45px;
+	position: relative;
+	padding-top: 10px;
+	float: left;
+	font-size: 17px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #0c0c13;
+	border-bottom: 3px solid #0c0c13;
+}
+
+.artist_tab #artmenu #art_sub a:hover, .artist_tab #artmenu #art_sub a:hover::after,
+	.artist_tab #artmenu #art_sub a:focus, .artist_tab #artmenu #art_sub a:focus::after
+	{
+	color: #f5b041;
+	border-color: #f5b041;
+}
+
+.artist_tab #artmenu #art_sub #current a:after {
+	background-color: #fff;
+	z-index: 3;
+}
+
+/* tab 페이지 창부분  */
+.artist_tab #subContent {
+	height: 650px;
+	/* border: 1px solid red; */
+}
+
+.artist_tab #subContent .grid {
+	overflow: hidden;
+}
+
+.artist_tab #subContent .grid .btn_link {
+	width: 23%;
+	float: left;
+	margin: 0 10px 40px 10px;
+	display: block;
 	position: relative;
 }
 
-.artist_list .at-box{
-	border:1px solid red;
-}
-
-/* artTab */
-.artist_list .at-box #atTitle{
-	height:60px;
-}
-
-.artist_list .at-box .atTab{
-    font-family: sans-serif;
-	font-weight: 700;
-	font-size: 20px;
-	line-height:46px;
-	display:block;
-	color:#0c0c13;
-	border-bottom:3px solid #0c0c13;
-}
-
-.artist_list .at-box .atTab:first-child{float:left;}
-.artist_list .at-box .atTab.active{
-	color:#f5b041;
-	border-color:#f5b041;
-}
-
-.artist_list .at-box #artTab{
-	height:800px;
-}
-
-/* artist 페이지보여주기 부분 */
-.art_list #grid{
-	overflow:hidden;
-}
-
-.art_list #grid .btn_link{
-	position:relative;
+.artist_tab #subContent .grid .btn_link .img_box {
+	width: 240px;
+	height: 240px;
+	top: 10px;
 	display: block;
-	width:22%;
-	float:left;
-	margin: 0 20px 50px 0;
+	transition: all .5s ease;
+	position: relative;
+	background-color: purple;
 }
 
-.art_list #grid .btn_link .img_box{
-	width:230px;
-	height:230px;
-	position:relative;
-	display:block;
-	vertical-align:middle;
-	background-color:purple;
+.artist_tab #subContent .grid .btn_link .img_box:hover {
+	filter:contrast(10%);
+}
+
+.artist_tab #subContent .grid .btn_link .title {
+	font-family: sans-serif;
+	font-size: 14px;
+	display: block;
+	margin-top: 15px;
+	margin-left: 5px;
+	height: 20px;
+	line-height: 20px;
+	color: #0c0c13;
+	height: 20px;
+}
+
+.artist_tab #subContent .grid .btn_link .btn_ani .home {
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	color: #fff;
+	background: url("../img/icon/home.svg");
+}
+
+/* 더보기 버튼 */
+.artist_tab .page_btn {
+	margin-top: 20px;
+	text-align: center;
+}
+
+.artist_tab .page_btn .btnMore {
+	margin: 0 auto;
+}
+
+.artist_tab .page_btn #btnMore {
+	width: 220px;
+	height: 54px;
+	margin:0 auto;
+	display: block;
+	line-height: 54px;
+	font-size: 16px;
+	font-weight: 500;
+	text-align: center;
+	color: #0c0c13;
+	border: 1px solid #0c0c13;
+	box-sizing: border-box;
 }
