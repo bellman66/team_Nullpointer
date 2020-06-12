@@ -75,7 +75,8 @@ public class MemberController {
 			Map<String , Object> map = new HashMap<String, Object>();
 			// 수정자 : 박혜연
 			// 기존 user_name 키값의 경우 사용 시 혼동의 소지가 있어 vo 및 db에 기록된 컬럼명으로 변경
-			map.put("m_id", member.getM_id());
+			// > 기존 loginInfo에 id 값만 들어가 있어 mypage 로드 시, 기타 정보 누락되어 member 전체 내용 저장
+			map.put("member", member);
 			session.setAttribute("loginInfo", map);
 			
 			// 수정자: 박혜연
