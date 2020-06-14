@@ -94,5 +94,11 @@ public class ArtistServiceImple implements ArtistService {
 
 		return bcon;
 	}
+
+	@Override
+	public List<Artist> uploadList(String m_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }
