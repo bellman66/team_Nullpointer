@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,16 +33,58 @@
 	<!-- nav부분 끝 -->
 
 	<!-- content부분 시작 -->
-	<section id="content_art">
-		<article class="artmovie_box">
+	<section id="content_artboard">
+		<article class="artboard_box">
 			<div class="container">
 				<div class="row">
-					<div class="artmovie_list">
-						<div class="">
+					<div class="artboard_form">
+						<div class="artboard-table">
+							<form>
+								<table>
+									<colgroup>
+										<!-- 넓이 지정  -->
+										<col width="6%">
+										<col width="45%">
+										<col width="15%">
+										<col width="10%">
+									</colgroup>
+
+									<thead>
+										<tr>
+											<th id="artNo">번호</th>
+											<th id="artTitle">제목</th>
+											<th id="artWriter">작성자</th>
+											<th id="artDate">등록일</th>
+										</tr>
+									</thead>
+
+									<tbody>
+										<tr>
+											<td class="artNo"></td>
+											<td class="artTitle"></td>
+											<td class="artWriter"></td>
+											<td class="artDate"></td>
+										</tr>
+									</tbody>
+								</table>
+							</form>
 						</div>
+
+						<!-- 검색 창 -->
+						<div class="artSearch">
+							<form>
+								<select name="searchType">
+									<option value="write">작성자</option>
+									<option value="title">제목</option>
+									<option value="wrti">작성자 + 제목</option>
+								</select> <input class="art_searchText" type="text" name="searchWord" />
+								<button class="art_searchbar">검색</button>
+							</form>
+						</div>
+						<!-- 검색 창 -->
 					</div>
 				</div>
-			</div>	
+			</div>
 		</article>
 	</section>
 	<!-- content부분 끝 -->

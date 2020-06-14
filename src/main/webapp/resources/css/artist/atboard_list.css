@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+#content_artboard{
+	background-color: #fff;
+	font-family: sans-serif;
+}
+
+.artboard_form{
+	width: 100%;
+	height: 890px;
+	border: 1px solid red;
+}

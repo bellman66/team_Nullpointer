@@ -124,7 +124,7 @@
 												<li><a href="#">member + myartist 내역 불러와서 foreach로
 														돌릴 예정</a></li>
 											</ul>
-											<a href="<%=request.getContextPath()%>/artist/artistboard"
+											<a href="<%=request.getContextPath()%>//artist/artistboard.do"
 												class="more" title="더 보기">More</a>
 										</div>
 									</div>
