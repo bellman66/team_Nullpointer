@@ -8,5 +8,6 @@ public interface ArtistService {
 	
 	public List<Artist> todayList();
 	public List<Artist> bestContent();
+	public List<Artist> uploadList(String m_id);
 
 }

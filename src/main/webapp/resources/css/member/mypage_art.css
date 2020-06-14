@@ -1,1 +1,95 @@
 @charset "UTF-8";
+
+/* 업로드 목록 부분 */
+.mypage-box .mypage_upload {
+	width: 48%;
+	height: 200px;
+	float: left;
+	margin-top: 1.5%;
+	padding: 10px;
+	position: relative;
+	/* border: 1px solid blue; */
+}
+
+.mypage-box .mypage_upload h6 {
+	font-size: 14px;
+	font-weight: 700;
+	color: #0c0c13;
+	padding-bottom: 5px;
+	border-bottom: 2px solid #0c0c13;
+}
+
+.mypage-box .mypage_upload li {
+	position: relative;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	margin-left: 5px;
+	padding-top: 7px;
+	padding-left: 10px;
+}
+
+.mypage-box .mypage_upload li:before {
+	content: '';
+	width: 3px;
+	height: 3px;
+	border-radius: 50%;
+	background: #0c0c13;
+	position: absolute;
+	left: 3px;
+	top: 16px;
+}
+
+/* 스케줄 부분 */
+.mypage-box .mypage_schedule {
+	width: 48%;
+	height: 200px;
+	float: left;
+	padding: 10px;
+	margin-top: 1.5%;
+	/* border: 1px solid green; */
+}
+
+.mypage-box .mypage_schedule h6 {
+	font-size: 14px;
+	font-weight: 700;
+	color: #0c0c13;
+	padding-bottom: 5px;
+	border-bottom: 2px solid #0c0c13;
+}
+
+.mypage-box .mypage_schedule li {
+	position: relative;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	margin-left: 5px;
+	padding-top: 7px;
+	padding-left: 10px;
+}
+
+.mypage-box .mypage_schedule li:before {
+	content: '';
+	width: 3px;
+	height: 3px;
+	border-radius: 50%;
+	background: #0c0c13;
+	position: absolute;
+	left: 3px;
+	top: 16px;
+}
+
+.mypage-box .mypage_upload .more, .mypage-box .mypage_schedule .more {
+	color: #0c0c13;
+	text-transform: uppercase;
+	font-size: 10px;
+	float: right;
+	top: -150px;
+	right: 5px;
+	position: relative;
+}
+
+.mypage-box .mypage_upload .more:hover, .mypage-box .mypage_schedule .more:hover
+	{
+	color: #f5b041;
+}
