@@ -21,5 +21,6 @@ public class ArtistDao {
 	public List<Artist> bestContent() {
 		return session.selectList("Artist.bestContent");
 	}
+	
 
 }

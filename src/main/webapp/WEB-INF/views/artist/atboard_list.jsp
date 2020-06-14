@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset=UTF-8">
 <meta name="author" content="Team_Nullpointer">
-<title>ArtistPage</title>
+<title>ArtistMove_list</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/style.css" />
 <!-- 웹 폰트 -->
@@ -34,17 +34,15 @@
 
 	<!-- content부분 시작 -->
 	<section id="content_art">
-		<article class="art_box">
+		<article class="artmovie_box">
 			<div class="container">
 				<div class="row">
-					<div class="artform">
-						<form>
-							<div class="art-Table">
-							</div>
-						</form>
+					<div class="artmovie_list">
+						<div class="">
+						</div>
 					</div>
 				</div>
-			</div>
+			</div>	
 		</article>
 	</section>
 	<!-- content부분 끝 -->

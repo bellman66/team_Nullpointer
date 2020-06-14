@@ -53,23 +53,24 @@
 								<ul class="grid">
 									<!-- 1번째 뮤지션 시작 -->
 									<li class="btn_link"><span class="img_box"
-										style="background:url(<%=request.getContextPath()%>/resources/img/artist/k993313h.jpg)no-repeat"></span>
-										<span class="title">잠골버스</span>
+										style="background:url(<%=request.getContextPath()%>/resources/img/artist/bus.jpg)no-repeat"></span>
+										<span class="title"><a href="<%=request.getContextPath()%>/artist/artistpage.do">잠골버스</a></span>
 										<div class="btn_ani">
-											<a href="#" class="btn_link" target="_blank"> <span
-												class="home"> </span>
-											</a>
+										<a href="<%=request.getContextPath()%>/artist/artistpage.do">
+										<span class="arrow"></span> 
+										</a> 
+											
 										</div></li>
 									<!-- 1번째 뮤지션 끝 -->
 
 									<!-- 2번째 뮤지션 시작 -->
 									<li class="btn_link"><span class="img_box"
-										style="background:url(<%=request.getContextPath()%>/resources/img/artist/todays.jpg)no-repeat"></span>
+										style="background:url(<%=request.getContextPath()%>/resources/img/artist/today.jpg)no-repeat"></span>
 										<span class="title">오늘의분위기</span>
 										<div class="btn_ani">
-											<a href="#" class="btn_link" target="_blank"> <span
-												class="home"></span>
-											</a>
+										<a href="<%=request.getContextPath()%>/artist/artistpage.do">
+										<span class="arrow"></span> 
+										</a> 
 										</div></li>
 									<!-- 2번째 뮤지션 끝 -->
 									<!-- 3번째 뮤지션 시작 -->
@@ -77,9 +78,9 @@
 										style="background:url(<%=request.getContextPath()%>/resources/img/artist/cheeze.jpg)no-repeat"></span>
 										<span class="title">치즈(Cheeze)</span>
 										<div class="btn_ani">
-											<a href="#" class="btn_link" target="_blank"> <span
-												class="home"></span>
-											</a>
+										<a href="<%=request.getContextPath()%>/artist/artistpage.do">
+										<span class="arrow"></span> 
+										</a> 
 										</div></li>
 									<!-- 3번째 뮤지션 끝 -->
 									<!-- 4번째 뮤지션 시작 -->
@@ -96,36 +97,36 @@
 									<li class="btn_link"><span class="img_box" style=""></span>
 										<span class="title">인디뮤지션5</span>
 										<div class="btn_ani">
-											<a href="#" class="btn_link" target="_blank"> <span
-												class="home"></span>
-											</a>
+										<a href="<%=request.getContextPath()%>/artist/artistpage.do">
+										<span class="arrow"></span> 
+										</a> 
 										</div></li>
 									<!-- 5번째 뮤지션 끝 -->
 									<!-- 6번째 뮤지션 시작 -->
 									<li class="btn_link"><span class="img_box" style=""></span>
 										<span class="title">인디뮤지션6</span>
 										<div class="btn_ani">
-											<a href="#" class="btn_link" target="_blank"> <span
-												class="home"></span>
-											</a>
+										<a href="<%=request.getContextPath()%>/artist/artistpage.do">
+										<span class="arrow"></span> 
+										</a> 
 										</div></li>
 									<!-- 6번째 뮤지션 끝 -->
 									<!-- 7번째 뮤지션 시작 -->
 									<li class="btn_link"><span class="img_box" style=""></span>
 										<span class="title">인디뮤지션7</span>
 										<div class="btn_ani">
-											<a href="#" class="btn_link" target="_blank"> <span
-												class="home"></span>
-											</a>
+										<a href="<%=request.getContextPath()%>/artist/artistpage.do">
+										<span class="arrow"></span> 
+										</a> 
 										</div></li>
 									<!-- 7번째 뮤지션 끝 -->
 									<!-- 8번째 뮤지션 시작 -->
 									<li class="btn_link"><span class="img_box" style=""></span>
 										<span class="title">인디뮤지션8</span>
 										<div class="btn_ani">
-											<a href="#" class="btn_link" target="_blank"> <span
-												class="home"></span>
-											</a>
+										<a href="<%=request.getContextPath()%>/artist/artistpage.do">
+										<span class="arrow"></span> 
+										</a> 
 										</div></li>
 									<!-- 8번째 뮤지션 끝 -->
 								</ul>

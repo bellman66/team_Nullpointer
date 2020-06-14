@@ -15,6 +15,7 @@
 /* artist */
 @import "artist/artist.css";
 @import "artist/artpage.css";
+@import "artist/tatoopage.css";
 @import "artist/atmovie_list.css";
 @import "artist/atmovie_read.css";
 @import "artist/atphoto_list.css";

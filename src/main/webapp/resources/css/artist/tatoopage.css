@@ -1,22 +1,22 @@
 @charset "UTF-8";
 
-/* content_artpage */
-#content_art {
+/* content_tattopage */
+#content_tat {
 	background-color: #fff;
 	font-family: sans-serif;
 }
 
-.artform {
+.tattoform {
 	width: 100%;
 	height: 890px;
 	border: 1px solid red;
 }
 
-.artform .art-Table {
+.tattoform .tatto-Table {
 	height: 500px;
 }
 
-.artform .art-Table .art-id {
+.tattoform .tatto-Table .tatto-id {
 	width: 20%;
 	height: 400px;
 	float: left;
@@ -26,13 +26,13 @@
 	border: 1px solid green;
 }
 
-.art-Table .art-id h3 {
+.tatto-Table .tatto-id h3 {
 	font-size: 25px;
 	font-weight: 700;
 	padding-bottom: 30px;
 }
 
-.art-Table .art-id>img {
+.tatto-Table .tatto-id>img {
 	width: 200px;
 	height: 200px;
 	border-radius: 50%;
@@ -41,19 +41,7 @@
 	background-color: #f5b041;
 }
 
-.art-Table .art-id .art-modify {
-	
-}
-
-.art-Table .art-id .art-modify .at_file {
-	
-}
-
-.art-Table .art-id .art-modify .userPicture {
-	
-}
-
-.art-Table .art-id .art-text {
+.tatto-Table .tatto-id .tatto-text {
 	font-size:14px;
 	font-weight:700;
 	text-align:center;
@@ -61,18 +49,18 @@
 	color: #0c0c13;
 }
 
-.art-Table .art-menu {
+.tatto-Table .tatto-menu {
 	position:relative;
 }
 
-.art-Table .art-menu .art-fan1 {
+.tatto-Table .tatto-menu .tatto-fan1 {
 	height: 500px;
 	margin-top: 2.5%;
 	/* border: 1px solid green; */
 }
 
 /* 공연영상 부분 */
-.art-Table .art-menu .art-video {
+.tatto-Table .tatto-menu .tatto-video {
 	width: 70%;
 	height: 200px;
 	float: left;
@@ -83,7 +71,7 @@
 	/* border: 1px solid red; */
 }
 
-.art-Table .art-menu .art-video h6 {
+.tatto-Table .tatto-menu .tatto-video h6 {
 	font-size: 14px;
 	font-weight: 700;
 	color: #0c0c13;
@@ -91,7 +79,7 @@
 	border-bottom: 2px solid #0c0c13;
 }
 
-.art-Table .art-menu .art-video li{
+.tatto-Table .tatto-menu .tatto-video li{
 	position: relative;
 	margin:15px 10px 0 10px;
 	width:17%;
@@ -101,7 +89,7 @@
 	/* border:1px solid red; */
 }
 
-.art-Table .art-menu .art-video .more{
+.tatto-Table .tatto-menu .tatto-video .more{
 	color: #0c0c13;
 	text-transform: uppercase;
 	font-size: 10px;
@@ -112,7 +100,7 @@
 }
 
 /* 공연사진 부분 */
-.art-Table .art-menu .art-photo {
+.tatto-Table .tatto-menu .tatto-video .tatto-photo {
 	width: 70%;
 	height: 200px;
 	float: left;
@@ -123,7 +111,7 @@
 	/* border: 1px solid red; */
 }
 
-.art-Table .art-menu .art-photo h6 {
+.tatto-Table .tatto-menu .tatto-video .tatto-photo h6 {
 	font-size: 14px;
 	font-weight: 700;
 	color: #0c0c13;
@@ -131,7 +119,7 @@
 	border-bottom: 2px solid #0c0c13;
 }
 
-.art-Table .art-menu .art-photo li{
+.tatto-Table .tatto-menu .tatto-video .tatto-photo li{
 	position: relative;
 	width:17%;
 	height:150px;
@@ -141,7 +129,7 @@
 	/* border:1px solid red; */
 }
 
-.art-Table .art-menu .art-photo .more{
+.tatto-Table .tatto-menu .tatto-video .tatto-photo .more{
 	color: #0c0c13;
 	text-transform: uppercase;
 	font-size: 10px;
@@ -151,14 +139,14 @@
 	position: relative;
 }
 
-.art-Table .art-menu .art-fan2 {
+.tatto-Table .tatto-menu .tatto-fan2 {
 	height: 300px;
 	margin-top: 1.5%;
 	/* border: 1px solid green; */
 }
 
 /* 공연일정 부분 */
-.art-Table .art-menu .art-fan2 .art-schedule {
+.tatto-Table .tatto-menu .tatto-fan2 .tatto-schedule {
 	width: 48%;
 	height: 200px;
 	float: left;
@@ -167,7 +155,7 @@
 	/* border: 1px solid blue; */
 }
 
-.art-Table .art-menu .art-fan2 .art-schedule h6 {
+.tatto-Table .tatto-menu .tatto-fan2 .tatto-schedule h6 {
 	font-size: 14px;
 	font-weight: 700;
 	color: #0c0c13;
@@ -176,7 +164,7 @@
 	border-bottom: 2px solid #0c0c13;
 }
 
-.art-Table .art-menu .art-fan2 .art-schedule li {
+.tatto-Table .tatto-menu .tatto-fan2 .tatto-schedule li {
 	position: relative;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -186,7 +174,7 @@
 	padding-left: 10px;
 }
 
-.art-Table .art-menu .art-fan2 .art-schedule li:before {
+.tatto-Table .tatto-menu .tatto-fan2 .tatto-schedule li:before {
 	content: '';
 	width: 3px;
 	height: 3px;
@@ -198,7 +186,7 @@
 }
 
 /* 공연게시판 부분 */
-.art-Table .art-menu .art-fan2 .art-board {
+.tatto-Table .tatto-menu .tatto-fan2 .tatto-board {
 	width: 48%;
 	height: 200px;
 	float: left;
@@ -207,7 +195,7 @@
 	/* border: 1px solid green; */
 }
 
-.art-Table .art-menu .art-fan2 .art-board h6 {
+.tatto-Table .tatto-menu .tatto-fan2 .tatto-board h6 {
 	font-size: 14px;
 	font-weight: 700;
 	color: #0c0c13;
@@ -216,7 +204,7 @@
 	border-bottom: 2px solid #0c0c13;
 }
 
-.art-Table .art-menu .art-fan2 .art-board li{
+.tatto-Table .tatto-menu .tatto-fan2 .tatto-board li{
 position: relative;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -226,7 +214,7 @@ position: relative;
 	padding-left: 10px;
 }
 
-.art-Table .art-menu .art-fan2 .art-board li:before{
+.tatto-Table .tatto-menu .tatto-fan2 .tatto-board li:before{
 	content: '';
 	width: 3px;
 	height: 3px;
@@ -238,7 +226,7 @@ position: relative;
 }
 
 /* more 부분 */
-.art-Table .art-menu .art-fan2 .art-board .more,.art-Table .art-menu .art-fan2 .art-schedule .more {
+.tatto-Table .tatto-menu .tatto-fan2 .tatto-board .more,.tatto-Table .tatto-menu .tatto-fan2 .tatto-schedule .more {
 	color: #0c0c13;
 	text-transform: uppercase;
 	font-size: 10px;
@@ -248,8 +236,8 @@ position: relative;
 	position: relative;
 }
 
-.art-Table .art-menu .art-video .more:hover,.art-Table .art-menu .art-photo .more:hover,
-.art-Table .art-menu .art-fan2 .art-schedule .more:hover, .art-Table .art-menu .art-fan2 .art-board .more:hover
+.tatto-Table .tatto-menu .tatto-video .more:hover,.tatto-Table .tatto-menu .tatto-photo .more:hover,
+.tatto-Table .tatto-menu .tatto-fan2 .tatto-schedule .more:hover, .tatto-Table .tatto-menu .tatto-fan2 .tatto-board .more:hover
 	{
 	color: #f5b041;
 }
