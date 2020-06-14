@@ -47,8 +47,8 @@
 									<img class="profile"
 										src="/springmvc/resources/upload/${loginInfo.member.rename_filepath}" />
 									<div class="profile_modify">
-										<label for="userPicture" class="pm_file"> <input
-											type="file" name="profile" id="userPicture"
+										<label for="userPicture" class="pm_file"> 
+										<input type="file" name="profile" id="userPicture"
 											accept="image/jpg,image/jpeg,image/png,image/gif,image/bmp" />
 										</label>
 									</div>
@@ -97,6 +97,12 @@
 														일치하지 않습니다.</span></td>
 											</tr>
 											<tr>
+												<td class="mypage_text">한 줄 소개</td>
+												<td><input type="text" name="WORD" id="WORD"
+													class="inputText" maxlength="50" />
+												</td>
+											</tr>
+											<tr>
 												<td class="mypage_text">휴대전화</td>
 												<td><select name="USER_TELL1" id="USER_TELL1"
 													class="inputText">
@@ -137,7 +143,6 @@
 							<!-- 업로드 목록 부분 시작 -->
 							<div class="mypage_upload">
 								<h6>나의 업로드 목록</h6>
-								<!-- member + au_upload 내역 불러와서 foreach로 돌릴 예정 -->
 								<ul>
 									<c:forEach items="${uploadList}" var="list" varStatus="listnum">
 										<c:if test= "${listnum.index < 5}">
@@ -186,6 +191,9 @@
 	<!-- footer부분 끝 -->
 	
 	<!-- js 링크 -->
+	<!-- jquery 사용 -->
+	<script type="text/javascript"
+		src="<%=request.getContextPath()%>/resources/js/jquery/jquery-3.4.1.js"></script>
 	<!-- mypage 기본 정보 수정, 탈퇴 -->
 	<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/mypage.js"></script>
 </body>

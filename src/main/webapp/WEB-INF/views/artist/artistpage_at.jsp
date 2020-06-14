@@ -60,15 +60,15 @@
 											<h6>공연 영상</h6>
 											<ul>
 												<li><a href="#"><img
-														src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg)"></a></li>
+														src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg"></a></li>
 												<li><a href="#"><img
-														src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg)"></a></li>
+														src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg"></a></li>
 												<li><a href="#"><img
-														src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg)"></a></li>
+														src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg"></a></li>
 												<li><a href="#"><img
-														src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg)"></a></li>
+														src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg"></a></li>
 												<li><a href="#"><img
-														src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg)"></a></li>
+														src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg"></a></li>
 											</ul>
 											<a href="<%=request.getContextPath()%>/artist/artistvideo"
 												class="more" title="더 보기">More</a>
@@ -77,15 +77,15 @@
 											<h6>공연 사진</h6>
 											<ul>
 												<li><a href="#"><img
-														src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg)"></a></li>
+														src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg"></a></li>
 												<li><a href="#"><img
-														src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg)"></a></li>
+														src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg"></a></li>
 												<li><a href="#"><img
-														src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg)"></a></li>
+														src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg"></a></li>
 												<li><a href="#"><img
-														src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg)"></a></li>
+														src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg"></a></li>
 												<li><a href="#"><img
-														src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg)"></a></li>
+														src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg"></a></li>
 											</ul>
 											<a href="<%=request.getContextPath()%>/artist/artistphoto"
 												class="more" title="더 보기">More</a>

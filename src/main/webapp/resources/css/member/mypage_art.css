@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+/* 한 줄 소개 부분 */
+.mypage_info .info_modify #WORD {
+	width: 500px;
+}
+
 /* 업로드 목록 부분 */
 .mypage-box .mypage_upload {
 	width: 48%;

@@ -22,5 +22,9 @@ public class ArtistDao {
 		return session.selectList("Artist.bestContent");
 	}
 	
+	public List<Artist> uploadList(String m_id) {
+		return session.selectList("Artist.uploadList", m_id);
+	}
+	
 
 }

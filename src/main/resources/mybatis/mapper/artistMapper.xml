@@ -11,5 +11,7 @@
 	<select id="bestContent" resultType="Artist">
 		select *, rank() over(order by au_like desc) from TB_ARTIST_UPLOAD
 	</select>
-	
+	<select id="uploadList" resultType="Artist">
+		select * from TB_ARTIST_UPLOAD where m_id = #{m_id}
+	</select>
 </mapper>
