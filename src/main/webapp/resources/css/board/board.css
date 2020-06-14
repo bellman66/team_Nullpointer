@@ -149,10 +149,10 @@
 
 /* 검색 부분  */
 .bdsearch {
-	width: 100%;
+	width: 60%;
 	height: 30px;
-	top:58px;
-	left:30%;
+	top:51px;
+	left:33%;
 	position:relative;
 	/* border: 1px solid blue; */
 }
@@ -199,3 +199,5 @@
 	color : white;
 	board : 1%;
 }
+
+

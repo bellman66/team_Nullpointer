@@ -53,7 +53,13 @@
                         <div class="read_info">
                             <div class="read_id">아이디 : ${read.board.m_id}</div>
                             <div class="read_day">작성일 : ${read.board.b_date}</div>
-                            <div class="read_file">첨부파일 : ${read.board.b_file}</div>
+                            <div class="read_file">첨부파일 : 
+								<c:forEach items="${read.flist }" var="filename">
+									<a href="<%=request.getContextPath() %>/resources/upload/${filename.renameFile}">
+										${filename.originFileName}
+									</a><br>
+								</c:forEach>
+							</div>
                             <div class="read_content">${read.board.b_content}</div>
                             <div class="read_num" style="display:none;">${read.board.b_num}</div>
                         </div>

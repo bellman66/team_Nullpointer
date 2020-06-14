@@ -38,7 +38,7 @@ public class BoardController {
 	@RequestMapping("/board/board.do")
 	public ModelAndView view() {
 		ModelAndView mav = new ModelAndView();
-		boardListSH(request);
+		boardListPR(request);
 		mav.setViewName("board/board");
 		return mav;
 
@@ -57,7 +57,6 @@ public class BoardController {
 
 		int currentPage = 1;
 		int cntPerPage = 5;
-		String orderby = "b_num";
 
 		if (request.getParameter("cPage") != null) {
 			currentPage = Integer.parseInt(request.getParameter("cPage"));
@@ -67,7 +66,7 @@ public class BoardController {
 			currentPage = Integer.parseInt(request.getParameter("cntPerPage"));
 		}
 
-		Map<String, Object> res = bs.selectBoardListPR(orderby, currentPage, cntPerPage);
+		Map<String, Object> res = bs.selectBoardListPR(currentPage, cntPerPage);
 		mav.addObject("paging", res.get("paging"));
 		System.out.println(res.get("paging"));
 
@@ -95,7 +94,6 @@ public class BoardController {
 
 		int currentPage = 1;
 		int cntPerPage = 5;
-		String orderby = "b_num";
 
 		if (request.getParameter("cPage") != null) {
 			currentPage = Integer.parseInt(request.getParameter("cPage"));
@@ -105,7 +103,7 @@ public class BoardController {
 			currentPage = Integer.parseInt(request.getParameter("cntPerPage"));
 		}
 
-		Map<String, Object> res = bs.selectBoardListSH(orderby, currentPage, cntPerPage);
+		Map<String, Object> res = bs.selectBoardListSH(currentPage, cntPerPage);
 		System.out.println("///" + res.get("paging"));
 
 //		res에 뭐가 들어있는지 다 보여주는 코드
@@ -231,47 +229,44 @@ public class BoardController {
 	 * @comment : 게시판 업로드 메서드
 	 */
 	@RequestMapping("/board/boarduoload.do")
-	public ModelAndView boardUpload(HttpServletRequest request,
-			Board board/* , @RequestParam List<MultipartFile> bfile */) {
+	public ModelAndView boardUpload(HttpServletRequest request, Board board, @RequestParam List<MultipartFile> bfile) {
 		ModelAndView mav = new ModelAndView();
 		System.out.println("이게 뭘까?"+boardCategory);
 		System.out.println(board);
-		/*
-		 * for(int i = 0; i < bfile.size(); i++ ) { System.out.println("bfile 리스트" +
-		 * bfile.get(i)); }
-		 */
+		
+//		  for(int i = 0; i < bfile.size(); i++ ) { 
+//			  System.out.println("bfile 리스트" +bfile.get(i)); 
+//			  }
+		 
 		
 		//파일을 저장하는 코드
 		List<Map<String, Object>> file = new ArrayList<Map<String,Object>>();
 		String root = request.getSession().getServletContext().getRealPath("/");
 		
-//		int i = 0;
-//		for(MultipartFile mf : bfile) {
-//			String savePath = root + "resources/upload/";
-//			String originFileName = mf.getOriginalFilename();
-//			HashMap<String, Object> data = new HashMap<String, Object>();
-//			
-//			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
-//			
-//			String renameFile 
-//			= sdf.format(new Date()) + i + "." + originFileName.substring(originFileName.lastIndexOf(".")+1);
-//		
-//			savePath += renameFile;
-//	         
-//	         data.put("originFileName",originFileName);
-//	         data.put("renameFile",renameFile);
-//	         data.put("savePath",savePath);
-//	         data.put("file",mf);
-//	         
-//	         file.add(data);
-//	         i++;
-//		}
+		int i = 0;
+		for(MultipartFile mf : bfile) {
+			String savePath = root + "resources/upload/";
+			String originFileName = mf.getOriginalFilename();
+			HashMap<String, Object> data = new HashMap<>();
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+			
+			String renameFile 
+			= sdf.format(new Date()) + i + "." + originFileName.substring(originFileName.lastIndexOf(".")+1);
 		
-		
-		
-		
-		
-		
+			savePath += renameFile;
+	         
+	         data.put("originFileName",originFileName);
+	         data.put("renameFile",renameFile);
+	         data.put("savePath",savePath);
+	         data.put("file",mf);
+	         
+	         file.add(data);
+	         i++;
+	         for (int ai = 0; ai < file.size(); ai++) {
+	 			System.out.println("파일"+file);
+	 		}
+		}
 		
 		//파일을 뺸 나머지 값들 가져오는 코드
 //		HttpSession session = request.getSession();
@@ -279,13 +274,65 @@ public class BoardController {
 //	    board.setBoardWriter(member.getM_id());
 		
 		if(boardCategory.equals("sh")) {
-			int res = bs.boardUploadSh(board /* , file */ );
+			int res = bs.boardUploadSh(board , file );
 			mav.setViewName("redirect:boardSH.do");
 		}else {
-			int res = bs.boardUploadPr(board /* , file */ );
+			int res = bs.boardUploadPr(board , file);
 			mav.setViewName("redirect:boardPR.do");
 		}
 		
 		return mav;
 	}
+	/**
+	 * @method : boardSearchPR
+	 * @date : 2020. 6. 14.
+	 * @buildBy : 김경호
+	 * @comment : 게시판 검색기능
+	 */
+	@RequestMapping("/board/boardSearch.do")
+	public ModelAndView boardSearch(HttpServletRequest request, String searchType, String searchWord, String board) {
+		ModelAndView mav = new ModelAndView();
+		
+		int currentPage = 1;
+		int cntPerPage = 5;
+
+		if (request.getParameter("cPage") != null) {
+			currentPage = Integer.parseInt(request.getParameter("cPage"));
+		}
+
+		if (request.getParameter("cntPerPage") != null) {
+			currentPage = Integer.parseInt(request.getParameter("cntPerPage"));
+		}
+		
+		Map<String, Object> res = new HashMap<String, Object>();
+		
+		
+		if(board.equals("pr")) {
+			res = bs.boardSearchPR(searchType, searchWord, currentPage, cntPerPage);
+		}else if(board.equals("sh")) {
+			res = bs.boardSearchSH(searchType, searchWord, currentPage, cntPerPage);
+		}
+		
+		System.out.println("board " + board);
+		
+		System.out.println(res.get("paging"));
+		
+		
+		
+		System.out.println("controller 에서 전체     " + res.get("nlist"));
+		
+		System.out.println("토탈" + res.get("total"));
+		mav.addObject("paging", res.get("paging"));
+		mav.addObject("boardList", res);
+		mav.addObject("board", "search");
+		mav.setViewName("board/board");
+		
+		return mav;
+	}
+	
+	
+	
+	
+	
+	
 }

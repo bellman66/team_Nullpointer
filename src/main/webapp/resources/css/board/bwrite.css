@@ -19,3 +19,24 @@
     height: 400px;
     margin-top: 10%;
 }
+
+.bdwrite_button{
+	width:120px;
+	height:30px;
+	float:right;
+	margin-top:20px;
+	font-size: 15px;
+	font-family: sans-serif;
+	text-align: center;
+	color: #fff;
+	background-color: #0c0c13;
+}
+
+.title_file{
+	font-size: 30px;
+}
+
+.write_title{
+	width: 50%;
+    height: 30px;
+}
