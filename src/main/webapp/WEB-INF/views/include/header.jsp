@@ -12,7 +12,12 @@
 					</c:if>	
 					<c:if test="${sessionScope.loginInfo != null }">
 						<a href="#">${sessionScope.loginInfo.member.m_id}님환영합니다.</a>
-						<a href="<%=request.getContextPath()%>/member/myPage.do">마이페이지</a>
+						<c:if test="${sessionScope.loginInfo.member.m_class == '1'}">
+							<a href="<%=request.getContextPath()%>/member/myPage.do">마이페이지</a>
+						</c:if>
+						<c:if test="${sessionScope.loginInfo.member.m_class == '2'}">
+							<a href="<%=request.getContextPath()%>/member/myPageArtist.do">마이페이지</a>
+						</c:if>
 						<a href="#">로그아웃</a>
 					</c:if>
 				</div>

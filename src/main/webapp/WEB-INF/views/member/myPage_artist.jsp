@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -129,49 +129,46 @@
 										</table>
 									</div>
 									<hr>
-									<button type="button" class="info_modifybut" onclick="">수정</button>
-									<button type="button" class="user_withdrawal" onclick="">탈퇴</button>
+									<button type="button" class="info_modifybut" onclick="modify()">수정</button>
+									<button type="button" class="user_withdrawal" onclick="withdrawal()">탈퇴</button>
 								</div>
 							</div>
 							<!-- 회원 정보 부분 끝 --> 
-							<!-- 팔로우한 아티스트 부분 시작 -->
-							<div class="mypage_follow">
-								<h6>나의 아티스트</h6>
-								<!-- member + myartist 내역 불러와서 foreach로 돌릴 예정 -->
+							<!-- 업로드 목록 부분 시작 -->
+							<div class="mypage_upload">
+								<h6>나의 업로드 목록</h6>
+								<!-- member + au_upload 내역 불러와서 foreach로 돌릴 예정 -->
 								<ul>
-									<li><a href="#">member + myartist 내역 불러와서 foreach로 돌릴
+									<c:forEach items="${uploadList}" var="list" varStatus="listnum">
+										<c:if test= "${listnum.index < 5}">
+											<li><a href="#">${list.au_content}</a></li>
+										</c:if>
+									</c:forEach>
+								</ul>
+								<c:if test="${fn:length(uploadList) > 5}">
+									<a href="#" class="more" title="더 보기">More</a>
+								</c:if>
+							</div>
+							<!-- 업로드 목록 부분 끝 -->
+							<!-- 스케줄 부분 시작 -->
+							<div class="mypage_schedule">
+								<h6>나의 스케줄</h6>
+								<!-- member + schedule 내역 불러와서 foreach로 돌릴 예정 -->
+								<ul>
+									<li><a href="#">member + schedule 내역 불러와서 foreach로 돌릴
 											예정</a></li>
-									<li><a href="#">member + myartist 내역 불러와서 foreach로 돌릴
+									<li><a href="#">member + schedule 내역 불러와서 foreach로 돌릴
 											예정</a></li>
-									<li><a href="#">member + myartist 내역 불러와서 foreach로 돌릴
+									<li><a href="#">member + schedule 내역 불러와서 foreach로 돌릴
 											예정</a></li>
-									<li><a href="#">member + myartist 내역 불러와서 foreach로 돌릴
+									<li><a href="#">member + schedule 내역 불러와서 foreach로 돌릴
 											예정</a></li>
-									<li><a href="#">member + myartist 내역 불러와서 foreach로 돌릴
+									<li><a href="#">member + schedule 내역 불러와서 foreach로 돌릴
 											예정</a></li>
 								</ul>
 								<a href="#" class="more" title="더 보기">More</a>
 							</div>
-							<!-- 팔로우한 아티스트 부분 끝 -->
-							<!-- 시청 기록 부분 시작 -->
-							<div class="mypage_history">
-								<h6>나의 시청 기록</h6>
-								<!-- member + myrecord 내역 불러와서 foreach로 돌릴 예정 -->
-								<ul>
-									<li><a href="#">member + myrecord 내역 불러와서 foreach로 돌릴
-											예정</a></li>
-									<li><a href="#">member + myrecord 내역 불러와서 foreach로 돌릴
-											예정</a></li>
-									<li><a href="#">member + myrecord 내역 불러와서 foreach로 돌릴
-											예정</a></li>
-									<li><a href="#">member + myrecord 내역 불러와서 foreach로 돌릴
-											예정</a></li>
-									<li><a href="#">member + myrecord 내역 불러와서 foreach로 돌릴
-											예정</a></li>
-								</ul>
-								<a href="#" class="more" title="더 보기">More</a>
-							</div>
-							<!-- 시청 기록 부분 끝 -->
+							<!-- 스케줄 부분 끝 -->
 							<!-- 지원 내역 부분 시작 -->
 							<hr>
 							<div class="mypage_money"></div>
@@ -187,5 +184,9 @@
 	<!-- footer부분 시작 -->
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 	<!-- footer부분 끝 -->
+	
+	<!-- js 링크 -->
+	<!-- mypage 기본 정보 수정, 탈퇴 -->
+	<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/mypage.js"></script>
 </body>
 </html>

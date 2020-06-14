@@ -1,6 +1,7 @@
 package com.khfinal.project.member.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.khfinal.project.artist.model.service.ArtistService;
-import com.khfinal.project.controller.mainController;
+import com.khfinal.project.artist.model.vo.Artist;
 import com.khfinal.project.member.model.service.MemberService;
 import com.khfinal.project.member.model.vo.Member;
 
@@ -95,13 +96,37 @@ public class MemberController {
 	 * @method : myPage()
 	 * @date : 2020. 6. 11.
 	 * @buildBy : 박혜연
-	 * @comment : 로그인 후, 해당 id를 가진 사람의 mypage로 이동
+	 * @comment : 로그인 후, 해당 id를 가진 사람의 mypage로 이동 (일반 회원)
 	 */
 	@RequestMapping("/member/myPage.do")
 	public ModelAndView myPage(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		
 		mav.setViewName("member/myPage");
+		
+		return mav;
+	}
+	
+	/**
+	 * @method : myPage()
+	 * @date : 2020. 6. 14.
+	 * @buildBy : 박혜연
+	 * @comment : 로그인 후, 해당 id를 가진 사람의 mypage로 이동 (아티스트 회원)
+	 */
+	@RequestMapping("/member/myPageArtist.do")
+	public ModelAndView myPageArtist(HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		
+		// 수정자 : 박혜연
+		// 페이지 로드 시, 회원의 업로드 목록 및 스케줄 내용 session에 담기
+		
+		HttpSession session = request.getSession();
+		Map<String , Object> info = (Map<String , Object>) session.getAttribute("loginInfo");
+		Member user = (Member) info.get("member");
+		List<Artist> uploadList = as.uploadList(user.getM_id());
+		mav.addObject("uploadList", uploadList);
+		
+		mav.setViewName("member/myPage_artist");
 		
 		return mav;
 	}
