@@ -1,5 +1,8 @@
 package com.khfinal.project.artist.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,11 +16,21 @@ public class ArtistController {
 	@Autowired
 	ArtistService as;
 
-	//아티스트 메인 페이지
+	/**
+	 * @method : selectArtList
+	 * @date : 2020. 6. 16.
+	 * @buildBy : hajin
+	 * @comment : 아티스트 메인 페이지
+	 */
 	@RequestMapping("/artist/artist.do")
-	public ModelAndView artist() {
+	public ModelAndView selectArtList() {
 		ModelAndView mav = new ModelAndView();
+		System.out.println("왔니?");
+		// main에서 artist 클릭 시, tb_member 데이터값 중 m_class = 2 인 데이터 갖고 오기
+		// jsp > controller > service > dao > mapper (sql > selectList) > dao > service > controller(mac.addObject) > jsp
+		List<Map>alist = as.selectArtList();
 		
+		mav.addObject("artist",alist);
 		mav.setViewName("artist/artist");
 		return mav;
 	}
