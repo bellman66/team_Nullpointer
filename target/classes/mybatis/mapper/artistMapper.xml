@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Artist">
+
+	<select id="todayList" resultType="Artist">
+		select * from TB_ARTIST_UPLOAD
+	</select>
+	<select id="bestContent" resultType="Artist">
+		select *, rank() over(order by au_like desc) from TB_ARTIST_UPLOAD
+	</select>
+	<select id="uploadList" resultType="Artist">
+		select * from TB_ARTIST_UPLOAD where m_id = #{m_id}
+	</select>
+</mapper>

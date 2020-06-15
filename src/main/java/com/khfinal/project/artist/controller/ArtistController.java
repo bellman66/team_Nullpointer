@@ -13,10 +13,12 @@ public class ArtistController {
 	@Autowired
 	ArtistService as;
 
+	//아티스트 메인 페이지
 	@RequestMapping("/artist/artist.do")
 	public ModelAndView artist() {
 		ModelAndView mav = new ModelAndView();
-
+		
+		mav.setViewName("artist/artist");
 		return mav;
 	}
 
@@ -25,7 +27,16 @@ public class ArtistController {
 	public ModelAndView artistpage() {
 		ModelAndView mav = new ModelAndView();
 
-		mav.setViewName("artist/artistpage_at");
+		mav.setViewName("artist/artistPage_Art");
+		return mav;
+	}
+	
+	// artist main페이지에서 선택한 타투이스트의 개인 페이지로 넘어야합니다.
+	@RequestMapping("/artist/tattopage.do")
+	public ModelAndView tattopage() {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("artist/artistPage_Ta");
 		return mav;
 	}
 
@@ -34,7 +45,7 @@ public class ArtistController {
 	public ModelAndView artistvideo() {
 		ModelAndView mav = new ModelAndView();
 
-		mav.setViewName("artist/atmove_list");
+		mav.setViewName("artist/artMove");
 		return mav;
 	}
 
@@ -43,7 +54,7 @@ public class ArtistController {
 	public ModelAndView artistphoto() {
 		ModelAndView mav = new ModelAndView();
 
-		mav.setViewName("artist/atphoto_list");
+		mav.setViewName("artist/artPhoto");
 		return mav;
 	}
 
@@ -52,7 +63,7 @@ public class ArtistController {
 	public ModelAndView artistschedule() {
 		ModelAndView mav = new ModelAndView();
 
-		mav.setViewName("artist/atschedule");
+		mav.setViewName("artist/artSchedule");
 		return mav;
 	}
 
@@ -61,7 +72,7 @@ public class ArtistController {
 	public ModelAndView artistboard() {
 		ModelAndView mav = new ModelAndView();
 
-		mav.setViewName("artist/atboard_list");
+		mav.setViewName("artist/artBoard");
 		return mav;
 	}
 }

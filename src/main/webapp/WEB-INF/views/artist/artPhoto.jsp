@@ -6,7 +6,7 @@
 <head>
 <meta charset=UTF-8">
 <meta name="author" content="Team_Nullpointer">
-<title>ArtistPhoto_read</title>
+<title>ArtistPhoto_list</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/style.css" />
 <!-- 웹 폰트 -->
@@ -34,12 +34,14 @@
 
 	<!-- content부분 시작 -->
 	<section id="content_art">
-		<article class="artphoto_rd_box">
+		<article class="artphoto_box">
 			<div class="container">
 				<div class="row">
-					<div class="artphoto_rd_list">
-						<div class="">
+					<div class="artphoto_list">
+						<form name="artphoto" action="<%=request.getContextPath()%>/artist/artistphoto.do">
+						<div class="artPhoto">
 						</div>
+						</form>
 					</div>
 				</div>
 			</div>	

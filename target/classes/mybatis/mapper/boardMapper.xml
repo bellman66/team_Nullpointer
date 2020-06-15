@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+
+<mapper namespace="Board">
+
+	<select id="contentCntSh" resultType="int">
+		select count(*) from tb_board WHERE B_CATEGORY = 1
+	</select>
+	
+	<select id="contentCntPr" resultType="int">
+		select count(*) from tb_board WHERE B_CATEGORY = 2
+	</select>
+
+	<!-- ROW_NUMBER() OVER(ORDER BY B_NUM ASC) 이 기능은 오라클의  rownum 와 같이 출력된 값들의 순번을 매겨 주는 기능-->
+	<select id="selectBoardListPr" resultType="Board">
+		SELECT * FROM(
+		SELECT 
+		ROW_NUMBER() OVER(ORDER BY B_NUM DESC) AS RNUM,B_CATEGORY
+		,B_NUM,M_ID,B_DATE,B_CONTENT,B_FILE, B_TITLE 
+		FROM TB_BOARD 
+		WHERE B_CATEGORY = 2
+		ORDER BY B_NUM DESC)AS TB 
+		where rnum between #{page.start} and #{page.end}
+	</select>
+
+	<select id="selectBoardListSh" resultType="Board">
+		SELECT * FROM(
+		SELECT 
+		ROW_NUMBER() OVER(ORDER BY B_NUM DESC) AS RNUM,B_CATEGORY
+		,B_NUM,M_ID,B_DATE,B_CONTENT,B_FILE, B_TITLE 
+		FROM TB_BOARD 
+		WHERE B_CATEGORY = 1
+		ORDER BY B_NUM DESC)AS TB 
+		where rnum between #{page.start} and #{page.end}
+
+	</select>
+	
+	<select id="boardResd" resultType="Board">
+	      select * from tb_board
+	      where b_num = #{b_num}
+   </select>
+   
+   <delete id="boardDelete">
+   		delete from tb_board where b_num = #{b_num}
+   </delete>
+   
+   
+   
+   <!-- 아이디값 세션으로 받아온 후에 아래 아이디값 변경 하기  #{noticeWriter}-->
+   <!-- 마리아db에서 AUTO_INCREMENT는  오라클의 시쿼스와 같은 기능 그래서 b_num만 써줘도 값이 올라간다. -->
+   <insert id="boardinsertSh">
+   		INSERT INTO TB_BOARD VALUES(
+   		1 ,B_NUM, 'testartist', sysdate(), #{b_content}, 'test/test/test', #{b_title})
+   </insert>
+   
+   <insert id="boardinsertPr">
+   		INSERT INTO TB_BOARD VALUES(
+   		2 ,B_NUM, 'testartist', sysdate(), #{b_content}, 'test/test/test', #{b_title})
+   </insert>
+   
+   <!-- 파일 추가하는 쿼리문 -->
+   <!-- 마리아db에서 LAST_INSERT_ID()를 쓰면  오라클 currval와 같은 기능  -->
+    <insert id="boardinsertFile">
+   		INSERT INTO tb_file VALUES(
+         LAST_INSERT_ID(),#{originFileName},#{renameFile},#{savePath})
+   </insert>
+   
+   <resultMap type="map" id="file">
+	      <result column="originFileName" property="originFileName"/>
+	      <result column="renameFile" property="renameFile"/>
+	      
+	      <result column="SAVEPATH" property="SAVEPATH"/>
+	      <result column="B_NUM" property="B_NUM"/>
+   </resultMap>
+   
+   
+    <select id="boardResdFile" resultMap="file">
+      select * from tb_file
+      where b_num = #{b_num}
+   </select>
+   
+   <delete id="boardDeleteFile">
+   		delete from tb_file where b_num = #{b_num}
+   </delete>
+   
+   
+   <!-- 검색 목록 나타태주는 쿼리 -->
+   <select id="contentWrSeCntSh" resultType="int">
+		select count(*) from tb_board WHERE B_CATEGORY like 1 and m_id like CONCAT ('%',#{searchWord},'%')
+	</select>
+	
+	<select id="contentTiSeCntSh" resultType="int">
+		select count(*) from tb_board WHERE B_CATEGORY like 1 and b_title like CONCAT ('%',#{searchWord},'%')
+	</select>
+	
+	<select id="contentWTSeCntSh" resultType="int">
+		select count(*) from tb_board WHERE B_CATEGORY like 1 and (b_title like CONCAT ('%',#{searchWord},'%') and m_id like CONCAT ('%',#{searchWord},'%'))
+	</select>
+	
+	<select id="contentWrSeCntPr" resultType="int">
+		select count(*) from tb_board WHERE B_CATEGORY like 2 and m_id like CONCAT ('%',#{searchWord},'%')
+	</select>
+	
+	<select id="contentTiSeCntPr" resultType="int">
+		select count(*) from tb_board WHERE B_CATEGORY like 2 and b_title like CONCAT ('%',#{searchWord},'%')
+	</select>
+	
+	<select id="contentWTSeCntPr" resultType="int">
+		select count(*) from tb_board WHERE B_CATEGORY like 2 and (b_title like CONCAT ('%',#{searchWord},'%') and m_id like CONCAT ('%',#{searchWord},'%'))
+	</select>
+	
+	
+		<select id="searchWrBoardListSh" resultType="Board">
+			SELECT * FROM(SELECT 
+			ROW_NUMBER() OVER(ORDER BY B_NUM DESC) AS RNUM,B_CATEGORY,B_NUM,M_ID,B_DATE,B_CONTENT,B_FILE, B_TITLE 
+			FROM TB_BOARD WHERE B_CATEGORY like 1 and m_id like CONCAT ('%',#{searchWord},'%')
+			ORDER BY B_NUM DESC)AS TB where rnum between #{page.start} and #{page.end}
+		</select>
+	
+		<select id="searchTiBoardListSh" resultType="Board">
+			SELECT * FROM(SELECT 
+			ROW_NUMBER() OVER(ORDER BY B_NUM DESC) AS RNUM,B_CATEGORY,B_NUM,M_ID,B_DATE,B_CONTENT,B_FILE, B_TITLE 
+			FROM TB_BOARD WHERE B_CATEGORY like 1 and b_title like CONCAT ('%',#{searchWord},'%')
+			ORDER BY B_NUM DESC)AS TB where rnum between #{page.start} and #{page.end}
+		</select>
+		
+		<select id="searchWTBoardListSh" resultType="Board">
+			SELECT * FROM(SELECT 
+			ROW_NUMBER() OVER(ORDER BY B_NUM DESC) AS RNUM,B_CATEGORY,B_NUM,M_ID,B_DATE,B_CONTENT,B_FILE, B_TITLE 
+			FROM TB_BOARD WHERE B_CATEGORY like 1  and (b_title like CONCAT ('%',#{searchWord},'%') or m_id like CONCAT ('%',#{searchWord},'%'))
+			ORDER BY B_NUM DESC)AS TB where rnum between #{page.start} and #{page.end}
+		</select>
+		
+		<select id="searchWrBoardListPr" resultType="Board">
+			SELECT * FROM(SELECT 
+			ROW_NUMBER() OVER(ORDER BY B_NUM DESC) AS RNUM,B_CATEGORY,B_NUM,M_ID,B_DATE,B_CONTENT,B_FILE, B_TITLE 
+			FROM TB_BOARD WHERE B_CATEGORY = 2 and m_id like CONCAT ('%',#{searchWord},'%')
+			ORDER BY B_NUM DESC)AS TB where rnum between #{page.start} and #{page.end}
+		</select>
+		
+		<select id="searchTiBoardListPr" resultType="Board">
+			SELECT * FROM(SELECT 
+			ROW_NUMBER() OVER(ORDER BY B_NUM DESC) AS RNUM,B_CATEGORY,B_NUM,M_ID,B_DATE,B_CONTENT,B_FILE, B_TITLE 
+			FROM TB_BOARD WHERE B_CATEGORY = 2 and b_title like CONCAT ('%',#{searchWord},'%')
+			ORDER BY B_NUM DESC)AS TB where rnum between #{page.start} and #{page.end}
+		</select>
+		
+		<select id="searchWTBoardListPr" resultType="Board">
+			SELECT * FROM(SELECT 
+			ROW_NUMBER() OVER(ORDER BY B_NUM DESC) AS RNUM,B_CATEGORY,B_NUM,M_ID,B_DATE,B_CONTENT,B_FILE, B_TITLE 
+			FROM TB_BOARD WHERE B_CATEGORY = 2 and (b_title like CONCAT ('%',#{searchWord},'%') or m_id like CONCAT ('%',#{searchWord},'%'))
+			ORDER BY B_NUM DESC)AS TB where rnum between #{page.start} and #{page.end}
+		</select>
+	
+	
+   
+</mapper> 

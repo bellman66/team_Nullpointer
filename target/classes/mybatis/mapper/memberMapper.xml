@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="Member">
+  
+ 	<insert id="insertMember" parameterType="java.util.Map">
+ 		insert into TB_MEMBER value(#{m_id},#{m_pass},#{m_name},#{m_nickname},#{m_tell1},#{m_tell2},#{m_tell3},
+ 		#{bith_yy},#{bith_mm},#{bith_dd},#{m_email1},#{m_email2},#{zipcode},#{address},#{address_etc}) 	
+ 	</insert>
+ 	
+ 	<select id="login" resultType="Member">
+ 	</select>
+ 	
+ 	<select id="loginConfirm" parameterType="map" resultType="Member">
+ 		select * from tb_member
+ 				 where M_ID = #{userID} AND M_PASS = #{userPWD}
+ 	</select>
+ 
+  </mapper>

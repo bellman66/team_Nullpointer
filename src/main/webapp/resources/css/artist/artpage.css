@@ -1,29 +1,29 @@
 @charset "UTF-8";
 
 /* content_artpage */
-#content_art {
+#content_artpg {
 	background-color: #fff;
 	font-family: sans-serif;
 }
 
-.artform {
+.artForm {
 	width: 100%;
 	height: 890px;
-	border: 1px solid red;
+	/* border: 1px solid red; */
 }
 
-.artform .art-Table {
+.artForm .art-Table {
 	height: 500px;
 }
 
-.artform .art-Table .art-id {
+.artForm .art-Table .art-id {
 	width: 20%;
 	height: 400px;
 	float: left;
 	padding: 2%;
 	margin-top: 1.5%;
 	position: relative;
-	border: 1px solid green;
+	/* border: 1px solid green; */
 }
 
 .art-Table .art-id h3 {
@@ -41,24 +41,18 @@
 	background-color: #f5b041;
 }
 
-.art-Table .art-id .art-modify {
-	
-}
-
-.art-Table .art-id .art-modify .at_file {
-	
-}
-
-.art-Table .art-id .art-modify .userPicture {
-	
+.art-Table .art-id .atprofile {
+	width:100%;
+	/* border:1px solid red; */
 }
 
 .art-Table .art-id .art-text {
 	font-size:14px;
 	font-weight:700;
 	text-align:center;
-	padding: 1%;
+	padding: 3%;
 	color: #0c0c13;
+	/* border:1px solid red; */
 }
 
 .art-Table .art-menu {

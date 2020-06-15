@@ -47,93 +47,102 @@
 						</div>
 						<!-- tab메뉴 부분 끝 -->
 
-						<!-- artist부분  -->
+						<!-- artist부분  -->	
 						<div id="subContent">
-							<div id="tab1">
-								<ul class="grid">
-									<!-- 1번째 뮤지션 시작 -->
-									<li class="btn_link"><span class="img_box"
-										style="background:url(<%=request.getContextPath()%>/resources/img/artist/bus.jpg)no-repeat"></span>
-										<span class="title"><a href="<%=request.getContextPath()%>/artist/artistpage.do">잠골버스</a></span>
-										<div class="btn_ani">
-										<a href="<%=request.getContextPath()%>/artist/artistpage.do">
-										<span class="arrow"></span> 
-										</a> 
-											
-										</div></li>
-									<!-- 1번째 뮤지션 끝 -->
+							<!-------- 아티스트 게시판 시작! -------->
+							<div id="tab1" class="content">
+								<!-- artTab 부분  -->
+								<form name="artTab"
+									action="<%=request.getContextPath()%>/artist/artistpage.do">
+									<ul class="grid">
+										<!-- 1번째 뮤지션 시작 -->
+										<li class="btn_link"><span class="img_box"
+											style="background:url(<%=request.getContextPath()%>/resources/img/artist/bus.jpg)no-repeat"></span>
+											<span class="title"><a
+												href="<%=request.getContextPath()%>/artist/artistpage.do">잠골버스</a></span>
+											<div class="btn_ani">
+												<a href="<%=request.getContextPath()%>/artist/artistpage.do">
+													<span class="arrow"></span>
+												</a>
 
-									<!-- 2번째 뮤지션 시작 -->
-									<li class="btn_link"><span class="img_box"
-										style="background:url(<%=request.getContextPath()%>/resources/img/artist/today.jpg)no-repeat"></span>
-										<span class="title">오늘의분위기</span>
-										<div class="btn_ani">
-										<a href="<%=request.getContextPath()%>/artist/artistpage.do">
-										<span class="arrow"></span> 
-										</a> 
-										</div></li>
-									<!-- 2번째 뮤지션 끝 -->
-									<!-- 3번째 뮤지션 시작 -->
-									<li class="btn_link"><span class="img_box"
-										style="background:url(<%=request.getContextPath()%>/resources/img/artist/cheeze.jpg)no-repeat"></span>
-										<span class="title">치즈(Cheeze)</span>
-										<div class="btn_ani">
-										<a href="<%=request.getContextPath()%>/artist/artistpage.do">
-										<span class="arrow"></span> 
-										</a> 
-										</div></li>
-									<!-- 3번째 뮤지션 끝 -->
-									<!-- 4번째 뮤지션 시작 -->
-									<li class="btn_link"><span class="img_box"
-										style="background:url(<%=request.getContextPath()%>/resources/img/artist/seul.jpg)no-repeat"></span>
-										<span class="title">설(Suel)</span>
-										<div class="btn_ani">
-											<a href="#" class="btn_link" target="_blank"> <span
-												class="home"></span>
-											</a>
-										</div></li>
-									<!-- 4번째 뮤지션 끝 -->
-									<!-- 5번째 뮤지션 시작 -->
-									<li class="btn_link"><span class="img_box" style=""></span>
-										<span class="title">인디뮤지션5</span>
-										<div class="btn_ani">
-										<a href="<%=request.getContextPath()%>/artist/artistpage.do">
-										<span class="arrow"></span> 
-										</a> 
-										</div></li>
-									<!-- 5번째 뮤지션 끝 -->
-									<!-- 6번째 뮤지션 시작 -->
-									<li class="btn_link"><span class="img_box" style=""></span>
-										<span class="title">인디뮤지션6</span>
-										<div class="btn_ani">
-										<a href="<%=request.getContextPath()%>/artist/artistpage.do">
-										<span class="arrow"></span> 
-										</a> 
-										</div></li>
-									<!-- 6번째 뮤지션 끝 -->
-									<!-- 7번째 뮤지션 시작 -->
-									<li class="btn_link"><span class="img_box" style=""></span>
-										<span class="title">인디뮤지션7</span>
-										<div class="btn_ani">
-										<a href="<%=request.getContextPath()%>/artist/artistpage.do">
-										<span class="arrow"></span> 
-										</a> 
-										</div></li>
-									<!-- 7번째 뮤지션 끝 -->
-									<!-- 8번째 뮤지션 시작 -->
-									<li class="btn_link"><span class="img_box" style=""></span>
-										<span class="title">인디뮤지션8</span>
-										<div class="btn_ani">
-										<a href="<%=request.getContextPath()%>/artist/artistpage.do">
-										<span class="arrow"></span> 
-										</a> 
-										</div></li>
-									<!-- 8번째 뮤지션 끝 -->
-								</ul>
+											</div></li>
+										<!-- 1번째 뮤지션 끝 -->
+
+										<!-- 2번째 뮤지션 시작 -->
+										<li class="btn_link"><span class="img_box"
+											style="background:url(<%=request.getContextPath()%>/resources/img/artist/today.jpg)no-repeat"></span>
+											<span class="title">오늘의분위기</span>
+											<div class="btn_ani">
+												<a href="<%=request.getContextPath()%>/artist/artistpage.do">
+													<span class="arrow"></span>
+												</a>
+											</div></li>
+										<!-- 2번째 뮤지션 끝 -->
+										<!-- 3번째 뮤지션 시작 -->
+										<li class="btn_link"><span class="img_box"
+											style="background:url(<%=request.getContextPath()%>/resources/img/artist/cheeze.jpg)no-repeat"></span>
+											<span class="title">치즈(Cheeze)</span>
+											<div class="btn_ani">
+												<a href="<%=request.getContextPath()%>/artist/artistpage.do">
+													<span class="arrow"></span>
+												</a>
+											</div></li>
+										<!-- 3번째 뮤지션 끝 -->
+										<!-- 4번째 뮤지션 시작 -->
+										<li class="btn_link"><span class="img_box"
+											style="background:url(<%=request.getContextPath()%>/resources/img/artist/seul.jpg)no-repeat"></span>
+											<span class="title">설(Suel)</span>
+											<div class="btn_ani">
+												<a href="#" class="btn_link" target="_blank"> <span
+													class="home"></span>
+												</a>
+											</div></li>
+										<!-- 4번째 뮤지션 끝 -->
+										<!-- 5번째 뮤지션 시작 -->
+										<li class="btn_link"><span class="img_box" style=""></span>
+											<span class="title">인디뮤지션5</span>
+											<div class="btn_ani">
+												<a href="<%=request.getContextPath()%>/artist/artistpage.do">
+													<span class="arrow"></span>
+												</a>
+											</div></li>
+										<!-- 5번째 뮤지션 끝 -->
+										<!-- 6번째 뮤지션 시작 -->
+										<li class="btn_link"><span class="img_box" style=""></span>
+											<span class="title">인디뮤지션6</span>
+											<div class="btn_ani">
+												<a href="<%=request.getContextPath()%>/artist/artistpage.do">
+													<span class="arrow"></span>
+												</a>
+											</div></li>
+										<!-- 6번째 뮤지션 끝 -->
+										<!-- 7번째 뮤지션 시작 -->
+										<li class="btn_link"><span class="img_box" style=""></span>
+											<span class="title">인디뮤지션7</span>
+											<div class="btn_ani">
+												<a href="<%=request.getContextPath()%>/artist/artistpage.do">
+													<span class="arrow"></span>
+												</a>
+											</div></li>
+										<!-- 7번째 뮤지션 끝 -->
+										<!-- 8번째 뮤지션 시작 -->
+										<li class="btn_link"><span class="img_box" style=""></span>
+											<span class="title">인디뮤지션8</span>
+											<div class="btn_ani">
+												<a href="<%=request.getContextPath()%>/artist/artistpage.do">
+													<span class="arrow"></span>
+												</a>
+											</div></li>
+										<!-- 8번째 뮤지션 끝 -->
+									</ul>
+								</form>
+								<!-- artTab 부분  -->
 							</div>
+							<!-------- 아티스트 게시판 끝! -------->
 
 							<!-------- 타투이스트 게시판 시작! -------->
-							<div id="tab2">
+							<div id="tab2" class="content">
+								<form name="taTab" action="">
 								<ul class="grid">
 
 									<!-- 1번째 타투이스트 시작 -->
@@ -211,7 +220,10 @@
 									<!-- 8번째 타투이스트 끝 -->
 
 								</ul>
+								</form>
+								<!-- taTab부분 -->
 							</div>
+							<!-------- 타투이스트 게시판 끝! -------->
 						</div>
 						<!-- artist부분  -->
 
