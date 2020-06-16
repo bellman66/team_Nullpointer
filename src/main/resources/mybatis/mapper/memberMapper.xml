@@ -17,5 +17,10 @@
  		select * from tb_member
  				 where M_ID = #{userID} AND M_PASS = #{userPWD}
  	</select>
+ 	
+ 	<resultMap type="Member" id="Member">
+ 		<result property="mClass" column="M_CLASS"/>
+ 		<result property="renameFilepath" column="RENAME_FILEPATH"/>
+ 	</resultMap>
  
   </mapper>

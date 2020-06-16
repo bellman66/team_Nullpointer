@@ -128,15 +128,46 @@
 
                     <div class="panel-footer">
                         <div class="input-group">
-                        	<textarea id="chatting" type="text" 
-							 	   class="form-control input-sm chat_input"
-                                   placeholder="Message Line"></textarea>
-                            <!-- <input id="chatting" type="text" 
-							 	   class="form-control input-sm chat_input"
-                                   placeholder="Message Line" /> -->
-                            <span class="input-group-btn">
-                                <button id="sendButton" class="btn btn-primary btn-sm" id="btn-chat">Send</button>
-                            </span>
+                        <c:choose>
+	                        <c:when test="${loginInfo ne null}">
+	                        	<textarea id="chatting" type="text" 
+								 	   class="form-control input-sm chat_input"
+	                                   placeholder="Message Line">
+	                            </textarea>
+	                            <!-- <input id="chatting" type="text" 
+								 	   class="form-control input-sm chat_input"
+	                                   placeholder="Message Line" /> -->
+	                            <span class="input-group-btn">
+	                                <button id="sendButton" class="btn btn-primary btn-sm" id="btn-chat">Send</button>
+	                            </span>
+	                       </c:when>
+	                       
+	                       	                        <c:when test="${loginInfo ne null}">
+	                        	<textarea id="chatting" type="text" 
+								 	   class="form-control input-sm chat_input"
+	                                   placeholder="Message Line">
+	                            </textarea>
+	                            <!-- <input id="chatting" type="text" 
+								 	   class="form-control input-sm chat_input"
+	                                   placeholder="Message Line" /> -->
+	                            <span class="input-group-btn">
+	                                <button id="sendButton" class="btn btn-primary btn-sm" id="btn-chat">Send</button>
+	                            </span>
+	                       </c:when>
+	                       
+	                       <c:when test="${loginInfo eq null}">
+	                        	<textarea id="chatting" type="text" 
+								 	   class="form-control input-sm chat_input"
+	                                   placeholder="로그인 후 이용가능합니다.">
+	                            </textarea>
+	                            <!-- <input id="chatting" type="text" 
+								 	   class="form-control input-sm chat_input"
+	                                   placeholder="Message Line" /> -->
+	                            <span class="input-group-btn">
+	                                <button id="sendButton" class="btn btn-primary btn-sm" id="btn-chat">Send</button>
+	                            </span>
+	                       </c:when>
+                       </c:choose>
                         </div>
                     </div>
 
@@ -184,10 +215,13 @@
 			}
 	   }
 	   
-	   var sock = new WebSocket("ws://localhost:7070/springmvc/chatHandler.do?id=${id}&user_name=${user_name}");
-	   /* var sock = new SockJS("http://localhost:7070/springmvc/chatHandler.do"); */
-	   /* var sock = new SockJS("/springmvc/chatHandler.do"); */
-		   console.dir(sock);
+	   if(${loginInfo.user_name eq null}) {
+		   $('#chatting').attr({'disabled':'disabled' , 'placeholder' : '로그인 후 사용가능합니다.'});
+	   }
+	   
+	   var sock = new WebSocket("ws://localhost:7070/springmvc/chatHandler.do?id=${id}&user_name=${loginInfo.user_name}");
+	   	   /* var sock = new SockJS("http://localhost:7070/springmvc/chatHandler.do"); */
+	  	   /* var sock = new SockJS("/springmvc/chatHandler.do"); */
 		   sock.onopen = function() {
 
 			    sock.onmessage = function(e) {
@@ -196,7 +230,7 @@
 					
 					let chatDiv1 = document.createElement('div');
 					chatDiv1.className = "row msg_container base_receive";
-				    if(splitData[0].trim() == '${user_name}'){
+				    if(splitData[0].trim() == '${loginInfo.user_name}'){
 						// 본인이 보낸것만 걸러내서 다시 className 재정의
 						chatDiv1.className = "row msg_container base_sent";
 					}

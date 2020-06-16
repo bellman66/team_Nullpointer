@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
@@ -118,6 +119,18 @@ public class ArtistServiceImple implements ArtistService {
 	@Override
 	public List<Artist> uploadList(String m_id) {
 		return ad.uploadList(m_id);
+	}
+
+	/**
+	 * @method : selectArtList
+	 * @date : 2020. 6. 16.
+	 * @buildBy : hajin
+	 * @comment : 아티스트 메인 페이지 
+	 */
+	@Override
+	public List<Map> selectArtList() {
+		
+		return ad.selectArtList();
 	}
 
 }
