@@ -28,6 +28,8 @@ public class streamMappingController {
 		// 접속하고자하는 스트리밍 아이디
 		String id = uri.substring(0,uri.length()-3);
 		
+		HttpSession session = request.getSession();
+		
 //		private String id;								// userid
 //		private String userHashCode;					// userHashCode
 //		private List<WebSocketSession> sessionList;		// 채팅창 인원
@@ -38,12 +40,13 @@ public class streamMappingController {
 			
 			mav.addObject("userHashCode" , mappingVo.getUserHashCode() );
 			mav.addObject("id" , mappingVo.getId());
-			mav.addObject("user_name" , logininfo.get("user_name"));
+			// mav.addObject("user_name" , logininfo.get("user_name"));
 			mav.setViewName("stream/index2");
 		}
 		else {
 			mav.addObject("alertMsg" , "종료된 방송입니다.");
 			mav.addObject("url" , request.getContextPath()+"/main/index.do");
+			mav.setViewName("common/result");
 		}
 		return mav;
 	}

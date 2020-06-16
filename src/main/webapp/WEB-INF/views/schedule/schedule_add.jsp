@@ -25,14 +25,13 @@
 </head>
 <body>
 
-<%-- 	<!-- header부분 시작  -->
+	<!-- header부분 시작  -->
 	<%@ include file="/WEB-INF/views/include/header.jsp"%>
 	<!-- header부분 끝 -->
 
 	<!-- nav부분 시작 -->
 	<%@ include file="/WEB-INF/views/include/nav.jsp"%>
-	<!-- nav부분 끝 --> --%>
-
+	<!-- nav부분 끝 -->
 	<!-- content부분 시작 -->
 	<section id="content_scheadd">
 		<article class="scheadd_box">
@@ -42,43 +41,43 @@
 						<div class="scAddTitle" style="width : 100%; height : 100%; text-align: center; font-size: 3.5em; margin-top:15%;">스케줄 입력</div>
 						<br><br>
 						<div class="scStart" style="font-size: 2em;">시작일</div>
-						<form action="">
-							<select name="startEear">
+						<form name="sh" action="<%=request.getContextPath()%>/schedule/scheduleadd.do">
+							<select name="startYear" class="startYear">
 									<option value="selected disabled hidden">년도</option>
-									<option value="2019">2019년</option>
-									<option value="2020">2020년</option>
-									<option value="2021">2021년</option>
-									<option value="2022">2022년</option>
-									<option value="2023">2023년</option>
+									<option value="2019-">2019년</option>
+									<option value="2020-">2020년</option>
+									<option value="2021-">2021년</option>
+									<option value="2022-">2022년</option>
+									<option value="2023-">2023년</option>
 							</select> 
 							
-							<select name="startMonth">
+							<select name="startMonth" class="startMonth">
 									<option value="selected disabled hidden">월</option>
-									<option value="1">1월</option>
-									<option value="2">2월</option>
-									<option value="3">3월</option>
-									<option value="4">4월</option>
-									<option value="5">5월</option>
-									<option value="6">6월</option>
-									<option value="7">7월</option>
-									<option value="8">8월</option>
-									<option value="9">9월</option>
-									<option value="10">10월</option>
-									<option value="1">11월</option>
-									<option value="12">12월</option>
+									<option value="01-">1월</option>
+									<option value="02-">2월</option>
+									<option value="03-">3월</option>
+									<option value="04-">4월</option>
+									<option value="05-">5월</option>
+									<option value="06-">6월</option>
+									<option value="07-">7월</option>
+									<option value="08-">8월</option>
+									<option value="09-">9월</option>
+									<option value="10-">10월</option>
+									<option value="11-">11월</option>
+									<option value="12-">12월</option>
 							</select>
 							
-							<select name="startDay">
+							<select name="startDay" class="startDay">
 									<option value="selected disabled hidden">일</option>
-									<option value="1">1일</option>
-									<option value="2">2일</option>
-									<option value="3">3일</option>
-									<option value="4">4일</option>
-									<option value="5">5일</option>
-									<option value="6">6일</option>
-									<option value="7">7일</option>
-									<option value="8">8일</option>
-									<option value="9">9일</option>
+									<option value="01">1일</option>
+									<option value="02">2일</option>
+									<option value="03">3일</option>
+									<option value="04">4일</option>
+									<option value="05">5일</option>
+									<option value="06">6일</option>
+									<option value="07">7일</option>
+									<option value="08">8일</option>
+									<option value="09">9일</option>
 									<option value="10">10일</option>
 									<option value="11">11일</option>
 									<option value="12">12일</option>
@@ -102,44 +101,83 @@
 									<option value="30">30일</option>
 									<option value="31">31일</option>
 							</select>
+							
+							<select name="startHour" class="startYear">
+								<option value="selected disabled hidden">시</option>
+									<option value="T24:">0시</option>
+									<option value="T01:">1시</option>
+									<option value="T02:">2시</option>
+									<option value="T03:">3시</option>
+									<option value="T04:">4시</option>
+									<option value="T05:">5시</option>
+									<option value="T06:">6시</option>
+									<option value="T07:">7시</option>
+									<option value="T08:">8시</option>
+									<option value="T09:">9시</option>
+									<option value="T10:">10시</option>
+									<option value="T11:">11시</option>
+									<option value="T12:">12시</option>
+									<option value="T13:">13시</option>
+									<option value="T14:">14시</option>
+									<option value="T15:">15시</option>
+									<option value="T16:">16시</option>
+									<option value="T17:">17시</option>
+									<option value="T18:">18시</option>
+									<option value="T19:">19시</option>
+									<option value="T20:">20시</option>
+									<option value="T21:">21시</option>
+									<option value="T22:">22시</option>
+									<option value="T23:">23시</option>
+							</select>
+							
+							<select name="startMinute" class="startMinute">
+								<option value="selected disabled hidden">분</option>
+									<option value="00:00">00분</option>
+									<option value="10:00">10분</option>
+									<option value="20:00">20분</option>
+									<option value="30:00">30분</option>
+									<option value="40:00">40분</option>
+									<option value="50:00">50분</option>
+							</select>
+
 							<br><br><br><br><br>
 						<div class="scEnd" style="font-size: 2em;">종료일</div>
-							<select name="emdYear">
+							<select name="endYear" class="endYear">
 									<option value="selected disabled hidden">년도</option>
-									<option value="2019">2019년</option>
-									<option value="2020">2020년</option>
-									<option value="2021">2021년</option>
-									<option value="2022">2022년</option>
-									<option value="2023">2023년</option>
+									<option value="2019-">2019년</option>
+									<option value="2020-">2020년</option>
+									<option value="2021-">2021년</option>
+									<option value="2022-">2022년</option>
+									<option value="2023-">2023년</option>
 							</select> 
 							
-							<select name="endMonth">
+							<select name="endMonth" class="endMonth">
 									<option value="selected disabled hidden">월</option>
-									<option value="1">1월</option>
-									<option value="2">2월</option>
-									<option value="3">3월</option>
-									<option value="4">4월</option>
-									<option value="5">5월</option>
-									<option value="6">6월</option>
-									<option value="7">7월</option>
-									<option value="8">8월</option>
-									<option value="9">9월</option>
-									<option value="10">10월</option>
-									<option value="1">11월</option>
-									<option value="12">12월</option>
+									<option value="01-">1월</option>
+									<option value="02-">2월</option>
+									<option value="03-">3월</option>
+									<option value="04-">4월</option>
+									<option value="05-">5월</option>
+									<option value="06-">6월</option>
+									<option value="07-">7월</option>
+									<option value="08-">8월</option>
+									<option value="09-">9월</option>
+									<option value="10-">10월</option>
+									<option value="11-">11월</option>
+									<option value="12-">12월</option>
 							</select>
 							
-							<select name="endDay">
+							<select name="endDay" class="endDay">
 									<option value="selected disabled hidden">일</option>
-									<option value="1">1일</option>
-									<option value="2">2일</option>
-									<option value="3">3일</option>
-									<option value="4">4일</option>
-									<option value="5">5일</option>
-									<option value="6">6일</option>
-									<option value="7">7일</option>
-									<option value="8">8일</option>
-									<option value="9">9일</option>
+									<option value="01">1일</option>
+									<option value="02">2일</option>
+									<option value="03">3일</option>
+									<option value="04">4일</option>
+									<option value="05">5일</option>
+									<option value="06">6일</option>
+									<option value="07">7일</option>
+									<option value="08">8일</option>
+									<option value="09">9일</option>
 									<option value="10">10일</option>
 									<option value="11">11일</option>
 									<option value="12">12일</option>
@@ -162,8 +200,50 @@
 									<option value="29">29일</option>
 									<option value="30">30일</option>
 									<option value="31">31일</option>
-							</select>  
-							<input class="dbSearch" type="button" value="추가하기" >
+							</select> 
+							
+							<select name="endHour" class="endHour">
+								<option value="selected disabled hidden">시</option>
+									<option value="T24:">0시</option>
+									<option value="T01:">1시</option>
+									<option value="T02:">2시</option>
+									<option value="T03:">3시</option>
+									<option value="T04:">4시</option>
+									<option value="T05:">5시</option>
+									<option value="T06::">6시</option>
+									<option value="T07:">7시</option>
+									<option value="T08:">8시</option>
+									<option value="T09:">9시</option>
+									<option value="T10:">10시</option>
+									<option value="T11:">11시</option>
+									<option value="T12:">12시</option>
+									<option value="T13:">13시</option>
+									<option value="T14:">14시</option>
+									<option value="T15:">15시</option>
+									<option value="T16:">16시</option>
+									<option value="T17:">17시</option>
+									<option value="T18:">18시</option>
+									<option value="T19:">19시</option>
+									<option value="T20:">20시</option>
+									<option value="T21:">21시</option>
+									<option value="T22:">22시</option>
+									<option value="T23:">23시</option>
+							</select>
+							
+							<select name="endMinute" class="endMinute">
+								<option value="selected disabled hidden">분</option>
+									<option value="00:00">00분</option>
+									<option value="10:00">10분</option>
+									<option value="20:00">20분</option>
+									<option value="30:00">30분</option>
+									<option value="40:00">40분</option>
+									<option value="50:00">50분</option>
+							</select> 
+							
+							일정 제목 : <input type="text" name="as_content" class="as_content"/>
+							
+							<button class="dbSearch">추가하기</button>
+						<!-- <input class="sub" value="sub" style="display:none;"></input> -->
 						</form>
 					</div>
 				</div>
@@ -172,9 +252,53 @@
 	</section>
 	<!-- content부분 끝 -->
 
-<%-- 	<!-- footer부분 시작 -->
+<!-- footer부분 시작 -->
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
-	<!-- footer부분 끝 --> --%>
+	<!-- footer부분 끝 -->
+
+<script type="text/javascript">
+
+	
+ 	function sub(){
+ 		
+		var formsub = $(".scheadd_table").serialize();
+		var startYear = document.querySelector(".startYear").value;
+		var startMonth = document.querySelector(".startMonth").value;
+		var startDay = document.querySelector(".startDay").value;
+		var endYear = document.querySelector(".endYear").value;
+		var endMonth = document.querySelector(".endMonth").value;
+		var endDay = document.querySelector(".endDay").value;
+		$.ajax({
+			href :'<%=request.getContextPath()%>/schedule/scheduleadd.do',
+			data : 
+			{
+				"startYear" : startYear,
+				"startMonth" : startMonth,
+				"startDay" : startDay,
+				"endYear" : endYear,
+				"endMonth" : endMonth,
+				"endDay" : endDay
+			},
+			success : function(xh)
+					{									
+						window.close();
+					}
+		});
+	}
+
+/*  var sub = document.querySelector('.sub');
+ 
+	function sub(){
+		 
+	
+			 
+			 window.close();
+			 return true;
+	
+	 }; */
+</script>
+
+
 
 </body>
 </html>

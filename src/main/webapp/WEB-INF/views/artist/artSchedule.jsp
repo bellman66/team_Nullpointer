@@ -38,8 +38,11 @@
 			<div class="container">
 				<div class="row">
 					<div class="artschedule_list">
-						<div class="">
+						<form name="artschedule" action="<%=request.getContextPath()%>/artist/artistschedule.do">
+						<div class="scheform">
+						 스케줄api넣을꺼에요
 						</div>
+						</form>
 					</div>
 				</div>
 			</div>	

@@ -9,11 +9,11 @@
 	<title>Stream Live</title>
 	
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css" />
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/stream/allStreamCustom.css" /> 
 	
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/stream/allStreamCustom.css" />
 
 	<!-- 웹 폰트 -->
 	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic"
@@ -78,6 +78,9 @@
                         </div>
                     </div>
                 </div> -->
+                <c:if test="${streamObj.length() == 0}">
+                	스트림 채널이 존재하지않습니다.
+                </c:if>
                 
                 <c:forEach var="vo" items="${streamObj}">
 	                <div class="item col-xs-4 col-lg-4">
@@ -101,49 +104,6 @@
 	                    </div>
 	                </div>
                 </c:forEach>
-    
-    			
-                <div class="item col-xs-4 col-lg-4">
-                    <div class="thumbnail card">
-                    
-                        <div class="img-event">
-                        	<a href="/springmvc/stream/index.do">
-                            	<img class="group list-group-image img-fluid" src="<%=request.getContextPath()%>/resources/img/maintest.jpg" alt="" />
-                        	</a>
-                        </div>
-                        
-                        <div class="caption card-body">
-                            <h4 class="group card-title inner list-group-item-heading">
-                                test 방송
-                            </h4>
-                        </div>
-                        
-                    </div>
-                </div>
-                
-                <div class="item col-xs-4 col-lg-4">
-                    <div class="thumbnail card">
-                        <div class="img-event">
-                            <img class="group list-group-image img-fluid" src="http://placehold.it/400x250/000/fff" alt="" />
-                        </div>
-                        <div class="caption card-body">
-                            <h4 class="group card-title inner list-group-item-heading">
-                                Product title</h4>
-                            <p class="group inner list-group-item-text">
-                                Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                            <div class="row">
-                                <div class="col-xs-12 col-md-6">
-                                    <p class="lead">
-                                        $21.000</p>
-                                </div>
-                                <div class="col-xs-12 col-md-6">
-                                    <a class="btn btn-success" href="http://www.jquery2dotnet.com">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 
             </div>
 	</div>

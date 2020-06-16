@@ -1,6 +1,7 @@
 package com.khfinal.project.artist.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +27,8 @@ public class ArtistDao {
 		return session.selectList("Artist.uploadList", m_id);
 	}
 	
+	public List<Map> selectArtList(){
+		return session.selectList("Artist.selectArtList");
+	}
 
 }

@@ -55,14 +55,10 @@ public class streamService {
 		List<streamVo> result = new ArrayList<streamVo>();
 		for(String key : streamObj.keySet()) {
 			streamVo vo = streamObj.get(key);
+			
 			vo.setId(vo.getId());
-			System.out.println(vo.getId());
-			
 			vo.setTitle(vo.getTitle());
-			System.out.println(vo.getTitle());
-			
 			vo.setUserHashCode(vo.getUserHashCode());
-			System.out.println(vo.getUserHashCode());
 			
 			result.add(vo);
 		}

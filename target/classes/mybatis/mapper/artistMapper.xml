@@ -9,9 +9,31 @@
 		select * from TB_ARTIST_UPLOAD
 	</select>
 	<select id="bestContent" resultType="Artist">
-		select *, rank() over(order by au_like desc) from TB_ARTIST_UPLOAD
+		select *, rank() over(order
+		by au_like desc) from TB_ARTIST_UPLOAD
 	</select>
 	<select id="uploadList" resultType="Artist">
-		select * from TB_ARTIST_UPLOAD where m_id = #{m_id}
+		select * from
+		TB_ARTIST_UPLOAD where m_id = #{m_id}
 	</select>
+
+	<select id="selectArtList" resultMap="Artist" parameterType="Artist">
+		select DISTINCT A.*, B.M_CLASS, B.RENAME_FILEPATH FROM
+		TB_MEMBER B INNER JOIN TB_ARTIST_UPLOAD A ON #{A.M_ID} = #{B.M_ID}
+		WHERE AU_TYPE=1
+	</select>
+
+	<resultMap type="Artist" id="Artist">
+		<result property="auNum" column="AU_NUM" />
+		<result property="m_Id" column="M_ID" />
+		<result property="nickName" column="M_NICKNAME" />
+		<result property="date" column="AU_DATE" />
+		<result property="content" column="AU_CONTENT" />
+		<result property="file" column="AU_FILE" />
+		<result property="like" column="AU_LIKE" />
+		<result property="type" column="AU_TYPE" />
+		<result property="word" column="au_word" />
+		<collection resultMap="Member" property="Member" />
+	</resultMap>
+	
 </mapper>

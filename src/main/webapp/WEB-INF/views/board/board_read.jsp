@@ -70,10 +70,12 @@
 					<%-- 이코드는 작성자와 아이디가 같다면 버튼을 활성화 해주는 --%>
 					<%-- <c:if test="${logInInfo.m_id eq read.board.m_id}"> --%>	
 							
-				           <div class="read_delete">
-				            	 <a href="<%=request.getContextPath()%>/board/boardDelete.do?b_num=${read.board.b_num}">삭제</a>
-				            	 <!-- <button>삭제</button> -->
-				           </div>
+							<c:if test="${logInInfo.m_id eq data.notice.noticeWriter}">
+					           <div class="read_delete">
+					            	 <a href="<%=request.getContextPath()%>/board/boardDelete.do?b_num=${read.board.b_num}">삭제</a>
+					            	 <!-- <button>삭제</button> -->
+					           </div>
+					         </c:if>  
 			        
 			        <%-- </c:if> --%>
 				        <div class="read_list">

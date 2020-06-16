@@ -47,22 +47,21 @@ public class streamController {
 		
 		HttpSession session = request.getSession();
 		
-		Map<String,Object> userInfo = (Map<String, Object>) session.getAttribute("userInfo");
-		if(userInfo != null) {
-			String userHashCode = (String) userInfo.get("m_id") + (String) userInfo.get("m_pass");
+		Map<String,Object> logininfo = (Map<String, Object>) session.getAttribute("loginInfo");
+		if(logininfo != null) {
+			String userHashCode = (String) logininfo.get("user_name") + (String) logininfo.get("m_pass");
 			mav.addObject("userHashCode" , userHashCode.hashCode());
+			mav.addObject("userid" , logininfo.get("user_name"));
+			
+			mav.setViewName("stream/usersetting");
 		}
 		else {
-			String test = "Please Login";
-			mav.addObject("userHashCode" , test.hashCode() );
+			mav.addObject("alertMsg" , "로그인 후 이용가능합니다.");
+			mav.addObject("url" , request.getContextPath()+"/stream/allstream.do");
 			
-			Map<String,Object> logininfo = (Map<String, Object>) session.getAttribute("loginInfo");
-			
-			// test 부분 
-			mav.addObject("userid" , (String)logininfo.get("user_name"));
+			mav.setViewName("common/result");
 		}
 		
-		mav.setViewName("stream/usersetting");
 		return mav;
 	}
 	

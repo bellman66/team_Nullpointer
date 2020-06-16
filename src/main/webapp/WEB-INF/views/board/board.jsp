@@ -47,7 +47,7 @@
 							</ul>
 
 							<!--탭 콘텐츠 영역 -->
-							<div class="tab_container">
+							<div class="tab_container" style="height:420px;">
 								<!-- 공유게시판 부분 시작  -->
 								<div id="tab1" class="tab_content">
 									<form name="pr" action="<%=request.getContextPath()%>/board/boardPR.do" onsubmit="submit()">
@@ -256,11 +256,25 @@
 								</div>
 
 										<!-- 버튼  -->
-										
+								<c:if test="${board  eq 'sh'}">	
+								<c:if test="${sessionScope.loginInfo != null }">
 								<div id="bdWrite">
-							        <a href="<%= request.getContextPath() %>/board/boardwrite.do?board=${board}" style="color:#fff;">글쓰기</a>
+							        	<a href="<%= request.getContextPath() %>/board/boardwrite.do?board=${board}" style="color:#fff;">글쓰기</a>
 							  	</div> 
-						  				
+							  	</c:if>
+						  		</c:if>	
+						  		
+						  		<c:if test="${board  eq 'pr'}">	
+						  			<c:if test="${sessionScope.loginInfo != null }">
+						  			
+										<c:if test="${sessionScope.loginInfo.member.m_class == '1'}">
+											<div id="bdWrite">
+							        			<a href="<%= request.getContextPath() %>/board/boardwrite.do?board=${board}" style="color:#fff;">글쓰기</a>
+							  				</div>
+										</c:if>
+									</c:if>
+								 
+						  		</c:if>			
 							</div>
 						</div>
 					</div>
