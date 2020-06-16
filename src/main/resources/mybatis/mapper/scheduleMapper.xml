@@ -6,15 +6,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 
 <mapper namespace="Schedule">
 	<select id="schedule" resultType="Schedule">
-		select * from tb_schedule where m_id = 'artist'
+		select * from tb_schedule where m_id = #{m_id}
 	</select>
 
+	<select id="rentSchedule" resultType="Schedule">
+		select * from tb_schedule where m_id = 'rent'
+	</select>
 
 	<insert id="scheduleadd">
 		INSERT INTO TB_SCHEDULE VALUES
-		(as_num ,'artist'
+		(as_num ,#{m_id}
 		, #{as_start_date}
 		, #{as_end_date}
 		, #{as_content}, null)
 	</insert>
+	
+	<insert id="rentAdd">
+		INSERT INTO TB_SCHEDULE VALUES
+		(as_num , 'rent'
+		, #{as_start_date}
+		, #{as_end_date}
+		, #{as_content}, null)
+	</insert>
+	
+	
 </mapper>

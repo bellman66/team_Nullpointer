@@ -116,14 +116,34 @@
 		<article class="schedule_box">
 			<div class="container">
 				<div class="row">
+					<c:if test="${rent eq 'rent'}">
+						<div style="text-align:center;font-size:50px;" >메인페이지 영상 스케줄 입니다</div>
+					</c:if>
+					<c:if test="${sessionScope.loginInfo != null }">
+						<c:if test="${sessionScope.loginInfo.member.m_class != '1'}">
+							<c:if test="${rent != 'rent'}">
+								<div style="text-align:center;font-size:60px;" >${sessionScope.loginInfo.member.m_nickname}'s Schedule</div>
+							</c:if>
+						</c:if>
+					</c:if>	
 					
 					<div id='calendar' style="margin-top: 5%; margin-bottom: 10%;"></div>
 					
-					<button class="sc_main_rent">메인 영상 대여</button>
-					<!-- <button class="schedule_add" onclick="schedule_add()">스케줄 등록</button> -->
-					<div class="schedule_add">
-						<a style="color:white;" href="<%= request.getContextPath() %>/schedule/add.do">스케줄 등록</a>
-					</div>
+					<c:if test="${sessionScope.loginInfo != null }">
+						<c:if test="${sessionScope.loginInfo.member.m_class != '1'}">
+							<div class="sc_main">
+								<a style="color:white;" href="<%= request.getContextPath() %>/schedule/rendSchedule.do">메인 영상 스케줄</a>
+							</div>
+						
+							<div class="sc_main_rent">
+								<a style="color:white;" href="<%= request.getContextPath() %>/schedule/rentAdd.do">메인 영상 대여</a>
+							</div>
+							<!-- <button class="schedule_add" onclick="schedule_add()">스케줄 등록</button> -->
+							<div class="schedule_add">
+								<a style="color:white;" href="<%= request.getContextPath() %>/schedule/add.do">스케줄 등록</a>
+							</div>
+						</c:if>
+					</c:if>
 				</div>
 				
 			</div>	

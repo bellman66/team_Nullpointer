@@ -6,7 +6,7 @@
 <head>
 <meta charset=UTF-8">
 <meta name="author" content="Team_Nullpointer">
-<title>rent_request</title>
+<title>Artist_Schedule_add</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/style.css" />
 <!-- 웹 폰트 -->
@@ -32,18 +32,17 @@
 	<!-- nav부분 시작 -->
 	<%@ include file="/WEB-INF/views/include/nav.jsp"%>
 	<!-- nav부분 끝 -->
-
 	<!-- content부분 시작 -->
-	<section id="content_rent">
-		<article class="rent_box">
+	<section id="content_artscheadd">
+		<article class="artscheadd_box">
 			<div class="container">
 				<div class="row">
-					<div class="rent_table">
-					<div class="scAddTitle">스케줄 입력</div>
+					<div class="artscheadd_table">
+						<div class="artscAddTitle">스케줄 입력</div>
 						<br><br>
-						<div class="scStart" style="font-size: 2em;">시작일</div>
-						<form name="sh" action="<%=request.getContextPath()%>/schedule/rentadd.do">
-							<select name="startYear" class="startYear">
+						<div class="artscStart" style="font-size: 2em;">시작일</div>
+						<form action="<%=request.getContextPath()%>/artist/artistscheduleadd.do">
+							<select name="artstartYear" class="artstartYear">
 									<option value="selected disabled hidden">년도</option>
 									<option value="2019-">2019년</option>
 									<option value="2020-">2020년</option>
@@ -52,7 +51,7 @@
 									<option value="2023-">2023년</option>
 							</select> 
 							
-							<select name="startMonth" class="startMonth">
+							<select name="artstartMonth" class="artstartMonth">
 									<option value="selected disabled hidden">월</option>
 									<option value="01-">1월</option>
 									<option value="02-">2월</option>
@@ -68,7 +67,7 @@
 									<option value="12-">12월</option>
 							</select>
 							
-							<select name="startDay" class="startDay">
+							<select name="artstartDay" class="artstartDay">
 									<option value="selected disabled hidden">일</option>
 									<option value="01">1일</option>
 									<option value="02">2일</option>
@@ -103,7 +102,7 @@
 									<option value="31">31일</option>
 							</select>
 							
-							<select name="startHour" class="startYear">
+							<select name="artstartHour" class="artstartHour">
 								<option value="selected disabled hidden">시</option>
 									<option value="T24:">0시</option>
 									<option value="T01:">1시</option>
@@ -131,7 +130,7 @@
 									<option value="T23:">23시</option>
 							</select>
 							
-							<select name="startMinute" class="startMinute">
+							<select name="artstartMinute" class="artstartMinute">
 								<option value="selected disabled hidden">분</option>
 									<option value="00:00">00분</option>
 									<option value="10:00">10분</option>
@@ -142,8 +141,8 @@
 							</select>
 
 							<br><br><br><br><br>
-						<div class="scEnd" style="font-size: 2em;">종료일</div>
-							<select name="endYear" class="endYear">
+						<div class="artscEnd" style="font-size: 2em;">종료일</div>
+							<select name="artendYear" class="artendYear">
 									<option value="selected disabled hidden">년도</option>
 									<option value="2019-">2019년</option>
 									<option value="2020-">2020년</option>
@@ -152,7 +151,7 @@
 									<option value="2023-">2023년</option>
 							</select> 
 							
-							<select name="endMonth" class="endMonth">
+							<select name="artendMonth" class="artendMonth">
 									<option value="selected disabled hidden">월</option>
 									<option value="01-">1월</option>
 									<option value="02-">2월</option>
@@ -168,7 +167,7 @@
 									<option value="12-">12월</option>
 							</select>
 							
-							<select name="endDay" class="endDay">
+							<select name="artendDay" class="artendDay">
 									<option value="selected disabled hidden">일</option>
 									<option value="01">1일</option>
 									<option value="02">2일</option>
@@ -203,7 +202,7 @@
 									<option value="31">31일</option>
 							</select> 
 							
-							<select name="endHour" class="endHour">
+							<select name="artendHour" class="artendHour">
 								<option value="selected disabled hidden">시</option>
 									<option value="T24:">0시</option>
 									<option value="T01:">1시</option>
@@ -231,7 +230,7 @@
 									<option value="T23:">23시</option>
 							</select>
 							
-							<select name="endMinute" class="endMinute">
+							<select name="artendMinute" class="artendMinute">
 								<option value="selected disabled hidden">분</option>
 									<option value="00:00">00분</option>
 									<option value="10:00">10분</option>
@@ -241,9 +240,9 @@
 									<option value="50:00">50분</option>
 							</select> 
 							
-							일정 제목 : <input type="text" name="as_content" class="as_content"/>
+							공연이름 : <input type="text" name="atr_as_content" class="atr_as_content"/>
 							
-							<button class="dbSearch">추가하기</button>
+							<button class="art_dbSearch">추가하기</button>
 						<!-- <input class="sub" value="sub" style="display:none;"></input> -->
 						</form>
 					</div>
@@ -253,7 +252,7 @@
 	</section>
 	<!-- content부분 끝 -->
 
-	<!-- footer부분 시작 -->
+<!-- footer부분 시작 -->
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 	<!-- footer부분 끝 -->
 

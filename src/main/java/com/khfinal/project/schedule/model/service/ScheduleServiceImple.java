@@ -17,20 +17,37 @@ public class ScheduleServiceImple implements ScheduleService {
 	ScheduleDao sd;
 
 	@Override
-	public Map<String, Object> schedule() {
+	public Map<String, Object> schedule(Schedule schedule) {
 		Map<String, Object> res = new HashMap<String, Object>();
 		
-		List<Schedule> slist = sd.schedule();
+		List<Schedule> slist = sd.schedule(schedule);
 		
 		res.put("slist", slist);
 		return res;
 	}
 	
 	@Override
+	public Map<String, Object> rentSchedule() {
+		Map<String, Object> res = new HashMap<String, Object>();
+		
+		List<Schedule> slist = sd.rentSchedule();
+		res.put("slist", slist);
+		return res;
+	}
+
+	
+	@Override
 	public int scheduleadd(Schedule schedule) {
 		int res = sd.scheduleadd(schedule);
 		return res;
 	}
+
+	@Override
+	public int rentAdd(Schedule schedule) {
+		int res = sd.rentAdd(schedule);
+		return res;
+	}
+
 
 
 

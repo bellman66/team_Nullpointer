@@ -24,6 +24,7 @@
 @import "artist/atmoive_write.css";
 @import "artist/at_write.css";
 @import "artist/atschedule.css";
+@import "artist/atschedule_add.css";
 
 /* board */
 @import "board/board.css";

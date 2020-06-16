@@ -14,12 +14,20 @@ public class ScheduleDao {
 	@Autowired
 	SqlSessionTemplate sqlSession;
 	
-	public List<Schedule> schedule(){
-		return sqlSession.selectList("Schedule.schedule");
+	public List<Schedule> schedule(Schedule schedule){
+		return sqlSession.selectList("Schedule.schedule", schedule);
+	}
+	
+	public List<Schedule> rentSchedule(){
+		return sqlSession.selectList("Schedule.rentSchedule");
 	}
 	
 	public int scheduleadd(Schedule schedule) {
 		return sqlSession.insert("Schedule.scheduleadd", schedule);
 		
+	}
+	
+	public int rentAdd(Schedule schedule) {
+		return sqlSession.insert("Schedule.rentAdd", schedule);
 	}
 }

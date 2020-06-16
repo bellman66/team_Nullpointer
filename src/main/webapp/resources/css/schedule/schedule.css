@@ -1,12 +1,11 @@
 @charset "UTF-8";
 
 
- .sc_main_rent, .schedule_add{
+ .sc_main_rent, .schedule_add, .sc_main{
 	background-color: black;
 	color: white;
 	width: 10%;
 	height: 50px;
-	
 	margin:2%;
 	margin-top : -7%;
 }
@@ -19,5 +18,11 @@
 
 .sc_main_rent{
 	margin-left : 69%;
+	position: absolute;
+	text-align: center;
+}
+
+.sc_main{
+	margin-left : 58%;
 	position: absolute;
 }
