@@ -52,13 +52,14 @@
 							<!-------- 아티스트 게시판 시작! -------->
 							<div id="tab1" class="content">
 								<!-- artTab 부분  -->
+								<!-- artist페이지에서 au_type에 따라 뮤지션과 타투이스트로 나눠서 뿌려줄꺼야! -->
 								<form name="artTab" method="post" action="<%=request.getContextPath()%>/artist/artistpage.do">
 									<ul class="grid">
-										<!-- 1번째 뮤지션 시작 -->
+										<!-- 뮤지션 시작! -->
 										<li class="btn_link"><span class="img_box"
 											style="background:url(<%=request.getContextPath()%>/resources/img/artist/bus.jpg)no-repeat"></span>
-											<span class="title"><a
-												href="<%=request.getContextPath()%>/artist/artistpage.do">
+											<span class="title">
+											<a href="<%=request.getContextPath()%>/artist/artistpage.do">
 													<!-- artist -> alist -> List<Map> -> M_Id 순서 --> 
 													<c:forEach items="${artist}" var="alist">
 														<c:forEach items="${alist}" var="map">
@@ -73,7 +74,7 @@
 													<span class="arrow"></span>
 												</a>
 											</div></li>
-										<!-- 1번째 뮤지션 끝 -->
+										<!-- 뮤지션 끝! -->
 
 
 									</ul>

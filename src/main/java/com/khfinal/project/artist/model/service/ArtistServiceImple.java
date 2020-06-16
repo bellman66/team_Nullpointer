@@ -125,11 +125,10 @@ public class ArtistServiceImple implements ArtistService {
 	 * @method : selectArtList
 	 * @date : 2020. 6. 16.
 	 * @buildBy : hajin
-	 * @comment : 아티스트 메인 페이지
+	 * @comment : 아티스트 메인 페이지 
 	 */
 	@Override
 	public List<Map> selectArtList() {
-		
 		
 		return ad.selectArtList();
 	}

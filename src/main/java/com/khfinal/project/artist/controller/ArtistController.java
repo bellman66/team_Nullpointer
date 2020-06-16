@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.khfinal.project.artist.model.service.ArtistService;
+import com.khfinal.project.artist.model.vo.Artist;
 
 @Controller
 public class ArtistController {
@@ -25,6 +26,7 @@ public class ArtistController {
 	@RequestMapping("/artist/artist.do")
 	public ModelAndView selectArtList() {
 		ModelAndView mav = new ModelAndView();
+		//오는거 확인함
 		System.out.println("왔니?");
 		// main에서 artist 클릭 시, tb_member 데이터값 중 m_class = 2 인 데이터 갖고 오기
 		// jsp > controller > service > dao > mapper (sql > selectList) > dao > service > controller(mac.addObject) > jsp
