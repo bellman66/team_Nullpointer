@@ -270,8 +270,12 @@ public class BoardController {
 		
 		//파일을 뺸 나머지 값들 가져오는 코드
 //		HttpSession session = request.getSession();
-//	    Member member = (Member) session.getAttribute("logInInfo");
+//	    Member member = (Member) session.getAttribute("loginInfo");
 //	    board.setBoardWriter(member.getM_id());
+//	    System.out.println("컨트롤러에서 멤버"+member);
+// 아직은 널이나온다
+		
+	    
 		
 		if(boardCategory.equals("sh")) {
 			int res = bs.boardUploadSh(board , file );

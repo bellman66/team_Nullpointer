@@ -28,6 +28,7 @@
 <script src='${pageContext.request.contextPath}/resources/packages/core/main.js'></script>
 <script src='${pageContext.request.contextPath}/resources/packages/interaction/main.js'></script>
 <script src='${pageContext.request.contextPath}/resources/packages/daygrid/main.js'></script>
+
 <script>
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -45,65 +46,13 @@
       editable: true,
       eventLimit: true, // allow "more" link when too many events
       events: [
-        {
-          title: '홍대공연',
-          start: '2020-06-01'
-        },
-        {
-          title: '미국 투어',
-          start: '2020-06-07',
-          end: '2020-06-10'
-        },
-        {
-          groupId: 999,
-          title: '치과 예약',
-          start: '2020-06-09T16:00:00'
-        },
-        {
-          groupId: 999,
-          title: '바쁠 예정',
-          start: '2020-06-16T16:00:00'
-        },
-        {
-          title: '방콬 공연',
-          start: '2020-06-11',
-          end: '2020-06-13'
-        },
-        {
-          title: '미팅',
-          start: '2020-06-12T10:30:00',
-          end: '2020-06-12T12:30:00'
-        },
-        {
-          title: '점심약속',
-          start: '2020-06-12T12:00:00'
-        },
-        {
-          title: '미팅',
-          start: '2020-06-12T14:30:00'
-        },
-        {
-          title: '생일',
-          start: '2020-06-12T17:30:00'
-        },
-        {
-          title: '저녁약속',
-          start: '2020-06-12T20:00:00'
-        },
-        {
-          title: '생일파티',
-          start: '2020-06-13T07:00:00'
-        },
-        {
-          title: '클릭하면 구글로',
-          url: 'http://google.com/',
-          start: '2020-06-28'
-        },
-        {
-          title: '수료하는날',
-          start: '2020-06-24'
-
-        }
+        <c:forEach items="${scheduleList.slist}" var="schedule">
+	    	{
+	    	title : "${schedule.as_content}",
+	    	start : "${schedule.as_start_date}",
+	    	end : "${schedule.as_end_date}"
+	    	},
+		</c:forEach>
         ],eventClick: function(arg) {
         if (confirm('delete event?')) {
           arg.event.remove()
@@ -114,12 +63,25 @@
     calendar.render();
   });
 
+/*   $(function(){
+      var resule = new Array();
+      
+      <c:forEach items="${scheduleList.slist}" var="schedule">
+	    	var json = new Object();
+	    	json.title = "title : ${schedule.as_content}";
+	    	json.as_start_date = "as_start_date : ${schedule.as_start_date}";
+	    	json.as_end_date = "as_end_date : ${schedule.as_end_date}";
+	    	result.push(json);
+		</c:forEach>
+		
+		alert("jsonschedule=" + JSON.stringify(result));
+		}); */
 </script>
 <script type="text/javascript">
 	function schedule_add(){
 		var url = "<%= request.getContextPath() %>/schedule/add.do";
 		var name = "scheduleAdd"
-		var option = "width = 500, height = 500, top = 100, left = 200, location = no"
+		var option = "width = 500, height = 500, top = 200, left = 700, location = no"
 		window.open(url, name, option);
 	}
 </script>
@@ -158,8 +120,10 @@
 					<div id='calendar' style="margin-top: 5%; margin-bottom: 10%;"></div>
 					
 					<button class="sc_main_rent">메인 영상 대여</button>
-					<button class="schedule_add" onclick="schedule_add()">스케줄 등록</button>
-					
+					<!-- <button class="schedule_add" onclick="schedule_add()">스케줄 등록</button> -->
+					<div class="schedule_add">
+						<a style="color:white;" href="<%= request.getContextPath() %>/schedule/add.do">스케줄 등록</a>
+					</div>
 				</div>
 				
 			</div>	
