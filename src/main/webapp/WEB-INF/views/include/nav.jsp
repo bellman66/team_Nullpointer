@@ -4,7 +4,7 @@
 
 <nav class="nav">
 	<div class="container">
-		<div class="row">
+		<div class="np_row">
 			<div class="menu">
 				<ul>
 					<li><a href="<%=request.getContextPath()%>/stream/allstream.do">Live On</a></li>

@@ -63,7 +63,7 @@
 	  	  <!-- <source src="http://rndso15.synology.me:8080/hls/test_hd720.m3u8" type='application/x-mpegURL' label='720P' res='720'>
 	      <source src="http://rndso15.synology.me:8080/hls/test_mid.m3u8" type='application/x-mpegURL' label='480P' res='480'>
 	      <source src="http://rndso15.synology.me:8080/hls/test_low.m3u8" type='application/x-mpegURL' label='360P' res='360'>-->
-	      <source src="http://rndso15.synology.me:8080/hls/test.m3u8" type='application/x-mpegURL' label='src' res='src'> 
+	      <source src="http://localhost:8080/hls/${userHashCode}/index.m3u8" type='application/x-mpegURL' label='src' res='src'>
 	      
 	  	  <!-- <source src="http://localhost:8080/hls/test_hd720.m3u8" type='application/x-mpegURL' label='720P' res='720'>
 	      <source src="http://localhost:8080/hls/test_mid.m3u8" type='application/x-mpegURL' label='480P' res='480'>
@@ -83,9 +83,16 @@
 
 		    <!-- edit form column -->
 		   	  <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
-		      
+		   	  
+<!-- 		   	  	<div class="form-group">
+		          <label class="col-lg-3 control-label" onclick="settingPopup()"> Stream 방법 (OBS Studio) Click</label>
+
+		        </div> -->
 		        <div class="form-group">
-		          <label class="col-lg-3 control-label">Stream Key</label>
+		          <label class="col-lg-3 control-label"> 
+		          	<span> Stream Key </span>
+		          	<b id="settingPopup" onclick="settingPopup()"> Stream 방법 (OBS Studio) Click </b>
+		          </label>
 		          <div class="col-lg-8">
 		            <span> ${userHashCode} </span>
 		          </div>
@@ -125,14 +132,19 @@ $(function(){
 			
 			$.ajax({
 				method : "GET" ,
-				url : "/springmvc/stream/liveon.do" ,
+				url : "${pageContext.request.contextPath}/stream/liveon.do" ,
 				data : {
 					'userHashCode' : '${userHashCode}' ,
 					'id' : '${userid}',
 					"streamTitle" : $('#streamTitle').val()
 				} ,
 				success : function(data) {
-					alert(data);
+					if(data == 1) {
+						alert('생방송이 시작되었습니다.')
+					}
+					else {
+						alert('방송 설정이 변경되었습니다.')
+					}
 				}
 			})
 		}
@@ -142,20 +154,31 @@ $(function(){
 			
 			$.ajax({
 				method : "GET" ,
-				url : "/springmvc/stream/liveoff.do" ,
+				url : "${pageContext.request.contextPath}/stream/liveoff.do" ,
 				data : {
 					'userHashCode' : '${userHashCode}' ,
 					'id' : '${userid}',
 					"streamTitle" : $('#streamTitle').val()
 				} ,
 				success : function(data) {
-					alert(data);
+					if(data == 1) {
+						alert('생방송이 종료되었습니다.')
+					}
 				}
 			})
 		}
-		
 	})
 });
+</script>
+
+<script type="text/javascript">
+	function settingPopup() {
+		var url = "${pageContext.request.contextPath}/stream/settingPopup.do";
+        var name = "setting popup";
+        var option = "width = 500, height = 500, top = 100, left = 200, location = no"
+       
+        window.open(url, name, option);
+	}
 </script>
 </body>
 

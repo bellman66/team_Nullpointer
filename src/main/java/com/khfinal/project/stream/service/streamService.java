@@ -59,6 +59,7 @@ public class streamService {
 			vo.setId(vo.getId());
 			vo.setTitle(vo.getTitle());
 			vo.setUserHashCode(vo.getUserHashCode());
+			vo.setSessionList(vo.getSessionList());
 			
 			result.add(vo);
 		}

@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-
 <head>
 	<meta charset="UTF-8">
 	<title>Stream Live</title>
@@ -30,7 +29,11 @@
 	<%@ include file="/WEB-INF/views/include/nav.jsp"%>
 
 	<!-- Stream container -->
-	<div class="container">
+	<section id="content_str">
+		<article class="stream_box">
+			<div class="container">
+				<div class="np_row">
+					<div class="stream_list">
 	
 	<!-- 1.View 방식 선택 : List or Grid -->
     <div class="row">
@@ -78,8 +81,14 @@
                         </div>
                     </div>
                 </div> -->
-                <c:if test="${streamObj.length() == 0}">
-                	스트림 채널이 존재하지않습니다.
+                <c:if test="${streamObj.size() == 0}">
+                	<div id="notStreamDiv">
+	                	<span> 
+	                		<h1> 
+                	스트림 채널이 존재하지않습니다. 
+	                		</h1> 
+	                	</span>
+	                </div>
                 </c:if>
                 
                 <c:forEach var="vo" items="${streamObj}">
@@ -88,7 +97,7 @@
 	                    
 	                        <div class="img-event">
 	                        	<a href="/springmvc/streamMapping/${vo.id}.do">
-	                            	<img class="group list-group-image img-fluid" src="<%=request.getContextPath()%>/resources/img/maintest.jpg" alt="" />
+	                            	<img class="group list-group-image img-fluid" src="http://rndso15.synology.me:8080/hls/${vo.userHashCode}/${vo.userHashCode}_thumbnail.png" alt="" />
 	                        	</a>
 	                        </div>
 	                        
@@ -96,6 +105,7 @@
 	                            <h4 class="group card-title inner list-group-item-heading">
 	                                <c:out value='${vo.title}'/>
 	                            </h4>
+	                            <span> <c:out value='${vo.sessionList.size()}'/> </span>
 	                            <p class="group inner list-group-item-text">
                                 	<c:out value='${vo.id}'/>
                                 </p>
@@ -106,7 +116,11 @@
                 </c:forEach>
                 
             </div>
-	</div>
+					</div>
+				</div>
+			</div>	
+		</article>
+	</section>
 	
 	<script type="text/javascript">
 		$(document).ready(function() {

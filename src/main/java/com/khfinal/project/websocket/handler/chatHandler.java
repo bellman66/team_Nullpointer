@@ -30,7 +30,6 @@ public class chatHandler extends TextWebSocketHandler {
 	
 	public chatHandler() {
 		// TODO Auto-generated constructor stub
-		System.out.println("핸들러 생성");
 	}
 
 	@Override
@@ -59,8 +58,6 @@ public class chatHandler extends TextWebSocketHandler {
 		Map<String , Object> attr = session.getAttributes();
 		String id = (String) attr.get("id");
 		String user_name = (String) attr.get("user_name");
-		
-		System.out.println("유저 아이디 : " + user_name);
 		
 		if(streamservice.get(id) != null) {
 			List<WebSocketSession> sessionlist = streamservice.get(id).getSessionList();
