@@ -17,5 +17,18 @@
  		select * from tb_member
  				 where M_ID = #{userID} AND M_PASS = #{userPWD}
  	</select>
+ 	<select id="nickNameCheck" parameterType="string" resultType="string">
+ 		select m_nickname from tb_member where m_nickname = #{nickname}
+ 	</select>
+ 	<update id="infoModify">
+ 		update tb_member set m_nickname = #{m_nickname}, m_pass = #{m_pass},
+ 		m_tell1 = #{m_tell1}, m_tell2 = #{m_tell2}, m_tell3 = #{m_tell3}, 
+ 		m_email1 = #{m_email1}, m_email2 = #{m_email2}, 
+ 		rename_filepath = #{rename_filepath}
+ 		where m_id = #{m_id}
+ 	</update>
+ 	<select id="reload" resultType="Member">
+ 		select * from tb_member where m_id = #{m_id}
+ 	</select>
  
   </mapper>

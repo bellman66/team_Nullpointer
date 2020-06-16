@@ -28,6 +28,9 @@
 		</div>
 	</div>
 	<!-- js 링크 -->
+	<!-- jquery 사용 -->
+	<script type="text/javascript"
+		src="<%=request.getContextPath()%>/resources/js/jquery/jquery-3.4.1.js"></script>
 	<!-- title 부분 클릭 시 메인화면 리로드 -->
 	<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/title.js"></script>
 </header>

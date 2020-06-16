@@ -43,4 +43,16 @@ public class MemberDao {
 		return session.selectOne("Member.loginConfirm", memberMap);
 	}
 	
+	public String nickNameCheck(String nickname) {
+		return session.selectOne("Member.nickNameCheck", nickname);
+	}
+	
+	public int infoModify(Member member) {
+		return session.update("Member.infoModify", member);
+	}
+	
+	public Member reload(String m_id) {
+		return session.selectOne("Member.reload", m_id);
+	}
+	
 }

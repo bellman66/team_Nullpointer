@@ -1,5 +1,7 @@
 // mypage 수정
 
+var infoModify = true;
+
 // 프로필 사진 수정 시, 파일 확장자 확인
 $('#userPicture').on('change',function (e) {
 
@@ -50,28 +52,76 @@ $('#userPicture').on('change',function (e) {
     image.setAttribute('img','profile');
     //이미지 보여지는 공간에 업로드한 이미지 넣기
     $('.profile').html(image);
-    
+});
+
+// 닉네임 중복 확인
+function nickCheck() {
+	$.ajax({
+		url : '/springmvc/member/nicknamecheck.do',
+		type : 'GET',
+		data : $('#NICKNAME'),
+		// data 받아오는 것이 성공하면(success) 아래 함수 호출
+		success : function(data) {
+			console.log(data);
+
+			if (data != '') {
+				// 입력한 data와 동일한 값이 있다면
+				document.querySelector('#nickCheckMsg').innerHTML = '이미 존재하는 닉네임입니다.';
+				infoModify = false;
+			} else {
+				document.querySelector('#nickCheckMsg').innerHTML = '사용 가능한 닉네임입니다.';
+				infoModify = true;
+			}
+
+		}
+
+	});
+}
+
+// 비밀번호 확인
+$(function() {
+	$('#PWD_MODIFY_CHECK').keyup(function(){ 
+		var pwd1=$("#USER_PWD_MODIFY").val(); 
+		var pwd2=$("#PWD_MODIFY_CHECK").val(); 
+		if(pwd1 != "" || pwd2 != ""){ 
+			if(pwd1 == pwd2){ 
+				$("#same").css('display','block');
+				$("#different").css('display','none');
+				infoModify = true;
+			}else{ 
+				$("#same").css('display','none');
+				$("#different").css('display', 'block');
+				infoModify = false;
+			} 
+		} 
+	});
 });
 
 function modify() {
 	// 기본 정보란에 입력된 값이 있다면, 해당 값 > request로 받아 dao로 넘긴 뒤, db update
-	// 프로필 사진 변경
-
-	// 닉네임 변경 > 중복 확인 후 수정 가능
 	
-	// 비밀번호 변경 > 비밀번화 확인란과 동일해야 수정 가능
-	
-	// 한 줄 소개 변경
-	
-	// 휴대 전화 변경
-	
-	// 이메일 변경
+	if(infoModify) {
+		// 수정 내용에 이상이 없다면
+		// controller 통해서 정보 수정 후 main으로 이동
+		location.href = '/springmvc/member/infoModify.do';
+	} else {
+		// 수정 내용에 이상이 있다면
+		// 1) 닉네임  중복 확인 후 수정 가능
+		var checkornot = $('#nickCheckMsg').val();
+		if(checkornot == '이미 존재하는 닉네임입니다.' || checkornot == null) {
+			alert('닉네임을 확인해주세요.');
+		}
+		// 2) 비밀번호와 비밀번호 확인란과 동일해야 수정 가능
+		if($('#same').style.display === none) {
+			alert('비밀번호를 확인해주세요.');
+		}
+	}
 }
 
 // mypage 탈퇴
 
 function withdrawal() {
-	// 탈퇴 버튼 클릭 시, alert pop up > 탈퇴 동의 > 비밀번호 확인 > member leave_YN = 'Y'로 변경
+	// 탈퇴 버튼 클릭 시, pop up > 탈퇴 동의 > 비밀번호 확인 > member leave_YN = 'Y'로 변경
 	
 
 }

@@ -8,7 +8,9 @@ public interface MemberService {
 	
 	public int insertMember(Map<String , Object>memberMap);
 	public Member login(Map<String , Object>memberMap);
-	
 	public Member loginConfirm(Map<String , Object>memberMap);
+	public String nickNameCheck(String nickname);
+	public int infoModify(Member member);
+	public Member reload(String m_id);
 	
 }
