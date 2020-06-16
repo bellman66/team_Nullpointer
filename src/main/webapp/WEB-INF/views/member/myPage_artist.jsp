@@ -37,10 +37,11 @@
 	<section id="content_pg">
 		<article class="mypage_Basic">
 			<div class="container">
-				<div class="row"> 
+				<div class="row">
 					<div class="mypage-box">
 						<!-- 회원정보 수정 부분 -->
-						<form name="mypageForm" method="post" enctype="multipart/form-data">
+						<form name="mypageForm" method="post"
+							enctype="multipart/form-data">
 							<div class="pageform">
 								<h3>${loginInfo.member.m_id}님의마이페이지</h3>
 
@@ -137,8 +138,26 @@
 									</div>
 									<hr>
 									<button type="button" class="info_modifybut" onclick="modify()">수정</button>
-									<button type="button" class="user_withdrawal"
-										onclick="withdrawal()">탈퇴</button>
+									<button type="button" class="user_withdrawal" onclick="withdrawal()">탈퇴</button>
+									<div class="dim-layer">
+										<div class="dimBg"></div>
+										<div id="layer2" class="pop-layer">
+											<div class="pop-container">
+												<div class="pop-conts">
+													<!--content //-->
+													<p class="ctxt mb20">
+														정말로 회원 탈퇴하시겠습니까?<br>탈퇴를 원하시는 경우, 확인을 눌러주세요.
+													</p>
+
+													<div class="btn-r">
+														<a href="#" class="btn-withdrawal">확인</a>
+														<a href="#" class="btn-layerClose">취소</a>
+													</div>
+													<!--// content-->
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 							<!-- 회원 정보 부분 끝 -->

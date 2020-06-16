@@ -39,18 +39,18 @@ $('#userPicture').on('change',function (e) {
     })(image)
 
     if(get_file){
-        /* get_file[0] 을 읽어서 read 행위가 종료되면 loadend 이벤트가 트리거 되고 
-           onload 에 설정했던 return 으로 넘어간다. 
-                          이와 함께 base64 인코딩 된 스트링 데이터(e.target.result)가 result 속성에 담겨진다.
-           MDN 출처
-        */
+        /*
+		 * get_file[0] 을 읽어서 read 행위가 종료되면 loadend 이벤트가 트리거 되고 onload 에 설정했던
+		 * return 으로 넘어간다. 이와 함께 base64 인코딩 된 스트링 데이터(e.target.result)가 result
+		 * 속성에 담겨진다. MDN 출처
+		 */
         reader.readAsDataURL(get_file[0]);
     }
-    //이미지가 보여지는 곳에 원래 사진 삭제
+    // 이미지가 보여지는 곳에 원래 사진 삭제
     $('.profile').html("");
-    //이미지 모양 클래스 추가
+    // 이미지 모양 클래스 추가
     image.setAttribute('img','profile');
-    //이미지 보여지는 공간에 업로드한 이미지 넣기
+    // 이미지 보여지는 공간에 업로드한 이미지 넣기
     $('.profile').html(image);
 });
 
@@ -106,7 +106,7 @@ function modify() {
 		location.href = '/springmvc/member/infoModify.do';
 	} else {
 		// 수정 내용에 이상이 있다면
-		// 1) 닉네임  중복 확인 후 수정 가능
+		// 1) 닉네임 중복 확인 후 수정 가능
 		var checkornot = $('#nickCheckMsg').val();
 		if(checkornot == '이미 존재하는 닉네임입니다.' || checkornot == null) {
 			alert('닉네임을 확인해주세요.');
@@ -122,6 +122,33 @@ function modify() {
 
 function withdrawal() {
 	// 탈퇴 버튼 클릭 시, pop up > 탈퇴 동의 > 비밀번호 확인 > member leave_YN = 'Y'로 변경
-	
+	layer_popup("#layer2");
+}
 
+function layer_popup(el){
+
+    var $el = $(el);        //레이어의 id를 $el 변수에 저장
+    var isDim = $el.prev().hasClass('dimBg');   //dimmed 레이어를 감지하기 위한 boolean 변수
+
+    isDim ? $('.dim-layer').fadeIn() : $el.fadeIn();
+
+    var $elWidth = ~~($el.outerWidth()),
+        $elHeight = ~~($el.outerHeight()),
+        docWidth = $(document).width(),
+        docHeight = $(document).height();
+
+    // 화면의 중앙에 레이어를 띄운다.
+    if ($elHeight < docHeight || $elWidth < docWidth) {
+        $el.css({
+            marginTop: -$elHeight /2,
+            marginLeft: -$elWidth/2
+        })
+    } else {
+        $el.css({top: 0, left: 0});
+    }
+
+    $el.find('a.btn-layerClose').click(function(){
+        isDim ? $('.dim-layer').fadeOut() : $el.fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
+        return false;
+    });
 }
