@@ -55,4 +55,7 @@ public class MemberDao {
 		return session.selectOne("Member.reload", m_id);
 	}
 	
+	public int leave(String m_id) {
+		return session.update("Member.leave", m_id);
+	}
 }

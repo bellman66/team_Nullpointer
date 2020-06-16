@@ -12,5 +12,6 @@ public interface MemberService {
 	public String nickNameCheck(String nickname);
 	public int infoModify(Member member);
 	public Member reload(String m_id);
+	public int leave(String m_id);
 	
 }

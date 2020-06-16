@@ -34,4 +34,7 @@
  		<result property="mClass" column="M_CLASS"/>
  		<result property="renameFilepath" column="RENAME_FILEPATH"/>
  	</resultMap>
+ 	<update id="leave">
+ 		update tb_member set m_leave_yn = 'Y' where m_id = #{m_id}
+ 	</update>
   </mapper>
