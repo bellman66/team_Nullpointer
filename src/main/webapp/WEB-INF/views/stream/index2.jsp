@@ -7,12 +7,9 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Stream Live</title>
-	
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css" />
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/stream/indexCustom.css" />
     
 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script> 
 	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 	
 	<!-- 웹 폰트 -->
@@ -35,6 +32,9 @@
 	  <link href="${pageContext.request.contextPath}/resources/videojs/video-js.css" rel="stylesheet" />
 	  <link href="${pageContext.request.contextPath}/resources/videojs/resolution-switcher/videojs-resolution-switcher.css" rel="stylesheet">
 	  <!-- video js end -->
+	  
+	  	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css" />
+		<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/stream/indexCustom.css" />
 </head>
 
 <body>
@@ -55,23 +55,11 @@
 	  		 data-setup='{}'
 	  		 muted
 	  		 >
-	  		 
-	   	  <!-- <source src="https://upload.wikimedia.org/wikipedia/commons/transcoded/a/ab/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm.720p.webm" type="video/webm" label='720P' res='720'>
-	      <source src="https://upload.wikimedia.org/wikipedia/commons/transcoded/a/ab/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm.480p.webm" type="video/webm" label='480P' res='480'>
-	      <source src="https://upload.wikimedia.org/wikipedia/commons/transcoded/a/ab/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm.360p.webm" type="video/webm" label='360P' res='360'>
-	      <source src="https://upload.wikimedia.org/wikipedia/commons/transcoded/a/ab/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm.240p.webm" type="video/webm" label='240P' res='240'> -->
-	 
-	  	  <!-- <source src="http://rndso15.synology.me:8080/hls/test_hd720.m3u8" type='application/x-mpegURL' label='720P' res='720'>
-	      <source src="http://rndso15.synology.me:8080/hls/test_mid.m3u8" type='application/x-mpegURL' label='480P' res='480'>
-	      <source src="http://rndso15.synology.me:8080/hls/test_low.m3u8" type='application/x-mpegURL' label='360P' res='360'>-->
-	      <source src="http://rndso15.synology.me:8080/hls/${userHashCode}.m3u8" type='application/x-mpegURL' label='src' res='src'> 
-	      
-	  	  <!-- <source src="http://localhost:8080/hls/test_hd720.m3u8" type='application/x-mpegURL' label='720P' res='720'>
-	      <source src="http://localhost:8080/hls/test_mid.m3u8" type='application/x-mpegURL' label='480P' res='480'>
-	      <source src="http://localhost:8080/hls/test_low.m3u8" type='application/x-mpegURL' label='360P' res='360'> -->
-	      
-	      <!-- <source src="http://localhost:8080/hls/test.m3u8" type='application/x-mpegURL' label='100' res='100'> -->
 
+		  <!-- 시놀로지 연결 -->
+	      <%-- <source src="http://localhost:8080/hls/${userHashCode}.m3u8" type='application/x-mpegURL' label='src' res='src'> --%> 
+		   <source src="http://rndso15.synology.me:8080/hls/${userHashCode}/index.m3u8" type='application/x-mpegURL' label='src' res='src'>
+		   
 	  	</video>
   	</article>
   	
@@ -99,64 +87,53 @@
                     	<div id="alertMsg" class="unvisable_class">
                     		<span> 눌러서 최신메세지 확인 </span>
                     	</div>
+                    	
 
                         <!-- 채팅창 예시 === === ===  -->
 						<%-- 왼쪽에 붙음 --%>
-                        <div class="row msg_container base_receive">
+                   <!-- <div class="row msg_container base_receive">
                             <div class="col-xs-10 col-md-10">
                                 <div class="messages msg_receive">
                                     <p>that mongodb thing looks good, huh?
                                         tiny master db, and huge document store</p>
-                                    <!-- <time datetime="2009-11-13T20:00">Timothy • 51 min</time> -->
+                                    <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- === === === === == ===  -->
 
 						<%-- 오른쪽에 붙음 --%>
-                        <div class="row msg_container base_sent">
+                        <!-- <div class="row msg_container base_sent">
                             <div class="col-md-10 col-xs-10 ">
                                 <div class="messages msg_sent">
                                     <p>that mongodb thing looks good, huh?
                                         tiny master db, and huge document store</p>
-                                    <!-- <time datetime="2009-11-13T20:00">Timothy • 51 min</time> -->
+                                    <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
                                 </div>
                             </div>
                         </div>
-
+ -->
+                        
                     </div>
 
                     <div class="panel-footer">
                         <div class="input-group">
                         <c:choose>
-	                        <c:when test="${loginInfo ne null}">
-	                        	<textarea id="chatting" type="text" 
+	                        <c:when test="${loginInfo.member ne null}">
+	                        	<textarea id="chatting"
+	                        		   wrap="virtual"
 								 	   class="form-control input-sm chat_input"
 	                                   placeholder="Message Line">
 	                            </textarea>
-	                            <!-- <input id="chatting" type="text" 
-								 	   class="form-control input-sm chat_input"
-	                                   placeholder="Message Line" /> -->
+
 	                            <span class="input-group-btn">
 	                                <button id="sendButton" class="btn btn-primary btn-sm" id="btn-chat">Send</button>
 	                            </span>
 	                       </c:when>
 	                       
-	                       	                        <c:when test="${loginInfo ne null}">
-	                        	<textarea id="chatting" type="text" 
-								 	   class="form-control input-sm chat_input"
-	                                   placeholder="Message Line">
-	                            </textarea>
-	                            <!-- <input id="chatting" type="text" 
-								 	   class="form-control input-sm chat_input"
-	                                   placeholder="Message Line" /> -->
-	                            <span class="input-group-btn">
-	                                <button id="sendButton" class="btn btn-primary btn-sm" id="btn-chat">Send</button>
-	                            </span>
-	                       </c:when>
-	                       
-	                       <c:when test="${loginInfo eq null}">
-	                        	<textarea id="chatting" type="text" 
+	                       <c:when test="${loginInfo.member eq null}">
+	                        	<textarea id="chatting"
+	                        		   wrap="virtual"
 								 	   class="form-control input-sm chat_input"
 	                                   placeholder="로그인 후 이용가능합니다.">
 	                            </textarea>
@@ -215,11 +192,12 @@
 			}
 	   }
 	   
-	   if(${loginInfo.user_name eq null}) {
+	   if(${loginInfo.member eq null}) {
 		   $('#chatting').attr({'disabled':'disabled' , 'placeholder' : '로그인 후 사용가능합니다.'});
 	   }
 	   
-	   var sock = new WebSocket("ws://localhost:7070/springmvc/chatHandler.do?id=${id}&user_name=${loginInfo.user_name}");
+	   /* var sock = new WebSocket("ws://localhost:7070/springmvc/chatHandler.do?id=${id}&user_name=${loginInfo.member.m_id}"); */
+	   var sock = new WebSocket("ws://rndso15.synology.me:7070/springmvc/chatHandler.do?id=${id}&user_name=${loginInfo.member.m_id}");
 	   	   /* var sock = new SockJS("http://localhost:7070/springmvc/chatHandler.do"); */
 	  	   /* var sock = new SockJS("/springmvc/chatHandler.do"); */
 		   sock.onopen = function() {
@@ -230,7 +208,7 @@
 					
 					let chatDiv1 = document.createElement('div');
 					chatDiv1.className = "row msg_container base_receive";
-				    if(splitData[0].trim() == '${loginInfo.user_name}'){
+				    if(splitData[0].trim() == '${loginInfo.member.m_id}'){
 						// 본인이 보낸것만 걸러내서 다시 className 재정의
 						chatDiv1.className = "row msg_container base_sent";
 					}

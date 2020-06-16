@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.socket.WebSocketSession;
 
+import com.khfinal.project.member.model.vo.Member;
 import com.khfinal.project.stream.service.streamService;
 import com.khfinal.project.stream.vo.streamVo;
 
@@ -47,11 +48,13 @@ public class streamController {
 		
 		HttpSession session = request.getSession();
 		
+		// loginInfo.member.m_id
 		Map<String,Object> logininfo = (Map<String, Object>) session.getAttribute("loginInfo");
 		if(logininfo != null) {
-			String userHashCode = (String) logininfo.get("user_name") + (String) logininfo.get("m_pass");
+			Member member = (Member) logininfo.get("member");
+			String userHashCode = (String) member.getM_id() + (String) member.getM_pass();
 			mav.addObject("userHashCode" , userHashCode.hashCode());
-			mav.addObject("userid" , logininfo.get("user_name"));
+			mav.addObject("userid" , member.getM_id());
 			
 			mav.setViewName("stream/usersetting");
 		}
@@ -86,12 +89,14 @@ public class streamController {
 
 			// key : id
 			streamservice.put(id , obj);
+			result = 1;	// 방송 시작.
 		}
 		else { 
 			streamVo obj = streamservice.get(id);
 			obj.setId(id);
 			obj.setUserHashCode(userHashCode);
 			obj.setTitle(streamTitle);
+			result = 2;	// 방송 변경
 		}
 		
 		return result;
@@ -106,8 +111,16 @@ public class streamController {
 		int result = 0;
 
 		streamservice.delete(id);
+		result = 1;	// 방송 종료
 		
 		return result;
+	}
+	
+	@RequestMapping("settingPopup")
+	public ModelAndView settingPopup(ModelAndView mav) {
+
+		mav.setViewName("stream/settingPopup");
+		return mav;
 	}
 
 }

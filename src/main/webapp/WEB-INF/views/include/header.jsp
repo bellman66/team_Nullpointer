@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>	
 <header id="header">
 	<div class="container">
-		<div class="row">
+		<div class="np_row">
 			<div class="header">
 				<div class="header_menu">
 					<c:if test="${sessionScope.loginInfo == null }">

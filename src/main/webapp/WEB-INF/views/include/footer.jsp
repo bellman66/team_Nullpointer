@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <footer id="footer">
 	<div class="container">
-		<div class="row">
+		<div class="np_row">
 			<div class="footer">
 				<address>
 					Copyright © <a href="#"><strong>InsertTheTitle</strong></a> 
