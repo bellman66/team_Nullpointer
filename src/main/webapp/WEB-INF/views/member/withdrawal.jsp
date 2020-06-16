@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset=UTF-8">
+<meta charset="UTF-8">
 <meta name="author" content="Team_Nullpointer">
-<title>Stream</title>
+<title>회원 탈퇴</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/style.css" />
 <!-- 웹 폰트 -->
@@ -31,19 +32,25 @@
 	<!-- nav부분 시작 -->
 	<%@ include file="/WEB-INF/views/include/nav.jsp"%>
 	<!-- nav부분 끝 -->
-
 	<!-- content부분 시작 -->
-	<section id="content_str">
-		<article class="stream_box">
+	<section id="content_pg">
+		<article class="withdrawal">
 			<div class="container">
 				<div class="row">
-					<div class="stream_list">
-					
-							
-					
-					</div>
+					<form class="pwdCheck" method="post" 
+						action="<%=request.getContextPath()%>/member/leave.do">
+						<span>회원 탈퇴를 위해 비밀번호를 확인해주세요.<br>비밀번호를 입력하시고 아래 동의란에 체크하신 뒤, 확인 버튼을 누르시면 탈퇴가 완료됩니다.</span>
+						<input id="pwd" name="pwd" type="password" maxlength="30"/>
+						<div class="withdrawal_checkbox">
+							<input type="checkbox" id="customCheck">
+							<label class="check_sentence" for="customCheck">
+								정말로 회원 탈퇴하시겠습니까? 동의 후에는 취소할 수 없습니다.
+							</label>
+						</div>
+						<button type="submit" onclick="return validata()">확인</button>
+					</form>
 				</div>
-			</div>	
+			</div>
 		</article>
 	</section>
 	<!-- content부분 끝 -->
@@ -52,5 +59,9 @@
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 	<!-- footer부분 끝 -->
 
+	<!-- js 링크 -->
+	<!-- mypage 기본 정보 수정, 탈퇴 -->
+	<script type="text/javascript"
+		src="<%=request.getContextPath()%>/resources/js/mypage.js"></script>
 </body>
 </html>

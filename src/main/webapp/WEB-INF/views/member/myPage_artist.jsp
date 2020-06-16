@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,6 +39,8 @@
 			<div class="container">
 				<div class="row">
 					<div class="mypage-box">
+						<!-- 회원정보 수정 부분 -->
+						<form name="mypageForm" method="post" enctype="multipart/form-data">
 							<div class="pageform">
 								<h3>${loginInfo.member.m_id}님의마이페이지</h3>
 
@@ -84,8 +86,8 @@
 												<td class="mypage_text">비밀번호</td>
 												<td><input type="password" name="USER_PWD"
 													id="USER_PWD_MODIFY" class="inputText" class="pw"
-													maxlength="30" /> <span id="pwd-text">영문자 숫자 기호문자의
-														조합으로 8글자 이상 작성해주세요.</span></td>
+													placeholder="${loginInfo.member.m_pass}" maxlength="30" />
+													<span id="pwd-text">영문자 숫자 기호문자의 조합으로 8글자 이상 작성해주세요.</span></td>
 											</tr>
 											<tr>
 												<td class="mypage_text">비밀번호 확인</td>
@@ -99,8 +101,7 @@
 											<tr>
 												<td class="mypage_text">한 줄 소개</td>
 												<td><input type="text" name="WORD" id="WORD"
-													class="inputText" maxlength="50" />
-												</td>
+													placeholder="" class="inputText" maxlength="50" /></td>
 											</tr>
 											<tr>
 												<td class="mypage_text">휴대전화</td>
@@ -137,48 +138,69 @@
 									<hr>
 									<button type="button" class="info_modifybut" onclick="modify()">수정</button>
 									<button type="button" class="user_withdrawal" onclick="withdrawal()">탈퇴</button>
+									<div class="dim-layer">
+										<div class="dimBg"></div>
+										<div id="layer2" class="pop-layer">
+											<div class="pop-container">
+												<div class="pop-conts">
+													<!--content //-->
+													<p class="ctxt mb20">
+														정말로 회원 탈퇴하시겠습니까?<br>탈퇴를 원하시는 경우, 확인을 눌러주세요.
+													</p>
+
+													<div class="btn-r">
+														<a href="#" class="btn-withdrawal">확인</a>
+														<a href="#" class="btn-layerClose">취소</a>
+													</div>
+													<!--// content-->
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
-							<!-- 회원 정보 부분 끝 --> 
-							<!-- 업로드 목록 부분 시작 -->
-							<div class="mypage_upload">
-								<h6>나의 업로드 목록</h6>
-								<ul>
-									<c:forEach items="${uploadList}" var="list" varStatus="listnum">
-										<c:if test= "${listnum.index < 5}">
-											<li><a href="#">${list.au_content}</a></li>
-										</c:if>
-									</c:forEach>
-								</ul>
-								<c:if test="${fn:length(uploadList) > 5}">
-									<a href="#" class="more" title="더 보기">More</a>
-								</c:if>
-							</div>
-							<!-- 업로드 목록 부분 끝 -->
-							<!-- 스케줄 부분 시작 -->
-							<div class="mypage_schedule">
-								<h6>나의 스케줄</h6>
-								<!-- member + schedule 내역 불러와서 foreach로 돌릴 예정 -->
-								<ul>
-									<li><a href="#">member + schedule 내역 불러와서 foreach로 돌릴
-											예정</a></li>
-									<li><a href="#">member + schedule 내역 불러와서 foreach로 돌릴
-											예정</a></li>
-									<li><a href="#">member + schedule 내역 불러와서 foreach로 돌릴
-											예정</a></li>
-									<li><a href="#">member + schedule 내역 불러와서 foreach로 돌릴
-											예정</a></li>
-									<li><a href="#">member + schedule 내역 불러와서 foreach로 돌릴
-											예정</a></li>
-								</ul>
+							<!-- 회원 정보 부분 끝 -->
+						</form>
+						<!-- 회원정보 수정 끝 -->
+						<!-- 업로드 목록 부분 시작 -->
+						<div class="mypage_upload">
+							<h6>나의 업로드 목록</h6>
+							<ul>
+								<c:forEach items="${uploadList}" var="list" varStatus="listnum">
+									<c:if test="${listnum.index < 5}">
+										<li><a href="#">${list.au_content}</a></li>
+									</c:if>
+								</c:forEach>
+							</ul>
+							<c:if test="${fn:length(uploadList) > 5}">
 								<a href="#" class="more" title="더 보기">More</a>
-							</div>
-							<!-- 스케줄 부분 끝 -->
-							<!-- 지원 내역 부분 시작 -->
-							<hr>
-							<div class="mypage_money"></div>
-							<!-- 지원 내역 부분 끝 -->
-						
+							</c:if>
+						</div>
+						<!-- 업로드 목록 부분 끝 -->
+						<!-- 스케줄 부분 시작 -->
+						<div class="mypage_schedule">
+							<h6>나의 스케줄</h6>
+							<!-- member + schedule 내역 불러와서 foreach로 돌릴 예정 -->
+							<ul>
+								<li><a href="#">member + schedule 내역 불러와서 foreach로 돌릴
+										예정</a></li>
+								<li><a href="#">member + schedule 내역 불러와서 foreach로 돌릴
+										예정</a></li>
+								<li><a href="#">member + schedule 내역 불러와서 foreach로 돌릴
+										예정</a></li>
+								<li><a href="#">member + schedule 내역 불러와서 foreach로 돌릴
+										예정</a></li>
+								<li><a href="#">member + schedule 내역 불러와서 foreach로 돌릴
+										예정</a></li>
+							</ul>
+							<a href="#" class="more" title="더 보기">More</a>
+						</div>
+						<!-- 스케줄 부분 끝 -->
+						<!-- 지원 내역 부분 시작 -->
+						<hr>
+						<div class="mypage_money"></div>
+						<!-- 지원 내역 부분 끝 -->
+
 					</div>
 				</div>
 			</div>
@@ -189,12 +211,10 @@
 	<!-- footer부분 시작 -->
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 	<!-- footer부분 끝 -->
-	
+
 	<!-- js 링크 -->
-	<!-- jquery 사용 -->
-	<script type="text/javascript"
-		src="<%=request.getContextPath()%>/resources/js/jquery/jquery-3.4.1.js"></script>
 	<!-- mypage 기본 정보 수정, 탈퇴 -->
-	<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/mypage.js"></script>
+	<script type="text/javascript"
+		src="<%=request.getContextPath()%>/resources/js/mypage.js"></script>
 </body>
 </html>

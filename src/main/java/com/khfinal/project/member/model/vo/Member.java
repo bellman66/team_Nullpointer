@@ -10,6 +10,7 @@ public class Member implements Serializable {
 	private String m_id;
 	private String m_pass;
 	private int m_class;
+	private int m_rating;
 	private String m_name;
 	private String m_nickname;
 	private int m_grade;
@@ -39,19 +40,22 @@ public class Member implements Serializable {
 	private String m_leave_yn;
 	private String original_filepath;
 	private String rename_filepath;
+	// artist 회원 전용 한줄소개
+	private String m_word;
 
 	public Member() {
-
+		// TODO Auto-generated constructor stub
 	}
 
-	public Member(String m_id, String m_pass, int m_class, String m_name, String m_nickname, int m_grade,
+	public Member(String m_id, String m_pass, int m_class, int m_rating, String m_name, String m_nickname, int m_grade,
 			String m_tell1, String m_tell2, String m_tell3, String bith_yy, String bith_mm, String bith_dd,
 			String m_email1, String m_email2, String zipcode, String address, String address_etc, Date m_join_date,
-			String m_leave_yn, String original_filepath, String rename_filepath) {
+			String m_leave_yn, String original_filepath, String rename_filepath, String m_word) {
 		super();
 		this.m_id = m_id;
 		this.m_pass = m_pass;
 		this.m_class = m_class;
+		this.m_rating = m_rating;
 		this.m_name = m_name;
 		this.m_nickname = m_nickname;
 		this.m_grade = m_grade;
@@ -70,6 +74,18 @@ public class Member implements Serializable {
 		this.m_leave_yn = m_leave_yn;
 		this.original_filepath = original_filepath;
 		this.rename_filepath = rename_filepath;
+		this.m_word = m_word;
+	}
+
+	@Override
+	public String toString() {
+		return "Member [m_id=" + m_id + ", m_pass=" + m_pass + ", m_class=" + m_class + ", m_rating=" + m_rating
+				+ ", m_name=" + m_name + ", m_nickname=" + m_nickname + ", m_grade=" + m_grade + ", m_tell1=" + m_tell1
+				+ ", m_tell2=" + m_tell2 + ", m_tell3=" + m_tell3 + ", bith_yy=" + bith_yy + ", bith_mm=" + bith_mm
+				+ ", bith_dd=" + bith_dd + ", m_email1=" + m_email1 + ", m_email2=" + m_email2 + ", zipcode=" + zipcode
+				+ ", address=" + address + ", address_etc=" + address_etc + ", m_join_date=" + m_join_date
+				+ ", m_leave_yn=" + m_leave_yn + ", original_filepath=" + original_filepath + ", rename_filepath="
+				+ rename_filepath + ", m_word=" + m_word + "]";
 	}
 
 	public String getM_id() {
@@ -94,6 +110,14 @@ public class Member implements Serializable {
 
 	public void setM_class(int m_class) {
 		this.m_class = m_class;
+	}
+
+	public int getM_rating() {
+		return m_rating;
+	}
+
+	public void setM_rating(int m_rating) {
+		this.m_rating = m_rating;
 	}
 
 	public String getM_name() {
@@ -240,14 +264,16 @@ public class Member implements Serializable {
 		this.rename_filepath = rename_filepath;
 	}
 
-	@Override
-	public String toString() {
-		return "Member [m_id=" + m_id + ", m_pass=" + m_pass + ", m_class=" + m_class + ", m_name=" + m_name
-				+ ", m_nickname=" + m_nickname + ", m_grade=" + m_grade + ", m_tell1=" + m_tell1 + ", m_tell2="
-				+ m_tell2 + ", m_tell3=" + m_tell3 + ", bith_yy=" + bith_yy + ", bith_mm=" + bith_mm + ", bith_dd="
-				+ bith_dd + ", m_email1=" + m_email1 + ", m_email2=" + m_email2 + ", zipcode=" + zipcode + ", address="
-				+ address + ", address_etc=" + address_etc + ", m_join_date=" + m_join_date + ", m_leave_yn="
-				+ m_leave_yn + ", original_filepath=" + original_filepath + ", rename_filepath=" + rename_filepath
-				+ "]";
+	public String getM_word() {
+		return m_word;
 	}
+
+	public void setM_word(String m_word) {
+		this.m_word = m_word;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
 }

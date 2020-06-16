@@ -10,8 +10,8 @@ body {
 }
 
 #streamContent {
-    width: 80%;
-    min-width: 80%;
+    width: 78%;
+    min-width: 78%;
     height: 100%;
     min-height: 100%;
     float: left;
@@ -24,8 +24,8 @@ body {
 
 
 .chatContent {
-    width: 20%;
-    min-width: 20%;
+    width: 22%;
+    min-width: 22%;
     height: 100%;
     float: left;
 }
@@ -112,8 +112,8 @@ body {
     bottom: 0;
     width: 100%;
     height: 100%;
-    position: fixed;
-    float: right;
+    /* position: fixed;
+    float: right; */
     margin-left: 10px;
 }
 
@@ -241,11 +241,11 @@ img {
 }
 
 #charContent {
-    overflow: scroll;
+   /*  overflow: scroll; */
 }
 
 #charContent #alertMsg {
-    z-index: 99;
+        z-index: 99;
     width: 90%;
     height: 5%;
     text-align: center;
@@ -255,13 +255,13 @@ img {
     font-weight: bold;
     position: absolute;
     color: black;
-    margin-top: 170%;
+    margin-top: 159%;
     /* margin-left: 2.5%; */
     background: grey;
 }
 
 #charContent .visable_class {
-    visibility: vi;
+    visibility: visible;
 }
 
 #charContent .unvisable_class {

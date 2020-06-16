@@ -36,6 +36,26 @@ public class MemberServiceImple implements MemberService {
 		
 		return mdao.loginConfirm(memberMap);
 	}
+
+	@Override
+	public String nickNameCheck(String nickname) {
+		return mdao.nickNameCheck(nickname);
+	}
+
+	@Override
+	public int infoModify(Member member) {
+		return mdao.infoModify(member);
+	}
+
+	@Override
+	public Member reload(String m_id) {
+		return mdao.reload(m_id);
+	}
+
+	@Override
+	public int leave(String m_id) {
+		return mdao.leave(m_id);
+	}
 	
 	
 }
