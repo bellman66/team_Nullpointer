@@ -39,12 +39,8 @@
  		<result property="mClass" column="M_CLASS"/>
  		<result property="renameFilepath" column="RENAME_FILEPATH"/>
  	</resultMap>
-<<<<<<< HEAD
- 	
- 	
-=======
+
  	<update id="leave">
  		update tb_member set m_leave_yn = 'Y' where m_id = #{m_id}
  	</update>
->>>>>>> d12e57369b5d89cf0b5cbe22011ff74842e6978f
   </mapper>
