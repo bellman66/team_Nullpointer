@@ -40,8 +40,7 @@
 				<div class="row">
 					<div class="mypage-box">
 						<!-- 회원정보 수정 부분 -->
-						<form name="mypageForm" method="post"
-							enctype="multipart/form-data">
+						<form name="mypageForm" method="post" enctype="multipart/form-data">
 							<div class="pageform">
 								<h3>${loginInfo.member.m_id}님의마이페이지</h3>
 
@@ -50,8 +49,8 @@
 									<img class="profile"
 										src="/springmvc/resources/upload/${loginInfo.member.rename_filepath}" />
 									<div class="profile_modify">
-										<label for="userPicture" class="pm_file"> <input
-											type="file" name="profile" id="userPicture"
+										<label for="userPicture" class="pm_file"> 
+										<input type="file" name="profile" id="userPicture"
 											accept="image/jpg,image/jpeg,image/png,image/gif,image/bmp" />
 										</label>
 									</div>

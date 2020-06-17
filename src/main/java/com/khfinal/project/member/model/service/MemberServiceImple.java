@@ -51,6 +51,11 @@ public class MemberServiceImple implements MemberService {
 	public Member reload(String m_id) {
 		return mdao.reload(m_id);
 	}
+
+	@Override
+	public int leave(String m_id) {
+		return mdao.leave(m_id);
+	}
 	
 	
 }

@@ -38,7 +38,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="scheadd_table">
-						<div class="scAddTitle" style="width : 100%; height : 100%; text-align: center; font-size: 3.5em; margin-top:15%;">스케줄 입력</div>
+						<div class="scAddTitle">스케줄 입력</div>
 						<br><br>
 						<div class="scStart" style="font-size: 2em;">시작일</div>
 						<form name="sh" action="<%=request.getContextPath()%>/schedule/scheduleadd.do">

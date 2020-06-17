@@ -1,6 +1,5 @@
 package com.khfinal.project.member.controller;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.khfinal.project.artist.model.service.ArtistService;
@@ -194,4 +192,58 @@ public class MemberController {
 
 		return mav;
 	}
+	
+	/**
+	 * @method : withdrawal()
+	 * @date : 2020. 6. 16.
+	 * @buildBy : 박혜연
+	 * @comment : 회원 탈퇴 시, 비밀번호 확인 페이지로 이동
+	 */
+	@RequestMapping("/member/withdrawal.do")
+	public ModelAndView withdrawal(HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("member/withdrawal");
+		
+		return mav;
+	}
+	
+	/**
+	 * @method : leave()
+	 * @date : 2020. 6. 16.
+	 * @buildBy : 박혜연
+	 * @comment : 회원 탈퇴 시, 비밀번호 확인 페이지로 이동
+	 */
+	@RequestMapping("/member/leave.do")
+	public ModelAndView leave(HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		
+		// 비밀번호 입력 후 확인 클릭 시, id와 pwd 넘겨서 동일한 회원의 leave_YN 값 'Y'로 변경
+		HttpSession session = request.getSession();
+		Map<String, Object> loginInfo = (Map<String, Object>) session.getAttribute("loginInfo");
+		Member info = (Member) loginInfo.get("member");
+		
+		// 로그인한 회원의 id와 pwd
+		String m_id = info.getM_id();
+		String m_pass = info.getM_pass();
+		
+		// 확인용으로 입력받은 password
+		String pwd = request.getParameter("pwd");
+		
+		if(m_pass.equals(pwd)) {
+			// 같으면 해당 id 회원의 leave_YN 값 'Y'로 변경
+			int leave = ms.leave(m_id);
+			// header에 위치한 loginInfo 삭제
+			session.removeAttribute("loginInfo");
+			mav.setViewName("main/index");
+		} else {
+			// alert 띄우기
+			mav.addObject("alertMsg", "비밀번호가 올바르지 않습니다. 다시 한 번 확인해주세요.");
+			mav.addObject("url", "/springmvc/member/withdrawal.do");
+			mav.setViewName("common/result");
+		}
+		
+		return mav;
+	}
+	
 }
