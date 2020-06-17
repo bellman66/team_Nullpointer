@@ -44,14 +44,14 @@ public class basicInterceptor implements HandlerInterceptor {
 		if(session.getAttribute("inStreamState") != null) {
 			// 현재스트림의 인원
 			String[] streamSet = (String[]) session.getAttribute("inStreamState");
-			
-			Map<String,Object> people = streamservice.get(streamSet[0]).getPeople();	// 1. 인원체크 
-			String userid = streamSet[1];
-			
-			if(people.get(userid) != null) {	// 현재 인원중 동일 아이디 존재함
-				people.remove(userid);
+			if(streamservice.get(streamSet[0]) != null) {
+				Map<String,Object> people = streamservice.get(streamSet[0]).getPeople();	// 1. 인원체크 
+				String userid = streamSet[1];
+				
+				if(people.get(userid) != null) {	// 현재 인원중 동일 아이디 존재함
+					people.remove(userid);
+				}
 			}
-			
 		}
 		
 		return true;

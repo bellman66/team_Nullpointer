@@ -54,7 +54,7 @@
 	  		 preload="auto"
 	  		 data-setup='{}'
 	  		 muted
-	  		 >
+	  		 poster="<%=request.getContextPath()%>/resources/img/maintest.jpg">
 
 		  <!-- 시놀로지 연결 -->
 	      <%-- <source src="http://localhost:8080/hls/${userHashCode}.m3u8" type='application/x-mpegURL' label='src' res='src'> --%> 

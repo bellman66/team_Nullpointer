@@ -45,18 +45,20 @@ public class streamInterceptor implements HandlerInterceptor {
 		String midString = splitString[3];
 		String streamId = midString.substring(0,midString.length()-3);
 		
-		// 현재스트림의 인원
-		Map<String,Object> people = streamservice.get(streamId).getPeople();
-		
-		if(session.getAttribute("loginInfo") != null) {
-			Member user = (Member) ((Map<String, Object>) session.getAttribute("loginInfo")).get("member");
+		// 스트림이 열려있는지 확인
+		if(streamservice.get(streamId) != null) {	
+			Map<String,Object> people = streamservice.get(streamId).getPeople();
 			
-			// 1. 들어올때마다 카운트 올려줌
-			if(people.get(user.getM_id()) == null) {	// 현재 인원중 동일 아이디 존재 x
-				people.put(user.getM_id() , user.getM_id());
+			if(session.getAttribute("loginInfo") != null) {
+				Member user = (Member) ((Map<String, Object>) session.getAttribute("loginInfo")).get("member");
 				
-				String[] streamSet = {streamId , user.getM_id()};
-				session.setAttribute("inStreamState", streamSet);
+				// 1. 들어올때마다 카운트 올려줌
+				if(people.get(user.getM_id()) == null) {	// 현재 인원중 동일 아이디 존재 x
+					people.put(user.getM_id() , user.getM_id());
+					
+					String[] streamSet = {streamId , user.getM_id()};
+					session.setAttribute("inStreamState", streamSet);
+				}
 			}
 		}
 		
