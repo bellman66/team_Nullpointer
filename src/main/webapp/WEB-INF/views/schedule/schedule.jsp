@@ -117,12 +117,16 @@
 			<div class="container">
 				<div class="row">
 					<c:if test="${rent eq 'rent'}">
-						<div style="text-align:center;font-size:50px;" >메인페이지 영상 스케줄 입니다</div>
+						<div style="text-align:center;font-size:50px;" >&lt;메인페이지 영상 스케줄 입니다 &gt;</div>
 					</c:if>
+					<c:if test="${sessionScope.loginInfo.member.m_class == '1'}">
+						<div style="text-align:center;font-size:50px;" >&lt;메인페이지 영상 스케줄 입니다 &gt;</div>
+					</c:if>
+					
 					<c:if test="${sessionScope.loginInfo != null }">
 						<c:if test="${sessionScope.loginInfo.member.m_class != '1'}">
 							<c:if test="${rent != 'rent'}">
-								<div style="text-align:center;font-size:60px;" >${sessionScope.loginInfo.member.m_nickname}'s Schedule</div>
+								<div style="text-align:center;font-size:60px;" >&lt;${sessionScope.loginInfo.member.m_nickname}'s Schedule&gt;</div>
 							</c:if>
 						</c:if>
 					</c:if>	

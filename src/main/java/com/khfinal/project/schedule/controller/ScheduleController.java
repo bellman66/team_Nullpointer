@@ -142,12 +142,18 @@ public class ScheduleController {
 	}
 	
 	@RequestMapping("/schedule/rentadd.do")
-	public ModelAndView rentAdd(String startYear, String startMonth, String startDay, String startHour, String startMinute, 
+	public ModelAndView rentAdd(HttpServletRequest request, String startYear, String startMonth, String startDay, String startHour, String startMinute, 
 			String endYear, String endMonth, String endDay, String endHour, String endMinute, String as_content,  Schedule schedule) {
 		ModelAndView mav = new ModelAndView();
 		String start =  startYear + startMonth + startDay + startHour + startMinute;
 		String end = endYear + startMonth + startDay + endHour + endMinute;
 		
+		HttpSession session = request.getSession();
+	    Map<String, Object> login =  (Map<String, Object>) session.getAttribute("loginInfo");
+	    Member member = (Member) login.get("member");
+	    
+	    
+	    schedule.setM_id(member.getM_id());
 		schedule.setAs_start_date(start);
 		schedule.setAs_end_date(end);
 		

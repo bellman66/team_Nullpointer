@@ -244,6 +244,16 @@
 							일정 제목 : <input type="text" name="as_content" class="as_content"/>
 							
 							<button class="dbSearch">추가하기</button>
+							<pre style="margin-left:-500px;">
+								<strong>
+								
+								
+								※  메인 페이지 영상 대여는 1시간에 38,000원 입니다!
+								※ 당일 예약은 불가하며 신청시 담당자가 확인 후 확인 전화 드릴 예정이니 전화 확인 부탁드립니다.
+								※ 신청 후 24시간 내 입금이 안될시 자동 취소 될 수 있습니다.
+								※ 가상계좌 : 1002-454-783844(우리은행 김경호)
+								</strong>
+							</pre>
 						<!-- <input class="sub" value="sub" style="display:none;"></input> -->
 						</form>
 					</div>
