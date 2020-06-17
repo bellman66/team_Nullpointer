@@ -6,7 +6,7 @@
 <head>
 <meta charset=UTF-8">
 <meta name="author" content="Team_Nullpointer">
-<title>ArtistPage</title>
+<title>TattooistPage</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/style.css" />
 <!-- 웹 폰트 -->
@@ -38,7 +38,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="tattoform">
-						<form name="tattoForm" action="<%=request.getContextPath()%>/artist/tattopage.do"">
+						<form name="tattoForm" action="<%=request.getContextPath()%>/artist/tattoopage.do">
 							<div class="tatto-Table">
 								<div class="tatto-id">
 									<h3>타투이스트</h3>

@@ -28,7 +28,7 @@ public class ArtistDao {
 	}
 	
 	public List<Map> selectArtList(){
-		return session.selectList("Artist.selectArtList");
+		return session.selectList("Member.selectArtList");
 	}
 
 }

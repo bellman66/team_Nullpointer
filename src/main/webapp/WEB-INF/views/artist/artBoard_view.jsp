@@ -6,7 +6,7 @@
 <head>
 <meta charset=UTF-8">
 <meta name="author" content="Team_Nullpointer">
-<title>At_write</title>
+<title>ArtistBoard_View</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/style.css" />
 <!-- 웹 폰트 -->
@@ -33,59 +33,53 @@
 	<!-- nav부분 끝 -->
 
 	<!-- content부분 시작 -->
-	<section id="content_artwrite">
-		<article class="artwrite_box">
+	<section id="content_artbdview">
+		<article class="artboard_box">
 			<div class="container">
 				<div class="row">
-					<div class="artwrite_table">
+					<div class="artView">
 						<div class="artpath">
 							<h3>소통게시판</h3>
 							<p>소통게시판입니다.</p>
 						</div>
-						<div class="aboardView-table">
-							<form name="artView" action="">
+						<div class="artTable">
+							<form name="aboardView" action="">
 								<table>
 									<tbody>
-
 										<tr>
 											<th id="aview_board">게시판종류</th>
-											<td class="aview_board">
-											<select name="boardType">
-													<option value="art">소통게시판</option>
-													<option value="tatt">후기게시판</option>
-													<option value="share">공유게시판</option>
-													<option value="abbr">홍보게시판</option>
-											</select>
-											</td>
+											<td class="aview_board"></td>
 										</tr>
-
 										<tr>
-											<th id="aview_title">제목</th>
-											<td class="aview_td"><input type="text" class="artTitle"></td>
+											<th class="aview_title">제목</th>
+											<td class="aview_td">B_TITLE</td>
 										</tr>
 										<tr>
 											<th class="aview_writer">작성자</th>
-											<td class="aview_td">M_NICKNAME</td>
+											<td class="aview_td">M_ID</td>
+										</tr>
+										<tr>
+											<th class="aview_Date">작성일</th>
+											<td class="aview_td">B_DATE</td>
 										</tr>
 										<tr>
 											<th class="aview_content">내용</th>
-											<td class="aview_td"><input type="text"
-												class="artContent"></td>
+											<td class="aview_td">B_CONTENT</td>
 										</tr>
 										<tr>
-											<th class="aview_file">파일 등록</th>
-											<td class="aview_td"><input type="file"></td>
+											<th class="aview_file">파일</th>
+											<td class="aview_td">B_FILE</td>
 										</tr>
 										<tr>
-											<th class="aview_link">링크 등록</th>
-											<td class="aview_td"></td>
+											<th class="aview_linke">링크</th>
+											<td class="aview_td">NULL</td>
 										</tr>
 									</tbody>
 								</table>
 							</form>
 							<div class="aboard_btn">
 								<button class="btn_list" type="button">목록</button>
-								<button class="btn_fin" type="button">등록하기</button>
+								<button class="btn_modify" type="button">수정</button>
 								<button class="btn_pass" type="button">취소</button>
 							</div>
 						</div>
@@ -99,6 +93,9 @@
 	<!-- footer부분 시작 -->
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 	<!-- footer부분 끝 -->
+
+	<script type="text/javascript"
+		src="<%=request.getContextPath()%>/resources/js/jquery/jquery-3.4.1.js"></script>
 
 </body>
 </html>

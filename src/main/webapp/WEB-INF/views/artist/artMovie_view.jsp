@@ -6,7 +6,7 @@
 <head>
 <meta charset=UTF-8">
 <meta name="author" content="Team_Nullpointer">
-<title>ArtistMove_list</title>
+<title>ArtistBoard_View</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/style.css" />
 <!-- 웹 폰트 -->
@@ -33,55 +33,40 @@
 	<!-- nav부분 끝 -->
 
 	<!-- content부분 시작 -->
-	<section id="content_artboard">
-		<article class="artboard_box">
+	<section id="content_artmvView">
+		<article class="artmvView_box">
 			<div class="container">
 				<div class="row">
-					<div class="artboard_form">
-						<div class="artboard-table">
-							<form>
-								<table>
-									<colgroup>
-										<!-- 넓이 지정  -->
-										<col width="6%">
-										<col width="45%">
-										<col width="15%">
-										<col width="10%">
-									</colgroup>
-
-									<thead>
-										<tr>
-											<th id="artNo">번호</th>
-											<th id="artTitle">제목</th>
-											<th id="artWriter">작성자</th>
-											<th id="artDate">등록일</th>
-										</tr>
-									</thead>
-
-									<tbody>
-										<tr>
-											<td class="artNo"></td>
-											<td class="artTitle"></td>
-											<td class="artWriter"></td>
-											<td class="artDate"></td>
-										</tr>
-									</tbody>
-								</table>
-							</form>
+					<div class="artView">
+						<div class="artpath">
+							<h3>공연영상</h3>
+							<p>공연영상게시판입니다.</p>
 						</div>
-
-						<!-- 검색 창 -->
-						<div class="artSearch">
-							<form>
-								<select name="searchType">
-									<option value="write">작성자</option>
-									<option value="title">제목</option>
-									<option value="wrti">작성자 + 제목</option>
-								</select> <input class="art_searchText" type="text" name="searchWord" />
-								<button class="art_searchbar">검색</button>
+						<div class="artTable">
+							<form name="aMovieView" action="">
+								<div class="amovieForm">
+									<div id="aview_board">게시판종류</div>
+									<div class="aview_board">b_Category</div>
+									<!-- 공연사진값을 안의 div에 던져주자!!! 스크립트랑 css로 잡아줄것! -->
+									<div class="av_view">
+										<div>slick1</div>
+										<div>slick2</div>
+										<div>slick3</div>
+										<div>slick4</div>
+										<div>slick5</div>
+									</div>
+									<!-- 공연사진값을 안의 div에 던져주자!!! -->
+								</div>
 							</form>
+							
+
+							<!-- 목록, 수정(작성한 아이디만), 취소 -->
+							<div class="aboard_btn">
+								<button class="btn_list" type="button">목록</button>
+								<button class="btn_modify" type="button">수정</button>
+								<button class="btn_pass" type="button">취소</button>
+							</div>
 						</div>
-						<!-- 검색 창 -->
 					</div>
 				</div>
 			</div>
@@ -93,5 +78,8 @@
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 	<!-- footer부분 끝 -->
 
+	<script type="text/javascript"
+		src="<%=request.getContextPath()%>/resources/js/jquery/jquery-3.4.1.js"></script>
+	
 </body>
 </html>

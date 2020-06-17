@@ -30,11 +30,21 @@
  	<select id="reload" resultType="Member">
  		select * from tb_member where m_id = #{m_id}
  	</select>
+ 	
+ 	<select id="selectArtList" parameterType="map" resultType="Member">
+ 		select M_CLASS, M_NICKNAME, RENAME_FILEPATH from TB_MEMBER where M_CLASS = 2 and M_CLASS = 3
+ 	</select>
+ 	
  	<resultMap type="Member" id="Member">
  		<result property="mClass" column="M_CLASS"/>
  		<result property="renameFilepath" column="RENAME_FILEPATH"/>
  	</resultMap>
+<<<<<<< HEAD
+ 	
+ 	
+=======
  	<update id="leave">
  		update tb_member set m_leave_yn = 'Y' where m_id = #{m_id}
  	</update>
+>>>>>>> d12e57369b5d89cf0b5cbe22011ff74842e6978f
   </mapper>

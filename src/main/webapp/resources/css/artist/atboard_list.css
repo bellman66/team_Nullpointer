@@ -1,12 +1,116 @@
 @charset "UTF-8";
 
-#content_artboard{
+#content_artboard {
 	background-color: #fff;
 	font-family: sans-serif;
 }
 
-.artboard_form{
+.artboard_form {
 	width: 100%;
 	height: 890px;
+	
+}
+
+/* 게시판 부분 */
+.artboard_form .artboard-table {
+	height: 650px;
 	border: 1px solid red;
+}
+
+.artboard_form .artboard-table h3{
+	font-size:23px;
+	font-weight: 800;
+	font-family: sans-serif;
+	color:#0c0c13;
+	padding-top:2%;
+	padding-left:2%;
+}
+
+.artboard_form .artboard-table table{
+    width:90%;
+    height: 600px;
+    margin:2%;
+    padding-left:40px;
+   
+}
+
+.artboard_form .artboard-table th {
+    height:40px;
+	font-size: 15px;
+	font-weight: 800;
+	font-family: sans-serif;
+	color: #fff;
+	background: #0c0c13;
+}
+
+.artboard_form .artboard-table td {
+	font-size: 15px;
+	font-family: sans-serif;
+	color: #0c0c13;
+	padding:1%;
+	border-bottom:1px solid #828282;
+}
+
+/* 게시판 검색부분 */
+.artboard_form .artSearch {
+	width:40%;
+	padding:1%;
+	top:8.5%;
+	margin-left:30%;
+	position:relative;
+}
+
+.artboard_form .artSearch select {
+    width:22%;
+    height:30px;
+	font-size: 14px;
+	font-family: sans-serif;
+	text-align:center;
+	padding:5px;
+	color: #0c0c13;
+}
+
+.artboard_form .artSearch .art_searchText {
+	width:45%;
+	height:27px;
+	font-size: 14px;
+	font-family: sans-serif;
+	color: #0c0c13;
+	padding-left:5px;
+}
+
+.artboard_form .artSearch .art_searchbar {
+	width:20%;
+	height:30px;
+	padding:5px;
+	font-size: 14px;
+	font-family: sans-serif;
+	text-align:center;
+	color:#fff;
+	background-color: #0c0c13;
+}
+
+.artboard_form .artSearch .art_searchbar:hover{
+	color:#0c0c13;
+	background-color:#fff;
+	padding:5px;
+	border:1px solid #0c0c13;
+}
+
+.artboard_form .atwrite{
+	width:10%;
+	height:30px;
+	font-size: 14px;
+	font-family: sans-serif;
+    float:right;
+    margin-top:3%;
+    margin-right:20px;
+	color:#fff;
+	background-color: #0c0c13;
+}
+
+.artboard_form .atwrite:hover{
+	color:#0c0c13;
+	background-color:#fff;
+	border:1px solid #0c0c13;
 }

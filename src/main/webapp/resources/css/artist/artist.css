@@ -15,7 +15,7 @@
 .artist_tab #artmenu {
 	width: 100%;
 	height: 90px;
-	/* border: 1px solid blue; */
+	/*border: 1px solid blue; */
 }
 
 .artist_tab #artmenu #art_sub {
@@ -27,8 +27,7 @@
 	width: 48%;
 	height: 60px;
 	float: left;
-	margin-top: 1%;
-	margin-right: 1%;
+	margin: 1%;
 }
 
 .artist_tab #artmenu #art_sub a {
@@ -92,13 +91,22 @@
 	font-family: sans-serif;
 	font-size: 14px;
 	display: block;
-	margin-top: 15px;
+	margin-top: 17px;
 	margin-left: 5px;
 	height: 20px;
 	line-height: 20px;
 	color: #0c0c13;
 	height: 20px;
 }
+
+.artist_tab #subContent .grid .btn_link .btn_ani{
+    /* border:1px solid blue; */
+    position:absolute;
+    top:203px;
+    left:187px;
+    display: block;   
+}
+
 .artist_tab #subContent .grid .btn_link .btn_ani a{
 	display: inline-block;
 	width: 32px;
@@ -106,35 +114,63 @@
 	margin-left:7px;
 }
 
-.artist_tab #subContent .grid .btn_link .btn_ani .arrow {
+.artist_tab #subContent .grid .btn_link .btn_ani .arrow{
 	display: inline-block;
 	width: 32px;
 	height: 32px;
-	color: #fff;
-	border:1px solid red;
-	background-image: url("../../resources/img/icon/home.png");
+	/* border:1px solid red; */
 }
 
-/* 더보기 버튼 */
+.artist_tab #subContent .grid .btn_link .btn_ani .arrow:hover{
+	display:inline-block;
+}
+
+
+/* 페이징 처리 */
 .artist_tab .page_btn {
-	margin-top: 20px;
+	width:40%;
+	display:block;
+	margin:1% 0 0 34%;
 	text-align: center;
+	border: 1px solid red;
 }
 
-.artist_tab .page_btn .btnMore {
-	margin: 0 auto;
-}
-
-.artist_tab .page_btn #btnMore {
-	width: 220px;
-	height: 54px;
-	margin:0 auto;
-	display: block;
-	line-height: 54px;
+.artist_tab .page_btn a{
 	font-size: 16px;
 	font-weight: 500;
-	text-align: center;
 	color: #0c0c13;
-	border: 1px solid #0c0c13;
-	box-sizing: border-box;
+}
+
+.artist_tab .page_btn a:hover{
+	color: #f5b041;
+}
+
+
+/* 검색하기  */
+.artist_tab .tabSeach{
+	width:38%;
+	padding:5px;
+	margin:2% 0 0 35%;
+	font-size:15px;
+	font-family:sans-serif;
+	border:1px solid green;
+}
+
+.artist_tab .tabSeach .titSeach{
+	width:55%;;
+	height:22px;
+}
+
+.artist_tab .tabSeach .titSeachVar{
+	width:25%;
+	height:26px;
+	margin:0 auto;
+	color:#fff;
+	background:#0c0c13;
+}
+
+.artist_tab .tabSeach .titSeachVar:hover{
+	color:#0c0c13;
+	background:#fff;
+	border:1px solid #0c0c13;
 }
