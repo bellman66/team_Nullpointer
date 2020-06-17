@@ -37,39 +37,60 @@ public class ArtistController {
 		return mav;
 	}
 
-	// artist main페이지에서 선택한 아티스트의 개인 페이지로 넘어야합니다.
+	/**
+	 * @method : artistpage
+	 * @date : 2020. 6. 17.
+	 * @buildBy : hajin
+	 * @comment : artist main페이지에서 선택한 아티스트의 개인 페이지로 넘어야합니다.
+	 */
 	@RequestMapping("/artist/artistpage.do")
-	public ModelAndView artistpage() {
+	public ModelAndView artpageList() {
 		ModelAndView mav = new ModelAndView();
 
 		mav.setViewName("artist/artistPage_Art");
 		return mav;
 	}
 	
-	// artist main페이지에서 선택한 타투이스트의 개인 페이지로 넘어야합니다.
-	@RequestMapping("/artist/tattopage.do")
-	public ModelAndView tattopage() {
+	/**
+	 * @method : tattopage
+	 * @date : 2020. 6. 17.
+	 * @buildBy : hajin
+	 * @comment : artist main페이지에서 선택한 타투이스트의 개인 페이지로 넘어야합니다.
+	 */
+	@RequestMapping("/artist/tattoopage.do")
+	public ModelAndView tattpageList() {
 		ModelAndView mav = new ModelAndView();
 		
-		mav.setViewName("artist/artistPage_Ta");
+		mav.setViewName("artist/artistPage_Ta"); 
 		return mav;
 	}
 
-	// 아티스트 영상
+	/**
+	 * @method : artistvideo
+	 * @date : 2020. 6. 17.
+	 * @buildBy : hajin
+	 * @comment : 아티스트 영상 목록을 받아!!
+	 */
 	@RequestMapping("/artist/artistvideo.do")
 	public ModelAndView artistvideo() {
 		ModelAndView mav = new ModelAndView();
 
-		mav.setViewName("artist/artMove");
+		mav.setViewName("artist/artMovieList");
 		return mav;
 	}
 
-	// 아티스트 사진
+	// 
+	/**
+	 * @method : artistphoto
+	 * @date : 2020. 6. 17.
+	 * @buildBy : hajin
+	 * @comment : 아티스트 사진목록을 받아!!
+	 */
 	@RequestMapping("/artist/artistphoto.do")
 	public ModelAndView artistphoto() {
 		ModelAndView mav = new ModelAndView();
 
-		mav.setViewName("artist/artPhoto");
+		mav.setViewName("artist/artPhotoList");
 		return mav;
 	}
 
@@ -82,12 +103,17 @@ public class ArtistController {
 		return mav;
 	}
 
-	// 아티스트 게시판
-	@RequestMapping("/artist/artistboard.do")
-	public ModelAndView artistboard() {
+	/**
+	 * @method : aboardList
+	 * @date : 2020. 6. 17.
+	 * @buildBy : hajin
+	 * @comment : 아티스트 게시판목록을 받아!!
+	 */
+	@RequestMapping("/artist/artboardlist.do")
+	public ModelAndView aboardList() {
 		ModelAndView mav = new ModelAndView();
 
-		mav.setViewName("artist/artBoard");
+		mav.setViewName("artist/artboardList");
 		return mav;
 	}
 }

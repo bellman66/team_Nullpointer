@@ -53,30 +53,24 @@
 							<div id="tab1" class="content">
 								<!-- artTab 부분  -->
 								<!-- artist페이지에서 au_type에 따라 뮤지션과 타투이스트로 나눠서 뿌려줄꺼야! -->
-								<form name="artTab" method="post" action="<%=request.getContextPath()%>/artist/artistpage.do">
+								<form name="artTab"
+									action="<%=request.getContextPath()%>/artist/artistpage.do">
 									<ul class="grid">
-										<!-- 뮤지션 시작! -->
-										<li class="btn_link"><span class="img_box"
-											style="background:url(<%=request.getContextPath()%>/resources/img/artist/bus.jpg)no-repeat"></span>
-											<span class="title">
-											<a href="<%=request.getContextPath()%>/artist/artistpage.do">
-													<!-- artist -> alist -> List<Map> -> M_Id 순서 --> 
-													<c:forEach items="${artist}" var="alist">
-														<c:forEach items="${alist}" var="map">
-															<c:forEach items="${map}" var="entry">
-															${entry.value}
-															</c:forEach>
-														</c:forEach>
-													</c:forEach>
-											</a></span>
+										<!-- 뮤지션 시작!M_Class = 2 -->
+										<li class="btn_link">
+										<span class="img_box" style="background:url(<%=request.getContextPath()%>/resources/img/artist/bus.jpg)"></span>
+											<span class="title"> <!-- artist -> alist -> List<Map> -> M_Id 순서 -->
+											</span>
 											<div class="btn_ani">
-												<a href="<%=request.getContextPath()%>/artist/artistpage.do">
-													<span class="arrow"></span>
+												<a href="<%=request.getContextPath()%>/artist/artistpage.do"
+													class="btn_link" target="_blank"> 
+													<span class="arrow">
+														<img src="<%=request.getContextPath()%>/resources/img/icon/arrow.png" />
+												</span>
 												</a>
-											</div></li>
+											</div>
+											</li>
 										<!-- 뮤지션 끝! -->
-
-
 									</ul>
 								</form>
 								<!-- artTab 부분  -->
@@ -85,83 +79,23 @@
 
 							<!-------- 타투이스트 게시판 시작! -------->
 							<div id="tab2" class="content">
-								<form name="taTab" action="">
+								<form name="taTab" action="<%=request.getContextPath()%>/artist/tattoopage.do">
 									<ul class="grid">
-
-										<!-- 1번째 타투이스트 시작 -->
+										<!-- 타투이스트 시작! M_Class=3 -->
 										<li class="btn_link"><span class="img_box"
-											style="background: url(<%=request.getContextPath()%>/resources/img/tattoo/dan.jpg)no-repeat"></span>
-											<span class="title">dan_tattooer</span>
+											style="background: url(<%=request.getContextPath()%>/resources/img/tattoo/dan.jpg)"></span>
+											<span class="title">
+											</span>
 											<div class="btn_ani">
-												<a href="#" class="btn_link" target="_blank"> <span
-													class="home"></span>
+												<a href="<%=request.getContextPath()%>/artist/tattopage.do"
+													class="btn_link" target="_blank"> 
+													<span class="arrow">
+														<img src="<%=request.getContextPath()%>/resources/img/icon/arrow.png" />
+												</span>
 												</a>
-											</div></li>
-										<!-- 1번째 타투이스트 끝 -->
-										<!-- 2번째 타투이스트 시작 -->
-										<li class="btn_link"><span class="img_box" style=""></span>
-											<span class="title">Mabi tattooer</span>
-											<div class="btn_ani">
-												<a href="#" class="btn_link" target="_blank"> <span
-													class="home"></span>
-												</a>
-											</div></li>
-										<!-- 2번째 타투이스트 끝 -->
-										<!-- 3번째 타투이스트 시작 -->
-										<li class="btn_link"><span class="img_box" style=""></span>
-											<span class="title">Bktattoo</span>
-											<div class="btn_ani">
-												<a href="#" class="btn_link" target="_blank"> <span
-													class="home"></span>
-												</a>
-											</div></li>
-										<!-- 3번째 타투이스트 끝 -->
-										<!-- 4번째 타투이스트 시작 -->
-										<li class="btn_link"><span class="img_box" style=""></span>
-											<span class="title">타투이스트4</span>
-											<div class="btn_ani">
-												<a href="#" class="btn_link" target="_blank"> <span
-													class="home"></span>
-												</a>
-											</div></li>
-										<!-- 4번째 타투이스트 끝 -->
-										<!-- 5번째 타투이스트 시작 -->
-										<li class="btn_link"><span class="img_box" style=""></span>
-											<span class="title">타투이스트5</span>
-											<div class="btn_ani">
-												<a href="#" class="btn_link" target="_blank"> <span
-													class="home"></span>
-												</a>
-											</div></li>
-										<!-- 5번째 타투이스트 끝 -->
-										<!-- 6번째 타투이스트 시작 -->
-										<li class="btn_link"><span class="img_box" style=""></span>
-											<span class="title">타투이스트6</span>
-											<div class="btn_ani">
-												<a href="#" class="btn_link" target="_blank"> <span
-													class="home"></span>
-												</a>
-											</div></li>
-										<!-- 6번째 타투이스트 끝 -->
-										<!-- 7번째 타투이스트 시작 -->
-										<li class="btn_link"><span class="img_box" style=""></span>
-											<span class="title">타투이스트7</span>
-											<div class="btn_ani">
-												<a href="#" class="btn_link" target="_blank"> <span
-													class="home"></span>
-												</a>
-											</div></li>
-										<!-- 7번째 타투이스트 끝 -->
-										<!-- 8번째 타투이스트 시작 -->
-										<li class="btn_link"><span class="img_box" style=""></span>
-											<span class="title">타투이스트8</span>
-											<div class="btn_ani">
-												<a href="#" class="btn_link" target="_blank"> <span
-													class="home"></span>
-												</a>
-											</div></li>
-										<!-- 8번째 타투이스트 끝 -->
-
+											</div>
+											</li>
+										<!-- 타투이스트 끝! -->
 									</ul>
 								</form>
 								<!-- taTab부분 -->
@@ -170,11 +104,17 @@
 						</div>
 						<!-- artist부분  -->
 
-						<!-- 더보기 버튼  -->
+						<!-- 검색과 페이징 처리  -->
+						<!-- 페이징  -->
 						<div class="page_btn">
-							<a href="#" id="btnMore">More</a>
+							<a href="#">페이지번호</a>
 						</div>
 
+						<!-- 검색 -->
+						<div class="tabSeach">
+							<input type="text" class="titSeach">
+							<button type="button" class="titSeachVar">검색</button>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -39,7 +39,9 @@
 				<div class="row">
 					<div class="artboard_form">
 						<div class="artboard-table">
-							<form>
+							<form name="artboard"
+								action="<%=request.getContextPath()%>/artist/artboardlist.do">
+								<h3>소통 게시판</h3>
 								<table>
 									<colgroup>
 										<!-- 넓이 지정  -->
@@ -58,21 +60,32 @@
 										</tr>
 									</thead>
 
+									<!-- forEach로 돌릴꺼에욤 소통게시판 B_CATEGORY = 3 / 후기게시판 B_CATEGORY = 4 -->
 									<tbody>
 										<tr>
 											<td class="artNo"></td>
-											<td class="artTitle"></td>
+											<td class="artTitle"><a href="#"></a></td>
 											<td class="artWriter"></td>
 											<td class="artDate"></td>
 										</tr>
 									</tbody>
+									<!-- forEach로 돌릴꺼에욤 소통게시판 B_CATEGORY = 3 / 후기게시판 B_CATEGORY = 4 -->
 								</table>
+
+								<button class="atwrite" type="button">글쓰기</button>
+
 							</form>
 						</div>
 
+						<!-- 페이징 처리 기능부분  -->
+						<div class="artPaging">
+							<a href="#">페이지처리할꺼임</a>
+						</div>
+						<!-- 페이징 처리 기능부분  -->
+
 						<!-- 검색 창 -->
 						<div class="artSearch">
-							<form>
+							<form name="atsearch">
 								<select name="searchType">
 									<option value="write">작성자</option>
 									<option value="title">제목</option>
@@ -82,6 +95,7 @@
 							</form>
 						</div>
 						<!-- 검색 창 -->
+
 					</div>
 				</div>
 			</div>
@@ -92,6 +106,12 @@
 	<!-- footer부분 시작 -->
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 	<!-- footer부분 끝 -->
+
+	<!-- JavaScript -->
+	<script type="text/javascript"
+		src="<%=request.getContextPath()%>/resources/js/jquery/jquery-3.4.1.js"></script>
+
+	
 
 </body>
 </html>

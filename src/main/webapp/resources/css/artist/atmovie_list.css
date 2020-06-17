@@ -1,6 +1,145 @@
 @charset "UTF-8";
 
 /* content_art */
-.artist_box{
-	height: 900px;
+#content_artmovie {
+	background-color: #fff;
+	font-family: sans-serif;
 }
+
+.artmovie_list {
+	height: 950px;
+	/* border: 1px solid blue; */
+}
+
+/* 영상 게시판 부분 */
+.artmovie_list h3 {
+	font-size: 23px;
+	font-weight: 800;
+	color: #0c0c13;
+	padding-top: 5%;
+	padding-left: 2%;
+	/* border: 1px solid red; */
+}
+
+.artmovie_list .amovie_board {
+	height: 570px;
+	margin:2%;
+	padding:1%;
+}
+
+.artmovie_list .amovie_board li {
+	width: 22%;
+	height: 270px;
+	float: left;
+	margin: 1%;
+	overflow: hidden;
+	position: relative;
+	margin-bottom: 1%;
+	background: #fff;
+	border-radius: 5px;
+	border: 1px solid #0c0c13;
+	box-shadow: 0 1px 4px rgba(0, 0, 0.1, 0.3);
+}
+
+.artmovie_list .amovie_board li span {
+	padding: 1%;
+	font-size: 15px;
+	font-weight: 600;
+	padding-left:5px;
+	color: #0c0c13;
+}
+
+.artmovie_list .amovie_board li .movie_box img{
+	width:90%;
+	height:180px;
+	padding:10px 10px 5px 5px;
+	/* border:1px solid cyan; */
+}
+
+/* 페이징 처리 기능부분,검색 창은 동일 class값 사용 */
+
+/* 글쓰기 버튼 */
+.artmovie_list .atwrite {
+	width:10%;
+	height:30px;
+	font-size: 14px;
+	font-family: sans-serif;
+    float:right;
+    margin-top:5.5%;
+    border-radius:5px;
+	color:#fff;
+	background-color: #0c0c13;
+}
+
+.artmovie_list .atwrite:hover{
+	color:#0c0c13;
+	background-color:#fff;
+	border:1px solid #0c0c13;
+}
+
+/* 페이징처리부분 */
+.artmovie_list .artPaging {
+	width:10%;
+	padding:5px;
+	margin:1% 0 2% 45%;
+	border:1px solid blue;
+}
+
+.artmovie_list .artPaging a{
+	font-size:12px;
+	font-family:sans-serif;
+	color: #0c0c13;
+	display: block;
+}
+
+.artmovie_list .artPaging a:hover{
+	color: #f5b041;
+}
+
+/* 검색창 부분 */
+.artmovie_list .artSearch {
+	width: 40%;
+	padding: 1%;
+	top: 8.5%;
+	margin-left: 30%;
+	position: relative;
+	/*border: 1px solid green;*/
+}
+
+.artmovie_list .artSearch select {
+	width: 22%;
+	height: 30px;
+	font-size: 14px;
+	font-family: sans-serif;
+	text-align: center;
+	padding: 5px; 
+	color: #0c0c13;
+}
+
+.artmovie_list .artSearch .art_searchText {
+	width: 45%;
+	height: 27px;
+	font-size: 14px;
+	font-family: sans-serif;
+	color: #0c0c13;
+	padding-left: 5px;
+}
+
+.artmovie_list .artSearch .art_searchbar {
+	width: 20%;
+	height: 30px;
+	padding: 5px;
+	font-size: 14px;
+	text-align: center;
+	border-radius:5px;
+	color: #fff;
+	background-color: #0c0c13;
+}
+
+.artmovie_list .artSearch .art_searchbar:hover {
+	color: #0c0c13;
+	background-color: #fff;
+	padding: 5px;
+	border: 1px solid #0c0c13;
+}
+

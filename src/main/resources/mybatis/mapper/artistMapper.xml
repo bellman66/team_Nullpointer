@@ -17,11 +17,11 @@
 		TB_ARTIST_UPLOAD where m_id = #{m_id}
 	</select>
 
-	<select id="selectArtList" resultMap="Artist" parameterType="Artist">
+	<!-- <select id="selectArtList" resultMap="Artist" parameterType="Artist">
 		select DISTINCT A.*, B.M_CLASS, B.RENAME_FILEPATH FROM
 		TB_MEMBER B INNER JOIN TB_ARTIST_UPLOAD A ON #{A.M_ID} = #{B.M_ID}
 		WHERE AU_TYPE=1
-	</select>
+	</select> -->
 
 	<resultMap type="Artist" id="Artist">
 		<result property="auNum" column="AU_NUM" />

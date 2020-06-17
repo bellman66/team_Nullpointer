@@ -17,12 +17,10 @@
 @import "artist/artist.css";
 @import "artist/artpage.css";
 @import "artist/tatoopage.css";
-@import "atboard_list.css";
+@import "artist/atboard_list.css";
 @import "artist/atmovie_list.css";
-@import "artist/atmovie_read.css";
 @import "artist/atphoto_list.css";
-@import "artist/atphoto_read.css";
-@import "artist/atmoive_write.css";
+@import "artist/at_Read.css";
 @import "artist/at_write.css";
 @import "artist/atschedule.css";
 
