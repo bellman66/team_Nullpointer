@@ -39,5 +39,6 @@
    </websocket:handlers> -->
    
    <beans:import resource="chat-context.xml"/>
+   <beans:import resource="interceptor-context.xml"/>
 	
 </beans:beans>

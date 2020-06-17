@@ -85,6 +85,7 @@ public class streamController {
 			obj.setId(id);
 			obj.setUserHashCode(userHashCode);
 			obj.setTitle(streamTitle);
+			obj.setPeople(new HashMap<String, Object>());
 			obj.setSessionList(new ArrayList<WebSocketSession>());
 
 			// key : id

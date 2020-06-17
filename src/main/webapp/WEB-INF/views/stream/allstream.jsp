@@ -97,7 +97,8 @@
 	                    
 	                        <div class="img-event">
 	                        	<a href="/springmvc/streamMapping/${vo.id}.do">
-	                            	<img class="group list-group-image img-fluid" src="http://rndso15.synology.me:8080/hls/${vo.userHashCode}/${vo.userHashCode}_thumbnail.png" alt="" />
+	                            	<img class="group list-group-image img-fluid" src="http://rndso15.synology.me:8080/hls/${vo.userHashCode}/${vo.userHashCode}_thumbnail.png"
+	                            		 onerror="this.src='<%=request.getContextPath()%>/resources/img/maintest.jpg'" alt="" />
 	                        	</a>
 	                        </div>
 	                        
@@ -105,7 +106,7 @@
 	                            <h4 class="group card-title inner list-group-item-heading">
 	                                <c:out value='${vo.title}'/>
 	                            </h4>
-	                            <span> <c:out value='${vo.sessionList.size()}'/> </span>
+	                            <span> <c:out value='${vo.people.size()}'/> </span>
 	                            <p class="group inner list-group-item-text">
                                 	<c:out value='${vo.id}'/>
                                 </p>
