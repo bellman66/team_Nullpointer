@@ -33,50 +33,37 @@
 	<!-- nav부분 끝 -->
 
 	<!-- content부분 시작 -->
-	<section id="content_artbdview">
-		<article class="artboard_box">
+	<section id="content_artphView">
+		<article class="artphView_box">
 			<div class="container">
 				<div class="row">
 					<div class="artView">
 						<div class="artpath">
-							<h3>소통게시판</h3>
-							<p>소통게시판입니다.</p>
+							<h3>공연사진</h3>
+							<p>공연사진게시판입니다.</p>
 						</div>
 						<div class="artTable">
-							<form name="aboardView" action="">
-								<table>
-									<tbody>
-										<tr>
-											<th id="aview_board">게시판종류</th>
-											<td class="aview_board"></td>
-										</tr>
-										<tr>
-											<th class="aview_title">제목</th>
-											<td class="aview_td">B_TITLE</td>
-										</tr>
-										<tr>
-											<th class="aview_writer">작성자</th>
-											<td class="aview_td">M_ID</td>
-										</tr>
-										<tr>
-											<th class="aview_Date">작성일</th>
-											<td class="aview_td">B_DATE</td>
-										</tr>
-										<tr>
-											<th class="aview_content">내용</th>
-											<td class="aview_td">B_CONTENT</td>
-										</tr>
-										<tr>
-											<th class="aview_file">파일</th>
-											<td class="aview_td">B_FILE</td>
-										</tr>
-										<tr>
-											<th class="aview_linke">링크</th>
-											<td class="aview_td">NULL</td>
-										</tr>
-									</tbody>
-								</table>
+							<form name="aPhotoView" action="">
+								<div class="aphotoForm">
+									<div id="aview_board">게시판종류</div>
+									<div class="aview_board">b_Category</div>
+									<!-- 공연사진값을 안의 div에 던져주자!!! 스크립트랑 css로 잡아줄것! -->
+									<div class="av_view">
+										<div>slick1</div>
+										<div>slick2</div>
+										<div>slick3</div>
+										<div>slick4</div>
+										<div>slick5</div>
+										<div>slick6</div>
+										<div>slick7</div>
+										<div>slick8</div>
+									</div>
+									<!-- 공연사진값을 안의 div에 던져주자!!! -->
+								</div>
 							</form>
+							
+
+							<!-- 목록, 수정(작성한 아이디만), 취소 -->
 							<div class="aboard_btn">
 								<button class="btn_list" type="button">목록</button>
 								<button class="btn_modify" type="button">수정</button>
@@ -96,6 +83,6 @@
 
 	<script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/jquery/jquery-3.4.1.js"></script>
-
+	
 </body>
 </html>
