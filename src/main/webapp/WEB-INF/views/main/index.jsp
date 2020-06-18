@@ -39,11 +39,22 @@
 			<div class="container">
 				<div class="row">
 					<div class="main_rent">
-						<h1>Artist 홍보 영상</h1>
-						<div class="rentVideo">
-							<img alt="test"
-								src="<%=request.getContextPath()%>/resources/img/maintest.jpg" />
-						</div>
+						<c:if test="${topStream ne null}">
+							<h1>Top Stream Live On</h1>
+							<div class="rentVideo">
+								<img alt="test"
+									src="http://rndso15.synology.me:8080/hls/${topStream.userHashCode}/${topStream.userHashCode}_thumbnail.png" 
+									onerror="this.src='<%=request.getContextPath()%>/resources/img/maintest.jpg'" />
+							</div>
+						</c:if>
+						
+						<c:if test="${topStream eq null}">
+							<h1>Top Stream Live</h1>
+							<div class="rentVideo">
+								<img alt="test"
+									src="<%=request.getContextPath()%>/resources/img/maintest.jpg" />
+							</div>
+						</c:if>
 					</div>
 				</div>
 			</div>

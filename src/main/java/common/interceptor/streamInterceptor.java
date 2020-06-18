@@ -1,5 +1,7 @@
 package common.interceptor;
 
+import java.util.Map;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -7,8 +9,13 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.khfinal.project.member.model.vo.Member;
+import com.khfinal.project.stream.service.streamService;
+import com.khfinal.project.stream.vo.streamVo;
 
 // interceptor 
 // DispatcherSerclet이 컨트롤러를 호출하기 전에
@@ -17,9 +24,11 @@ import org.springframework.web.servlet.ModelAndView;
 // servletContainer -> filter(서블릿 호출하기 전에 요청을 가로챌수 있다.) -> servlet 
 // -> interceptor(서블릿이 컨트롤러를 호출하기 전에 요청을 가로챌수 있다.) -> controller
 // 이벤트 발생시 Listener가 호출
-public class AuthInterceptor implements HandlerInterceptor {
+public class streamInterceptor implements HandlerInterceptor {
 
-	private Logger logger = LoggerFactory.getLogger(AuthInterceptor.class);
+	@Autowired
+	streamService streamservice;
+	private Logger logger = LoggerFactory.getLogger(streamInterceptor.class);
 	
 	// 컨트롤러 수행전에 가로챔.
 	@Override
@@ -28,19 +37,30 @@ public class AuthInterceptor implements HandlerInterceptor {
 		// return 타입 boolean 
 		// true반환시 : 컨트롤러를 정상적으로 호출
 		// false 반환시 : 컨트롤러를 호출하지않음
-		logger.info("[interceptor] : preHandle");
+		logger.info("[interceptor] : StreamInterceptor preHandle");
+
 		HttpSession session = request.getSession();
 		
-		/*
-		 * if(request.getRequestURI().contains("book/") &&
-		 * session.getAttribute("logInInfo")==null) { request.setAttribute("msg",
-		 * "로그인 이후 사용가능한 기능입니다."); request.setAttribute("back", "back");
-		 * RequestDispatcher dispatcher =
-		 * request.getRequestDispatcher("/WEB-INF/views/common/result.jsp");
-		 * 
-		 * // 해당 forward 발생시오류남 // 오류 : 응답이 이미 커밋된 후에는 forward할 수 없습니다.
-		 * dispatcher.forward(request, response); }
-		 */
+		String[] splitString = request.getRequestURI().split("/");
+		String midString = splitString[3];
+		String streamId = midString.substring(0,midString.length()-3);
+		
+		// 스트림이 열려있는지 확인
+		if(streamservice.get(streamId) != null) {	
+			Map<String,Object> people = streamservice.get(streamId).getPeople();
+			
+			if(session.getAttribute("loginInfo") != null) {
+				Member user = (Member) ((Map<String, Object>) session.getAttribute("loginInfo")).get("member");
+				
+				// 1. 들어올때마다 카운트 올려줌
+				if(people.get(user.getM_id()) == null) {	// 현재 인원중 동일 아이디 존재 x
+					people.put(user.getM_id() , user.getM_id());
+					
+					String[] streamSet = {streamId , user.getM_id()};
+					session.setAttribute("inStreamState", streamSet);
+				}
+			}
+		}
 		
 		return true;
 	}

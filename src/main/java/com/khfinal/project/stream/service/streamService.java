@@ -1,6 +1,8 @@
 package com.khfinal.project.stream.service;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,6 +55,7 @@ public class streamService {
 	
 	public List<streamVo> getIdlist() {
 		List<streamVo> result = new ArrayList<streamVo>();
+		
 		for(String key : streamObj.keySet()) {
 			streamVo vo = streamObj.get(key);
 			
@@ -63,8 +66,30 @@ public class streamService {
 			
 			result.add(vo);
 		}
-			
+		Collections.sort(result);
+		
 		return result;
+	}
+	
+	public streamVo getTopStream() {
+		List<streamVo> result = new ArrayList<streamVo>();
+		
+		if(streamObj.size() > 0) {
+			for(String key : streamObj.keySet()) {
+				streamVo vo = streamObj.get(key);
+				
+				vo.setId(vo.getId());
+				vo.setTitle(vo.getTitle());
+				vo.setUserHashCode(vo.getUserHashCode());
+				vo.setSessionList(vo.getSessionList());
+				
+				result.add(vo);
+			}
+			Collections.sort(result);
+			
+			return result.get(0);
+		}
+		else return null;
 	}
 
 

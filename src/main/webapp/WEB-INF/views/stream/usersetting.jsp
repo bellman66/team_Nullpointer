@@ -53,7 +53,7 @@
 	  		 preload="auto"
 	  		 data-setup='{}'
 	  		 muted
-	  		 >
+	  		  poster="<%=request.getContextPath()%>/resources/img/maintest.jpg">
 	  		 
 	   	  <!-- <source src="https://upload.wikimedia.org/wikipedia/commons/transcoded/a/ab/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm.720p.webm" type="video/webm" label='720P' res='720'>
 	      <source src="https://upload.wikimedia.org/wikipedia/commons/transcoded/a/ab/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm.480p.webm" type="video/webm" label='480P' res='480'>
