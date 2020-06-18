@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.khfinal.project.artist.model.vo.Artist;
+import com.khfinal.project.schedule.model.vo.Schedule;
 
 @Repository
 public class ArtistDao {
@@ -25,6 +26,10 @@ public class ArtistDao {
 	
 	public List<Artist> uploadList(String m_id) {
 		return session.selectList("Artist.uploadList", m_id);
+	}
+	
+	public List<Schedule> scheduleList(String m_id) {
+		return session.selectList("Schedule.scheduleList", m_id);
 	}
 	
 	public List<Map> selectArtList(){

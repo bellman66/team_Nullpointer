@@ -40,28 +40,25 @@
 				<div class="row">
 					<div class="mypage-box">
 						<!-- 회원정보 수정 부분 -->
-						<form name="mypageForm" method="post" enctype="multipart/form-data"
+						<form name="mypageForm" method="post"
+							enctype="multipart/form-data"
 							action="<%=request.getContextPath()%>/member/infoModify.do"
 							onsubmit="return modify()">
 							<div class="pageform">
 								<h3>${loginInfo.member.m_id}님의마이페이지</h3>
 
-								<!-- ID, 프로필 사진, 충전금 내역 부분 시작 -->
+								<!-- ID, 프로필 사진 부분 시작 -->
 								<div class="mypage_id">
 									<img class="profile"
 										src="/springmvc/resources/upload/${loginInfo.member.rename_filepath}" />
 									<div class="profile_modify">
-										<label for="userPicture" class="pm_file"> 
-										<input type="file" name="profile" id="userPicture"
-											accept="image/jpg,image/jpeg,image/png,image/gif,image/bmp"/>
+										<label for="userPicture" class="pm_file"> <input
+											type="file" name="profile" id="userPicture"
+											accept="image/jpg,image/jpeg,image/png,image/gif,image/bmp" />
 										</label>
 									</div>
-									<div class="mymoney">
-										<p>10,000원</p>
-										<button id="mypageInput" type="button">충전하기</button>
-									</div>
 								</div>
-								<!-- ID, 프로필 사진, 충전금 내역 부분 끝 -->
+								<!-- ID, 프로필 사진 부분 끝 -->
 								<!-- 회원 정보 부분 시작 -->
 								<div class="mypage_info">
 									<h4>회원 정보</h4>
@@ -109,7 +106,8 @@
 												<td class="mypage_text">휴대전화</td>
 												<td><select name="USER_TELL1" id="USER_TELL1"
 													class="inputText">
-														<option value="${loginInfo.member.m_tell1}" selected disabled hidden>${loginInfo.member.m_tell1}</option>
+														<option value="${loginInfo.member.m_tell1}" selected
+															disabled hidden>${loginInfo.member.m_tell1}</option>
 														<option value="010">010</option>
 														<option value="011">011</option>
 														<option value="016">016</option>
@@ -131,7 +129,8 @@
 													placeholder="${loginInfo.member.m_email1}" maxlength="50"
 													class="inputText" />&nbsp;@&nbsp; <select
 													name="USER_MAIL2" class="inputText" style="width: 200px">
-														<option value="${loginInfo.member.m_email2}" selected disabled hidden>${loginInfo.member.m_email2}</option>
+														<option value="${loginInfo.member.m_email2}" selected
+															disabled hidden>${loginInfo.member.m_email2}</option>
 														<option value="naver.com">naver.com</option>
 														<option value="daum.net">daum.net</option>
 														<option value="gmail.com">gmail.com</option>
@@ -142,7 +141,8 @@
 									</div>
 									<hr>
 									<button class="info_modifybut">수정</button>
-									<button type="button" class="user_withdrawal" onclick="withdrawal()">탈퇴</button>
+									<button type="button" class="user_withdrawal"
+										onclick="withdrawal()">탈퇴</button>
 									<div class="dim-layer">
 										<div class="dimBg"></div>
 										<div id="layer2" class="pop-layer">
@@ -154,8 +154,8 @@
 													</p>
 
 													<div class="btn-r">
-														<a href="#" class="btn-withdrawal">확인</a>
-														<a href="#" class="btn-layerClose">취소</a>
+														<a href="#" class="btn-withdrawal">확인</a> <a href="#"
+															class="btn-layerClose">취소</a>
 													</div>
 													<!--// content-->
 												</div>
@@ -171,9 +171,10 @@
 						<div class="mypage_upload">
 							<h6>나의 업로드 목록</h6>
 							<ul>
-								<c:forEach items="${uploadList}" var="list" varStatus="listnum">
-									<c:if test="${listnum.index < 5}">
-										<li><a href="#">${list.au_content}</a></li>
+								<c:forEach items="${uploadList}" var="upload"
+									varStatus="uploadnum">
+									<c:if test="${uploadnum.index < 5}">
+										<li><a href="#">${upload.au_content}</a></li>
 									</c:if>
 								</c:forEach>
 							</ul>
@@ -185,27 +186,25 @@
 						<!-- 스케줄 부분 시작 -->
 						<div class="mypage_schedule">
 							<h6>나의 스케줄</h6>
-							<!-- member + schedule 내역 불러와서 foreach로 돌릴 예정 -->
 							<ul>
-								<li><a href="#">member + schedule 내역 불러와서 foreach로 돌릴
-										예정</a></li>
-								<li><a href="#">member + schedule 내역 불러와서 foreach로 돌릴
-										예정</a></li>
-								<li><a href="#">member + schedule 내역 불러와서 foreach로 돌릴
-										예정</a></li>
-								<li><a href="#">member + schedule 내역 불러와서 foreach로 돌릴
-										예정</a></li>
-								<li><a href="#">member + schedule 내역 불러와서 foreach로 돌릴
-										예정</a></li>
+								<c:forEach items="${scheduleList}" var="schedule"
+									varStatus="schedulenum">
+									<li>
+										<a href="<%=request.getContextPath()%>/schedule/schedule.do">${schedule.as_content}</a>
+										<span>${fn:substring(schedule.as_start_date,0,10)}</span>
+									</li>
+								</c:forEach>
 							</ul>
-							<a href="#" class="more" title="더 보기">More</a>
+							<c:if test="${fn:length(uploadList) == 5}">
+								<a href="<%=request.getContextPath()%>/schedule/schedule.do" 
+									class="more" title="더 보기">More</a>
+							</c:if>
 						</div>
 						<!-- 스케줄 부분 끝 -->
 						<!-- 지원 내역 부분 시작 -->
 						<hr>
 						<div class="mypage_money"></div>
 						<!-- 지원 내역 부분 끝 -->
-
 					</div>
 				</div>
 			</div>

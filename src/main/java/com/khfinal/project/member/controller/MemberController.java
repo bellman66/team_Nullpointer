@@ -22,6 +22,7 @@ import com.khfinal.project.artist.model.service.ArtistService;
 import com.khfinal.project.artist.model.vo.Artist;
 import com.khfinal.project.member.model.service.MemberService;
 import com.khfinal.project.member.model.vo.Member;
+import com.khfinal.project.schedule.model.vo.Schedule;
 
 @Controller
 public class MemberController {
@@ -136,16 +137,30 @@ public class MemberController {
 		ModelAndView mav = new ModelAndView();
 
 		// 수정자 : 박혜연
-		// 페이지 로드 시, 회원의 업로드 목록 및 스케줄 내용 session에 담기
+		// 페이지 로드 시, 회원의 업로드 목록 session에 담기
 
 		HttpSession session = request.getSession();
 		Map<String, Object> info = (Map<String, Object>) session.getAttribute("loginInfo");
 		Member user = (Member) info.get("member");
 		List<Artist> uploadList = as.uploadList(user.getM_id());
+		mav.addObject("uploadList", uploadList);
 
+		// 페이지 로드 시, 회원의 스케줄 목록 session에 담기
+		List<Schedule> scheduleList = as.scheduleList(user.getM_id());
+
+		if (scheduleList.size() < 5) {
+			mav.addObject("scheduleList", scheduleList);
+		} else {
+			List<Schedule> scheduleList_more = new ArrayList<Schedule>();
+			for (int i = 0; i < 5; i++) {
+				scheduleList_more.add(i, scheduleList.get(i));
+				mav.addObject("scheduleList", scheduleList_more);
+			}
+		}
+
+		// 한줄 소개 추출 하여 session에 담기
 		String word = as.auWord(user.getM_id());
 
-		mav.addObject("uploadList", uploadList);
 		if (word != null) {
 			mav.addObject("word", word);
 		} else {

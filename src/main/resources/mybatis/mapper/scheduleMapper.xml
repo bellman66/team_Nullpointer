@@ -28,6 +28,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 		, #{as_end_date}
 		, #{as_content}, 'rent', null)
 	</insert>
-	
+	<select id="scheduleList" resultType="Schedule">
+		select * from tb_schedule where m_id = #{m_id} order by as_start_date DESC
+	</select>
 	
 </mapper>
