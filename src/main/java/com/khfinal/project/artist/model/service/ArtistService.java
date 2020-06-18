@@ -11,5 +11,7 @@ public interface ArtistService {
 	public List<Artist> bestContent();
 	public List<Artist> uploadList(String m_id);
 	public List<Map> selectArtList();
+	public int auWordModify(Artist artist);
+	public String auWord(String m_id);
 
 }

@@ -37,17 +37,26 @@
 		<article class="withdrawal">
 			<div class="container">
 				<div class="row">
-					<form class="pwdCheck" method="post" 
+					<form class="pwdCheck" method="post"
 						action="<%=request.getContextPath()%>/member/leave.do">
-						<span>회원 탈퇴를 위해 비밀번호를 확인해주세요.<br>비밀번호를 입력하시고 아래 동의란에 체크하신 뒤, 확인 버튼을 누르시면 탈퇴가 완료됩니다.</span>
-						<input id="pwd" name="pwd" type="password" maxlength="30"/>
-						<div class="withdrawal_checkbox">
-							<input type="checkbox" id="customCheck">
-							<label class="check_sentence" for="customCheck">
-								정말로 회원 탈퇴하시겠습니까? 동의 후에는 취소할 수 없습니다.
-							</label>
+						<div class="chk_sentence">
+							<p class="title">회원 탈퇴</p>
+							<hr>
+							<p>회원 탈퇴를 위해 비밀번호를 확인해주세요.<br>비밀번호를 입력하시고 아래 동의란에
+								체크하신 뒤, 확인 버튼을 누르시면 탈퇴가 완료됩니다.
+							</p>
+							<label class="passInput" for="pwd">비밀 번호 입력</label>
+							&nbsp;&nbsp;
+							<input id="pwd" name="pwd" type="password" maxlength="30" />
 						</div>
-						<button type="submit" onclick="return validata()">확인</button>
+						<div class="chk_input">
+							<div class="withdrawal_checkbox">
+								<input type="checkbox" id="customCheck">
+								<label class="check_sentence" for="customCheck"> 정말로 회원
+									탈퇴하시겠습니까? 동의 후에는 취소할 수 없습니다. </label>
+							</div>
+							<button type="submit" onclick="return validata()">확인</button>
+						</div>
 					</form>
 				</div>
 			</div>

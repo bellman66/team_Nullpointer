@@ -30,5 +30,13 @@ public class ArtistDao {
 	public List<Map> selectArtList(){
 		return session.selectList("Member.selectArtList");
 	}
+	
+	public int auWordModify(Artist artist) {
+		return session.update("Artist.wordModify", artist);
+	}
+	
+	public String auWord(String m_id) {
+		return session.selectOne("Artist.word", m_id);
+	}
 
 }

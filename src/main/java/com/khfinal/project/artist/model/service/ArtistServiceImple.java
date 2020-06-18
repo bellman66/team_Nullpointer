@@ -132,5 +132,28 @@ public class ArtistServiceImple implements ArtistService {
 		
 		return ad.selectArtList();
 	}
+	
+	/**
+	 * @method : auWordModify
+	 * @date : 2020. 6. 17.
+	 * @buildBy : 박혜연
+	 * @comment : 회원 정보 수정 시, 한줄소개 수정
+	 */
+	@Override
+	public int auWordModify(Artist artist) {
+		return ad.auWordModify(artist);
+	}
+
+	/**
+	 * @method : auWordModify
+	 * @date : 2020. 6. 17.
+	 * @buildBy : 박혜연
+	 * @comment : 아티스트 회원의 마이페이지 로드 시, 한줄 소개(au_word) 가져오기
+	 */
+	@Override
+	public String auWord(String m_id) {
+		// TODO Auto-generated method stub
+		return ad.auWord(m_id);
+	}
 
 }
