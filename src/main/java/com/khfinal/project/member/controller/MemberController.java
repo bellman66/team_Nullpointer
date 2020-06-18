@@ -22,6 +22,7 @@ import com.khfinal.project.artist.model.service.ArtistService;
 import com.khfinal.project.artist.model.vo.Artist;
 import com.khfinal.project.member.model.service.MemberService;
 import com.khfinal.project.member.model.vo.Member;
+import com.khfinal.project.member.model.vo.MyArtist;
 import com.khfinal.project.schedule.model.vo.Schedule;
 
 @Controller
@@ -120,6 +121,17 @@ public class MemberController {
 	@RequestMapping("/member/myPage.do")
 	public ModelAndView myPage(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
+
+		// 수정자 : 박혜연
+		// 페이지 로드 시, 회원의 myartist(구독) 목록 session에 담기
+
+		HttpSession session = request.getSession();
+		Map<String, Object> info = (Map<String, Object>) session.getAttribute("loginInfo");
+		Member user = (Member) info.get("member");
+		List<MyArtist> myArtistList = ms.myArtistList(user.getM_id());
+		mav.addObject("myArtistList", myArtistList);
+
+		// 페이지 로드 시, 시청 기록 목록 session에 담기
 
 		mav.setViewName("member/myPage");
 
@@ -272,13 +284,15 @@ public class MemberController {
 		}
 
 		// artist 회원의 경우 '한줄소개' 입력
-		Artist aRewrite = new Artist();
-		String word = request.getParameter("WORD");
-		if (!word.isEmpty()) {
-			aRewrite.setM_id(info.getM_id());
-			aRewrite.setAu_word(word);
-			as.auWordModify(aRewrite);
+		if (info.getM_class() == 2 || info.getM_class() == 3) {
+			Artist aRewrite = new Artist();
+			String word = request.getParameter("WORD");
+			if (!word.isEmpty()) {
+				aRewrite.setM_id(info.getM_id());
+				aRewrite.setAu_word(word);
+				as.auWordModify(aRewrite);
 
+			}
 		}
 
 		Map<String, Object> map = new HashMap<String, Object>();

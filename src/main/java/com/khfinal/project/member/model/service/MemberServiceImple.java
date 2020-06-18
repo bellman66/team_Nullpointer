@@ -10,13 +10,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.khfinal.project.member.model.dao.MemberDao;
+import com.khfinal.project.member.model.dao.MyArtistDao;
 import com.khfinal.project.member.model.vo.Member;
+import com.khfinal.project.member.model.vo.MyArtist;
 
 @Service
 public class MemberServiceImple implements MemberService {
 
 	@Autowired
 	MemberDao mdao;
+	
+	@Autowired
+	MyArtistDao madao;
 
 	public MemberServiceImple() {
 
@@ -85,6 +90,11 @@ public class MemberServiceImple implements MemberService {
 	@Override
 	public int leave(String m_id) {
 		return mdao.leave(m_id);
+	}
+
+	@Override
+	public List<MyArtist> myArtistList(String m_id) {
+		return madao.myArtistList(m_id);
 	}
 
 }
