@@ -20,6 +20,8 @@ public class BoardServiceImple implements BoardService {
 
 	@Autowired
 	public BoardDao bd;
+	
+	
 
 	/**
 	 * @method : selectNoticListPr

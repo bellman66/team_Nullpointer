@@ -46,18 +46,31 @@
       editable: true,
       eventLimit: true, // allow "more" link when too many events
       events: [
+    	 // 실질적으로 화면에 스케줄이 들어가는 코드
         <c:forEach items="${scheduleList.slist}" var="schedule">
 	    	{
 	    	title : "${schedule.as_content}",
 	    	start : "${schedule.as_start_date}",
-	    	end : "${schedule.as_end_date}"
+	    	end : "${schedule.as_end_date}",
+	    	groupId : "${schedule.as_num}",
+	    	id : "${schedule.m_id}"
 	    	},
 		</c:forEach>
-        ],eventClick: function(arg) {
-        if (confirm('delete event?')) {
-          arg.event.remove()
-        }
-      }
+        ],
+        
+        eventClick: function(arg) {
+		        if (confirm('삭제 하시겠습니까?')) {
+		        	var scdelete = document.querySelector('.scdelete');
+		        	var scdeleteid = document.querySelector('.scdeleteid');
+		        	scdelete.value = arg.event.groupId;
+		        	scdeleteid.value = arg.event.id;
+		        	
+		        	
+				    document.del.submit();
+			       	return true;
+		       	 };
+		          	arg.event.remove()
+		      }
     });
 
     calendar.render();
@@ -148,6 +161,11 @@
 							</div>
 						</c:if>
 					</c:if>
+					
+					<form name="del" action="<%= request.getContextPath() %>/schedule/delete.do">
+						<input name="scdelete" class="scdelete" value=""/>
+						<input name="scdeleteid" class="scdeleteid" value=""/>
+					</form>
 				</div>
 				
 			</div>	

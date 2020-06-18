@@ -48,6 +48,12 @@ public class ScheduleServiceImple implements ScheduleService {
 		return res;
 	}
 
+	@Override
+	public int scdelete(String scdelete) {
+		int res = sd.scdelete(scdelete);
+		return res;
+	}
+
 
 
 

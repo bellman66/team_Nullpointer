@@ -37,8 +37,7 @@ public class ScheduleController {
 		HttpSession session = request.getSession();
 	    Map<String, Object> login =  (Map<String, Object>) session.getAttribute("loginInfo");
 //	    Member member = (Member) login.get("member");
-//	    
-//	    
+   
 //	    System.out.println("이거 나오면 대박" + member.getM_class());
 //	    
 //	    System.out.println("컨트롤러에서 멤버"+member);
@@ -50,6 +49,7 @@ public class ScheduleController {
 			if(member.getM_class() != 1) {
 				schedule.setM_id(member.getM_id());
 				res = ss.schedule(schedule);
+				System.out.println("아이디 나오나" +schedule.getM_id());
 			}else {
 				res = ss.rentSchedule();
 			}
@@ -162,6 +162,49 @@ public class ScheduleController {
 		mav.addObject("url", "/springmvc/schedule/rendSchedule.do");
 		mav.addObject("alert", "일정이 추가 되었습니다.");
 		mav.setViewName("common/result");
+		return mav;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping("/schedule/delete.do")
+	public ModelAndView scdelete(HttpServletRequest request,String scdelete, String scdeleteid) {
+		ModelAndView mav = new ModelAndView();
+		System.out.println("딜리트 " + scdelete);
+		System.out.println("아이디 " + scdeleteid);
+		
+//		HttpSession session = request.getSession();
+//		Map<String, Object> login =  (Map<String, Object>) session.getAttribute("loginInfo");
+//	    Member member = (Member) login.get("member");
+//	    if(member.getM_id() == null) {
+//	    	member.setM_id("?");
+//	    	System.out.println("아이디 바꿔줬나");
+//	    }
+//	   
+		int res = ss.scdelete(scdelete);
+		
+//		if(scdeleteid.equals(member.getM_id())) {
+//			
+//			
+//			mav.addObject("url", "/springmvc/schedule/schedule.do");
+//			mav.setViewName("common/result");
+//		}else if(member.getM_id() == null || scdeleteid != member.getM_id()) {
+//			mav.addObject("alertMsg", "본인의 일정만 삭제 가능 합니다.");
+//			mav.addObject("url", "/springmvc/schedule/schedule.do");
+//			mav.setViewName("common/result");
+//		}
+		System.out.println("인트값은 얼마인가" + res);
+		if(res < 1) {
+			mav.addObject("alertMsg", "일정을 삭제 할수 없습니다.");
+			mav.addObject("url", "/springmvc/schedule/schedule.do");
+			mav.setViewName("common/result");
+		}else {
+			mav.addObject("alertMsg", "일정이 삭제 되었습니다.");
+			mav.addObject("url", "/springmvc/schedule/schedule.do");
+			mav.setViewName("common/result");
+		}
+		
+		
+		
 		return mav;
 	}
 }

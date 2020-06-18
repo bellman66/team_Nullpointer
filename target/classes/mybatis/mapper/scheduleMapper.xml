@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 
 <mapper namespace="Schedule">
 	<select id="schedule" resultType="Schedule">
-		select * from tb_schedule where m_id = #{m_id} and as_rent = null
+		select * from tb_schedule where m_id = #{m_id} and as_rent is null
 	</select>
 
 	<select id="rentSchedule" resultType="Schedule">
@@ -28,6 +28,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 		, #{as_end_date}
 		, #{as_content}, 'rent', null)
 	</insert>
+	
+	<delete id="scdelete">
+   		delete from tb_schedule where as_num = #{scdelete} and as_rent is null
+   </delete>
 	
 	
 </mapper>

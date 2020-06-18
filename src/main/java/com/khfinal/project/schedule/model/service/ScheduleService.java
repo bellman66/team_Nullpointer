@@ -13,4 +13,6 @@ public interface ScheduleService {
 	public int scheduleadd(Schedule schedule);
 	
 	public int rentAdd(Schedule schedule);
+	
+	public int scdelete(String scdelete);
 }
