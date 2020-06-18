@@ -79,7 +79,6 @@
 											<tr>
 												<td class="mypage_text">닉네임</td>
 												<td><input type="text" name="NICKNAME" id="NICKNAME"
-													value="${loginInfo.member.m_nickname}"
 													placeholder="${loginInfo.member.m_nickname}"
 													class="inputText" maxlength="15" />
 													<button class="overlap" type="button" onclick="nickCheck()">닉네임
@@ -89,7 +88,6 @@
 												<td class="mypage_text">비밀번호</td>
 												<td><input type="password" name="USER_PWD"
 													id="USER_PWD_MODIFY" class="inputText" class="pw"
-													value="${loginInfo.member.m_pass}"
 													placeholder="${loginInfo.member.m_pass}" maxlength="30" />
 													<span id="pwd-text">영문자 숫자 기호문자의 조합으로 8글자 이상 작성해주세요.</span></td>
 											</tr>
@@ -105,7 +103,6 @@
 											<tr>
 												<td class="mypage_text">한 줄 소개</td>
 												<td><input type="text" name="WORD" id="WORD"
-													value="${word}"
 													placeholder="${word}" class="inputText" maxlength="50" /></td>
 											</tr>
 											<tr>

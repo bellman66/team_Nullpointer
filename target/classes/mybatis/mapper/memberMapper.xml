@@ -43,4 +43,8 @@
  	<update id="leave">
  		update tb_member set m_leave_yn = 'Y' where m_id = #{m_id}
  	</update>
+ 	<insert id="updateProfile">
+ 		INSERT INTO tb_file VALUES(
+         LAST_INSERT_ID(),#{originFileName},#{renameFile},#{savePath})
+ 	</insert>
   </mapper>

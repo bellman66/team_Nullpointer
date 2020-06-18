@@ -58,4 +58,8 @@ public class MemberDao {
 	public int leave(String m_id) {
 		return session.update("Member.leave", m_id);
 	}
+	
+	public int updateProfile(Map<String, Object> file) {
+		return session.insert("updateProfile", file);
+	}
 }

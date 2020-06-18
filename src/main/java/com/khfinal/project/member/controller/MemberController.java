@@ -165,12 +165,12 @@ public class MemberController {
 	@RequestMapping("/member/infoModify.do")
 	public ModelAndView infoModify(HttpServletRequest request, @RequestParam List<MultipartFile> profile) {
 		ModelAndView mav = new ModelAndView();
-		
+
 		HttpSession session = request.getSession();
 		Map<String, Object> loginInfo = (Map<String, Object>) session.getAttribute("loginInfo");
 		String savePath = "";
-		String originFileName = "";
-		String renameFile = "";
+		String originFileName = ""; // 프로필 사진 변경을 위해 입력한 파일의 원래 이름
+		String renameFile = ""; // db에 등록하기 위한 새로운 파일 이름
 
 		// 프로필 사진 변경 시, upload 폴더 저장
 		// 파일을 저장하는 코드
@@ -206,7 +206,7 @@ public class MemberController {
 
 		// 기존 회원 정보
 		Member info = (Member) loginInfo.get("member");
-		
+
 		// 새로 기입된 회원 정보
 		String nickname = request.getParameter("NICKNAME");
 		String m_pass = request.getParameter("USER_PWD");
@@ -215,40 +215,42 @@ public class MemberController {
 		String m_tell3 = request.getParameter("USER_TELL3");
 		String m_mail = request.getParameter("USER_MAIL");
 		String m_mail2 = request.getParameter("USER_MAIL2");
-		
+
 		// 기입된 정보들이 null 아닐 때만 info의 값 변경
-		if(nickname != null) {
+		if (nickname != null) {
 			info.setM_nickname(nickname);
 		}
-		
-		if(m_pass != null) {
+
+		if (m_pass != null) {
 			info.setM_pass(m_pass);
 		}
-		
-		if(m_tell1 != null) {
+
+		if (m_tell1 != null) {
 			info.setM_tell1(m_tell1);
 		}
-		
-		if(m_tell2 != null) {
+
+		if (m_tell2 != null) {
 			info.setM_tell2(m_tell2);
 		}
-		
-		if(m_tell3 != null) {
+
+		if (m_tell3 != null) {
 			info.setM_tell3(m_tell3);
 		}
-		
-		if(m_mail != null) {
+
+		if (m_mail != null) {
 			info.setM_email1(m_mail);
 		}
-		
-		if(m_mail2 != null) {
+
+		if (m_mail2 != null) {
 			info.setM_email2(m_mail2);
 		}
-		
-		info.setRename_filepath(renameFile);
+
+		if (originFileName != "") {
+			info.setRename_filepath(renameFile);
+		}
 
 		// rewrite 값들을 update한 후의 결과 값
-		int result = ms.infoModify(info);
+		int result = ms.infoModify(info, file);
 		Member newInfo = null;
 		if (result > 0) {
 			newInfo = ms.reload(info.getM_id());
