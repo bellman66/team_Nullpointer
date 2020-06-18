@@ -40,8 +40,6 @@ public class Member implements Serializable {
 	private String m_leave_yn;
 	private String original_filepath;
 	private String rename_filepath;
-	// artist 회원 전용 한줄소개
-	private String m_word;
 
 	public Member() {
 		// TODO Auto-generated constructor stub
@@ -50,7 +48,7 @@ public class Member implements Serializable {
 	public Member(String m_id, String m_pass, int m_class, int m_rating, String m_name, String m_nickname, int m_grade,
 			String m_tell1, String m_tell2, String m_tell3, String bith_yy, String bith_mm, String bith_dd,
 			String m_email1, String m_email2, String zipcode, String address, String address_etc, Date m_join_date,
-			String m_leave_yn, String original_filepath, String rename_filepath, String m_word) {
+			String m_leave_yn, String original_filepath, String rename_filepath) {
 		super();
 		this.m_id = m_id;
 		this.m_pass = m_pass;
@@ -74,7 +72,6 @@ public class Member implements Serializable {
 		this.m_leave_yn = m_leave_yn;
 		this.original_filepath = original_filepath;
 		this.rename_filepath = rename_filepath;
-		this.m_word = m_word;
 	}
 
 	@Override
@@ -85,7 +82,7 @@ public class Member implements Serializable {
 				+ ", bith_dd=" + bith_dd + ", m_email1=" + m_email1 + ", m_email2=" + m_email2 + ", zipcode=" + zipcode
 				+ ", address=" + address + ", address_etc=" + address_etc + ", m_join_date=" + m_join_date
 				+ ", m_leave_yn=" + m_leave_yn + ", original_filepath=" + original_filepath + ", rename_filepath="
-				+ rename_filepath + ", m_word=" + m_word + "]";
+				+ rename_filepath + "]";
 	}
 
 	public String getM_id() {
@@ -262,14 +259,6 @@ public class Member implements Serializable {
 
 	public void setRename_filepath(String rename_filepath) {
 		this.rename_filepath = rename_filepath;
-	}
-
-	public String getM_word() {
-		return m_word;
-	}
-
-	public void setM_word(String m_word) {
-		this.m_word = m_word;
 	}
 
 	public static long getSerialversionuid() {

@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.khfinal.project.artist.model.dao.ArtistDao;
 import com.khfinal.project.artist.model.vo.Artist;
+import com.khfinal.project.schedule.model.vo.Schedule;
 
 @Service
 public class ArtistServiceImple implements ArtistService {
@@ -120,6 +121,18 @@ public class ArtistServiceImple implements ArtistService {
 	public List<Artist> uploadList(String m_id) {
 		return ad.uploadList(m_id);
 	}
+	
+	/**
+	 * @method : scheduleList()
+	 * @date : 2020. 6. 18.
+	 * @buildBy : 박혜연
+	 * @comment : 마이페이지 내 '나의 스케줄 목록' 노출
+	 */
+	@Override
+	public List<Schedule> scheduleList(String m_id) {
+		// TODO Auto-generated method stub
+		return ad.scheduleList(m_id);
+	}
 
 	/**
 	 * @method : selectArtList
@@ -132,5 +145,29 @@ public class ArtistServiceImple implements ArtistService {
 		
 		return ad.selectArtList();
 	}
+	
+	/**
+	 * @method : auWordModify
+	 * @date : 2020. 6. 17.
+	 * @buildBy : 박혜연
+	 * @comment : 회원 정보 수정 시, 한줄소개 수정
+	 */
+	@Override
+	public int auWordModify(Artist artist) {
+		return ad.auWordModify(artist);
+	}
+
+	/**
+	 * @method : auWordModify
+	 * @date : 2020. 6. 17.
+	 * @buildBy : 박혜연
+	 * @comment : 아티스트 회원의 마이페이지 로드 시, 한줄 소개(au_word) 가져오기
+	 */
+	@Override
+	public String auWord(String m_id) {
+		// TODO Auto-generated method stub
+		return ad.auWord(m_id);
+	}
+
 
 }

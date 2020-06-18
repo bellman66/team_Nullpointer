@@ -8,9 +8,14 @@
    <!--인터셉터 -->
    <interceptors>
    		<interceptor>
-   			<!-- 모든경로 매핑 -->
+   			<mapping path="/streamMapping/**"/>
+   			<beans:bean class="common.interceptor.streamInterceptor"></beans:bean>
+   		</interceptor>
+   		
+   		<interceptor>
    			<mapping path="/**"/>
-   			<beans:bean class="common.interceptor.AuthInterceptor"/>
+   			<exclude-mapping path="/streamMapping/**"/>
+   			<beans:bean class="common.interceptor.basicInterceptor"></beans:bean>
    		</interceptor>
    </interceptors>
    

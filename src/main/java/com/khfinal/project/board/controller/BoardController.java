@@ -26,9 +26,9 @@ public class BoardController {
 
 	@Autowired
 	BoardService bs;
-	
-	HttpServletRequest request; 
-	
+
+	HttpServletRequest request;
+
 	/**
 	 * @method : view
 	 * @date : 2020. 6. 5.
@@ -44,12 +44,11 @@ public class BoardController {
 
 	}
 
-	
 	/**
 	 * @method : noticeListPR
 	 * @date : 2020. 6. 5.
 	 * @buildBy : 김경호
-	 * @comment : 홍보게시판 리스트 및 페이징 처리하는 메소드 
+	 * @comment : 홍보게시판 리스트 및 페이징 처리하는 메소드
 	 */
 	@RequestMapping("/board/boardPR.do")
 	public ModelAndView boardListPR(HttpServletRequest request) {
@@ -110,7 +109,7 @@ public class BoardController {
 		for (String key : res.keySet()) {
 			System.out.println(res.get(key));
 		}
-		
+
 		mav.addObject("paging", res.get("paging"));
 		mav.addObject("boardList", res);
 		mav.addObject("board", "sh");
@@ -118,7 +117,7 @@ public class BoardController {
 
 		return mav;
 	}
-	
+
 	/**
 	 * @method : boardResd
 	 * @date : 2020. 6. 6.
@@ -128,20 +127,20 @@ public class BoardController {
 	@RequestMapping("/board/boardRead.do")
 	public ModelAndView boardResd(int b_num) {
 		ModelAndView mav = new ModelAndView();
-		
+
 		Map<String, Object> boardMap = bs.boardResd(b_num);
-		
+
 		System.out.println("시소 그대로 찍어본값" + boardMap.get("board"));
-		//boardMap에 뭐가 들었는지 확인하는 코드
+		// boardMap에 뭐가 들었는지 확인하는 코드
 		for (String key : boardMap.keySet()) {
 			System.out.println(boardMap.get(key));
 		}
-		mav.addObject("read",boardMap);
-        mav.setViewName("board/board_read");
-		
+		mav.addObject("read", boardMap);
+		mav.setViewName("board/board_read");
+
 		return mav;
 	}
-	
+
 	/**
 	 * @method : boardDelete
 	 * @date : 2020. 6. 8.
@@ -151,30 +150,30 @@ public class BoardController {
 	@RequestMapping("/board/boardDelete.do")
 	public ModelAndView boardDelete(int b_num) {
 		ModelAndView mav = new ModelAndView();
-		
+
 		int res = bs.boardDelete(b_num);
 		System.out.println(b_num);
 		System.out.println(res);
-		if(res > 0) {
+		if (res > 0) {
 //			if(b_category == 1) {
-				mav.addObject("alertMsg", "게시글이 삭제가 되었습니다");
-				mav.addObject("url", "/springmvc/board/boardSH.do");
-				mav.setViewName("common/result");
+			mav.addObject("alertMsg", "게시글이 삭제가 되었습니다");
+			mav.addObject("url", "/springmvc/board/boardSH.do");
+			mav.setViewName("common/result");
 //			}else {
 //				mav.addObject("alertMsg", "게시글이 삭제가 되었습니다");
 //				mav.addObject("url", "/springmvc/board/boardPR.do");
 //				mav.setViewName("common/result");
 //			}
-			
-		}else {
+
+		} else {
 			mav.addObject("alertMsg", "존재하지 않는 게시물입니다.");
 			mav.addObject("back", "/springmvc/board/boardSH.do");
 			mav.setViewName("common/result");
 		}
-		
+
 		return mav;
 	}
-	
+
 	/**
 	 * @method : boardRead_list
 	 * @date : 2020. 6. 8.
@@ -184,19 +183,20 @@ public class BoardController {
 	@RequestMapping("/board/boardRead_list.do")
 	public ModelAndView boardRead_list(int b_category) {
 		ModelAndView mav = new ModelAndView();
-		
-		if(b_category == 1) {
+
+		if (b_category == 1) {
 			mav.addObject("url", "/springmvc/board/boardSH.do");
 			mav.setViewName("common/result");
-		}else {
+		} else {
 			mav.addObject("url", "/springmvc/board/boardPR.do");
 			mav.setViewName("common/result");
 		}
-		
+
 		return mav;
 	}
+
 	String boardCategory;
-	
+
 	/**
 	 * @method : boardWrite
 	 * @date : 2020. 6. 8.
@@ -206,22 +206,20 @@ public class BoardController {
 	@RequestMapping("/board/boardwrite.do")
 	public ModelAndView boardWrite(String board) {
 		ModelAndView mav = new ModelAndView();
-		
+
 		boardCategory = board;
-		
-		if(board.equals("sh")) {
+
+		if (board.equals("sh")) {
 			mav.addObject("board", "sh");
 			mav.setViewName("board/board_write");
-		}else {
+		} else {
 			mav.addObject("board", "pr");
 			mav.setViewName("board/board_write");
 		}
-		
+
 		return mav;
 	}
-	
-	
-	
+
 	/**
 	 * @method : boardUpload
 	 * @date : 2020. 6. 9.
@@ -231,63 +229,61 @@ public class BoardController {
 	@RequestMapping("/board/boarduoload.do")
 	public ModelAndView boardUpload(HttpServletRequest request, Board board, @RequestParam List<MultipartFile> bfile) {
 		ModelAndView mav = new ModelAndView();
-		System.out.println("이게 뭘까?"+boardCategory);
+		System.out.println("이게 뭘까?" + boardCategory);
 		System.out.println(board);
-		
+
 //		  for(int i = 0; i < bfile.size(); i++ ) { 
 //			  System.out.println("bfile 리스트" +bfile.get(i)); 
 //			  }
-		 
-		
-		//파일을 저장하는 코드
-		List<Map<String, Object>> file = new ArrayList<Map<String,Object>>();
+
+		// 파일을 저장하는 코드
+		List<Map<String, Object>> file = new ArrayList<Map<String, Object>>();
 		String root = request.getSession().getServletContext().getRealPath("/");
-		
+
 		int i = 0;
-		for(MultipartFile mf : bfile) {
+		for (MultipartFile mf : bfile) {
 			String savePath = root + "resources/upload/";
 			String originFileName = mf.getOriginalFilename();
 			HashMap<String, Object> data = new HashMap<>();
-			
+
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
-			
-			String renameFile 
-			= sdf.format(new Date()) + i + "." + originFileName.substring(originFileName.lastIndexOf(".")+1);
-		
+
+			String renameFile = sdf.format(new Date()) + i + "."
+					+ originFileName.substring(originFileName.lastIndexOf(".") + 1);
+
 			savePath += renameFile;
-	         
-	         data.put("originFileName",originFileName);
-	         data.put("renameFile",renameFile);
-	         data.put("savePath",savePath);
-	         data.put("file",mf);
-	         
-	         file.add(data);
-	         i++;
-	         for (int ai = 0; ai < file.size(); ai++) {
-	 			System.out.println("파일"+file);
-	 		}
+
+			data.put("originFileName", originFileName);
+			data.put("renameFile", renameFile);
+			data.put("savePath", savePath);
+			data.put("file", mf);
+
+			file.add(data);
+			i++;
+			for (int ai = 0; ai < file.size(); ai++) {
+				System.out.println("파일" + file);
+			}
 		}
-		
-		//파일을 뺸 나머지 값들 가져오는 코드
+
+		// 파일을 뺸 나머지 값들 가져오는 코드
 		HttpSession session = request.getSession();
-	    Map<String, Object> login =  (Map<String, Object>) session.getAttribute("loginInfo");
-	    Member member = (Member) login.get("member");
-	    
-	    board.setBoardWriter(member.getM_id());
-	    System.out.println("컨트롤러에서 멤버"+member);
-		
-	    
-		
-		if(boardCategory.equals("sh")) {
-			int res = bs.boardUploadSh(board , file );
+		Map<String, Object> login = (Map<String, Object>) session.getAttribute("loginInfo");
+		Member member = (Member) login.get("member");
+
+		board.setBoardWriter(member.getM_id());
+		System.out.println("컨트롤러에서 멤버" + member);
+
+		if (boardCategory.equals("sh")) {
+			int res = bs.boardUploadSh(board, file);
 			mav.setViewName("redirect:boardSH.do");
-		}else {
-			int res = bs.boardUploadPr(board , file);
+		} else {
+			int res = bs.boardUploadPr(board, file);
 			mav.setViewName("redirect:boardPR.do");
 		}
-		
+
 		return mav;
 	}
+
 	/**
 	 * @method : boardSearchPR
 	 * @date : 2020. 6. 14.
@@ -297,7 +293,7 @@ public class BoardController {
 	@RequestMapping("/board/boardSearchPR.do")
 	public ModelAndView boardSearchPR(HttpServletRequest request, String searchType, String searchWord, String board, String boardsearch) {
 		ModelAndView mav = new ModelAndView();
-		
+
 		int currentPage = 1;
 		int cntPerPage = 5;
 
@@ -308,7 +304,7 @@ public class BoardController {
 		if (request.getParameter("cntPerPage") != null) {
 			currentPage = Integer.parseInt(request.getParameter("cntPerPage"));
 		}
-		
+
 		Map<String, Object> res = new HashMap<String, Object>();
 		
 		searchType = request.getParameter("searchType");
@@ -366,6 +362,19 @@ public class BoardController {
 		
 		
 		System.out.println("controller 에서 전체     " + res.get("nlist"));
+
+		if (board.equals("pr")) {
+			res = bs.boardSearchPR(searchType, searchWord, currentPage, cntPerPage);
+		} else if (board.equals("sh")) {
+			res = bs.boardSearchSH(searchType, searchWord, currentPage, cntPerPage);
+		}
+
+		System.out.println("board " + board);
+
+		System.out.println(res.get("paging"));
+
+		System.out.println("controller 에서 전체     " + res.get("nlist"));
+
 		System.out.println("토탈" + res.get("total"));
 		System.out.println("///" + res.get("paging"));
 		
@@ -378,8 +387,9 @@ public class BoardController {
 		mav.addObject("searchWord", searchWord);
 		mav.addObject("board", "searchSH");
 		mav.setViewName("board/board");
-		
+
 		return mav;
 	}
 	
+
 }

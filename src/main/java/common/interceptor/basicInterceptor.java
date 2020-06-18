@@ -1,5 +1,7 @@
 package common.interceptor;
 
+import java.util.Map;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -7,8 +9,13 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.khfinal.project.member.model.vo.Member;
+import com.khfinal.project.stream.service.streamService;
+import com.khfinal.project.stream.vo.streamVo;
 
 // interceptor 
 // DispatcherSerclet이 컨트롤러를 호출하기 전에
@@ -17,9 +24,11 @@ import org.springframework.web.servlet.ModelAndView;
 // servletContainer -> filter(서블릿 호출하기 전에 요청을 가로챌수 있다.) -> servlet 
 // -> interceptor(서블릿이 컨트롤러를 호출하기 전에 요청을 가로챌수 있다.) -> controller
 // 이벤트 발생시 Listener가 호출
-public class AuthInterceptor implements HandlerInterceptor {
+public class basicInterceptor implements HandlerInterceptor {
 
-	private Logger logger = LoggerFactory.getLogger(AuthInterceptor.class);
+	@Autowired
+	streamService streamservice;
+	private Logger logger = LoggerFactory.getLogger(basicInterceptor.class);
 	
 	// 컨트롤러 수행전에 가로챔.
 	@Override
@@ -28,19 +37,22 @@ public class AuthInterceptor implements HandlerInterceptor {
 		// return 타입 boolean 
 		// true반환시 : 컨트롤러를 정상적으로 호출
 		// false 반환시 : 컨트롤러를 호출하지않음
-		logger.info("[interceptor] : preHandle");
+		logger.info("[interceptor] : basicInterceptor preHandle");
 		HttpSession session = request.getSession();
 		
-		/*
-		 * if(request.getRequestURI().contains("book/") &&
-		 * session.getAttribute("logInInfo")==null) { request.setAttribute("msg",
-		 * "로그인 이후 사용가능한 기능입니다."); request.setAttribute("back", "back");
-		 * RequestDispatcher dispatcher =
-		 * request.getRequestDispatcher("/WEB-INF/views/common/result.jsp");
-		 * 
-		 * // 해당 forward 발생시오류남 // 오류 : 응답이 이미 커밋된 후에는 forward할 수 없습니다.
-		 * dispatcher.forward(request, response); }
-		 */
+		// 현재 스트리밍 상태를 가진 session 값 인경우 처리 - 스트리밍에서 나왔다고 판단.
+		if(session.getAttribute("inStreamState") != null) {
+			// 현재스트림의 인원
+			String[] streamSet = (String[]) session.getAttribute("inStreamState");
+			if(streamservice.get(streamSet[0]) != null) {
+				Map<String,Object> people = streamservice.get(streamSet[0]).getPeople();	// 1. 인원체크 
+				String userid = streamSet[1];
+				
+				if(people.get(userid) != null) {	// 현재 인원중 동일 아이디 존재함
+					people.remove(userid);
+				}
+			}
+		}
 		
 		return true;
 	}

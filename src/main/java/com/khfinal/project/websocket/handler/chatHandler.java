@@ -47,7 +47,9 @@ public class chatHandler extends TextWebSocketHandler {
 		String id = (String) attr.get("id");
 
 		if(streamservice.get(id) != null) {
-			List<WebSocketSession> sessionlist = streamservice.get(id).getSessionList();
+			streamVo sv = streamservice.get(id);
+
+			List<WebSocketSession> sessionlist = sv.getSessionList();
 			sessionlist.add(session);
 		}
 	}

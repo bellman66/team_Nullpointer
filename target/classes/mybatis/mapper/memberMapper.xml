@@ -20,7 +20,7 @@
  	<select id="nickNameCheck" parameterType="string" resultType="string">
  		select m_nickname from tb_member where m_nickname = #{nickname}
  	</select>
- 	<update id="infoModify">
+ 	<update id="infoModify" parameterType="Member">
  		update tb_member set m_nickname = #{m_nickname}, m_pass = #{m_pass},
  		m_tell1 = #{m_tell1}, m_tell2 = #{m_tell2}, m_tell3 = #{m_tell3}, 
  		m_email1 = #{m_email1}, m_email2 = #{m_email2}, 
@@ -43,4 +43,8 @@
  	<update id="leave">
  		update tb_member set m_leave_yn = 'Y' where m_id = #{m_id}
  	</update>
+ 	<insert id="updateProfile">
+ 		INSERT INTO tb_file VALUES(
+         LAST_INSERT_ID(),#{originFileName},#{renameFile},#{savePath})
+ 	</insert>
   </mapper>

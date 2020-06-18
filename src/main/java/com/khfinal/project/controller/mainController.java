@@ -6,12 +6,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.khfinal.project.artist.model.service.ArtistService;
+import com.khfinal.project.stream.service.streamService;
 
 @Controller
 public class mainController {
 	
 	@Autowired
 	ArtistService as;
+	@Autowired
+	streamService streamservice;
 
 	@RequestMapping("/main/index.do")
 	public ModelAndView index () {
@@ -25,6 +28,8 @@ public class mainController {
 		// 수정 : 박혜연
 		mav.addObject("bestContent", as.bestContent());
 		
+		// 메인 탑 Stream 정보
+		mav.addObject("topStream" , streamservice.getTopStream());
 		mav.setViewName("main/index");
 		System.out.println("main control");
 		return mav;

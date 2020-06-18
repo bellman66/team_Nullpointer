@@ -10,8 +10,6 @@ $('#userPicture').on('change',
 				get_file[0].name.length);
 		var filetype = filepoint.toLowerCase();
 
-		console.log(filetype);
-
 		if (filetype == 'jpg' || filetype == 'gif' || filetype == 'png'
 				|| filetype == 'jpeg' || filetype == 'bmp') {
 
@@ -41,9 +39,9 @@ $('#userPicture').on('change',
 
 		if (get_file) {
 			/*
-			 * get_file[0] 을 읽어서 read 행위가 종료되면 loadend 이벤트가 트리거 되고 onload 에
-			 * 설정했던 return 으로 넘어간다. 이와 함께 base64 인코딩 된 스트링
-			 * 데이터(e.target.result)가 result 속성에 담겨진다. MDN 출처
+			 * get_file[0] 을 읽어서 read 행위가 종료되면 loadend 이벤트가 트리거 되고 onload 에 설정했던
+			 * return 으로 넘어간다. 이와 함께 base64 인코딩 된 스트링 데이터(e.target.result)가
+			 * result 속성에 담겨진다. MDN 출처
 			 */
 			reader.readAsDataURL(get_file[0]);
 		}
@@ -57,6 +55,8 @@ $('#userPicture').on('change',
 
 // 닉네임 중복 확인
 function nickCheck() {
+	console.log('닉네임 체크 실행');
+	console.log($('#NICKNAME'));
 	$.ajax({
 		url : '/springmvc/member/nicknamecheck.do',
 		type : 'GET',
@@ -71,11 +71,16 @@ function nickCheck() {
 				document.querySelector('#nickCheckMsg').innerHTML = '사용 가능한 닉네임입니다.';
 				infoModify = true;
 			}
-
 		}
 
 	});
 }
+
+// 닉네임 변경 후 알림
+$('#NICKNAME').on('change keyup paste',
+	function() {
+		document.querySelector('#nickCheckMsg').innerHTML = '닉네임이 변경되었습니다. 중복 체크 해주세요.';
+});
 
 // 비밀번호 확인
 $(function() {
@@ -99,23 +104,24 @@ $(function() {
 // mypage 정보 수정
 function modify() {
 	// 기본 정보란에 입력된 값이 있다면, 해당 값 > request로 받아 dao로 넘긴 뒤, db update
-
-	if (infoModify) {
-		// 수정 내용에 이상이 없다면
-		// controller 통해서 정보 수정 후 main으로 이동
-		location.href = '/springmvc/member/infoModify.do';
-	} else {
-		// 수정 내용에 이상이 있다면
-		// 1) 닉네임 중복 확인 후 수정 가능
-		var checkornot = $('#nickCheckMsg').val();
-		if (checkornot == '이미 존재하는 닉네임입니다.' || checkornot == null) {
-			alert('닉네임을 확인해주세요.');
-		}
-		// 2) 비밀번호와 비밀번호 확인란과 동일해야 수정 가능
-		if ($('#same').style.display === none) {
-			alert('비밀번호를 확인해주세요.');
-		}
+	
+	// 수정 내용에 이상이 있다면
+	// 1) 닉네임 중복 확인 후 수정 가능
+	var checkornot = $('#nickCheckMsg').html();
+	
+	if (checkornot == '이미 존재하는 닉네임입니다.' || checkornot == '닉네임이 변경되었습니다. 중복 체크 해주세요.') {
+		alert('닉네임을 확인해주세요.');
+		return false;
 	}
+	
+	// 2) 비밀번호가 not null 값이므로 비어있으면 안됨
+	if ($('#PWD_MODIFY_CHECK').val() == "") {
+		alert('수정을 위해서 비밀번호를 확인해주세요.');
+		return false;
+	}
+	
+	return true;
+
 }
 
 // mypage 탈퇴 버튼 클릭
@@ -128,14 +134,12 @@ function layer_popup(el) {
 
 	var $el = $(el); // 레이어의 id를 $el 변수에 저장
 	var isDim = $el.prev().hasClass('dimBg'); // dimmed 레이어를 감지하기 위한 boolean
-												// 변수
+	// 변수
 
 	isDim ? $('.dim-layer').fadeIn() : $el.fadeIn();
 
-	var $elWidth = ~~($el.outerWidth()), 
-		$elHeight = ~~($el.outerHeight()), 
-		docWidth = $(document).width(), 
-		docHeight = $(document).height();
+	var $elWidth = ~~($el.outerWidth()), $elHeight = ~~($el.outerHeight()), docWidth = $(
+			document).width(), docHeight = $(document).height();
 
 	// 화면의 중앙에 레이어를 띄운다.
 	if ($elHeight < docHeight || $elWidth < docWidth) {
@@ -166,7 +170,7 @@ function layer_popup(el) {
 
 // 탈퇴 팝업에서 확인 버튼 클릭 시, 예외 확인
 function validata() {
-	
+
 	var inputpwd = $('#pwd');
 
 	// 비밀번호 란이 비어있는 경우

@@ -13,7 +13,7 @@ public class Artist {
 	private String au_file;
 	private int au_like;
 	private int au_type;
-	private String m_word;
+	private String au_word;
 
 	public int getAu_num() {
 		return au_num;
@@ -79,18 +79,18 @@ public class Artist {
 		this.au_type = au_type;
 	}
 
-	public String getM_word() {
-		return m_word;
+	public String getAu_word() {
+		return au_word;
 	}
 
-	public void setM_word(String m_word) {
-		this.m_word = m_word;
+	public void setAu_word(String au_word) {
+		this.au_word = au_word;
 	}
 
 	@Override
 	public String toString() {
 		return "Artist [au_num=" + au_num + ", m_id=" + m_id + ", m_nickname=" + m_nickname + ", au_date=" + au_date
 				+ ", au_content=" + au_content + ", au_file=" + au_file + ", au_like=" + au_like + ", au_type="
-				+ au_type + ",m_word=" + m_word + "]";
+				+ au_type + ",au_word=" + au_word + "]";
 	}
 }

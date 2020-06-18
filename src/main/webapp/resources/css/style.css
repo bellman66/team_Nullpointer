@@ -12,6 +12,7 @@
 @import "member/mypage.css";
 @import "member/mypage_art.css";
 @import "member/popup.css";
+@import "member/withdrawal.css";
 
 /* artist */
 @import "artist/artist.css";
