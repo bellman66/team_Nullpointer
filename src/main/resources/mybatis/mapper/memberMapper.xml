@@ -6,8 +6,14 @@
   <mapper namespace="Member">
   
  	<insert id="insertMember" parameterType="java.util.Map">
- 		insert into TB_MEMBER value(#{m_id},#{m_pass},#{m_name},#{m_nickname},#{m_tell1},#{m_tell2},#{m_tell3},
- 		#{bith_yy},#{bith_mm},#{bith_dd},#{m_email1},#{m_email2},#{zipcode},#{address},#{address_etc}) 	
+ 		insert into tb_member 
+ 		values(#{m_id},#{m_pass},${m_class},
+ 			   0,#{m_name},#{m_nickname},
+ 			   0,#{m_tell1},#{m_tell2},
+ 			   #{m_tell3},#{m_email1},#{m_email2},
+ 			   #{bith_yy},#{bith_mm},#{bith_dd},
+ 			   #{zipcode},#{address},#{address_etc},
+ 			   sysdate() , 'N' , NULL , NULL) 
  	</insert>
  	
  	<select id="login" resultType="Member">
@@ -20,6 +26,15 @@
  	<select id="nickNameCheck" parameterType="string" resultType="string">
  		select m_nickname from tb_member where m_nickname = #{nickname}
  	</select>
+ 	
+ 	 <select id="idCheck" parameterType="string" resultType="string">
+ 		select m_id from tb_member where m_id = #{m_id}
+ 	</select>
+ 	
+ 	 <select id="idExist" parameterType="string" resultType="int">
+ 		select count(*) from tb_member where m_id = #{m_id}
+ 	</select>
+ 	
  	<update id="infoModify" parameterType="Member">
  		update tb_member set m_nickname = #{m_nickname}, m_pass = #{m_pass},
  		m_tell1 = #{m_tell1}, m_tell2 = #{m_tell2}, m_tell3 = #{m_tell3}, 

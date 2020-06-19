@@ -1,5 +1,6 @@
 package com.khfinal.project.member.controller;
 
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -40,10 +42,21 @@ public class MemberController {
 		return mav;
 	}
 
-	@RequestMapping("/member/joinImple.do")
-	public ModelAndView joinImple() {
+	@RequestMapping("/member/joinimple.do")
+	public ModelAndView joinImple(@RequestParam Map<String, Object> commandMap, HttpServletRequest request) throws SQLException {
 		ModelAndView mav = new ModelAndView();
+		
+		int res = ms.insertMember(commandMap);
+		if (res < 1) {
+			mav.addObject("alertMsg", "회원가입에 실패하였습니다.");
+			mav.addObject("url" , request.getContextPath()+"/main/index.do");
+			mav.setViewName("common/result");
 
+		} else {
+			mav.addObject("alertMsg", "회원가입이 완료되었습니다..");
+			mav.addObject("url" , request.getContextPath()+"/member/login.do");
+			mav.setViewName("common/result");
+		}
 		return mav;
 	}
 
@@ -55,9 +68,9 @@ public class MemberController {
 	 */
 	@RequestMapping("/member/nicknamecheck.do")
 	@ResponseBody
-	public String nickNameCheck(HttpServletRequest request) {
+	public Boolean nickNameCheck(@RequestParam String m_nickname) {
 
-		return ms.nickNameCheck(request.getParameter("NICKNAME"));
+		return ms.nickNameCheck(m_nickname);
 	}
 
 	@RequestMapping("/member/login.do")
@@ -71,6 +84,19 @@ public class MemberController {
 	public ModelAndView loginImple() {
 		ModelAndView mav = new ModelAndView();
 
+		return mav;
+	}
+	
+	@RequestMapping("/member/logout.do")
+	public ModelAndView logout(HttpSession session) throws SQLException{
+
+		ModelAndView mav = new ModelAndView();
+
+		if (session != null) {
+			session.removeAttribute("loginInfo");
+		}
+
+		mav.setViewName("main/index");
 		return mav;
 	}
 
@@ -359,6 +385,62 @@ public class MemberController {
 		}
 
 		return mav;
+	}
+	
+	@RequestMapping("/member/sign_in.do")
+	public ModelAndView sign_in(ModelAndView mav ,HttpServletRequest request ,@RequestParam Map<String, Object> commandMap) throws SQLException {
+//		m_id
+//		m_pass
+//		m_class
+//		m_name
+//		m_nickname
+//		m_tell1
+//		m_tell2
+//		m_tell3
+//		bith_yy
+//		bith_mm
+//		bith_dd
+//		m_email1
+//		m_email2
+//		zipcode
+//		address
+//		address_etc
+
+//		Date m_join_date = request.getParameter("USER_ID");	// sysdate
+//		String m_leave_yn = request.getParameter("USER_ID"); // 'N'
+//		String original_filepath = request.getParameter("USER_ID"); // 생성
+//		String rename_filepath = request.getParameter("USER_ID");	// 생성.
+//		String m_word = request.getParameter("USER_ID");			// 공란 - 차후에 생성
+		
+		String path = request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+		commandMap.put("urlPath", path);
+		ms.mailSending(commandMap);
+		
+		mav.addObject("alertMsg", "이메일로 인증번호가 발송되었습니다.");
+		mav.addObject("url", request.getContextPath() + "/main/index.do");
+		mav.setViewName("common/result");
+		return mav;
+	}
+	
+	@RequestMapping("/member/idCheck.do")
+	@ResponseBody
+	public boolean idCheck(@RequestParam String id) {
+		return ms.idCheck(id);
+	}
+	
+	@ExceptionHandler(value = SQLException.class)
+	public ModelAndView handleException(ModelAndView mav,HttpServletRequest request,Exception e) {
+
+//		String getMessage() : 발생된 예외의 메시지를 리턴한다. 
+//		String toString() : 발생된 예외 클래스명과 메시지를 리턴한다. 
+//		String pritnStackTrace() : 발생된 예외를 역추적하기 위해 표준 예외 스트림을 출력한다. 
+//		예외 발생시 예외가 발생한 곳을 알아낼 때 주로 사용된다. 
+		
+		mav.addObject("alertMsg", e.getMessage() );
+		mav.addObject("url" , request.getContextPath()+"/main/index.do");
+		mav.setViewName("common/result");
+		return mav;
+
 	}
 
 }

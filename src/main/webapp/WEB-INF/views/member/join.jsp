@@ -77,7 +77,7 @@
 							<tr>
 								<td class="join-text">* 아이디</td>
 								<td id="joinIdCss">
-									<input type="text" name="m_id" id="USER_ID" class="inputText" maxlength="20" onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);" />
+									<input type="text" name="m_id" id="USER_ID" class="inputText" maxlength="20" />
 									<button id="overlap" class="overlap" type="button" onclick="idCheck()">아이디 중복체크</button> 
 									<span id="trueMsg" style="display: none; color: green; font-weight: bold;">사용가능한 아이디입니다.</span>
 									<span id="falseMsg" style="display: none; color: #d92742; font-weight: bold;">중복된 아이디입니다.</span>
@@ -119,7 +119,7 @@
 							<tr>
 								<td class="join-text">* 닉네임</td>
 								<td id="joinIdCss">
-									<input type="text" name="m_nickname" id="NICKNAME" onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);" class="inputText" maxlength="15" />
+									<input type="text" name="m_nickname" id="NICKNAME" class="inputText" maxlength="15" />
 									<button id="overlap_nick" class="overlap" type="button" onclick="nickCheck()">닉네임 중복체크</button><br> 
 									<span id="trueMsg_nick" style="display: none; color: green; font-weight: bold;">사용가능한 닉네임입니다.</span>
 									<span id="falseMsg_nick" style="display: none; color: #d92742; font-weight: bold;">중복된 닉네임입니다.</span>
