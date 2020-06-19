@@ -47,6 +47,7 @@
       events: [
     	<c:forEach items="${artScList.aslist}" var="artist">
 	    	{
+	    	
 	    	title : "${artist.ats_content}",
 	    	start : "${artist.ats_start_date}",
 	    	end : "${artist.ats_end_date}"
@@ -55,6 +56,7 @@
         ],eventClick: function(arg) {
         if (confirm('delete event?')) {
           arg.event.remove()
+          console.dir(arg.event);
         }
       }
     });
@@ -98,7 +100,7 @@
 						<div class="scheform">
 							<div id='calendar' style="margin-top: 5%; margin-bottom: 10%;"></div>
 							<div class="artist_schedule_add">
-								<a style="color:white;" href="<%= request.getContextPath() %>/artist/artistscheduleaddshow.do">스케줄 등록</a>
+								<a style="color:white;" href="<%= request.getContextPath() %>/artist/artistscheduleaddshow.do">행사 등록</a>
 							</div>
 						</div>
 						<!-- </form> -->

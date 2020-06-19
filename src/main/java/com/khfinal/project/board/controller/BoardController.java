@@ -288,10 +288,10 @@ public class BoardController {
 	 * @method : boardSearchPR
 	 * @date : 2020. 6. 14.
 	 * @buildBy : 김경호
-	 * @comment : 게시판 검색기능
+	 * @comment : 홍보 게시판 검색기능
 	 */
-	@RequestMapping("/board/boardSearch.do")
-	public ModelAndView boardSearch(HttpServletRequest request, String searchType, String searchWord, String board) {
+	@RequestMapping("/board/boardSearchPR.do")
+	public ModelAndView boardSearchPR(HttpServletRequest request, String searchType, String searchWord, String board, String boardsearch) {
 		ModelAndView mav = new ModelAndView();
 
 		int currentPage = 1;
@@ -306,6 +306,62 @@ public class BoardController {
 		}
 
 		Map<String, Object> res = new HashMap<String, Object>();
+		
+		searchType = request.getParameter("searchType");
+		searchWord = request.getParameter("searchWord");
+		
+		res = bs.boardSearchPR(searchType, searchWord, currentPage, cntPerPage);
+
+		
+		System.out.println("controller 에서 전체     " + res.get("nlist"));
+		System.out.println("토탈" + res.get("total"));
+		System.out.println("///" + res.get("paging"));
+		
+		
+		
+		
+		mav.addObject("paging", res.get("paging"));
+		mav.addObject("boardList", res);
+		mav.addObject("searchType", searchType);
+		mav.addObject("searchWord", searchWord);
+		mav.addObject("board", "searchPR");
+		mav.setViewName("board/board");
+		
+		return mav;
+	}
+	
+	/**
+	 * @method : boardSearchSH
+	 * @date : 2020. 6. 17.
+	 * @buildBy : 김경호
+	 * @comment : 홍보 게시판 검색기능
+	 */
+	@RequestMapping("/board/boardSearchSH.do")
+	public ModelAndView boardSearchSH(HttpServletRequest request, String searchType, String searchWord, String board, String boardsearch) {
+		ModelAndView mav = new ModelAndView();
+		
+		int currentPage = 1;
+		int cntPerPage = 5;
+		
+
+		if (request.getParameter("cPage") != null) {
+			currentPage = Integer.parseInt(request.getParameter("cPage"));
+		}
+
+		if (request.getParameter("cntPerPage") != null) {
+			currentPage = Integer.parseInt(request.getParameter("cntPerPage"));
+		}
+		
+		
+		
+		searchType = request.getParameter("searchType");
+		searchWord = request.getParameter("searchWord");
+		
+		Map<String, Object> res = new HashMap<String, Object>();
+		res = bs.boardSearchSH(searchType, searchWord, currentPage, cntPerPage);
+		
+		
+		System.out.println("controller 에서 전체     " + res.get("nlist"));
 
 		if (board.equals("pr")) {
 			res = bs.boardSearchPR(searchType, searchWord, currentPage, cntPerPage);
@@ -320,12 +376,20 @@ public class BoardController {
 		System.out.println("controller 에서 전체     " + res.get("nlist"));
 
 		System.out.println("토탈" + res.get("total"));
+		System.out.println("///" + res.get("paging"));
+		
+		
+		
+		
 		mav.addObject("paging", res.get("paging"));
 		mav.addObject("boardList", res);
-		mav.addObject("board", "search");
+		mav.addObject("searchType", searchType);
+		mav.addObject("searchWord", searchWord);
+		mav.addObject("board", "searchSH");
 		mav.setViewName("board/board");
 
 		return mav;
 	}
+	
 
 }

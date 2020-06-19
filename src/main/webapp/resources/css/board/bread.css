@@ -14,7 +14,7 @@
 }
 
 .read_title{
-    font-size: 3vw;
+    font-size: 40px;
     text-align: center;
     margin-top: 70px;
 }
@@ -24,24 +24,22 @@
 .read_info{
     width: 100%;
     height: 400px;
-    
-    
 }
 
 
 
 .read_id{
-    font-size: 0.7vw;
+    font-size: 15px;
     margin-left : 80%
 }
 
 .read_day{
-    font-size: 0.7vw;
+    font-size: 15px;
     margin-left : 80%
 }
 
 .read_file{
-    font-size: 0.7vw;
+    font-size: 15px;
     margin-left : 80%
 }
 
@@ -50,7 +48,7 @@
     border:2px solid black;
     width: 90%;
     height: 320px;
-    font-size: 1vw;
+    font-size: 17px;
     margin-left:5%;
     padding:1%;
 }
@@ -67,7 +65,7 @@
 	height: 50px;
 	background-color: black;
 	text-align: center;
-	font-size: 1.2vw;
+	font-size: 20px;
 	margin-left:73%;
 }
 .read_delete a{
@@ -80,7 +78,7 @@
 	float: right;
 	background-color: black;
 	text-align: center;
-	font-size: 1.2vw;
+	font-size: 20px;
 }
 .read_list a{
 	color:white;

@@ -70,6 +70,7 @@
 
 											<tbody>
 												<c:forEach items="${boardList.nlist}" var="board">
+												<input type="hidden" value="${board.b_num}" name="bnoList"/>
 										            <tr>
 										                <td class="prNo" style="text-align:center;">${board.rnum}</td>
 										                <td class="prTitle"><a href="<%= request.getContextPath() %>/board/boardRead.do?b_num=${board.b_num}">${board.b_title}</a></td>
@@ -86,13 +87,13 @@
 										   <ul class="bdpaging">
 										   <c:if test="${board  eq 'pr'}"> 
 										   <input class="prpr" value="pr" style="display:none;"></input>
-												 <a href="<%= request.getContextPath() %>/board/boardPR.do" class="nav first"><i class="fas fa-angle-double-left"></i></a>
+												 <a href="<%= request.getContextPath() %>/board/boardPR.do" class="nav first" style="background-color:white">&lt;&lt;</a>
 										 		<c:choose>
-											       <c:when test="${paging.blockStart > 1 }">
-											             <a href="<%= request.getContextPath() %>/board/boardPR.do?cPage=${paging.blockStart-1}" class="nav prev"><i class="fas fa-angle-left"></i></a>
+											       <c:when test="${paging.currentPage > 1 }">
+											             <a href="<%= request.getContextPath() %>/board/boardPR.do?cPage=${paging.currentPage-1}" class="nav prev" style="background-color:white">  &lt;</a>
 											       </c:when>
 											       <c:otherwise>
-											           <a href="<%= request.getContextPath() %>/board/boardPR.do?cPage=${paging.blockStart}" class="nav prev"><i class="fas fa-angle-left"></i></a>
+											           <a href="<%= request.getContextPath() %>/board/boardPR.do?cPage=${paging.blockStart}" class="nav prev" style="background-color:white">  &lt;</a>
 											       </c:otherwise>
 											   </c:choose>
 											   
@@ -101,42 +102,43 @@
 											   </c:forEach> 
 											   
 											   <c:choose>
-											       <c:when test="${paging.blockEnd+1 > paging.lastPage }">
-											             <a href="<%= request.getContextPath() %>/board/boardPR.do?cPage=${paging.blockEnd}" class="nav next"><i class="fas fa-angle-right"></i></a>
+											       <c:when test="${paging.currentPage+1 > paging.lastPage }">
+											             <a href="<%= request.getContextPath() %>/board/boardPR.do?cPage=${paging.blockEnd}" class="nav next" style="background-color:white">  &gt;</a>
 											       </c:when>
 											       
 											       <c:otherwise>
-											             <a href="<%= request.getContextPath() %>/board/boardPR.do?cPage=${paging.blockEnd+1}" class="nav next"><i class="fas fa-angle-right"></i></a>
+											             <a href="<%= request.getContextPath() %>/board/boardPR.do?cPage=${paging.currentPage+1}" class="nav next" style="background-color:white">  &gt;</a>
 											       </c:otherwise>
 											   </c:choose>
-											         <a href="<%= request.getContextPath() %>/board/boardPR.do?cPage=${paging.lastPage}" class="nav last"><i class="fas fa-angle-double-right"></i></a>
+											         <a href="<%= request.getContextPath() %>/board/boardPR.do?cPage=${paging.lastPage}" class="nav last" style="background-color:white">&gt;&gt;</a>
 										   </c:if>
 										   
 										   <!-- 검색했을시 페이징 처리 -->
-										   <c:if test="${board  eq 'search'}"><a href="<%= request.getContextPath() %>/board/boardSearch.do" class="nav first"><i class="fas fa-angle-double-left"></i></a>
+										   <c:if test="${board  eq 'searchPR'}">
+										   <a href="<%= request.getContextPath() %>/board/boardSearchPR.do?board=${board}&searchType=${searchType}&searchWord=${searchWord}" class="nav first" style="background-color:white">&lt;&lt;</a>
 										 		<c:choose>
-											       <c:when test="${paging.blockStart > 1 }">
-											             <a href="<%= request.getContextPath() %>/board/boardSearch.do?cPage=${paging.blockStart-1}" class="nav prev"><i class="fas fa-angle-left"></i></a>
+											       <c:when test="${paging.currentPage > 1 }">
+											             <a href="<%= request.getContextPath() %>/board/boardSearchPR.do?cPage=${paging.currentPage-1}" class="nav prev" style="background-color:white">  &lt;</a>
 											       </c:when>
 											       <c:otherwise>
-											           <a href="<%= request.getContextPath() %>/board/boardSearch.do?cPage=${paging.blockStart}" class="nav prev"><i class="fas fa-angle-left"></i></a>
+											           <a href="<%= request.getContextPath() %>/board/boardSearchPR.do?" class="nav prev" style="background-color:white">  &lt;</a>
 											       </c:otherwise>
 											   </c:choose>
 											   
 											   <c:forEach begin="${paging.blockStart}" end="${paging.blockEnd}" var="page">
-											   		 <a href="<%= request.getContextPath() %>/board/boardSearch.do?cPage=${page}" class="num active"><span>${page}</span></a>
+											   		 <a href="<%= request.getContextPath() %>/board/boardSearchPR.do?cPage=${page}&board=${board}&searchType=${searchType}&searchWord=${searchWord}" class="num active"><span>${page}</span></a>
 											   </c:forEach> 
 											   
 											   <c:choose>
-											       <c:when test="${paging.blockEnd+1 > paging.lastPage }">
-											             <a href="<%= request.getContextPath() %>/board/boardSearch.do?cPage=${paging.blockEnd}" class="nav next"><i class="fas fa-angle-right"></i></a>
+											       <c:when test="${paging.currentPage+1 > paging.lastPage }">
+											             <a href="<%= request.getContextPath() %>/board/boardSearchPR.do?cPage=${paging.blockEnd}" class="nav next" style="background-color:white">  &gt;</a>
 											       </c:when>
 											       
 											       <c:otherwise>
-											             <a href="<%= request.getContextPath() %>/board/boardSearch.do?cPage=${paging.blockEnd+1}" class="nav next"><i class="fas fa-angle-right"></i></a>
+											             <a href="<%= request.getContextPath() %>/board/boardSearchPR.do?cPage=${paging.currentPage+1}" class="nav next" style="background-color:white">  &gt;</a>
 											       </c:otherwise>
 											   </c:choose>
-											         <a href="<%= request.getContextPath() %>/board/boardSearch.do?cPage=${paging.lastPage}" class="nav last"><i class="fas fa-angle-double-right"></i></a>
+											         <a href="<%= request.getContextPath() %>/board/boardSearchPR.do?cPage=${paging.lastPage}" class="nav last" style="background-color:white">&gt;&gt;</a>
 										   </c:if>
 										   </ul> 
 										   </div>
@@ -167,6 +169,7 @@
 
 											<tbody>
 												<c:forEach items="${boardList.nlist}" var="board">
+												<input type="hidden" value="${board.b_num}" name="bnoList"/>
 										            <tr>
 										                <td class="prNo" style="text-align:center;">${board.rnum}</td>
 										                <td class="prTitle"><a href="<%= request.getContextPath() %>/board/boardRead.do?b_num=${board.b_num}">${board.b_title}</a></td>
@@ -182,13 +185,13 @@
 										<!-- 공유게시판 페이징 처리기능 -->
 									   <ul class="bdpaging">
 										<c:if test="${board  eq 'sh'}"> 
-											<a href="<%= request.getContextPath() %>/board/boardSH.do" class="nav first"><i class="fas fa-angle-double-left"></i></a>
+											<a href="<%= request.getContextPath() %>/board/boardSH.do" class="nav first" style="background-color:white">&lt;&lt;</a>
 										 		<c:choose>
-											       <c:when test="${paging.blockStart > 1 }">
-											             <a href="<%= request.getContextPath() %>/board/boardSH.do?cPage=${paging.blockStart-1}" class="nav prev"><i class="fas fa-angle-left"></i></a>
+											       <c:when test="${paging.currentPage > 1 }">
+											             <a href="<%= request.getContextPath() %>/board/boardSH.do?cPage=${paging.currentPage-1}" class="nav prev" style="background-color:white">  &lt;</a>
 											       </c:when>
 											       <c:otherwise>
-											            <a href="<%= request.getContextPath() %>/board/boardSH.do?cPage=${paging.blockStart}" class="nav prev"><i class="fas fa-angle-left"></i></a>
+											            <a href="<%= request.getContextPath() %>/board/boardSH.do?cPage=${paging.blockStart}" class="nav prev" style="background-color:white">  &lt;</a>
 											       </c:otherwise>
 											   </c:choose>
 											   
@@ -197,42 +200,43 @@
 											   </c:forEach> 
 											   
 											   <c:choose>
-											       <c:when test="${paging.blockEnd+1 > paging.lastPage }">
-											             <a href="<%= request.getContextPath() %>/board/boardSH.do?cPage=${paging.blockEnd}" class="nav next"><i class="fas fa-angle-right"></i></a>
+											       <c:when test="${paging.currentPage+1 > paging.lastPage }">
+											             <a href="<%= request.getContextPath() %>/board/boardSH.do?cPage=${paging.blockEnd}" class="nav next" style="background-color:white">  &gt;</a>
 											       </c:when>
 											       
 											       <c:otherwise>
-											         <a href="<%= request.getContextPath() %>/board/boardSH.do?cPage=${paging.blockEnd+1}" class="nav next"><i class="fas fa-angle-right"></i></a>
+											         <a href="<%= request.getContextPath() %>/board/boardSH.do?cPage=${paging.currentPage+1}" class="nav next" style="background-color:white">  &gt;</a>
 											       </c:otherwise>
 											   </c:choose>
-											         <a href="<%= request.getContextPath() %>/board/boardSH.do?cPage=${paging.lastPage}" class="nav last"><i class="fas fa-angle-double-right"></i></a>
+											         <a href="<%= request.getContextPath() %>/board/boardSH.do?cPage=${paging.lastPage}" class="nav last" style="background-color:white">&gt;&gt;</a>
 										   </c:if>
 										   
 										   <!-- 검색했을시 페이징 처리 -->
-										   <c:if test="${board  eq 'search'}"><a href="<%= request.getContextPath() %>/board/boardSearch.do" class="nav first"><i class="fas fa-angle-double-left"></i></a>
+										   <c:if test="${board  eq 'searchSH'}">
+										   <a href="<%= request.getContextPath() %>/board/boardSearchSH.do?board=${board}&searchType=${searchType}&searchWord=${searchWord}" class="nav first" style="background-color:white">&lt;&lt;</a>
 										 		<c:choose>
-											       <c:when test="${paging.blockStart > 1 }">
-											             <a href="<%= request.getContextPath() %>/board/boardSearch.do?cPage=${paging.blockStart-1}" class="nav prev"><i class="fas fa-angle-left"></i></a>
+											       <c:when test="${paging.currentPage > 1 }">
+											             <a href="<%= request.getContextPath() %>/board/boardSearchSH.do?cPage=${paging.currentPage-1}" class="nav prev" style="background-color:white">  &lt;</a>
 											       </c:when>
 											       <c:otherwise>
-											           <a href="<%= request.getContextPath() %>/board/boardSearch.do?cPage=${paging.blockStart}" class="nav prev"><i class="fas fa-angle-left"></i></a>
+											           <a href="<%= request.getContextPath() %>/board/boardSearchSH.do?" class="nav prev" style="background-color:white">  &lt;</a>
 											       </c:otherwise>
 											   </c:choose>
 											   
 											   <c:forEach begin="${paging.blockStart}" end="${paging.blockEnd}" var="page">
-											   		 <a href="<%= request.getContextPath() %>/board/boardSearch.do?cPage=${page}" class="num active"><span>${page}</span></a>
+											   		 <a href="<%= request.getContextPath() %>/board/boardSearchSH.do?cPage=${page}&board=${board}&searchType=${searchType}&searchWord=${searchWord}" class="num active"><span>${page}</span></a>
 											   </c:forEach> 
 											   
 											   <c:choose>
-											       <c:when test="${paging.blockEnd+1 > paging.lastPage }">
-											             <a href="<%= request.getContextPath() %>/board/boardSearch.do?cPage=${paging.blockEnd}" class="nav next"><i class="fas fa-angle-right"></i></a>
+											       <c:when test="${paging.currentPage+1 > paging.lastPage }">
+											             <a href="<%= request.getContextPath() %>/board/boardSearchSH.do?cPage=${paging.blockEnd}" class="nav next" style="background-color:white">  &gt;</a>
 											       </c:when>
 											       
 											       <c:otherwise>
-											             <a href="<%= request.getContextPath() %>/board/boardSearch.do?cPage=${paging.blockEnd+1}" class="nav next"><i class="fas fa-angle-right"></i></a>
+											             <a href="<%= request.getContextPath() %>/board/boardSearchSH.do?cPage=${paging.currentPage+1}" class="nav next" style="background-color:white">  &gt;</a>
 											       </c:otherwise>
 											   </c:choose>
-											         <a href="<%= request.getContextPath() %>/board/boardSearch.do?cPage=${paging.lastPage}" class="nav last"><i class="fas fa-angle-double-right"></i></a>
+											         <a href="<%= request.getContextPath() %>/board/boardSearchSH.do?cPage=${paging.lastPage}" class="nav last" style="background-color:white">&gt;&gt;</a>
 										   </c:if>
 										   </ul> 
 										 
@@ -242,21 +246,36 @@
 								<!-- 홍보게시판 부분 끝  -->
 								<!-- 검색 창 -->
 								<div class="bdsearch">
-											<form action="<%=request.getContextPath()%>/board/boardSearch.do?board=${board}" method="post">
-												<select name="searchType">
+									<c:if test="${board  eq 'sh' || board eq 'searchSH'}">	
+										<form action="<%=request.getContextPath()%>/board/boardSearchSH.do?board=${board}" method="post">
+									</c:if>	
+									<c:if test="${board  eq 'pr'|| board eq 'searchPR'}">	
+										<form action="<%=request.getContextPath()%>/board/boardSearchPR.do?board=${board}" method="post">
+									</c:if>		
+										
+										<select name="searchType" class="searchType">
 													<option value="selected disabled hidden">분류</option>
 													<option value="write">작성자</option>
 													<option value="title">제목</option>
 													<option value="wrti">작성자 + 제목</option>
 												</select> 
-												<input class="searchText" type="text" name="searchWord" />
+												<input class="searchWord" type="text" name="searchWord" />
 												<!-- <input class="dbSearch" type="button" value="검색하기" /> -->
-												<button  class="dbSearch">검색</button>
-											</form>
+												
+												<%-- <c:if test="${board  eq 'sh'}">	
+													<button  class="dbSearch" onclick="searchSh()">검색</button>
+												</c:if>	
+												
+												<c:if test="${board  eq 'pr'}">	
+													<button  class="dbSearch" onclick="searchPr()">검색</button>
+												</c:if> --%>	
+												<button  class="dbSearch">검색</button> 
+										</form>
+											
 								</div>
 
 										<!-- 버튼  -->
-								<c:if test="${board  eq 'sh'}">	
+								<c:if test="${board  eq 'sh'}" >	
 									<c:if test="${sessionScope.loginInfo != null }">
 										<div id="bdWrite">
 									        <a href="<%= request.getContextPath() %>/board/boardwrite.do?board=${board}" style="color:#fff;">글쓰기</a>
@@ -301,15 +320,16 @@
 		
 		var flg = '${board}';
 
-		if(flg == 'pr'){
+		if(flg == 'pr' || flg == 'searchPR'){
 			document.querySelector('#tab1').style.display="block";
 			document.querySelector('#tab2').style.display="none";
 			document.querySelector("#prtab").style.backgroundColor = 'white';
-		}else{
+		}else if(flg == 'sh' || flg == 'searchSH'){
 			document.querySelector('#tab1').style.display="none";
 			document.querySelector('#tab2').style.display="block";
 			document.querySelector("#shtab").style.backgroundColor = 'white';
-		}	
+		}
+		
 		
 		
 	});
@@ -323,13 +343,36 @@
 		 console.dir("메롱");
 		 document.pr.submit();
 		 return true;
-	 }
+	 };
 	 
 	 function shSubmit(){
 		 console.dir("메롱");
 		 document.sh.submit();
 		 return true;
-	 }
+	 };
+	 
+<%-- 	 function searchSh() {
+		 $.ajax({
+
+		 url : '<%=request.getContextPath()%>/board/boardSearchSH.do?board=${board}',
+
+		 type : 'post',
+
+		 data : {
+			 "searchType" : $('.searchType'),
+			 "searchWord" : $('searchWord')
+		 },
+		 success : function(data) {
+
+			 if(data != '') {
+	
+				 alert('검색이 완료 되었습니다.');
+	
+			 } 
+	
+			 });
+
+		 }); --%>
 		 
 
 		 

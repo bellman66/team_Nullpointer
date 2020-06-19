@@ -30,4 +30,8 @@ public class ScheduleDao {
 	public int rentAdd(Schedule schedule) {
 		return sqlSession.insert("Schedule.rentAdd", schedule);
 	}
+	
+	public int scdelete(String scdelete) {
+		return sqlSession.delete("Schedule.scdelete", scdelete);
+	}
 }
