@@ -8,5 +8,8 @@
   <select id="myArtistList" resultType="MyArtist">
   	select * from tb_myartist where m_id = #{m_id}
   </select>
+  <delete id="myArtistDelete" parameterType="MyArtist">
+  	delete from tb_myartist where m_id = #{m_id} and m_nickname = #{m_nickname}
+  </delete>
   
   </mapper>

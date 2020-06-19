@@ -193,6 +193,13 @@
 	top: 16px;
 }
 
+.mypage-box .mypage_follow .listdelete {
+	float: right;
+	top: -3px;
+	right: 5px;
+	position: relative;
+}
+
 /* 나의 시청 기록부분 */
 .mypage-box .mypage_history {
 	width: 48%;

@@ -169,12 +169,15 @@
 						<!-- 팔로우한 아티스트 부분 시작 -->
 						<div class="mypage_follow">
 							<h6>나의 아티스트</h6>
-							<!-- member + myartist 내역 불러와서 foreach로 돌릴 예정 -->
 							<ul>
 								<c:forEach items="${myArtistList}" var="myartist"
 									varStatus="myartistnum">
 									<c:if test="${myartistnum.index < 5}">
-										<li><a href="#">${myartist.artist_nick}</a></li>
+										<li>
+											<a href="#" id="${myartist.ma_num}">${myartist.m_nickname}</a>
+											<button class="listdelete" id="del${myartist.ma_num}"
+												onclick="myArtistDelete('#del${myartist.ma_num}')">삭제</button>
+										</li>
 									</c:if>
 								</c:forEach>
 							</ul>

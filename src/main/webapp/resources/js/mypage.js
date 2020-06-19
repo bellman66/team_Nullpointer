@@ -55,8 +55,6 @@ $('#userPicture').on('change',
 
 // 닉네임 중복 확인
 function nickCheck() {
-	console.log('닉네임 체크 실행');
-	console.log($('#NICKNAME'));
 	$.ajax({
 		url : '/springmvc/member/nicknamecheck.do',
 		type : 'GET',
@@ -187,4 +185,24 @@ function validata() {
 
 	return true;
 
+}
+
+// 삭제 버튼 클릭 시, 해당 버튼이 위치한 li 삭제
+function myArtistDelete(button) {
+	
+	// 클릭한 삭제 버튼이 해당되는 아티스트 닉네임 get
+	var artist_nick = $(button).prev().html();
+	console.log(artist_nick);
+	$.ajax({
+		url: '/springmvc/member/myArtistDelete.do',
+		type: 'GET',
+		data: {
+			"artist_nick" : artist_nick
+			},
+		success: function() {
+			location.reload();
+		}
+		
+	});
+	
 }

@@ -14,6 +14,7 @@ public interface MemberService {
 	public Member loginConfirm(Map<String , Object>memberMap);
 	public Boolean nickNameCheck(String nickname);
 	public List<MyArtist> myArtistList(String m_id);
+	public int myArtistDelete(MyArtist myartist);
 	public int infoModify(Member member, List<Map<String, Object>> file);
 	public void updateProfile(List<Map<String, Object>> file);
 	public Member reload(String m_id);

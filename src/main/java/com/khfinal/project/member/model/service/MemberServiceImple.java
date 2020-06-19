@@ -117,6 +117,11 @@ public class MemberServiceImple implements MemberService {
 	}
 
 	@Override
+	public int myArtistDelete(MyArtist myartist) {
+		return madao.myArtistDelete(myartist);
+		
+	}
+	
 	public boolean idCheck(String m_id) {
 		// TODO Auto-generated method stub
 		String id = mdao.idCheck(m_id);

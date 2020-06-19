@@ -1,9 +1,7 @@
 package com.khfinal.project.artist.model.service;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -15,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.khfinal.project.artist.model.dao.ArtistDao;
 import com.khfinal.project.artist.model.vo.Artist;
 import com.khfinal.project.member.model.vo.Member;
+import com.khfinal.project.artist.model.vo.ArtistPlus;
 import com.khfinal.project.schedule.model.vo.Schedule;
 
 @Service
@@ -136,14 +135,37 @@ public class ArtistServiceImple implements ArtistService {
 	}
 
 	/**
+	 * @method : selectArtList
+	 * @date : 2020. 6. 16.
+	 * @buildBy : hajin
+	 * @comment : 아티스트 메인 페이지 
+	 */
+	@Override
+	public List<Map> selectArtList() {
+		
+		return ad.selectArtList();
+	}
+	
+	/**
+	 * @method : decrementAuLike
+	 * @date : 2020. 6. 19.
+	 * @buildBy : 박혜연
+	 * @comment : 아티스트 회원의 정보 수정 시, 한줄소개 입력
+	 */
+	@Override
+	public int aWordInsert(ArtistPlus artistplus) {
+		return ad.aWordInsert(artistplus);
+	}
+	
+	/**
 	 * @method : auWordModify
 	 * @date : 2020. 6. 17.
 	 * @buildBy : 박혜연
 	 * @comment : 회원 정보 수정 시, 한줄소개 수정
 	 */
 	@Override
-	public int auWordModify(Artist artist) {
-		return ad.auWordModify(artist);
+	public int aWordModify(ArtistPlus artistplus) {
+		return ad.aWordModify(artistplus);
 	}
 
 	/**
@@ -153,9 +175,9 @@ public class ArtistServiceImple implements ArtistService {
 	 * @comment : 아티스트 회원의 마이페이지 로드 시, 한줄 소개(au_word) 가져오기
 	 */
 	@Override
-	public String auWord(String m_id) {
+	public String aWord(String m_id) {
 		// TODO Auto-generated method stub
-		return ad.auWord(m_id);
+		return ad.aWord(m_id);
 	}
 
 	/**
@@ -189,6 +211,16 @@ public class ArtistServiceImple implements ArtistService {
 	@Override
 	public List<Member> selectTattooist() {
 		return ad.selectTattooist();
+	}
+		/**
+	 * @method : decrementAuLike
+	 * @date : 2020. 6. 19.
+	 * @buildBy : 박혜연
+	 * @comment : 일반회원의 '나의 아티스트' 목록에서 구독 삭제 시, 해당 아티스트의 구독자수 -1
+	 */
+	@Override
+	public int decrementAuLike(String m_nickname) {
+		return ad.decrementAuLike(m_nickname);
 	}
 
 }

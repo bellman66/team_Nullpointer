@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.khfinal.project.artist.model.service.ArtistService;
 import com.khfinal.project.artist.model.vo.Artist;
+import com.khfinal.project.artist.model.vo.ArtistPlus;
 import com.khfinal.project.member.model.service.MemberService;
 import com.khfinal.project.member.model.vo.Member;
 import com.khfinal.project.member.model.vo.MyArtist;
@@ -197,7 +198,7 @@ public class MemberController {
 		}
 
 		// 한줄 소개 추출 하여 session에 담기
-		String word = as.auWord(user.getM_id());
+		String word = as.aWord(user.getM_id());
 
 		if (word != null) {
 			mav.addObject("word", word);
@@ -207,6 +208,37 @@ public class MemberController {
 		mav.setViewName("member/myPage_artist");
 
 		return mav;
+	}
+	
+	/**
+	 * @method : myArtistDelete()
+	 * @date : 2020. 6. 19.
+	 * @buildBy : 박혜연
+	 * @comment : 마이페이지(일반회원) 나의 아티스트 목록 삭제
+	 */
+	@RequestMapping("/member/myArtistDelete.do")
+	public void myArtistDelete(HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		
+		// 삭제 버튼 클릭 시, 해당 버튼이 속한 아티스트의 닉네임 get
+		String artist_nick = request.getParameter("artist_nick");
+		Map<String, Object> info = (Map<String, Object>) request.getSession().getAttribute("loginInfo");
+		Member user = (Member) info.get("member");
+		MyArtist user_ma = new MyArtist();
+		
+		user_ma.setM_id(user.getM_id());
+		user_ma.setm_nickname(artist_nick);
+		
+		// 회원의 myArtist 중 해당 닉네임 삭제
+		
+		int deleteRes = ms.myArtistDelete(user_ma);
+		int updateRes = 0;
+		
+		if(deleteRes > 0) {
+			// 회원의 myArtist 에서 삭제되면 해당 nickname을 가진 아티스트의 a_subscribe -1
+			as.decrementAuLike(artist_nick);
+		}
+		
 	}
 
 	/**
@@ -310,14 +342,19 @@ public class MemberController {
 		}
 
 		// artist 회원의 경우 '한줄소개' 입력
+		int aRewriteRes = 0;
 		if (info.getM_class() == 2 || info.getM_class() == 3) {
-			Artist aRewrite = new Artist();
+			ArtistPlus aRewrite = new ArtistPlus();
 			String word = request.getParameter("WORD");
 			if (!word.isEmpty()) {
 				aRewrite.setM_id(info.getM_id());
-				aRewrite.setAu_word(word);
-				as.auWordModify(aRewrite);
-
+				aRewrite.setM_nickname(info.getM_nickname());
+				aRewrite.setA_word(word);
+				System.out.println(aRewrite);
+				aRewriteRes = as.aWordModify(aRewrite);
+				if(aRewriteRes == 0) {
+					as.aWordInsert(aRewrite);
+				}
 			}
 		}
 

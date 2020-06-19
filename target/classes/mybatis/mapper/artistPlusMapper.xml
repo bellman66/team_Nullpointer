@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ArtistPlus">
+
+	<insert id="wordInsert" parameterType="ArtistPlus">
+		insert into tb_artist(A_NUM, M_ID, M_NICKNAME, A_WORD)
+		values(A_NUM, #{m_id}, #{m_nickname}, #{a_word});
+	</insert>
+
+	<update id="wordModify" parameterType="ArtistPlus">
+		update tb_artist set
+		a_word = #{a_word} where m_id = #{m_id}
+	</update>
+
+	<select id="word" resultType="string">
+		select a_word from tb_artist where
+		m_id = #{m_id}
+	</select>
+	<update id="decrementAuLike" parameterType="string">
+		update tb_artist set
+		a_subscribe = a_subscribe-1 where m_nickname = #{m_nickname}
+	</update>
+
+</mapper>
