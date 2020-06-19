@@ -66,7 +66,9 @@ public class MemberServiceImple implements MemberService {
 	public Boolean nickNameCheck(String nickname) {
 		String m_nickname = mdao.nickNameCheck(nickname);
 		
-		if(m_nickname != null) return false;
+		if(m_nickname != null) {
+			return false;
+		}
 		return true;
 	}
 

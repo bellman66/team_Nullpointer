@@ -55,13 +55,18 @@ $('#userPicture').on('change',
 
 // 닉네임 중복 확인
 function nickCheck() {
+	
+	let m_nick = $('#NICKNAME').val();
+	
 	$.ajax({
 		url : '/springmvc/member/nicknamecheck.do',
 		type : 'GET',
-		data : $('#NICKNAME'),
+		data :{
+			"m_nickname" : m_nick
+		},
 		// data 받아오는 것이 성공하면(success) 아래 함수 호출
 		success : function(data) {
-			if (data != '') {
+			if (data != true) {
 				// 입력한 data와 동일한 값이 있다면
 				document.querySelector('#nickCheckMsg').innerHTML = '이미 존재하는 닉네임입니다.';
 				infoModify = false;
@@ -192,15 +197,21 @@ function myArtistDelete(button) {
 	
 	// 클릭한 삭제 버튼이 해당되는 아티스트 닉네임 get
 	var artist_nick = $(button).prev().html();
+	
 	console.log(artist_nick);
+	
 	$.ajax({
 		url: '/springmvc/member/myArtistDelete.do',
 		type: 'GET',
 		data: {
 			"artist_nick" : artist_nick
 			},
-		success: function() {
-			location.reload();
+		success: function(res) {
+			if(res != null) {
+				location.href='/springmvc/member/myPage.do';
+			} else {
+				alert('구독 취소에 실패하였습니다. 새로고침 후 다시 시도해주세요.');
+			}
 		}
 		
 	});

@@ -214,31 +214,36 @@ public class MemberController {
 	 * @method : myArtistDelete()
 	 * @date : 2020. 6. 19.
 	 * @buildBy : 박혜연
-	 * @comment : 마이페이지(일반회원) 나의 아티스트 목록 삭제
+	 * @comment : 마이페이지(일반회원) 나의 아티스트 목록 삭제(ajax)
 	 */
 	@RequestMapping("/member/myArtistDelete.do")
-	public void myArtistDelete(HttpServletRequest request) {
-		ModelAndView mav = new ModelAndView();
+	@ResponseBody
+	public Boolean myArtistDelete(HttpServletRequest request) {
 		
+		int res = 0;
+		Boolean decrementRes = true;
 		// 삭제 버튼 클릭 시, 해당 버튼이 속한 아티스트의 닉네임 get
 		String artist_nick = request.getParameter("artist_nick");
 		Map<String, Object> info = (Map<String, Object>) request.getSession().getAttribute("loginInfo");
 		Member user = (Member) info.get("member");
 		MyArtist user_ma = new MyArtist();
-		
 		user_ma.setM_id(user.getM_id());
 		user_ma.setm_nickname(artist_nick);
 		
 		// 회원의 myArtist 중 해당 닉네임 삭제
 		
 		int deleteRes = ms.myArtistDelete(user_ma);
-		int updateRes = 0;
 		
 		if(deleteRes > 0) {
 			// 회원의 myArtist 에서 삭제되면 해당 nickname을 가진 아티스트의 a_subscribe -1
-			as.decrementAuLike(artist_nick);
+			res = as.decrementSubscribe(artist_nick);
+			
+			if(res < 0) {
+				decrementRes = false;
+			}
 		}
 		
+		return decrementRes;
 	}
 
 	/**

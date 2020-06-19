@@ -48,8 +48,8 @@ public class ArtistDao {
 		return session.selectOne("ArtistPlus.word", m_id);
 	}
 	
-	public int decrementAuLike(String m_nickname) {
-		return session.update("ArtistPlus.decrementAuLike", m_nickname);
+	public int decrementSubscribe(String m_nickname) {
+		return session.update("ArtistPlus.decrementSubscribe", m_nickname);
 	}
 	
 	public int aWordInsert(ArtistPlus artistplus) {

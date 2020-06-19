@@ -219,8 +219,8 @@ public class ArtistServiceImple implements ArtistService {
 	 * @comment : 일반회원의 '나의 아티스트' 목록에서 구독 삭제 시, 해당 아티스트의 구독자수 -1
 	 */
 	@Override
-	public int decrementAuLike(String m_nickname) {
-		return ad.decrementAuLike(m_nickname);
+	public int decrementSubscribe(String m_nickname) {
+		return ad.decrementSubscribe(m_nickname);
 	}
 
 }

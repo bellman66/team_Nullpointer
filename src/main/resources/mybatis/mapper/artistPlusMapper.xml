@@ -19,7 +19,7 @@
 		select a_word from tb_artist where
 		m_id = #{m_id}
 	</select>
-	<update id="decrementAuLike" parameterType="string">
+	<update id="decrementSubscribe" parameterType="string">
 		update tb_artist set
 		a_subscribe = a_subscribe-1 where m_nickname = #{m_nickname}
 	</update>

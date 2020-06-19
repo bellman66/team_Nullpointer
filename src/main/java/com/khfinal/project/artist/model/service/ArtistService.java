@@ -1,10 +1,11 @@
 package com.khfinal.project.artist.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.khfinal.project.artist.model.vo.Artist;
-import com.khfinal.project.member.model.vo.Member;
 import com.khfinal.project.artist.model.vo.ArtistPlus;
+import com.khfinal.project.member.model.vo.Member;
 import com.khfinal.project.schedule.model.vo.Schedule;
 
 public interface ArtistService {
@@ -19,6 +20,6 @@ public interface ArtistService {
 	public int aWordModify(ArtistPlus artistplus);
 	public int aWordInsert(ArtistPlus artistplus);
 	public String aWord(String m_id);
-	public int decrementAuLike(String m_nickname);
+	public int decrementSubscribe(String m_nickname);
 
 }
