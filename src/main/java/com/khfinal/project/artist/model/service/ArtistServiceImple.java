@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.khfinal.project.artist.model.dao.ArtistDao;
 import com.khfinal.project.artist.model.vo.Artist;
+import com.khfinal.project.member.model.vo.Member;
 import com.khfinal.project.schedule.model.vo.Schedule;
 
 @Service
@@ -121,7 +122,7 @@ public class ArtistServiceImple implements ArtistService {
 	public List<Artist> uploadList(String m_id) {
 		return ad.uploadList(m_id);
 	}
-	
+
 	/**
 	 * @method : scheduleList()
 	 * @date : 2020. 6. 18.
@@ -134,18 +135,6 @@ public class ArtistServiceImple implements ArtistService {
 		return ad.scheduleList(m_id);
 	}
 
-	/**
-	 * @method : selectArtList
-	 * @date : 2020. 6. 16.
-	 * @buildBy : hajin
-	 * @comment : 아티스트 메인 페이지 
-	 */
-	@Override
-	public List<Map> selectArtList() {
-		
-		return ad.selectArtList();
-	}
-	
 	/**
 	 * @method : auWordModify
 	 * @date : 2020. 6. 17.
@@ -169,5 +158,37 @@ public class ArtistServiceImple implements ArtistService {
 		return ad.auWord(m_id);
 	}
 
+	/**
+	 * @method : selectArtList
+	 * @date : 2020. 6. 16.
+	 * @buildBy : hajin
+	 * @comment : 전체 아티스트 tab 메인페이지
+	 */
+	@Override
+	public List<Member> selectArtist() {
+		return ad.selectArtist();
+	}
+
+	/**
+	 * @method : selectArtList
+	 * @date : 2020. 6. 19.
+	 * @buildBy : hajin
+	 * @comment : 뮤지션만 받아주는 tab
+	 */
+	/*
+	 * @Override public List<Member> selectArtTab(String m_class) { return
+	 * ad.selectArtTab(m_class); }
+	 */
+
+	/**
+	 * @method : selectArtList
+	 * @date : 2020. 6. 19.
+	 * @buildBy : hajin
+	 * @comment : 타투이스트만 받아주는 tab
+	 */
+	@Override
+	public List<Member> selectTattooist() {
+		return ad.selectTattooist();
+	}
 
 }
