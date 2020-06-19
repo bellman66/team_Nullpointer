@@ -18,7 +18,7 @@
 						<c:if test="${sessionScope.loginInfo.member.m_class == '2'}">
 							<a href="<%=request.getContextPath()%>/member/myPageArtist.do">마이페이지</a>
 						</c:if>
-						<a href="#">로그아웃</a>
+						<a href="<%=request.getContextPath()%>/member/logout.do">로그아웃</a>
 					</c:if>
 				</div>
 				<div class="header_tit" id="header_tit" onclick="reload()">
