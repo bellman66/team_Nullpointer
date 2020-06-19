@@ -8,13 +8,17 @@ public class MyArtist implements Serializable {
 	
 	private int ma_num;
 	private String m_id;
-	private String artist_nick;
+	private String m_nickname;
 	
-	public MyArtist(int ma_num, String m_id, String artist_nick) {
+	public MyArtist() {
+		
+	}
+	
+	public MyArtist(int ma_num, String m_id, String m_nickname) {
 		super();
 		this.ma_num = ma_num;
 		this.m_id = m_id;
-		this.artist_nick = artist_nick;
+		this.m_nickname = m_nickname;
 	}
 
 	public int getMa_num() {
@@ -33,17 +37,17 @@ public class MyArtist implements Serializable {
 		this.m_id = m_id;
 	}
 
-	public String getArtist_nick() {
-		return artist_nick;
+	public String getm_nickname() {
+		return m_nickname;
 	}
 
-	public void setArtist_nick(String artist_nick) {
-		this.artist_nick = artist_nick;
+	public void setm_nickname(String m_nickname) {
+		this.m_nickname = m_nickname;
 	}
 
 	@Override
 	public String toString() {
-		return "MyArtist [ma_num=" + ma_num + ", m_id=" + m_id + ", artist_nick=" + artist_nick + "]";
+		return "MyArtist [ma_num=" + ma_num + ", m_id=" + m_id + ", m_nickname=" + m_nickname + "]";
 	}
 
 }

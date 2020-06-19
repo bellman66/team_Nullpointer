@@ -97,4 +97,9 @@ public class MemberServiceImple implements MemberService {
 		return madao.myArtistList(m_id);
 	}
 
+	@Override
+	public int myArtistDelete(MyArtist myartist) {
+		return madao.myArtistDelete(myartist);
+	}
+
 }

@@ -31,5 +31,15 @@ public class MyArtistDao {
 	public List<MyArtist> myArtistList(String m_id) {
 		return session.selectList("MyArtist.myArtistList", m_id);
 	}
+	
+	/**
+	 * @method : myArtistDelete()
+	 * @date : 2020. 6. 19.
+	 * @buildBy : 박혜연
+	 * @comment : 일반회원 마이 페이지 내의 'My Artist' 목록 삭제
+	 */
+	public int myArtistDelete(MyArtist myartist) {
+		return session.delete("MyArtist.myArtistDelete", myartist);
+	}
 
 }
