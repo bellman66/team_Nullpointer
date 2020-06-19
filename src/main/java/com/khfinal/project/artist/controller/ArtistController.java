@@ -28,25 +28,16 @@ public class ArtistController {
 	public ModelAndView selectArtist() {
 		ModelAndView mav = new ModelAndView();
 		// artist페이지가 열릴때 보여지는 페이지는 artistTab부분이어야함!
-		List<Member> alist = as.selectArtist();
 		System.out.println("오자ㅜㅜ");
-		mav.addObject("alist", alist);
-		mav.setViewName("tabmenu/artmenu");
-		return mav;
-	}
+		// 아티스트
+		List<Member> music = as.selectArtist();
+		mav.addObject("music", music);
+		// 타투이스트
+		List<Member> tattoo = as.selectTattooist();
+		mav.addObject("tattoo", tattoo);
+		System.out.println(music.size());
+		System.out.println(tattoo.size());
 
-	/**
-	 * @method : selecttaTab
-	 * @date : 2020. 6. 19.
-	 * @buildBy : hajin
-	 * @comment : 타투이스트만 받아주는 tab
-	 */
-	@RequestMapping("/artist/tattooist.do")
-	public ModelAndView selectTattooist() {
-		ModelAndView mav = new ModelAndView();
-		// artist페이지가 열릴때 보여지는 페이지는 tattooTab부분이어야함!
-		List<Member> alist = as.selectTattooist();
-		mav.addObject("alist", alist);
 		mav.setViewName("tabmenu/artmenu");
 		return mav;
 	}
@@ -130,4 +121,5 @@ public class ArtistController {
 		mav.setViewName("artist/artboardList");
 		return mav;
 	}
+
 }

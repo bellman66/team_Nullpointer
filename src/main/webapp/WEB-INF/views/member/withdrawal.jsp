@@ -55,7 +55,7 @@
 								<label class="check_sentence" for="customCheck"> 정말로 회원
 									탈퇴하시겠습니까? 동의 후에는 취소할 수 없습니다. </label>
 							</div>
-							<button type="submit" onclick="return validata()">확인</button>
+							<button class="goobbye" type="submit" onclick="return validata()">확인</button>
 						</div>
 					</form>
 				</div>

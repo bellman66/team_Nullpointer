@@ -27,7 +27,7 @@
 	/* border: 1px solid red; */
 }
 
-button {
+.goobbye {
   display: inline-block;
   height: 25px;
   width: 70px;
@@ -40,7 +40,7 @@ button {
   line-height: 25px;
 }
 
-button:hover {
+.goobbye:hover {
   color: #0c0c13;
   background-color: #fff;
   border: 1px solid #0c0c13;

@@ -41,8 +41,7 @@
 						<!-- tab메뉴 부분 시작-->
 						<div id="artmenu">
 							<ul class="tab">
-								<li data-tab="tab1" class="artmenu" id="art" onclick="art()"><a
-									>인디뮤지션</a></li>
+								<li data-tab="tab1" class="artmenu" id="art" onclick="art()"><a>인디뮤지션</a></li>
 								<li data-tab="tab2" class="artmenu" id="tat" onclick="tat()"><a>타투이스트</a></li>
 							</ul>
 						</div>
@@ -58,7 +57,7 @@
 									<!-- artist페이지에서 au_type에 따라 뮤지션과 타투이스트로 나눠서 뿌려줄꺼야! -->
 									<ul class="grid">
 										<!-- 뮤지션 시작!M_Class = 2 -->
-										<c:forEach items="${alist}" var="art" varStatus="status">
+										<c:forEach items="${music}" var="art" varStatus="status">
 											<li class="btn_link"><span class="img_box">${art.rename_filepath}</span>
 												<span class="title">${art.m_nickname}</span>
 												<div class="btn_ani">
@@ -79,12 +78,12 @@
 							<!-------- 아티스트 게시판 끝! -------->
 
 							<!-------- 타투이스트 게시판 시작! -------->
-							<div id="tab2" class="content">
+							<div id="tab2" class="content" style="display:none">
 								<form name="taTab"
 									action="<%=request.getContextPath()%>/artist/tattooist.do">
 									<ul class="grid">
 										<!-- 타투이스트 시작! M_Class=3 -->
-										<c:forEach items="${alist}" var="tattoo" varStatus="status">
+										<c:forEach items="${tattoo}" var="tattoo" varStatus="status">
 											<li class="btn_link"><span class="img_box">${tattoo.rename_filepath}</span>
 												<span class="title">${tattoo.m_nickname}</span>
 												<div class="btn_ani">
@@ -94,8 +93,7 @@
 															src="<%=request.getContextPath()%>/resources/img/icon/arrow.png" />
 													</span>
 													</a>
-												</div>
-												</li>
+												</div></li>
 										</c:forEach>
 										<!-- 타투이스트 끝! -->
 									</ul>
@@ -128,41 +126,29 @@
 		
 	</script>
 	<script type="text/javascript">
-		/* 	$(function() {
-				//tab operation
-				$('#tat').click(function() {
-					var active = $(this).attr('data-tab');
+		//클릭하자!
+		//#art로 클릭을 했을 때, tab1 = block / tab2 = none
+		//#tat로 클릭을 했을 때, tab1 = none / tab2 = block
 
-					$('li').css('border-bottom', '#0c0c13');
-					$('li').css('color', '#0c0c13');
-					$(this).css('border-bottom', '#f5b041');
-					$(this).css('color', '#f5b041');
-					$.ajax({
-						type : 'GET',
-						url : "springmvc/artist/tattooist.do",
-						//dataType : "html",
-						error : function() {
-							alert('통신실패!');
-			},
-							success : function() {
-								$('#subContent').html().remove();
-								$('#subContent').html('tttttttttttttt');
-							}
-						});
-					});
-					$('#art').click();
-				}); */
-				
-			$(function art(){
-				document.artTab.submit();
-					return true;
-				}
-			});
-				$(function tat(){
-					document.taTab.submit();
-						return true;
-					}
-				});
+		/* var art = document.getElementById("#art");
+		var tat
+		if(art.click != null){
+		   $('#art').on('click', function() { $('#tab1').style.display = 'block';
+		   $('#tab2').style.display = 'none'; });
+		}
+		 */
+
+		function art() {
+			console.log('art함수');
+			$('#tab1').css('display', 'block');
+			$('#tab2').css('display', 'none');
+		}
+
+		function tat() {
+			console.log('tat함수');
+			$('#tab1').css('display', 'none');
+			$('#tab2').css('display', 'block');
+		}
 	</script>
 </body>
 </html>

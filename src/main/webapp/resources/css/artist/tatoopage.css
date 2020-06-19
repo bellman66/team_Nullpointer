@@ -9,7 +9,7 @@
 .tattoform {
 	width: 100%;
 	height: 890px;
-	border: 1px solid red;
+	/* border: 1px solid red; */
 }
 
 .tattoform .tatto-Table {
@@ -18,12 +18,12 @@
 
 .tattoform .tatto-Table .tatto-id {
 	width: 20%;
-	height: 400px;
+	height: 320px;
 	float: left;
 	padding: 2%;
-	margin-top: 1.5%;
+	margin-top: 5%;
 	position: relative;
-	border: 1px solid green;
+	/* border: 1px solid green; */
 }
 
 .tatto-Table .tatto-id h3 {
@@ -41,11 +41,13 @@
 	background-color: #f5b041;
 }
 
+/* artist 페이지에는 profile 관련 width:100% 값 존재 */
+
 .tatto-Table .tatto-id .tatto-text {
 	font-size:14px;
 	font-weight:700;
 	text-align:center;
-	padding: 1%;
+	padding: 3%;
 	color: #0c0c13;
 }
 
@@ -55,7 +57,7 @@
 
 .tatto-Table .tatto-menu .tatto-fan1 {
 	height: 500px;
-	margin-top: 2.5%;
+	margin-top: 1%;
 	/* border: 1px solid green; */
 }
 
@@ -100,7 +102,7 @@
 }
 
 /* 공연사진 부분 */
-.tatto-Table .tatto-menu .tatto-video .tatto-photo {
+.tatto-Table .tatto-menu .tatto-photo {
 	width: 70%;
 	height: 200px;
 	float: left;
@@ -111,7 +113,7 @@
 	/* border: 1px solid red; */
 }
 
-.tatto-Table .tatto-menu .tatto-video .tatto-photo h6 {
+.tatto-Table .tatto-menu .tatto-photo h6 {
 	font-size: 14px;
 	font-weight: 700;
 	color: #0c0c13;
@@ -119,7 +121,7 @@
 	border-bottom: 2px solid #0c0c13;
 }
 
-.tatto-Table .tatto-menu .tatto-video .tatto-photo li{
+.tatto-Table .tatto-menu .tatto-photo li{
 	position: relative;
 	width:17%;
 	height:150px;
@@ -129,7 +131,7 @@
 	/* border:1px solid red; */
 }
 
-.tatto-Table .tatto-menu .tatto-video .tatto-photo .more{
+.tatto-Table .tatto-menu .tatto-photo .more{
 	color: #0c0c13;
 	text-transform: uppercase;
 	font-size: 10px;
@@ -143,6 +145,33 @@
 	height: 300px;
 	margin-top: 1.5%;
 	/* border: 1px solid green; */
+}
+
+/* 후원, 구독 버튼 */
+.tatto-Table .ta_cash {
+	height:30px;
+	float:left;
+	width:20%;
+	margin-left:5%;
+	margin-top:-3%;
+	/* border:1px solid blue; */
+}
+
+.tatto-Table .ta_cash button {
+	margin-right:10px;
+	width: 30%;
+	height: 25px;
+	border-radius: 5px;
+	padding:1%;
+	font-size:12px;
+	color: #fff;
+	background-color: #0c0c13;
+}
+
+.tatto-Table .ta_cash button:hover {
+	color: #0c0c13;
+	background-color: #fff;
+	border: 1px solid #0c0c13;
 }
 
 /* 공연일정 부분 */
