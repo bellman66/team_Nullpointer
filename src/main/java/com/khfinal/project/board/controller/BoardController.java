@@ -354,8 +354,8 @@ public class BoardController {
 		
 		
 		
-		searchType = request.getParameter("searchType");
-		searchWord = request.getParameter("searchWord");
+//		searchType = request.getParameter("searchType");
+//		searchWord = request.getParameter("searchWord");
 		
 		Map<String, Object> res = new HashMap<String, Object>();
 		res = bs.boardSearchSH(searchType, searchWord, currentPage, cntPerPage);

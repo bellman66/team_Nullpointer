@@ -163,8 +163,8 @@
 					</c:if>
 					
 					<form name="del" action="<%= request.getContextPath() %>/schedule/delete.do">
-						<input name="scdelete" class="scdelete" value=""/>
-						<input name="scdeleteid" class="scdeleteid" value=""/>
+						<input style="display:none;" name="scdelete" class="scdelete" value=""/>
+						<input style="display:none;" name="scdeleteid" class="scdeleteid" value=""/>
 					</form>
 				</div>
 				

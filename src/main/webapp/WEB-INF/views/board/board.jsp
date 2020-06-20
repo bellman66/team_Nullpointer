@@ -118,7 +118,7 @@
 										   <a href="<%= request.getContextPath() %>/board/boardSearchPR.do?board=${board}&searchType=${searchType}&searchWord=${searchWord}" class="nav first" style="background-color:white">&lt;&lt;</a>
 										 		<c:choose>
 											       <c:when test="${paging.currentPage > 1 }">
-											             <a href="<%= request.getContextPath() %>/board/boardSearchPR.do?cPage=${paging.currentPage-1}" class="nav prev" style="background-color:white">  &lt;</a>
+											             <a href="<%= request.getContextPath() %>/board/boardSearchPR.do?cPage=${paging.currentPage-1}&searchType=${searchType}&searchWord=${searchWord}" class="nav prev" style="background-color:white">  &lt;</a>
 											       </c:when>
 											       <c:otherwise>
 											           <a href="<%= request.getContextPath() %>/board/boardSearchPR.do?" class="nav prev" style="background-color:white">  &lt;</a>
@@ -216,10 +216,10 @@
 										   <a href="<%= request.getContextPath() %>/board/boardSearchSH.do?board=${board}&searchType=${searchType}&searchWord=${searchWord}" class="nav first" style="background-color:white">&lt;&lt;</a>
 										 		<c:choose>
 											       <c:when test="${paging.currentPage > 1 }">
-											             <a href="<%= request.getContextPath() %>/board/boardSearchSH.do?cPage=${paging.currentPage-1}" class="nav prev" style="background-color:white">  &lt;</a>
+											             <a href="<%= request.getContextPath() %>/board/boardSearchSH.do?cPage=${paging.currentPage-1}&searchType=${searchType}&searchWord=${searchWord}" class="nav prev" style="background-color:white">  &lt;</a>
 											       </c:when>
 											       <c:otherwise>
-											           <a href="<%= request.getContextPath() %>/board/boardSearchSH.do?" class="nav prev" style="background-color:white">  &lt;</a>
+											           <a href="<%= request.getContextPath() %>/board/boardSearchSH.do?&searchType=${searchType}&searchWord=${searchWord}" class="nav prev" style="background-color:white">  &lt;</a>
 											       </c:otherwise>
 											   </c:choose>
 											   
@@ -229,14 +229,14 @@
 											   
 											   <c:choose>
 											       <c:when test="${paging.currentPage+1 > paging.lastPage }">
-											             <a href="<%= request.getContextPath() %>/board/boardSearchSH.do?cPage=${paging.blockEnd}" class="nav next" style="background-color:white">  &gt;</a>
+											             <a href="<%= request.getContextPath() %>/board/boardSearchSH.do?cPage=${paging.blockEnd}&searchType=${searchType}&searchWord=${searchWord}" class="nav next" style="background-color:white">  &gt;</a>
 											       </c:when>
 											       
 											       <c:otherwise>
-											             <a href="<%= request.getContextPath() %>/board/boardSearchSH.do?cPage=${paging.currentPage+1}" class="nav next" style="background-color:white">  &gt;</a>
+											             <a href="<%= request.getContextPath() %>/board/boardSearchSH.do?cPage=${paging.currentPage+1}&searchType=${searchType}&searchWord=${searchWord}" class="nav next" style="background-color:white">  &gt;</a>
 											       </c:otherwise>
 											   </c:choose>
-											         <a href="<%= request.getContextPath() %>/board/boardSearchSH.do?cPage=${paging.lastPage}" class="nav last" style="background-color:white">&gt;&gt;</a>
+											         <a href="<%= request.getContextPath() %>/board/boardSearchSH.do?cPage=${paging.lastPage}&searchType=${searchType}&searchWord=${searchWord}" class="nav last" style="background-color:white">&gt;&gt;</a>
 										   </c:if>
 										   </ul> 
 										 
@@ -333,10 +333,6 @@
 		
 		
 	});
-	
-	
-	
-	
 	
 		
 	function prSubmit(){

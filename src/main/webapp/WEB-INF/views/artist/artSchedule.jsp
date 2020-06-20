@@ -45,24 +45,32 @@
       editable: true,
       eventLimit: true, // allow "more" link when too many events
       events: [
-    	<c:forEach items="${artScList.aslist}" var="artist">
+    	<c:forEach items="${artScList}" var="artist">
 	    	{
-	    	
 	    	title : "${artist.ats_content}",
 	    	start : "${artist.ats_start_date}",
-	    	end : "${artist.ats_end_date}"
+	    	end : "${artist.ats_end_date}",
+	    	groupId : "${artist.ats_num}"
 	    	},
 		</c:forEach>
         ],eventClick: function(arg) {
-        if (confirm('delete event?')) {
-          arg.event.remove()
-          console.dir(arg.event);
-        }
-      }
-    });
+        	if (confirm('삭제 하시겠습니까?')) {
+	        	var scdelete = document.querySelector('.scdelete');
+	        	/* var scdeleteid = document.querySelector('.scdeleteid'); */
+	        	scdelete.value = arg.event.groupId;
+	        	/* scdeleteid.value = arg.event.id; */
+	        	
+			    document.del.submit();
+		       	return true;
+	       		 };
+	          	arg.event.remove()
+	    	  }
+   		 });
 
     calendar.render();
   });
+
+
 
 </script>
 <style>
@@ -99,12 +107,19 @@
 						<%-- <form name="artschedule" action="<%=request.getContextPath()%>/artist/artistschedule.do"> --%>
 						<div class="scheform">
 							<div id='calendar' style="margin-top: 5%; margin-bottom: 10%;"></div>
-							<div class="artist_schedule_add">
-								<a style="color:white;" href="<%= request.getContextPath() %>/artist/artistscheduleaddshow.do">행사 등록</a>
-							</div>
+							
+							<%-- <c:if test=""> 로그인 한 아이디와 아티스트 상세페이지 아이디가 같을떄--%>
+								<div class="artist_schedule_add">
+									<a style="color:white;" href="<%= request.getContextPath() %>/artist/artistscheduleaddshow.do">행사 등록</a>
+								</div>
+							<%-- </c:if> --%>
 						</div>
 						<!-- </form> -->
 					</div>
+					<form name="del" action="<%= request.getContextPath() %>/artist/artScDelete.do">
+						<input style="display:none;" name="scdelete" class="scdelete" value=""/>
+						<!-- <input name="scdeleteid" class="scdeleteid" value=""/> -->
+					</form>
 				</div>
 			</div>	
 		</article>

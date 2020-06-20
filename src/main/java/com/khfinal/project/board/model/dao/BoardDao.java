@@ -219,7 +219,7 @@ public class BoardDao {
 		return sqlSession.selectList("Board.searchWrBoardListPr", data);
 
 	}
-	//공유게시판 제목 검색 리스트
+	//홍보게시판 제목 검색 리스트
 	public List<Board> searchTiBoardListPr(String searchWord, Paging page) {
 
 		Map<String, Object> data = new HashMap<String, Object>();
@@ -228,7 +228,7 @@ public class BoardDao {
 		return sqlSession.selectList("Board.searchTiBoardListPr", data);
 
 	}
-	//공유게시판 작성자+제목 검색 리스트
+	//홍보게시판 작성자+제목 검색 리스트
 	public List<Board> searchWTBoardListPr(String searchWord, Paging page) {
 
 		Map<String, Object> data = new HashMap<String, Object>();
