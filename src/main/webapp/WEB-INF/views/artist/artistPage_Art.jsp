@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -95,21 +96,25 @@
 										<div class="art-schedule">
 											<h6>공연 일정</h6>
 											<ul>
-												<li><a href="#">member + myartist 내역 불러와서 foreach로
-														돌릴 예정</a></li>
-												<li><a href="#">member + myartist 내역 불러와서 foreach로
-														돌릴 예정</a></li>
-												<li><a href="#">member + myartist 내역 불러와서 foreach로
-														돌릴 예정</a></li>
-												<li><a href="#">member + myartist 내역 불러와서 foreach로
-														돌릴 예정</a></li>
-												<li><a href="#">member + myartist 내역 불러와서 foreach로
-														돌릴 예정</a></li>
+												<c:forEach items="${aslist}" var="artsclist">
+													<li><a href="<%=request.getContextPath()%>/artist/artistschedule.do">
+													${artsclist.ats_content}</a><span>${fn:substring(artsclist.ats_start_date,0,10)}</span></li>
+													<%-- <li><a href="<%=request.getContextPath()%>/artist/artistschedule.do">member + myartist 내역 불러와서 foreach로
+															돌릴 예정</a></li>
+													<li><a href="<%=request.getContextPath()%>/artist/artistschedule.do">member + myartist 내역 불러와서 foreach로
+															돌릴 예정</a></li>
+													<li><a href="<%=request.getContextPath()%>/artist/artistschedule.do">member + myartist 내역 불러와서 foreach로
+															돌릴 예정</a></li>
+													<li><a href="<%=request.getContextPath()%>/artist/artistschedule.do">member + myartist 내역 불러와서 foreach로
+															돌릴 예정</a></li> --%>
+												</c:forEach>
 											</ul>
-											<a
-												href="<%=request.getContextPath()%>/artist/artistschedule.do"
-												class="more" title="더 보기">More</a>
+											<c:if test="${fn:length(aslist) == 5}"> 
+												<a href="<%=request.getContextPath()%>/artist/artistschedule.do"
+													class="more" title="더 보기">More</a>
+											</c:if> 
 										</div>
+
 										<div class="art-board">
 											<h6>소통 게시판</h6>
 											<ul>

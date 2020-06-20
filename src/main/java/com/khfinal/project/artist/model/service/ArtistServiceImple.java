@@ -1,6 +1,7 @@
 package com.khfinal.project.artist.model.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -221,6 +222,36 @@ public class ArtistServiceImple implements ArtistService {
 	@Override
 	public int decrementSubscribe(String m_nickname) {
 		return ad.decrementSubscribe(m_nickname);
+	}
+	
+	/**
+	 *	작성자 : 김경호
+	 *	설명 : 스케줄 관련 서비스
+	 */
+	@Override
+	public List<Artist> schedule() {
+		Map<String, Object> res = new HashMap<String, Object>();
+		
+		List<Artist> aslist = ad.artSchedule();
+		
+		/* res.put("aslist", aslist); */
+		
+		return aslist;
+	}
+
+	@Override
+	public int scheduleadd(Artist artist) {
+		int res = ad.artScheduleadd(artist);
+		
+		return res;
+	}
+
+	@Override
+	public int artScDelete(String scdelete) {
+
+		int res = ad.artScDelete(scdelete);
+		
+		return res;
 	}
 
 }

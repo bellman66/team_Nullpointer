@@ -12,6 +12,14 @@ public class Artist {
 	private String au_content;
 	private String au_file;
 	private int au_like;
+	
+	private int ats_num;
+	private String ats_start_date;
+	private String ats_end_date;
+	private String ats_content;
+	private String ats_time;
+
+	public Artist() {}
 
 	public int getAu_num() {
 		return au_num;
@@ -69,9 +77,53 @@ public class Artist {
 		this.au_like = au_like;
 	}
 
+	public int getAts_num() {
+		return ats_num;
+	}
+
+	public void setAts_num(int ats_num) {
+		this.ats_num = ats_num;
+	}
+
+	public String getAts_start_date() {
+		return ats_start_date;
+	}
+
+	public void setAts_start_date(String ats_start_date) {
+		this.ats_start_date = ats_start_date;
+	}
+
+	public String getAts_end_date() {
+		return ats_end_date;
+	}
+
+	public void setAts_end_date(String ats_end_date) {
+		this.ats_end_date = ats_end_date;
+	}
+
+	public String getAts_content() {
+		return ats_content;
+	}
+
+	public void setAts_content(String ats_content) {
+		this.ats_content = ats_content;
+	}
+
+	public String getAts_time() {
+		return ats_time;
+	}
+
+	public void setAts_time(String ats_time) {
+		this.ats_time = ats_time;
+	}
+
 	@Override
 	public String toString() {
 		return "Artist [au_num=" + au_num + ", m_id=" + m_id + ", m_nickname=" + m_nickname + ", au_date=" + au_date
-				+ ", au_content=" + au_content + ", au_file=" + au_file + ", au_like=" + au_like + "]";
+				+ ", au_content=" + au_content + ", au_file=" + au_file + ", au_like=" + au_like + ", ats_num="
+				+ ats_num + ", ats_start_date=" + ats_start_date + ", ats_end_date=" + ats_end_date + ", ats_content="
+				+ ats_content + ", ats_time=" + ats_time + "]";
 	}
+	
+	
 }

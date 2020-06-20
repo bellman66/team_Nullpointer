@@ -63,5 +63,27 @@ public class ArtistDao {
 	public List<Member> selectTattooist(){
 		return session.selectList("Member.selectTattooist");
 	}
+	
+	
+	
+	/**
+	 * @method : artScheduleadd
+	 * @date : 2020. 6. 20.
+	 * @buildBy : 김경호
+	 * @comment : 스케줄 관련 다오
+	 */
+	
+	public List<Artist> artSchedule(){
+		return session.selectList("Artist.artschedule");
+	}
+	
+	
+	public int artScheduleadd(Artist artist) {
+		return session.insert("Artist.artscheduleadd", artist);
+	}
+	
+	public int artScDelete(String scdelete) {
+		return session.delete("Artist.scDelect", scdelete);
+	}
 
 }

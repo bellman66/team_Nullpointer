@@ -21,5 +21,11 @@ public interface ArtistService {
 	public int aWordInsert(ArtistPlus artistplus);
 	public String aWord(String m_id);
 	public int decrementSubscribe(String m_nickname);
+	
+	//작성자 : 김경호
+	//스케줄 관련 서비스
+	public List<Artist> schedule();
+	public int scheduleadd(Artist artist);
+	public int artScDelete(String scdelete);
 
 }

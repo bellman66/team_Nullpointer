@@ -1,5 +1,6 @@
 package com.khfinal.project.artist.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -51,6 +52,21 @@ public class ArtistController {
 	@RequestMapping("/artist/artistpage.do")
 	public ModelAndView artpageList() {
 		ModelAndView mav = new ModelAndView();
+		
+		//작성자 : 김경호
+		//메인 화면에 행사 일정을 을 뿌려주는 코드
+		List<Artist> aslist = as.schedule();
+				
+		if (aslist.size() < 5) {
+					mav.addObject("aslist", aslist);
+		} else {
+			List<Artist> aslist_more = new ArrayList<Artist>();
+			for (int i = 0; i < 5; i++) {
+				aslist_more.add(i, aslist.get(i));
+				mav.addObject("aslist", aslist);
+			}
+		}
+		System.out.println("컨트롤러 " + aslist);
 
 		mav.setViewName("artist/artistPage_Art");
 		return mav;
@@ -99,14 +115,64 @@ public class ArtistController {
 		return mav;
 	}
 
-	// 아티스트 스케줄
-	@RequestMapping("/artist/artistschedule.do")
-	public ModelAndView artistschedule() {
-		ModelAndView mav = new ModelAndView();
-
-		mav.setViewName("artist/artSchedule");
-		return mav;
-	}
+	
+			/**
+			 * @method : artistschedule
+			 * @date : 2020. 6. 20.
+			 * @buildBy : 김경호
+			 * @comment : 아티스트 스케줄 캘린더에 뿌려주는 메소드
+			 */
+			@RequestMapping("/artist/artistschedule.do")
+			public ModelAndView artistschedule() {
+				ModelAndView mav = new ModelAndView();
+				List<Artist> res = as.schedule();
+				
+				mav.addObject("artScList", res);
+				/* mav.setViewName("artist/artSchedule"); */
+				mav.setViewName("artist/artSchedule");
+				return mav;
+			}
+			
+			/**
+			 * @method : artistscheduleAddShow
+			 * @date : 2020. 6. 20.
+			 * @buildBy : 김경호
+			 * @comment : // 아트스트 스케줄 추가 버튼을 눌렀을때 스케줄 추가 창으로 이동
+			 */
+			@RequestMapping("/artist/artistscheduleaddshow.do")
+			public ModelAndView artistscheduleAddShow() {
+				ModelAndView mav = new ModelAndView();
+				
+				mav.setViewName("artist/artSchedule_add");
+				return mav;
+			}
+			
+			/**
+			 * @method : artistscheduleadd
+			 * @date : 2020. 6. 20.
+			 * @buildBy : 김경호
+			 * @comment : // 아티스트 스케줄을 추가했을때 데이터값을 가져와서 디비에 추가해주는 메서드
+			 */
+			@RequestMapping("/artist/artistscheduleadd.do")
+			public ModelAndView artistscheduleadd
+			(String artstartYear,String artstartMonth,String artstartDay,String artstartHour,String artstartMinute
+					,String artendYear,String artendMonth,String artendDay,String artendHour,String artendMinute, String atr_as_content, Artist artist) {
+				ModelAndView mav = new ModelAndView();
+				
+				String start = artstartYear + artstartMonth + artstartDay + artstartHour + artstartMinute;
+				String end = artendYear + artendMonth + artendDay + artendHour +  artendMinute;
+				
+				artist.setAts_start_date(start);
+				artist.setAts_end_date(end);
+				artist.setAts_content(atr_as_content);
+				
+				int res = as.scheduleadd(artist);
+				
+				mav.addObject("url", "/springmvc/artist/artistschedule.do");
+				mav.setViewName("common/result");
+				
+				return mav;
+			}
 
 	/**
 	 * @method : aboardList
