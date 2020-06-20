@@ -27,6 +27,7 @@ import com.khfinal.project.member.model.service.MemberService;
 import com.khfinal.project.member.model.vo.Member;
 import com.khfinal.project.member.model.vo.MyArtist;
 import com.khfinal.project.schedule.model.vo.Schedule;
+import com.khfinal.project.stream.service.streamService;
 
 @Controller
 public class MemberController {
@@ -35,6 +36,8 @@ public class MemberController {
 	MemberService ms;
 	@Autowired
 	ArtistService as;
+	@Autowired
+	streamService streamservice;
 
 	@RequestMapping("/member/join.do")
 	public ModelAndView join() {
@@ -89,11 +92,17 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/member/logout.do")
-	public ModelAndView logout(HttpSession session) throws SQLException{
+	public ModelAndView logout(HttpSession session,HttpServletRequest request) throws SQLException{
 
 		ModelAndView mav = new ModelAndView();
+		Member user = (Member) ((Map<String, Object>) session.getAttribute("loginInfo")).get("member");
+		String id = user.getM_id();
+		
+		if(streamservice.get(id) != null) {
+			streamservice.delete(id);
+		}
 
-		if (session != null) {
+		if (session != null && user != null) {
 			session.removeAttribute("loginInfo");
 		}
 

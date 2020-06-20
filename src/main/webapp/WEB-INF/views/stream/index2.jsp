@@ -195,11 +195,10 @@
 	   if(${loginInfo.member eq null}) {
 		   $('#chatting').attr({'disabled':'disabled' , 'placeholder' : '로그인 후 사용가능합니다.'});
 	   }
-	   
-	   /* var sock = new WebSocket("ws://localhost:7070/springmvc/chatHandler.do?id=${id}&user_name=${loginInfo.member.m_id}"); */
-	   var sock = new WebSocket("ws://rndso15.synology.me:7070/springmvc/chatHandler.do?id=${id}&user_name=${loginInfo.member.m_id}");
-	   	   /* var sock = new SockJS("http://localhost:7070/springmvc/chatHandler.do"); */
-	  	   /* var sock = new SockJS("/springmvc/chatHandler.do"); */
+
+	   /* var sock = new WebSocket("ws://localhost:7070/springmvc/chatHandler.do?id=${id}&user_name=${loginInfo.member.m_id}");  */
+	   var sock = new WebSocket("ws://13.125.31.233:7070/springmvc/chatHandler.do?id=${id}&user_name=${loginInfo.member.m_id}"); 
+	   /* var sock = new WebSocket("ws://rndso15.synology.me:7070/springmvc/chatHandler.do?id=${id}&user_name=${loginInfo.member.m_id}"); */
 		   sock.onopen = function() {
 
 			    sock.onmessage = function(e) {
@@ -261,7 +260,7 @@
   	
   	document.getElementById("sendButton").addEventListener("click" , function(event) {
   		chatSend();
-  	})
+  	});
   	
    });
   </script>
