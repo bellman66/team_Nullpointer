@@ -2,49 +2,64 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-  <mapper namespace="Member">
-  
- 	<insert id="insertMember" parameterType="java.util.Map">
- 		insert into TB_MEMBER value(#{m_id},#{m_pass},#{m_name},#{m_nickname},#{m_tell1},#{m_tell2},#{m_tell3},
- 		#{bith_yy},#{bith_mm},#{bith_dd},#{m_email1},#{m_email2},#{zipcode},#{address},#{address_etc}) 	
- 	</insert>
- 	
- 	<select id="login" resultType="Member">
- 	</select>
- 	
- 	<select id="loginConfirm" parameterType="map" resultType="Member">
- 		select * from tb_member
- 				 where M_ID = #{userID} AND M_PASS = #{userPWD}
- 	</select>
- 	<select id="nickNameCheck" parameterType="string" resultType="string">
- 		select m_nickname from tb_member where m_nickname = #{nickname}
- 	</select>
- 	<update id="infoModify" parameterType="Member">
- 		update tb_member set m_nickname = #{m_nickname}, m_pass = #{m_pass},
- 		m_tell1 = #{m_tell1}, m_tell2 = #{m_tell2}, m_tell3 = #{m_tell3}, 
- 		m_email1 = #{m_email1}, m_email2 = #{m_email2}, 
- 		rename_filepath = #{rename_filepath}
- 		where m_id = #{m_id}
- 	</update>
- 	<select id="reload" resultType="Member">
- 		select * from tb_member where m_id = #{m_id}
- 	</select>
- 	
- 	<select id="selectArtList" parameterType="map" resultType="Member">
- 		select M_CLASS, M_NICKNAME, RENAME_FILEPATH from TB_MEMBER where M_CLASS = 2 and M_CLASS = 3
- 	</select>
- 	
- 	<resultMap type="Member" id="Member">
- 		<result property="mClass" column="M_CLASS"/>
- 		<result property="renameFilepath" column="RENAME_FILEPATH"/>
- 	</resultMap>
 
- 	<update id="leave">
- 		update tb_member set m_leave_yn = 'Y' where m_id = #{m_id}
- 	</update>
- 	<insert id="updateProfile">
- 		INSERT INTO tb_file VALUES(
-         LAST_INSERT_ID(),#{originFileName},#{renameFile},#{savePath})
- 	</insert>
-  </mapper>
+<mapper namespace="Member">
+
+	<insert id="insertMember" parameterType="java.util.Map">
+		insert into tb_member
+		values(#{m_id},#{m_pass},${m_class},
+		0,#{m_name},#{m_nickname},
+		0,#{m_tell1},#{m_tell2},
+		#{m_tell3},#{m_email1},#{m_email2},
+		#{bith_yy},#{bith_mm},#{bith_dd},
+		#{zipcode},#{address},#{address_etc},
+		sysdate() , 'N' , NULL , NULL)
+	</insert>
+
+	<select id="login" resultType="Member">
+	</select>
+
+	<select id="loginConfirm" parameterType="map"
+		resultType="Member">
+		select * from tb_member
+		where M_ID = #{userID} AND M_PASS = #{userPWD}
+	</select>
+	<select id="nickNameCheck" parameterType="string"
+		resultType="string">
+		select m_nickname from tb_member where m_nickname = #{nickname}
+	</select>
+
+	<select id="idCheck" parameterType="string" resultType="string">
+		select m_id from tb_member where m_id = #{m_id}
+	</select>
+
+	<select id="idExist" parameterType="string" resultType="int">
+		select count(*) from tb_member where m_id = #{m_id}
+	</select>
+
+	<update id="infoModify" parameterType="Member">
+		update tb_member set m_nickname = #{m_nickname}, m_pass = #{m_pass},
+		m_tell1 = #{m_tell1}, m_tell2 = #{m_tell2}, m_tell3 = #{m_tell3},
+		m_email1 = #{m_email1}, m_email2 = #{m_email2},
+		rename_filepath = #{rename_filepath}
+		where m_id = #{m_id}
+	</update>
+	<select id="reload" resultType="Member">
+		select * from tb_member where m_id = #{m_id}
+	</select>
+
+	<select id="selectArtist" resultType="Member">
+		select M_NICKNAME, RENAME_FILEPATH from TB_MEMBER where M_CLASS = 2
+	</select>
+	<select id="selectTattooist" resultType="Member">
+		select M_NICKNAME, RENAME_FILEPATH from TB_MEMBER where M_CLASS = 3
+	</select>
+
+	<update id="leave">
+		update tb_member set m_leave_yn = 'Y' where m_id = #{m_id}
+	</update>
+	<insert id="updateProfile">
+		INSERT INTO tb_file VALUES(
+		LAST_INSERT_ID(),#{originFileName},#{renameFile},#{savePath})
+	</insert>
+</mapper>

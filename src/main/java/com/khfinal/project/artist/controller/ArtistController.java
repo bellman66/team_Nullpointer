@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.khfinal.project.artist.model.service.ArtistService;
 import com.khfinal.project.artist.model.vo.Artist;
+import com.khfinal.project.member.model.vo.Member;
 
 @Controller
 public class ArtistController {
@@ -18,22 +19,26 @@ public class ArtistController {
 	ArtistService as;
 
 	/**
-	 * @method : selectArtList
+	 * @method : selectArtist
 	 * @date : 2020. 6. 16.
 	 * @buildBy : hajin
-	 * @comment : 아티스트 메인 페이지
+	 * @comment : 아티스트 tab 메인페이지 -> 뮤지션만 받아주는 tab이 제일 먼저 보여진다.
 	 */
 	@RequestMapping("/artist/artist.do")
-	public ModelAndView selectArtList() {
+	public ModelAndView selectArtist() {
 		ModelAndView mav = new ModelAndView();
-		//오는거 확인함
-		System.out.println("왔니?");
-		// main에서 artist 클릭 시, tb_member 데이터값 중 m_class = 2 인 데이터 갖고 오기
-		// jsp > controller > service > dao > mapper (sql > selectList) > dao > service > controller(mac.addObject) > jsp
-		List<Map>alist = as.selectArtList();
-		
-		mav.addObject("artist",alist);
-		mav.setViewName("artist/artist");
+		// artist페이지가 열릴때 보여지는 페이지는 artistTab부분이어야함!
+		System.out.println("오자ㅜㅜ");
+		// 아티스트
+		List<Member> music = as.selectArtist();
+		mav.addObject("music", music);
+		// 타투이스트
+		List<Member> tattoo = as.selectTattooist();
+		mav.addObject("tattoo", tattoo);
+		System.out.println(music.size());
+		System.out.println(tattoo.size());
+
+		mav.setViewName("tabmenu/artmenu");
 		return mav;
 	}
 
@@ -50,7 +55,7 @@ public class ArtistController {
 		mav.setViewName("artist/artistPage_Art");
 		return mav;
 	}
-	
+
 	/**
 	 * @method : tattopage
 	 * @date : 2020. 6. 17.
@@ -60,8 +65,8 @@ public class ArtistController {
 	@RequestMapping("/artist/tattoopage.do")
 	public ModelAndView tattpageList() {
 		ModelAndView mav = new ModelAndView();
-		
-		mav.setViewName("artist/artistPage_Ta"); 
+
+		mav.setViewName("artist/artistPage_Ta");
 		return mav;
 	}
 
@@ -79,7 +84,7 @@ public class ArtistController {
 		return mav;
 	}
 
-	// 
+	//
 	/**
 	 * @method : artistphoto
 	 * @date : 2020. 6. 17.
@@ -116,4 +121,5 @@ public class ArtistController {
 		mav.setViewName("artist/artboardList");
 		return mav;
 	}
+
 }

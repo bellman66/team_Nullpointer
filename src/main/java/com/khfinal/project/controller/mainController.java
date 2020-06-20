@@ -31,7 +31,6 @@ public class mainController {
 		// 메인 탑 Stream 정보
 		mav.addObject("topStream" , streamservice.getTopStream());
 		mav.setViewName("main/index");
-		System.out.println("main control");
 		return mav;
 	}
 

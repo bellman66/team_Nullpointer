@@ -22,6 +22,37 @@
             alert("현재 당신이 보는 브라우저는 지원하지 않습니다. 최신 브라우저로 업데이트해주세요!");
         </script>
     <![endif]-->
+    
+	<style type="text/css">
+		.overlap {
+			margin-left: 5px;
+		}
+		#trueMsg {
+			display: none;
+			margin-left: 5px;
+		}
+		
+		#falseMsg{
+			display : none;
+			margin-left: 5px;
+		}
+		#trueMsg_nick {
+			display: none;
+			margin-left: 5px;
+			margin-top: -16px;
+		}
+		
+		#falseMsg_nick {
+			display : none;
+			margin-left: 5px;
+			margin-top: -16px;
+		}
+		#joinIdCss *{
+			float: left;
+		}
+
+	</style>
+
 </head>
 <body>
 	<!-- header부분 시작  -->
@@ -38,50 +69,66 @@
 			<div class="container">
 				<div class="row">
 					<div class="join_table">
+					
+						<form action="<%=request.getContextPath()%>/member/sign_in.do" method="POST" onsubmit="return checkForm();">
 						<h2>회원가입 정보</h2>
 						<div class="join_list">
 						<table>
 							<tr>
-								<td class="join-text">아이디</td>
-								<td>
-									<input type="text" name="USER_ID" id="USER_ID" class="inputText" maxlength="20" onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);" />
-									<button class="overlap" type="button" onclick="idCheck()">아이디 중복체크</button> 
-									<span id="idCheckMsg"></span>
+								<td class="join-text">* 아이디</td>
+								<td id="joinIdCss">
+									<input type="text" name="m_id" id="USER_ID" class="inputText" maxlength="20" />
+									<button id="overlap" class="overlap" type="button" onclick="idCheck()">아이디 중복체크</button> 
+									<span id="trueMsg" style="display: none; color: green; font-weight: bold;">사용가능한 아이디입니다.</span>
+									<span id="falseMsg" style="display: none; color: #d92742; font-weight: bold;">중복된 아이디입니다.</span>
 								</td>
 							</tr>
 							<tr>
-								<td class="join-text">비밀번호</td>
+								<td class="join-text">* 비밀번호</td>
 								<td>
-									<input type="password" name="USER_PWD" id="JOIN_USER_PWD" class="inputText" class="pw" maxlength="30" />
+									<input type="password" name="m_pass" id="JOIN_USER_PWD" class="inputText pw" maxlength="30" />
 									<span id="pwd-text">영문자 숫자 기호문자의 조합으로 8글자 이상 작성해주세요.</span>
+									<span id="passTrue" style="display: none; color: green; font-weight: bold;">사용가능한 비밀번호</span> 
+									<span id="passFalse" style="display: none; color: #d92742; font-weight: bold;">비밀번호 사용 불가능</span>
 								</td>
 							</tr>
 							<tr>
-								<td class="join-text">비밀번호 확인</td>
+								<td class="join-text">* 비밀번호 확인</td>
 								<td>
 									<input type="password" name="PWD_CHECK" id="JOIN_PWD_CHECK" class="inputText" maxlength="30" /> 
-									<span id="same" style="display: none;">비밀번호가 일치합니다.</span> 
+									<span id="same" style="display: none; color: green; font-weight: bold;">비밀번호가 일치합니다.</span> 
 									<span id="different" style="display: none; color: #d92742; font-weight: bold;">비밀번호가 일치하지 않습니다.</span>
 								</td>
 							</tr>
+							
+							<hr>
+							
 							<tr>
-								<td class="join-text">이름</td>
+								<td class="join-text">* Class </td>
 								<td>
-									<input type="text" name="USER_NAME" maxlength="30" class="inputText" />
+									<b>Basic</b> <input type="radio" name="m_class" value="1" checked="checked"> <br>
+									<b>Artist</b> <input type="radio" name="m_class" value="2">
 								</td>
 							</tr>
 							<tr>
-								<td class="join-text">닉네임</td>
+								<td class="join-text">* 이름</td>
 								<td>
-									<input type="text" name="NICKNAME" id="NICKNAME" onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);" class="inputText" maxlength="15" />
-									<button class="overlap" type="button" onclick="nickCheck()">닉네임 중복체크</button><br> 
-									<span id="nickCheckMsg"></span>
+									<input type="text" id="USER_NAME" name="m_name" maxlength="30" class="inputText" />
+								</td>
+							</tr>
+							<tr>
+								<td class="join-text">* 닉네임</td>
+								<td id="joinIdCss">
+									<input type="text" name="m_nickname" id="NICKNAME" class="inputText" maxlength="15" />
+									<button id="overlap_nick" class="overlap" type="button" onclick="nickCheck()">닉네임 중복체크</button><br> 
+									<span id="trueMsg_nick" style="display: none; color: green; font-weight: bold;">사용가능한 닉네임입니다.</span>
+									<span id="falseMsg_nick" style="display: none; color: #d92742; font-weight: bold;">중복된 닉네임입니다.</span>
 								</td>
 							</tr>
 							<tr>
 								<td class="join-text">생일</td>
 								<td>
-								<select name="BIRTHDAY_YY" class="inputText">
+								<select name="bith_yy" class="inputText">
 										<option value="" selected disabled hidden>==</option>
 										<option value="2001">2001</option>
 										<option value="2000">2000</option>
@@ -116,7 +163,7 @@
 										<option value="1971">1971</option>
 										<option value="1970">1970</option>
 								</select>&nbsp;년&nbsp; 
-								<select name="BIRTHDAY_MM" class="inputText">
+								<select name="bith_mm" class="inputText">
 										<option value="" selected disabled hidden>==</option>
 										<option value="1">1</option>
 										<option value="2">2</option>
@@ -131,7 +178,7 @@
 										<option value="11">11</option>
 										<option value="12">12</option>
 								</select> &nbsp;월&nbsp; 
-								<select name="BIRTHDAY_DD" class="inputText">
+								<select name="bith_dd" class="inputText">
 										<option value="" selected disabled hidden>==</option>
 										<option value="1">1</option>
 										<option value="2">2</option>
@@ -169,7 +216,7 @@
 							<tr>
 								<td class="join-text">휴대전화</td>
 								<td>
-									<select name="USER_TELL1" id="USER_TELL1" class="inputText">
+									<select name="m_tell1" id="USER_TELL1" class="inputText">
 										<option value="" selected disabled hidden>==</option>
 										<option value="010">010</option>
 										<option value="011">011</option>
@@ -177,15 +224,15 @@
 										<option value="017">017</option>
 										<option value="019">019</option>
 									</select> &nbsp;-&nbsp; 
-									<input type="text" name="USER_TELL2" size="5" maxlength="4" class="inputText" /> &nbsp;-&nbsp; 
-									<input type="text" name="USER_TELL3" size="5" maxlength="4" class="inputText" />
+									<input type="text" name="m_tell2" size="5" maxlength="4" class="inputText" /> &nbsp;-&nbsp; 
+									<input type="text" name="m_tell3" size="5" maxlength="4" class="inputText" />
 								</td>
 							</tr>
 							<tr>
-								<td class="join-text">이메일</td>
+								<td class="join-text">* 이메일</td>
 								<td>
-									<input type="text" name="USER_MAIL" maxlength="50" class="inputText" />&nbsp;@&nbsp; 
-									<select name="USER_MAIL2" class="inputText" style="width: 200px">
+									<input type="text" id="USER_MAIL" name="m_email1" maxlength="50" class="inputText" />&nbsp;@&nbsp; 
+									<select name="m_email2" class="inputText" style="width: 200px">
 										<option value="naver.com">naver.com</option>
 										<option value="daum.net">daum.net</option>
 										<option value="gmail.com">gmail.com</option>
@@ -197,24 +244,26 @@
 								<td class="join-text">주소</td>
 								<td>
 									<!-- 신주소 우편번호 --> 
-									<input id="ZIPCODE" name="ZIPCODE" class="inputText" type="text" value="" placeholder="우편번호" style="width: 100px;" readonly /> &nbsp; 
+									<input id="ZIPCODE" name="zipcode" class="inputText" type="text" value="" placeholder="우편번호" style="width: 100px;" readonly /> &nbsp; 
 									<!-- 우편주소찾기 버튼 --> 
-									<input id="addrFind" type="button" onclick="openDaumZipAddress()" value="주소 찾기" /><br /> 
+									<input id="addrFind" type="button" onclick="openDaumZipAddress()" value="주소 찾기" /><br> 
 									<!-- 기본주소 --> 
-									<input type="text" id="ADDRESS" name="ADDRESS" placeholder="기본주소" value="" class="inputText" style="width: 240px;" readonly /><br /> 
+									<input type="text" id="ADDRESS" name="address" placeholder="기본주소" value="" class="inputText" style="width: 240px;" readonly /><br> 
 									<!-- 나머지 주소 -->
-									<input type="text" id="ADDRESS_ETC" name="ADDRESS_ETC" placeholder="나머지 주소" value="" class="inputText" style="width: 240px;" />
+									<input type="text" id="ADDRESS_ETC" name="address_etc" placeholder="나머지 주소" value="" class="inputText" style="width: 240px;" />
 								</td>
 							</tr>
 							<tr>
-								<td colspan="2" id="join-agree"><input type="checkbox">14세 이상입니다.(필수)</td>
+								<td colspan="2" id="join-agree"><input type="checkbox" id="checkAge">14세 이상입니다.(필수)</td>
 							</tr>
 							<tr>
 								<td colspan="2" id="join-agreetext">* 회원가입에 필요한 최소한의 정보만 입력 받음으로써 고객님의 개인정보 수집을 최소화하고 편리한 회원가입을 제공합니다.</td>
 							</tr>
 						</table>
 						</div>
-						<button id="joinButton" name="joinButton">가입하기</button>
+						
+						<button type="submit" id="joinButton" name="joinButton">가입하기</button>
+						</form>
 						
 					</div>
 				</div>
@@ -227,5 +276,160 @@
 	<!-- footer부분 시작 -->
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 	<!-- footer부분 끝 -->
+	
+	<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/jquery/jquery-3.5.1.js"></script>
+	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script type="text/javascript">
+	
+		function idCheck() {
+			let m_id = $('#USER_ID').val();
+			
+			if(m_id == '') {
+				alert('아이디를 입력해주세요');
+			}
+			else{
+				$.ajax({
+					url: "<%=request.getContextPath()%>/member/idCheck.do" ,
+					method : "GET" ,
+					data : {
+						"id" : m_id
+					},
+					success : function(data) {
+						if(data == true) {
+							$('#overlap,#falseMsg').css('display',"none");
+							$('#trueMsg').css('display','block');
+							$('#trueMsg').addClass('checkSum');
+							$('#USER_ID').attr('readonly',true);
+						}
+						else {
+							$('#overlap,#falseMsg').css('display',"block");
+							$('#trueMsg').css('display','none');
+							$('#trueMsg').removeClass('checkSum');
+						}
+					}
+				});
+			}
+		}
+		
+		function nickCheck() {
+			let m_nick = $('#NICKNAME').val();
+			
+			if(m_nick == '') {
+				alert('닉네임을 입력해주세요');
+			}
+			else{
+				$.ajax({
+					url: "<%=request.getContextPath()%>/member/nicknamecheck.do" ,
+					method : "GET" ,
+					data : {
+						"m_nickname" : m_nick
+					},
+					success : function(data) {
+						if(data == true) {
+							$('#overlap_nick,#falseMsg_nick').css('display',"none");
+							$('#trueMsg_nick').css('display','block');
+							$('#trueMsg_nick').addClass('checkSum');
+							$('#NICKNAME').attr('readonly',true);
+						}
+						else {
+							$('#overlap_nick,#falseMsg_nick').css('display',"block");
+							$('#trueMsg_nick').css('display','none');
+							$('#trueMsg_nick').removeClass('checkSum');
+						}
+					}
+				});
+			}
+		}
+
+		function openDaumZipAddress() {
+			daum.postcode.load(function(){
+		        new daum.Postcode({
+		            oncomplete: function(data) {
+		                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+		                // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+		                $('#ZIPCODE').val(data.zonecode);
+		                $('#ADDRESS').val(data.roadAddress);
+		            }
+		        }).open();
+		    });
+		}
+		
+		$('#JOIN_USER_PWD').on('keyup', function(e) {
+			let regExp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
+			let pwd = $(this).val();
+			
+			if(regExp.test(pwd)){	
+				// true 인 경우
+				$('#passTrue').css('display',"block");
+				$('#passTrue').addClass('checkSum');
+				$('#passFalse').css('display',"none");
+			}
+			else {
+				$('#passTrue').css('display',"none");
+				$('#passTrue').removeClass('checkSum');
+				$('#passFalse').css('display',"block");
+			}
+		});
+		
+		$('#JOIN_PWD_CHECK').on('keyup', function(e) {
+			let pass1 = $('#JOIN_USER_PWD').val();
+			let pwd = $(this).val();
+			console.log(pass1 + " /// " + pwd)
+			
+			if(pass1 == pwd){	
+				// true 인 경우
+				$('#same').css('display',"block");
+				$('#same').addClass('checkSum');
+				$('#different').css('display',"none");
+			}
+			else {
+				$('#same').css('display',"none");
+				$('#same').removeClass('checkSum');
+				$('#different').css('display',"block");
+			}
+		});
+		
+		function checkForm() {
+			
+			if(!$('#trueMsg').hasClass('checkSum')){
+				alert("아이디 중복체크 확인");
+				return false;
+			}
+			
+			if(!$('#passTrue').hasClass('checkSum')){
+				alert("비밀번호 확인");
+				return false;
+			}
+			
+			if(!$('#same').hasClass('checkSum')){
+				alert("비밀번호 중복 확인");
+				return false;
+			}
+			
+			// 이름 공란인지 확인
+			if($('#USER_NAME').val() == ''){
+				alert("이름 입력 확인");
+				return false;
+			}
+			
+			if(!$('#trueMsg_nick').hasClass('checkSum')){
+				alert("닉네임 중복체크 필수");
+				return false;
+			}
+			
+			if($('#USER_MAIL').val() == ''){
+				alert("이메일 입력 필수");
+				return false;
+			}
+			
+			if(!$('#checkAge').is(":checked")){
+				alert("14세 미만은 가입이 불가능합니다.");
+				return false;
+			}
+			
+			return true;
+		}
+	</script>
+
 </body>
 </html>

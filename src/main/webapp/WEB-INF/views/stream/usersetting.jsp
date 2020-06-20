@@ -59,11 +59,10 @@
 	      <source src="https://upload.wikimedia.org/wikipedia/commons/transcoded/a/ab/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm.480p.webm" type="video/webm" label='480P' res='480'>
 	      <source src="https://upload.wikimedia.org/wikipedia/commons/transcoded/a/ab/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm.360p.webm" type="video/webm" label='360P' res='360'>
 	      <source src="https://upload.wikimedia.org/wikipedia/commons/transcoded/a/ab/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm/Caminandes_3_-_Llamigos_-_Blender_Animated_Short.webm.240p.webm" type="video/webm" label='240P' res='240'> -->
-	 
-	  	  <!-- <source src="http://rndso15.synology.me:8080/hls/test_hd720.m3u8" type='application/x-mpegURL' label='720P' res='720'>
-	      <source src="http://rndso15.synology.me:8080/hls/test_mid.m3u8" type='application/x-mpegURL' label='480P' res='480'>
-	      <source src="http://rndso15.synology.me:8080/hls/test_low.m3u8" type='application/x-mpegURL' label='360P' res='360'>-->
-	      <source src="http://localhost:8080/hls/${userHashCode}/index.m3u8" type='application/x-mpegURL' label='src' res='src'>
+
+	      <%-- <source src="http://localhost:8080/hls/${userHashCode}/index.m3u8" type='application/x-mpegURL' label='src' res='src'> --%>
+	      <source src="http://rndso15.synology.me:8080/hls/${userHashCode}/index.m3u8" type='application/x-mpegURL' label='src' res='src'> 
+	      <%-- <source src="http://172.31.0.57:8080/hls/${userHashCode}/index.m3u8" type='application/x-mpegURL' label='src' res='src'> --%>
 	      
 	  	  <!-- <source src="http://localhost:8080/hls/test_hd720.m3u8" type='application/x-mpegURL' label='720P' res='720'>
 	      <source src="http://localhost:8080/hls/test_mid.m3u8" type='application/x-mpegURL' label='480P' res='480'>

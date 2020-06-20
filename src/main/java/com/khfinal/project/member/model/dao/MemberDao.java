@@ -1,5 +1,6 @@
 package com.khfinal.project.member.model.dao;
 
+import java.sql.SQLException;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -21,8 +22,9 @@ public class MemberDao {
 	@Autowired
 	SqlSessionTemplate session;
 	
-	public int insertMember(Map<String , Object>memberMap) {
-		return session.insert("Member.insertMember",memberMap);
+	public int insertMember(Map<String, Object> commandMap) throws SQLException {
+		int result = session.insert("Member.insertMember" , commandMap);
+		return result;
 	}
 	
 	/**
@@ -62,4 +64,14 @@ public class MemberDao {
 	public int updateProfile(Map<String, Object> file) {
 		return session.insert("updateProfile", file);
 	}
+	
+	public String idCheck(String m_id) {
+		return session.selectOne("Member.idCheck",m_id);
+	}
+	
+	public int idExist(Map<String, Object> commandMap) {
+		return session.selectOne("Member.idExist",commandMap);
+	}
+
+
 }

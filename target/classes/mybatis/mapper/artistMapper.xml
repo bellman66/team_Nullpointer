@@ -22,13 +22,6 @@
 		TB_MEMBER B INNER JOIN TB_ARTIST_UPLOAD A ON #{A.M_ID} = #{B.M_ID}
 		WHERE AU_TYPE=1
 	</select> -->
-	<update id="wordModify" parameterType="Artist">
-		update tb_artist_upload set au_word = #{au_word} where m_id = #{m_id}
-	</update>
-	
-	<select id="word" resultType="string">
-		select DISTINCT au_word from tb_artist_upload where m_id = #{m_id}
-	</select>
 
 	<resultMap type="Artist" id="Artist">
 		<result property="auNum" column="AU_NUM" />
