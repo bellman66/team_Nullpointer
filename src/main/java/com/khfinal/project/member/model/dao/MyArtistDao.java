@@ -14,12 +14,14 @@ public class MyArtistDao {
 	@Autowired
 	SqlSessionTemplate session;
 	
-	public MyArtist insertMyArtist() {
-		return null;
-	}
-	
-	public MyArtist deleteMyArtist() {
-		return null;
+	/**
+	 * @method : insertMyArtist()
+	 * @date : 2020. 6. 21.
+	 * @buildBy : 박혜연
+	 * @comment : 일반회원 마이 페이지 내의 'My Artist' 부분 목록 추가
+	 */
+	public int insertMyArtist(MyArtist myartist) {
+		return session.insert("MyArtist.insertMyArtist", myartist);
 	}
 	
 	/**
@@ -41,5 +43,5 @@ public class MyArtistDao {
 	public int myArtistDelete(MyArtist myartist) {
 		return session.delete("MyArtist.myArtistDelete", myartist);
 	}
-
+	
 }

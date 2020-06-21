@@ -23,5 +23,10 @@
 		update tb_artist set
 		a_subscribe = a_subscribe-1 where m_nickname = #{m_nickname}
 	</update>
+	<update id="plusSubscribe" parameterType="string">
+		update tb_artist set
+		a_subscribe = a_subscribe+1 where m_nickname = #{m_nickname}
+	</update>
+	
 
 </mapper>

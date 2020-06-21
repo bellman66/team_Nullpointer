@@ -56,6 +56,10 @@ public class ArtistDao {
 		return session.insert("ArtistPlus.wordInsert", artistplus);
 	}
 	
+	public int plusSubscribe(String m_nickname) {
+		return session.update("ArtistPlus.plusSubscribe", m_nickname);
+	}
+	
 	public List<Member> selectArtist(){
 		return session.selectList("Member.selectArtist");
 	}
