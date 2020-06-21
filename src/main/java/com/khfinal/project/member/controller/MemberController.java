@@ -523,19 +523,55 @@ public class MemberController {
 		MyArtist myArtist = new MyArtist();
 		myArtist.setM_id(m_id);
 		myArtist.setm_nickname(m_nickname);
-		insertRes = ms.insertMyArtist(myArtist);
 		
-		// 아티스트의 구독자수 a_subscribe +1
-		if(insertRes > 0) {
-			updateRes = as.plusSubscribe(m_nickname);
-		}
+		// 추가 전 myartist에 중복값 있는지 확인
+		int same = ms.selectSame(myArtist);
 		
-		if(updateRes < 0) {
+		System.out.println(same);
+		
+		if(same == 0) { 
+			// myartist 추가
+			insertRes = ms.insertMyArtist(myArtist);
+			result = true;
+			
+			// 아티스트의 구독자수 a_subscribe +1
+			if(insertRes > 0) {
+				updateRes = as.plusSubscribe(m_nickname);
+				result = true;
+				
+				if(updateRes < 0) {
+					result = false;
+				}
+			}
+			
+		} else {
 			result = false;
 		}
 		
 		return result;
 		
+	}
+	
+	/**
+	 * @method : myArtistList()
+	 * @date : 2020. 6. 21.
+	 * @buildBy : 박혜연
+	 * @comment : 구독한 아티스트 목록 모두 보기 페이지로 이동
+	 */
+	@RequestMapping("/member/myartistlist.do")
+	public ModelAndView myArtistList(HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		
+		// 나의 아티스트 목록  + 아티스트의 프로필 사진
+		MyArtist myartist = (MyArtist) request.getAttribute("myartist");
+		List<Map<String, Object>> plusprofile = ms.maplusprofile(myartist);
+		
+		System.out.println(plusprofile.size());
+		
+		mav.addObject("myartistlistall", plusprofile);
+		mav.setViewName("member/myArtistList");
+		
+		return mav;
 	}
 
 }

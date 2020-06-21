@@ -15,5 +15,22 @@
   	INSERT INTO `tb_myartist`(`MA_NUM`, `M_ID`, `M_NICKNAME`) 
   	VALUES (MA_NUM,#{m_id},#{m_nickname})
   </insert>
-  
+  <select id="selectSame" parameterType="MyArtist" resultType="int">
+  	select count(*) from tb_myartist where m_id = #{m_id} and m_nickname = #{m_nickname}
+  </select>
+  <select id="maplusprofile" parameterType="MyArtist" resultMap="martist">
+  	select a.ma_num, a.m_id, a.m_nickname, m.m_class, m.rename_filepath
+  	from tb_myartist a
+  	join tb_member m
+  	on a.m_nickname = m.m_nickname
+  	where a.m_id = #{m_id} and a.m_nickname = #{m_nickname}
+  	
+  </select>
+  <resultMap type="HashMap" id="martist">
+  	<id column="MA_NUM" property="ma_num"/>
+  	<id column="M_ID" property="m_id"/>
+  	<id column="M_NICKNAME" property="m_nickname"/>
+  	<id column="M_CLASS" property="m_class"/>
+  	<id column="RENAME_FILEPATH" property="rename_filepath"/>
+  </resultMap>
   </mapper>
