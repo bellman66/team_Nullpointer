@@ -493,5 +493,49 @@ public class MemberController {
 		return mav;
 
 	}
+	
+	/**
+	 * @method : updatemyArtist()
+	 * @date : 2020. 6. 21.
+	 * @buildBy : 박혜연
+	 * @comment : 아티스트 회원 구독하기
+	 */
+	@RequestMapping("/member/insertMyArtist.do")
+	public Boolean insertMyArtist(HttpServletRequest request) {
+		// 최종 결과
+		Boolean res = true;
+		// 업데이트 결과
+		int insertRes = 0;
+		int updateRes = 0;
+		// 회원의 정보
+		Map<String, Object> info = (Map<String, Object>) request.getSession().getAttribute("loginInfo");
+		Member user = (Member) info.get("member");
+		String m_id = user.getM_id();
+		System.out.println(m_id);
+		
+		// 해당 페이지의 아티스트 nickname
+		String m_nickname = request.getParameter("artist_nick");
+		System.out.println(m_nickname);
+		
+		// 회원의 myartist 추가
+		MyArtist myArtist = new MyArtist();
+		myArtist.setM_id(m_id);
+		myArtist.setm_nickname(m_nickname);
+		insertRes = ms.insertMyArtist(myArtist);
+		
+		// 아티스트의 구독자수 a_subscribe +1
+		if(insertRes > 0) {
+			updateRes = as.plusSubscribe(m_nickname);
+		}
+		
+		if(updateRes > 0) {
+			res = true;
+		} else {
+			res = false;
+		}
+		
+		return res;
+		
+	}
 
 }

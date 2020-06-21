@@ -88,6 +88,7 @@ public class ArtistController {
 	 * @comment : artist main페이지에서 선택한 아티스트의 개인 페이지로 넘어야합니다.
 	 */
 	@RequestMapping("/artist/artistpage.do")
+
 	public ModelAndView artpageList(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		// 작성자 : 이하진
@@ -118,8 +119,7 @@ public class ArtistController {
 		}
 		System.out.println("컨트롤러 " + aslist);
 
-		mav.setViewName("artist/artistPage_Art");
-		return mav;
+		return true;
 	}
 
 	/**

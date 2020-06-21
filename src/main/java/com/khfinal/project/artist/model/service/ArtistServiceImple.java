@@ -201,7 +201,8 @@ public class ArtistServiceImple implements ArtistService {
 	public List<Member> selectTattooist() {
 		return ad.selectTattooist();
 	}
-		/**
+	
+	/**
 	 * @method : decrementAuLike
 	 * @date : 2020. 6. 19.
 	 * @buildBy : 박혜연
@@ -210,6 +211,17 @@ public class ArtistServiceImple implements ArtistService {
 	@Override
 	public int decrementSubscribe(String m_nickname) {
 		return ad.decrementSubscribe(m_nickname);
+	}
+	
+	/**
+	 * @method : plusSubscribe
+	 * @date : 2020. 6. 21.
+	 * @buildBy : 박혜연
+	 * @comment : 일반회원의 '나의 아티스트' 목록에서 구독 cnrk시, 해당 아티스트의 구독자수 +1
+	 */
+	@Override
+	public int plusSubscribe(String m_nickname) {
+		return ad.plusSubscribe(m_nickname);
 	}
 	
 	/**

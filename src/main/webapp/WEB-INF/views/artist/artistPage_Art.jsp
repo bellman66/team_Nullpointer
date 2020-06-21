@@ -94,6 +94,44 @@
 											<a href="<%=request.getContextPath()%>/artist/artistphoto.do"
 												class="more" title="더 보기">More</a>
 										</div>
+										<div class="ta_cash" id="${artist.m_nickname}">
+											<button type="button" onclick="donate()">후원</button>
+											<div class="dim-layer" id="dim-layer-do">
+												<div class="dimBg"></div>
+												<div id="layer2" class="pop-layer">
+													<div class="pop-container">
+														<div class="pop-conts">
+															<!--content //-->
+															<p class="ctxt mb20">${artist.m_nickname}님을 후원하시겠습니까?
+																후원하시려면 아래 '확인' 버튼을 눌러주세요.</p>
+															<div class="btn-r">
+																<a href="#" class="btn-yes">확인</a> <a href="#"
+																	class="btn-layerClose">취소</a>
+															</div>
+															<!--// content-->
+														</div>
+													</div>
+												</div>
+											</div>
+											<button type="button" onclick="subscribe()">구독</button>
+											<div class="dim-layer" id="dim-layer-sub">
+												<div class="dimBg"></div>
+												<div id="layer3" class="pop-layer">
+													<div class="pop-container">
+														<div class="pop-conts">
+															<!--content //-->
+															<p class="ctxt mb20">${artist.m_nickname}님을 구독하였습니다.
+																마이페이지에서 확인하시겠습니까?</p>
+															<div class="btn-r">
+																<a href="#" class="btn-yes">확인</a> <a href="#"
+																	class="btn-layerClose">취소</a>
+															</div>
+															<!--// content-->
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
 									</div>
 									<div class="art-fan2">
 										<div class="art-schedule">
@@ -152,6 +190,13 @@
 	<!-- footer부분 시작 -->
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 	<!-- footer부분 끝 -->
+
+	<!-- js 링크 -->
+	<!-- 아티스트 회원 후원금 결제 시스템 i'mport api -->
+	<script type="text/javascript"
+		src="<%=request.getContextPath()%>/resources/js/donate.js"></script>
+	<script type="text/javascript"
+		src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
 </body>
 </html>

@@ -23,8 +23,14 @@
 		update tb_artist set
 		a_subscribe = a_subscribe-1 where m_nickname = #{m_nickname}
 	</update>
+
 	<select id="selectArtPage" resultType="ArtistPlus">
 		select * from TB_ARTIST where M_NICKNAME = {m_nickname};
 	</select>
 
+	<update id="plusSubscribe" parameterType="string">
+		update tb_artist set
+		a_subscribe = a_subscribe+1 where m_nickname = #{m_nickname}
+	</update>
+	
 </mapper>
