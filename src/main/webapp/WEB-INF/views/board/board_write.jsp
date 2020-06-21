@@ -50,22 +50,32 @@
 							
 							
 							
-							<form action="<%= request.getContextPath() %>/board/boarduoload.do" method="post" enctype="multipart/form-data">
+							<form action="<%= request.getContextPath() %>/board/boardupload.do" method="post" enctype="multipart/form-data">
 								<div class="write_detail">
 									<div class="title_file">
 										제목 : <input type="text" name="b_title" class="write_title"/>
 										파일 : <input type="file" name="bfile" id="contract_file" multiple/>
 									</div>
-									
+									<br><br>
 									<div class="write_content">
 										<textarea cols="300" rows="15" name="b_content" style="width:100%"></textarea>
 									</div>
 									
 									<div>
 										<button class="bdwrite_button">확인</button>
+										
+										
+										
 									</div>
 								</div>
 							</form>
+							<c:if test="${board eq 'sh'}">
+								<button class="bdWriteCancel" onclick="location.href='<%= request.getContextPath() %>/board/boardSH.do'">취소</button> 
+							</c:if>
+							
+							<c:if test="${board eq 'pr'}">
+								<button class="bdWriteCancel" onclick="location.href='<%= request.getContextPath() %>/board/boardPR.do'">취소</button> 
+						</c:if>
 						</div>
 					</div>
 				</div>

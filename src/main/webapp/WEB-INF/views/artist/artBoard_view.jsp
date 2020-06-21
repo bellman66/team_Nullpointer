@@ -52,34 +52,36 @@
 										</tr>
 										<tr>
 											<th class="aview_title">제목</th>
-											<td class="aview_td">B_TITLE</td>
+											<td class="aview_td">${readMap.artRead.b_title}</td>
 										</tr>
 										<tr>
 											<th class="aview_writer">작성자</th>
-											<td class="aview_td">M_ID</td>
+											<td class="aview_td">${readMap.artRead.m_id}</td>
 										</tr>
 										<tr>
 											<th class="aview_Date">작성일</th>
-											<td class="aview_td">B_DATE</td>
+											<td class="aview_td">${readMap.artRead.b_date}</td>
 										</tr>
 										<tr>
 											<th class="aview_content">내용</th>
-											<td class="aview_td">B_CONTENT</td>
+											<td class="aview_td">${readMap.artRead.b_content}</td>
 										</tr>
 										<tr>
 											<th class="aview_file">파일</th>
-											<td class="aview_td">B_FILE</td>
+											<td class="aview_td">${readMap.artRead.b_file}</td>
 										</tr>
-										<tr>
+										<%-- <tr>
 											<th class="aview_linke">링크</th>
-											<td class="aview_td">NULL</td>
-										</tr>
+											<td class="aview_td">${readMap.artRead.b_title}NULL</td>
+										</tr> --%>
 									</tbody>
 								</table>
 							</form>
 							<div class="aboard_btn">
-								<button class="btn_list" type="button">목록</button>
-								<button class="btn_modify" type="button">수정</button>
+								<button class="btn_list" type="button" onclick="location.href='<%= request.getContextPath() %>/artist/artboardlist.do'">목록</button>
+								<c:if test="${sessionScope.loginInfo.member.m_id eq readMap.artRead.m_id}">
+									<button class="btn_modify" type="button" onclick="location.href='<%= request.getContextPath() %>/artist/aboardDelect.do?b_num=${readMap.artRead.b_num}'">삭제</button>
+								</c:if>
 								<button class="btn_pass" type="button">취소</button>
 							</div>
 						</div>

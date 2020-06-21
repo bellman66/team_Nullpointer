@@ -277,18 +277,20 @@
 										<!-- 버튼  -->
 								<c:if test="${board  eq 'sh'}" >	
 									<c:if test="${sessionScope.loginInfo != null }">
-										<div id="bdWrite">
+										<%-- <div id="bdWrite">
 									        <a href="<%= request.getContextPath() %>/board/boardwrite.do?board=${board}" style="color:#fff;">글쓰기</a>
-									  	</div> 
+									  	</div> --%>
+									  	<button id="bdWrite" onclick="location.href='<%= request.getContextPath() %>/board/boardwrite.do?board=${board}'">글쓰기</button> 
 								  	</c:if>
 						  		</c:if>	
 						  		
 						  		<c:if test="${board  eq 'pr'}">	
 						  			<c:if test="${sessionScope.loginInfo != null }">
 										<c:if test="${sessionScope.loginInfo.member.m_class != '1'}">
-											<div id="bdWrite">
+											<%-- <div id="bdWrite">
 							        			<a href="<%= request.getContextPath() %>/board/boardwrite.do?board=${board}" style="color:#fff;">글쓰기</a>
-							  				</div>
+							  				</div> --%>
+							  				<button id="bdWrite" onclick="location.href='<%= request.getContextPath() %>/board/boardwrite.do?board=${board}'">글쓰기</button> 
 										</c:if>
 									</c:if>
 								 
