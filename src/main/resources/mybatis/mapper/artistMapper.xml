@@ -38,6 +38,5 @@
 	<select id="selectArtPage" resultType="Artist">
 		select * from TB_ARTIST_UPLOAD where M_NICKNAME = #{m_nickname}
 	</select>
-	 
 
 </mapper>

@@ -50,15 +50,6 @@ public class ArtistController {
 		return mav;
 	}
 
-	@RequestMapping("/artist/loadartpage.do")
-	public ModelAndView loadartpage() {
-		ModelAndView mav = new ModelAndView();
-
-		mav.setViewName("artist/artistPage_Art");
-
-		return mav;
-	}
-
 	/**
 	 * @method : moreContent
 	 * @date : 2020. 6. 21.
@@ -88,19 +79,25 @@ public class ArtistController {
 	 */
 	@RequestMapping("/artist/artistpage.do")
 	@ResponseBody
-	public boolean artpageList(HttpServletRequest request) {
+	public ModelAndView artpageList(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		// 작성자 : 이하진
 		// 탭메뉴페이지에서 닉네임값을 받아옵니다.
 		String m_nickname = request.getParameter("artist_nick");
+		System.out.println(m_nickname);
 
-		List<Artist> artlist = as.selectArtPage();
+		// 수정자 : 박혜연
+		// 매개변수 설정
+		// 아티스트의 업로드 콘텐츠 받아오기
+		List<Artist> artlist = as.selectArtPage(m_nickname);
 		mav.addObject("artlist", artlist);
 
-		List<ArtistPlus> aplist = as.selectAll();
+		// 아티스트의 한줄소개, 구독자수 받아오기
+		ArtistPlus aplist = as.selectAll(m_nickname);
 		mav.addObject("aplist", aplist);
 
-		List<Member> mlist = as.selectProfile();
+		// 아티스트의 프로필 사진 받아오기
+		Member mlist = as.selectProfile(m_nickname);
 		mav.addObject("mlist", mlist);
 
 		// 작성자 : 김경호
@@ -118,7 +115,9 @@ public class ArtistController {
 		}
 		System.out.println("컨트롤러 " + aslist);
 
-		return true;
+		mav.setViewName("artist/artistPage_Art");
+
+		return mav;
 	}
 
 	/**
@@ -128,8 +127,26 @@ public class ArtistController {
 	 * @comment : artist main페이지에서 선택한 타투이스트의 개인 페이지로 넘어야합니다.
 	 */
 	@RequestMapping("/artist/tattoopage.do")
-	public ModelAndView tattpageList() {
+	public ModelAndView tattpageList(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
+
+		// 수정자 : 박혜연
+		// 매개변수 설정
+		// 아티스트의 업로드 콘텐츠 받아오기
+
+		String m_nickname = request.getParameter("artist_nick");
+		System.out.println(m_nickname);
+
+		List<Artist> artlist = as.selectArtPage(m_nickname);
+		mav.addObject("artlist", artlist);
+
+		// 아티스트의 한줄소개, 구독자수 받아오기
+		ArtistPlus aplist = as.selectAll(m_nickname);
+		mav.addObject("aplist", aplist);
+
+		// 아티스트의 프로필 사진 받아오기
+		Member mlist = as.selectProfile(m_nickname);
+		mav.addObject("mlist", mlist);
 
 		mav.setViewName("artist/artistPage_Ta");
 		return mav;

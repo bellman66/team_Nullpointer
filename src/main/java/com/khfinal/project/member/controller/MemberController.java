@@ -501,9 +501,11 @@ public class MemberController {
 	 * @comment : 아티스트 회원 구독하기
 	 */
 	@RequestMapping("/member/insertMyArtist.do")
+	@ResponseBody
 	public Boolean insertMyArtist(HttpServletRequest request) {
+		
 		// 최종 결과
-		Boolean res = true;
+		Boolean result = true;
 		// 업데이트 결과
 		int insertRes = 0;
 		int updateRes = 0;
@@ -528,13 +530,11 @@ public class MemberController {
 			updateRes = as.plusSubscribe(m_nickname);
 		}
 		
-		if(updateRes > 0) {
-			res = true;
-		} else {
-			res = false;
+		if(updateRes < 0) {
+			result = false;
 		}
 		
-		return res;
+		return result;
 		
 	}
 

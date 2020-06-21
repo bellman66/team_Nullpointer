@@ -10,6 +10,7 @@ import com.khfinal.project.schedule.model.vo.Schedule;
 
 public interface ArtistService {
 	
+	// 작성자: 박혜연
 	public List<Artist> todayList();
 	public List<Artist> bestContent();
 	public List<Artist> uploadList(String m_id);
@@ -29,8 +30,9 @@ public interface ArtistService {
 	public int artScDelete(String scdelete);
 	
 	//작성자 : 이하진
+	//수정자 : 박혜연
 	//아티스트 개인페이지 관련
-	public List<Artist>selectArtPage();
-	public List<Member>selectProfile();
-	public List<ArtistPlus>selectAll();
+	public List<Artist> selectArtPage(String m_nickname);
+	public Member selectProfile(String m_nickname);
+	public ArtistPlus selectAll(String m_nickname);
 }

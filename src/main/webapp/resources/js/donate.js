@@ -46,7 +46,7 @@ function layer_popup(el) {
 		            pay_method : 'card',
 		            merchant_uid : 'merchant_' + new Date().getTime(),
 		            name : 'test',
-		            amount : '10원',
+		            amount : '2000원',
 		            buyer_email : 'eternita9210@gmail.com',
 		            buyer_name : 'testtest',
 		            buyer_tel : '01074752312',
@@ -126,6 +126,9 @@ function donate() {
 function subscribe() {
 	
 	var loginChk = $('.ta_cash').attr('id');
+	var a_nick = $('h3').html();
+	console.log(loginChk);
+	console.log(a_nick);
 	
 	// 비회원 또는 미로그인 상태일 때 제한
 	if(loginChk != "") {
@@ -134,9 +137,11 @@ function subscribe() {
 			url : '/springmvc/member/insertMyArtist.do',
 			type : 'GET',
 			data : {
-				"artist_nick" : loginChk
+				"artist_nick" : a_nick
 			},
 			success : function(res) {
+				
+				console.log(res);
 				if(res == true) {
 					// 확인 팝업
 			        layer_popup('#layer3');

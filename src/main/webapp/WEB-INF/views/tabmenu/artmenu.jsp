@@ -58,16 +58,18 @@
 									<ul class="grid">
 										<!-- 뮤지션 시작!M_Class = 2 -->
 										<c:forEach items="${music}" var="music" varStatus="status">
-											<li class="btn_link"><span class="img_box"> 
-													${music.rename_filepath}
-											</span> <span class="title">${music.m_nickname}</span>
+											<li class="btn_link">
+												<span class="img_box">${music.rename_filepath}</span> 
+												<span class="title">${music.m_nickname}</span>
 												<div class="btn_ani">
-													<a onclick="mAttow(${music.m_nickname})" class="btn_link">
-														<span class="arrow"> <img
-															src="<%=request.getContextPath()%>/resources/img/icon/arrow.png" />
-													</span>
+													<a href="<%=request.getContextPath()%>/artist/artistpage.do?artist_nick=${music.m_nickname}"
+													class="btn_link">
+														<span class="arrow"> 
+															<img src="<%=request.getContextPath()%>/resources/img/icon/arrow.png" />
+														</span>
 													</a>
-												</div></li>
+												</div>
+											</li>
 										</c:forEach>
 										<!-- 뮤지션 끝! -->
 									</ul>
@@ -96,7 +98,7 @@
 														type="hidden" name="title">
 												</div>
 												<div class="btn_ani">
-													<a href="<%=request.getContextPath()%>/artist/tattopage.do"
+													<a href="<%=request.getContextPath()%>/artist/tattoopage.do?artist_nick=${tattoo.m_nickname}"
 														class="btn_link"> <span class="arrow"> <img
 															src="<%=request.getContextPath()%>/resources/img/icon/arrow.png" />
 													</span>
@@ -165,22 +167,6 @@
 			console.log('ttn');
 		}
 		
-		//개인페이지로 이동합니다.
-		function mAttow(nickname) {
-         $.ajax({
-            url: '/springmvc/artist/artistpage.do',
-            type: 'GET',
-            data: {
-               'artist_nick' : nickname
-            },
-            success: function(res) {
-              	if(res == true) {
-            	   location.href='<%=request.getContextPath()%>/artist/loadartpage.do';
-							} 
-							/* console.log(res); */
-						}
-					});
-		}
 	</script>
 </body>
 </html>

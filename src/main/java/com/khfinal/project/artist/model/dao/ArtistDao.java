@@ -91,16 +91,12 @@ public class ArtistDao {
 		 * @buildBy : hajin
 		 * @comment : 아티스트 개인 페이지관련 
 		 */
-	public List<Artist> selectArtPage(){
-		return session.selectList("Artist.selectArtPage");
+	public List<Artist> selectArtPage(String m_nickname){
+		return session.selectList("Artist.selectArtPage", m_nickname);
 	}
 	
-	public List<Member> selectProfile(){
-		return session.selectList("Member.selectArtPage");
-	}
-	
-	public List<ArtistPlus> selectAll(){
-		return session.selectList("ArtistPlus.selectArtPage");
+	public ArtistPlus selectAll(String m_nickname){
+		return session.selectOne("ArtistPlus.selectArtPage", m_nickname);
 	}
 
 

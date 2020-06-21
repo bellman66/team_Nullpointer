@@ -72,6 +72,16 @@ public class MemberDao {
 	public int idExist(Map<String, Object> commandMap) {
 		return session.selectOne("Member.idExist",commandMap);
 	}
+	
+	/**
+	 * @method : selectProfile
+	 * @date : 2020. 6. 21.
+	 * @buildBy : 박혜연
+	 * @comment : 프로필 사진 받아오기
+	 */
+	public Member selectProfile (String m_nickname) {
+		return session.selectOne("Member.profile", m_nickname);
+	}
 
 
 }

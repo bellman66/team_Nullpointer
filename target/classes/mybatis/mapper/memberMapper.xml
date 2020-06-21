@@ -66,4 +66,7 @@
 	<select id="selectArtPage" resultType="Member">
 		select RENAME_FILEPATH from TB_MEMBER where M_NICKNAME = #{m_nickname}
 	</select>
+	<select id="profile" resultType="Member">
+		select * from tb_member where m_nickname = #{m_mickname}
+	</select>
 </mapper>
