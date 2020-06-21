@@ -13,7 +13,7 @@
 
 .artist_tab #artmenu {
 	height: 70px;
-	border: 1px solid blue;
+	/*border: 1px solid blue;*/
 }
 
 /* 메뉴부분 */
@@ -57,11 +57,10 @@
 .artist_tab #subContent {
 	display:block;
 	padding:6px 12px;
-	background:#f5b041;
 }
 
 .artist_tab #subContent .content {
-	height: 650px;
+	height: 985px;
 }
 
 .artist_tab #subContent .grid {
@@ -74,7 +73,7 @@
 	margin: 0 10px 40px 10px;
 	display: block;
 	position: relative;
-	border:1px solid red;
+	/*border:1px solid red;*/
 }
 
 .artist_tab #subContent .grid .btn_link .img_box {
@@ -93,7 +92,8 @@
 
 .artist_tab #subContent .grid .btn_link .title {
 	font-family: sans-serif;
-	font-size: 14px;
+	font-size: 15px;
+	font-weight:800;
 	display: block;
 	margin-top: 17px;
 	margin-left: 5px;

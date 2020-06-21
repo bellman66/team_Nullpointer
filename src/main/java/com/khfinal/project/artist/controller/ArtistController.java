@@ -186,5 +186,19 @@ public class ArtistController {
 		mav.setViewName("artist/artboardList");
 		return mav;
 	}
+	
+	/**
+	 * @method : artWrite
+	 * @date : 2020. 6. 20.
+	 * @buildBy : hajin
+	 * @comment : 아티스트 페이지에 사용되는 모든 글쓰기를 공통으로 사용합니다.
+	 */
+	@RequestMapping("/artist/artwrite.do")
+	public ModelAndView artWrite() {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("artist/artWrite");
+		return mav;
+	}
 
 }
