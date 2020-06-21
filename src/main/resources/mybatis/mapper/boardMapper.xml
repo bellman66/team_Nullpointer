@@ -53,12 +53,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
    <!-- 마리아db에서 AUTO_INCREMENT는  오라클의 시쿼스와 같은 기능 그래서 b_num만 써줘도 값이 올라간다. -->
    <insert id="boardinsertSh">
    		INSERT INTO TB_BOARD VALUES(
-   		1 ,B_NUM, #{boardWriter} , sysdate(), #{b_content}, 'test/test/test', #{b_title})
+   		1 ,B_NUM, #{boardWriter} , sysdate(), #{b_content}, 'test/test/test', #{b_title},null)
    </insert>
    
    <insert id="boardinsertPr">
    		INSERT INTO TB_BOARD VALUES(
-   		2 ,B_NUM, #{boardWriter}, sysdate(), #{b_content}, 'test/test/test', #{b_title})
+   		2 ,B_NUM, #{boardWriter}, sysdate(), #{b_content}, 'test/test/test', #{b_title},null)
    </insert>
    
    <!-- 파일 추가하는 쿼리문 -->

@@ -44,11 +44,9 @@
 						<form name="sh" action="<%=request.getContextPath()%>/schedule/scheduleadd.do">
 							<select name="startYear" class="startYear">
 									<option value="selected disabled hidden">년도</option>
-									<option value="2019-">2019년</option>
 									<option value="2020-">2020년</option>
 									<option value="2021-">2021년</option>
 									<option value="2022-">2022년</option>
-									<option value="2023-">2023년</option>
 							</select> 
 							
 							<select name="startMonth" class="startMonth">
@@ -144,11 +142,9 @@
 						<div class="scEnd" style="font-size: 2em;">종료일</div>
 							<select name="endYear" class="endYear">
 									<option value="selected disabled hidden">년도</option>
-									<option value="2019-">2019년</option>
 									<option value="2020-">2020년</option>
 									<option value="2021-">2021년</option>
 									<option value="2022-">2022년</option>
-									<option value="2023-">2023년</option>
 							</select> 
 							
 							<select name="endMonth" class="endMonth">

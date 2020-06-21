@@ -43,11 +43,11 @@
 							<p>소통게시판입니다.</p>
 						</div>
 						<div class="aboardView-table">
-							<form name="artView" action="">
+							<form name="artView" action="<%= request.getContextPath() %>/artist/aboardUpload.do">
 								<table>
 									<tbody>
 
-										<tr>
+										<!-- <tr>
 											<th id="aview_board">게시판종류</th>
 											<td class="aview_board">
 											<select name="boardType">
@@ -57,11 +57,11 @@
 													<option value="abbr">홍보게시판</option>
 											</select>
 											</td>
-										</tr>
+										</tr> -->
 
 										<tr>
 											<th id="aview_title">제목</th>
-											<td class="aview_td"><input type="text" class="artTitle"></td>
+											<td class="aview_td"><input type="text" class="artTitle" name="b_title"></td>
 										</tr>
 										<tr>
 											<th class="aview_writer">작성자</th>
@@ -69,24 +69,26 @@
 										</tr>
 										<tr>
 											<th class="aview_content">내용</th>
-											<td class="aview_td"><input type="text"
-												class="artContent"></td>
+											<td class="aview_td">
+												<textarea cols="300" rows="15" name="b_content" style="width:100%"></textarea>
+											</td>
 										</tr>
-										<tr>
+										<!-- <tr>
 											<th class="aview_file">파일 등록</th>
 											<td class="aview_td"><input type="file"></td>
 										</tr>
 										<tr>
 											<th class="aview_link">링크 등록</th>
 											<td class="aview_td"></td>
-										</tr>
+										</tr> -->
 									</tbody>
 								</table>
+									<button class="btn_fin">등록하기</button>
 							</form>
 							<div class="aboard_btn">
-								<button class="btn_list" type="button">목록</button>
-								<button class="btn_fin" type="button">등록하기</button>
-								<button class="btn_pass" type="button">취소</button>
+								
+								
+								<button class="btn_pass" type="button" onclick="location.href='<%= request.getContextPath() %>/artist/artboardlist.do'">취소</button>
 							</div>
 						</div>
 					</div>

@@ -226,7 +226,7 @@ public class BoardController {
 	 * @buildBy : 김경호
 	 * @comment : 게시판 업로드 메서드
 	 */
-	@RequestMapping("/board/boarduoload.do")
+	@RequestMapping("/board/boardupload.do")
 	public ModelAndView boardUpload(HttpServletRequest request, Board board, @RequestParam List<MultipartFile> bfile) {
 		ModelAndView mav = new ModelAndView();
 		System.out.println("이게 뭘까?" + boardCategory);
