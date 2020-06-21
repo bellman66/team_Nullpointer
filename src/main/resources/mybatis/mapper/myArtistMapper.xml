@@ -11,5 +11,9 @@
   <delete id="myArtistDelete" parameterType="MyArtist">
   	delete from tb_myartist where m_id = #{m_id} and m_nickname = #{m_nickname}
   </delete>
+  <insert id="insertMyArtist" parameterType="MyArtist">
+  	INSERT INTO `tb_myartist`(`MA_NUM`, `M_ID`, `M_NICKNAME`) 
+  	VALUES (MA_NUM,#{m_id},#{m_nickname})
+  </insert>
   
   </mapper>

@@ -194,5 +194,9 @@ public class MemberServiceImple implements MemberService {
 			}
 		});
 	}
+	
+	public int insertMyArtist(MyArtist myartist) {
+		return madao.insertMyArtist(myartist);
+	}
 
 }

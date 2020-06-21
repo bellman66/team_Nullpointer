@@ -17,25 +17,6 @@
 		TB_ARTIST_UPLOAD where m_id = #{m_id}
 	</select>
 
-	<!-- <select id="selectArtList" resultMap="Artist" parameterType="Artist">
-		select DISTINCT A.*, B.M_CLASS, B.RENAME_FILEPATH FROM
-		TB_MEMBER B INNER JOIN TB_ARTIST_UPLOAD A ON #{A.M_ID} = #{B.M_ID}
-		WHERE AU_TYPE=1
-	</select> -->
-
-	<resultMap type="Artist" id="Artist">
-		<result property="auNum" column="AU_NUM" />
-		<result property="m_Id" column="M_ID" />
-		<result property="nickName" column="M_NICKNAME" />
-		<result property="date" column="AU_DATE" />
-		<result property="content" column="AU_CONTENT" />
-		<result property="file" column="AU_FILE" />
-		<result property="like" column="AU_LIKE" />
-		<result property="type" column="AU_TYPE" />
-		<result property="word" column="au_word" />
-		<collection resultMap="Member" property="Member" />
-	</resultMap>
-	
 	<!-- 스케줄 보여주는 쿼리 -->
 	<select id="artschedule" resultType="Artist">
 		select * from tb_artistschedule where m_id = 'artist1'
@@ -53,6 +34,9 @@
 	<delete id="scDelect">
 		delete from tb_artistschedule where ats_num = #{scdelete}
 	</delete>
-	 
+	
+	<select id="selectArtPage" resultType="Artist">
+		select * from TB_ARTIST_UPLOAD where M_NICKNAME = #{m_nickname}
+	</select>
 
 </mapper>

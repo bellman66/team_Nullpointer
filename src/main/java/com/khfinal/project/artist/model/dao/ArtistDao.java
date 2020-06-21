@@ -34,10 +34,6 @@ public class ArtistDao {
 	public List<Schedule> scheduleList(String m_id) {
 		return session.selectList("Schedule.scheduleList", m_id);
 	}
-
-	public List<Map> selectArtList(){
-		return session.selectList("Member.selectArtList");
-	}
 	
 	// vo.ArtistPlus > DB 내 TB_ARTIST 컬럼 변경
 	public int aWordModify(ArtistPlus artistplus) {
@@ -56,6 +52,10 @@ public class ArtistDao {
 		return session.insert("ArtistPlus.wordInsert", artistplus);
 	}
 	
+	public int plusSubscribe(String m_nickname) {
+		return session.update("ArtistPlus.plusSubscribe", m_nickname);
+	}
+	
 	public List<Member> selectArtist(){
 		return session.selectList("Member.selectArtist");
 	}
@@ -63,7 +63,6 @@ public class ArtistDao {
 	public List<Member> selectTattooist(){
 		return session.selectList("Member.selectTattooist");
 	}
-	
 	
 	
 	/**
@@ -85,5 +84,20 @@ public class ArtistDao {
 	public int artScDelete(String scdelete) {
 		return session.delete("Artist.scDelect", scdelete);
 	}
+	
+	/**
+		 * @method : selectArtPage
+		 * @date : 2020. 6. 21.
+		 * @buildBy : hajin
+		 * @comment : 아티스트 개인 페이지관련 
+		 */
+	public List<Artist> selectArtPage(String m_nickname){
+		return session.selectList("Artist.selectArtPage", m_nickname);
+	}
+	
+	public ArtistPlus selectAll(String m_nickname){
+		return session.selectOne("ArtistPlus.selectArtPage", m_nickname);
+	}
+
 
 }

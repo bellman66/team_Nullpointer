@@ -40,12 +40,12 @@
 					<div class="tattoform">
 						<div class="tatto-Table">
 							<div class="tatto-id">
-								<h3>타투이스트</h3>
+								<h3>${mlist.m_nickname}</h3>
 								<img class="atprofile"
-									src="/springmvc/resources/upload/${loginInfo.member.rename_filepath}" />
+									src="/springmvc/resources/upload/${mlist.rename_filepath}" />
 								<div class="tatto-text">
 									<p>
-										안녕하세요 홍대에 있는 <br> 타투이스트입니다.
+										${aplist.a_word}
 									</p>
 								</div>
 							</div>
@@ -85,19 +85,19 @@
 										<a href="<%=request.getContextPath()%>/artist/artist-photo"
 											class="more" title="더 보기">More</a>
 									</div>
-									<div class="ta_cash">
+									<div class="ta_cash" id="${loginInfo.member.m_id}">
 										<button type="button" onclick="donate()">후원</button>
-										<div class="dim-layer">
+										<div class="dim-layer" id="dim-layer-do">
 											<div class="dimBg"></div>
 											<div id="layer2" class="pop-layer">
 												<div class="pop-container">
 													<div class="pop-conts">
 														<!--content //-->
-														<p class="ctxt mb20">잠골버님을 후원하시겠습니까? 후원하시려면 아래 '확인'
+														<p class="ctxt mb20">${mlist.m_nickname} 님을 후원하시겠습니까? 후원하시려면 아래 '확인'
 															버튼을 눌러주세요.</p>
 														<div class="btn-r">
-															<a href="#" class="btn-yes">확인</a> <a href="#"
-																class="btn-layerClose">취소</a>
+															<a href="#" class="btn-yes">확인</a>
+															<a href="#" class="btn-layerClose">취소</a>
 														</div>
 														<!--// content-->
 													</div>
@@ -105,6 +105,22 @@
 											</div>
 										</div>
 										<button type="button" onclick="subscribe()">구독</button>
+										<div class="dim-layer" id="dim-layer-sub">
+											<div class="dimBg"></div>
+											<div id="layer3" class="pop-layer">
+												<div class="pop-container">
+													<div class="pop-conts">
+														<!--content //-->
+														<p class="ctxt mb20">${artist.m_nickname} 님을 구독하였습니다. 마이페이지에서 확인하시겠습니까?</p>
+														<div class="btn-r">
+															<a href="#" class="btn-yes">확인</a>
+															<a href="#" class="btn-layerClose">취소</a>
+														</div>
+														<!--// content-->
+													</div>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
 

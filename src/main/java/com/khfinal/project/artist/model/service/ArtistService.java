@@ -10,22 +10,29 @@ import com.khfinal.project.schedule.model.vo.Schedule;
 
 public interface ArtistService {
 	
+	// 작성자: 박혜연
 	public List<Artist> todayList();
 	public List<Artist> bestContent();
 	public List<Artist> uploadList(String m_id);
 	public List<Schedule> scheduleList(String m_id);
 	public List<Member> selectArtist();
 	public List<Member> selectTattooist();
-	public List<Map> selectArtList();
 	public int aWordModify(ArtistPlus artistplus);
 	public int aWordInsert(ArtistPlus artistplus);
 	public String aWord(String m_id);
 	public int decrementSubscribe(String m_nickname);
+	public int plusSubscribe(String m_nickname);
 	
 	//작성자 : 김경호
 	//스케줄 관련 서비스
 	public List<Artist> schedule();
 	public int scheduleadd(Artist artist);
 	public int artScDelete(String scdelete);
-
+	
+	//작성자 : 이하진
+	//수정자 : 박혜연
+	//아티스트 개인페이지 관련
+	public List<Artist> selectArtPage(String m_nickname);
+	public Member selectProfile(String m_nickname);
+	public ArtistPlus selectAll(String m_nickname);
 }

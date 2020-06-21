@@ -13,8 +13,9 @@ import org.springframework.stereotype.Service;
 
 import com.khfinal.project.artist.model.dao.ArtistDao;
 import com.khfinal.project.artist.model.vo.Artist;
-import com.khfinal.project.member.model.vo.Member;
 import com.khfinal.project.artist.model.vo.ArtistPlus;
+import com.khfinal.project.member.model.dao.MemberDao;
+import com.khfinal.project.member.model.vo.Member;
 import com.khfinal.project.schedule.model.vo.Schedule;
 
 @Service
@@ -22,6 +23,8 @@ public class ArtistServiceImple implements ArtistService {
 
 	@Autowired
 	ArtistDao ad;
+	@Autowired
+	MemberDao md;
 
 	/**
 	 * @method : todayList()
@@ -136,18 +139,6 @@ public class ArtistServiceImple implements ArtistService {
 	}
 
 	/**
-	 * @method : selectArtList
-	 * @date : 2020. 6. 16.
-	 * @buildBy : hajin
-	 * @comment : 아티스트 메인 페이지 
-	 */
-	@Override
-	public List<Map> selectArtList() {
-		
-		return ad.selectArtList();
-	}
-	
-	/**
 	 * @method : decrementAuLike
 	 * @date : 2020. 6. 19.
 	 * @buildBy : 박혜연
@@ -157,7 +148,7 @@ public class ArtistServiceImple implements ArtistService {
 	public int aWordInsert(ArtistPlus artistplus) {
 		return ad.aWordInsert(artistplus);
 	}
-	
+
 	/**
 	 * @method : auWordModify
 	 * @date : 2020. 6. 17.
@@ -213,7 +204,8 @@ public class ArtistServiceImple implements ArtistService {
 	public List<Member> selectTattooist() {
 		return ad.selectTattooist();
 	}
-		/**
+
+	/**
 	 * @method : decrementAuLike
 	 * @date : 2020. 6. 19.
 	 * @buildBy : 박혜연
@@ -223,26 +215,36 @@ public class ArtistServiceImple implements ArtistService {
 	public int decrementSubscribe(String m_nickname) {
 		return ad.decrementSubscribe(m_nickname);
 	}
-	
+
 	/**
-	 *	작성자 : 김경호
-	 *	설명 : 스케줄 관련 서비스
+	 * @method : plusSubscribe
+	 * @date : 2020. 6. 21.
+	 * @buildBy : 박혜연
+	 * @comment : 일반회원의 '나의 아티스트' 목록에서 구독 cnrk시, 해당 아티스트의 구독자수 +1
+	 */
+	@Override
+	public int plusSubscribe(String m_nickname) {
+		return ad.plusSubscribe(m_nickname);
+	}
+
+	/**
+	 * 작성자 : 김경호 설명 : 스케줄 관련 서비스
 	 */
 	@Override
 	public List<Artist> schedule() {
 		Map<String, Object> res = new HashMap<String, Object>();
-		
+
 		List<Artist> aslist = ad.artSchedule();
-		
+
 		/* res.put("aslist", aslist); */
-		
+
 		return aslist;
 	}
 
 	@Override
 	public int scheduleadd(Artist artist) {
 		int res = ad.artScheduleadd(artist);
-		
+
 		return res;
 	}
 
@@ -250,8 +252,47 @@ public class ArtistServiceImple implements ArtistService {
 	public int artScDelete(String scdelete) {
 
 		int res = ad.artScDelete(scdelete);
-		
+
 		return res;
+	}
+
+	/**
+	 * @method : selectArtPage
+	 * @date : 2020. 6. 21.
+	 * @buildBy : hajin
+	 * @comment : 아티스트 개인 페이지관련
+	 */
+	@Override
+	public List<Artist> selectArtPage(String m_nickname) {
+		// 수정자 : 박혜연
+		// 쿼리 작동을 위한 매개변수설정
+		return ad.selectArtPage(m_nickname);
+	}
+
+	/**
+	 * @method : selectProfile
+	 * @date : 2020. 6. 21.
+	 * @buildBy : hajin
+	 * @comment : 프로필 사진을 가져옵니다.
+	 */
+	@Override
+	public Member selectProfile(String m_nickname) {
+		// 수정자 : 박혜연
+		// 쿼리 작동을 위한 매개변수설정
+		return md.selectProfile(m_nickname);
+	}
+
+	/**
+	 * @method : selectAll
+	 * @date : 2020. 6. 21.
+	 * @buildBy : hajin
+	 * @comment : 아티스트 개인 페이지관련
+	 */
+	@Override
+	public ArtistPlus selectAll(String m_nickname) {
+		// 수정자 : 박혜연
+		// 쿼리 작동을 위한 매개변수설정
+		return ad.selectAll(m_nickname);
 	}
 
 }
