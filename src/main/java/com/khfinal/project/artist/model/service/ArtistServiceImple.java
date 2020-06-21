@@ -136,18 +136,6 @@ public class ArtistServiceImple implements ArtistService {
 	}
 
 	/**
-	 * @method : selectArtList
-	 * @date : 2020. 6. 16.
-	 * @buildBy : hajin
-	 * @comment : 아티스트 메인 페이지 
-	 */
-	@Override
-	public List<Map> selectArtList() {
-		
-		return ad.selectArtList();
-	}
-	
-	/**
 	 * @method : decrementAuLike
 	 * @date : 2020. 6. 19.
 	 * @buildBy : 박혜연
@@ -252,6 +240,39 @@ public class ArtistServiceImple implements ArtistService {
 		int res = ad.artScDelete(scdelete);
 		
 		return res;
+	}
+
+	/**
+	 * @method : selectArtPage
+	 * @date : 2020. 6. 21.
+	 * @buildBy : hajin
+	 * @comment : 아티스트 개인 페이지관련 
+	 */
+	@Override
+	public List<Artist> selectArtPage() {
+		return ad.selectArtPage();
+	}
+
+	/**
+	 * @method : selectProfile
+	 * @date : 2020. 6. 21.
+	 * @buildBy : hajin
+	 * @comment : 프로필 사진을 가져옵니다. 
+	 */
+	@Override
+	public List<Member> selectProfile() {
+		return ad.selectProfile();
+	}
+
+	/**
+	 * @method : selectAll
+	 * @date : 2020. 6. 21.
+	 * @buildBy : hajin
+	 * @comment : 아티스트 개인 페이지관련 
+	 */
+	@Override
+	public List<ArtistPlus> selectAll() {
+		return ad.selectAll();
 	}
 
 }

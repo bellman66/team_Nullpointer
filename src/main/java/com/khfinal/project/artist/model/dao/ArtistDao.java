@@ -34,10 +34,6 @@ public class ArtistDao {
 	public List<Schedule> scheduleList(String m_id) {
 		return session.selectList("Schedule.scheduleList", m_id);
 	}
-
-	public List<Map> selectArtList(){
-		return session.selectList("Member.selectArtList");
-	}
 	
 	// vo.ArtistPlus > DB 내 TB_ARTIST 컬럼 변경
 	public int aWordModify(ArtistPlus artistplus) {
@@ -65,7 +61,6 @@ public class ArtistDao {
 	}
 	
 	
-	
 	/**
 	 * @method : artScheduleadd
 	 * @date : 2020. 6. 20.
@@ -85,5 +80,24 @@ public class ArtistDao {
 	public int artScDelete(String scdelete) {
 		return session.delete("Artist.scDelect", scdelete);
 	}
+	
+	/**
+		 * @method : selectArtPage
+		 * @date : 2020. 6. 21.
+		 * @buildBy : hajin
+		 * @comment : 아티스트 개인 페이지관련 
+		 */
+	public List<Artist> selectArtPage(){
+		return session.selectList("Artist.selectArtPage");
+	}
+	
+	public List<Member> selectProfile(){
+		return session.selectList("Member.selectArtPage");
+	}
+	
+	public List<ArtistPlus> selectAll(){
+		return session.selectList("ArtistPlus.selectArtPage");
+	}
+
 
 }

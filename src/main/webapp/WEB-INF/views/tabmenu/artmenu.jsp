@@ -49,22 +49,21 @@
 
 						<!-- artist부분  -->
 						<div id="subContent">
-							<!-- artTab 부분  -->
-							<!-------- 아티스트 게시판 시작! -------->
-							<div id="tab1" class="content">
-								<form name="artTab"
-									action="<%=request.getContextPath()%>/artist/artist.do">
+							<form name="artTab"
+								action="<%=request.getContextPath()%>/artist/artist.do">
+								<!-- artTab 부분  -->
+								<!-------- 아티스트 게시판 시작! -------->
+								<div id="tab1" class="content">
 									<!-- artist페이지에서 au_type에 따라 뮤지션과 타투이스트로 나눠서 뿌려줄꺼야! -->
 									<ul class="grid">
 										<!-- 뮤지션 시작!M_Class = 2 -->
-										<c:forEach items="${music}" var="art" varStatus="status">
-											<li class="btn_link"><span class="img_box">${art.rename_filepath}</span>
-												<span class="title">${art.m_nickname}</span>
+										<c:forEach items="${music}" var="music" varStatus="status">
+											<li class="btn_link"><span class="img_box"> 
+													${music.rename_filepath}
+											</span> <span class="title">${music.m_nickname}</span>
 												<div class="btn_ani">
-													<a
-														href="<%=request.getContextPath()%>/artist/artistpage.do"
-														class="btn_link" target="_blank"> <span class="arrow">
-															<img
+													<a onclick="mAttow(${music.m_nickname})" class="btn_link">
+														<span class="arrow"> <img
 															src="<%=request.getContextPath()%>/resources/img/icon/arrow.png" />
 													</span>
 													</a>
@@ -72,39 +71,54 @@
 										</c:forEach>
 										<!-- 뮤지션 끝! -->
 									</ul>
+									<!-- music_더보기 버튼입니다  -->
+									<div class="tabmore">
+										<button type="submit" class="btn_more" onclick="mtn">
+											<span aria-hidden="true">더보기(More)</span>
+										</button>
+									</div>
 									<!-- artTab 부분  -->
-								</form>
-							</div>
-							<!-------- 아티스트 게시판 끝! -------->
+								</div>
+								<!-------- 아티스트 게시판 끝! -------->
 
-							<!-------- 타투이스트 게시판 시작! -------->
-							<div id="tab2" class="content" style="display:none">
-								<form name="taTab"
-									action="<%=request.getContextPath()%>/artist/tattooist.do">
+								<!-------- 타투이스트 게시판 시작! -------->
+								<div id="tab2" class="content" style="display: none">
 									<ul class="grid">
 										<!-- 타투이스트 시작! M_Class=3 -->
 										<c:forEach items="${tattoo}" var="tattoo" varStatus="status">
-											<li class="btn_link"><span class="img_box">${tattoo.rename_filepath}</span>
-												<span class="title">${tattoo.m_nickname}</span>
+											<li class="btn_link">
+												<div class="file_group">
+													<span class="img_box">${tattoo.rename_filepath}</span> <input
+														type="hidden" name="renameFile">
+												</div>
+												<div class="tit_group">
+													<span class="title">${tattoo.m_nickname}</span> <input
+														type="hidden" name="title">
+												</div>
 												<div class="btn_ani">
 													<a href="<%=request.getContextPath()%>/artist/tattopage.do"
-														class="btn_link" target="_blank"> <span class="arrow">
-															<img
+														class="btn_link"> <span class="arrow"> <img
 															src="<%=request.getContextPath()%>/resources/img/icon/arrow.png" />
 													</span>
 													</a>
-												</div></li>
+												</div>
+											</li>
 										</c:forEach>
 										<!-- 타투이스트 끝! -->
 									</ul>
-								</form>
-							</div>
-							<!-------- 타투이스트 게시판 끝! -------->
+									<!-- tattoo_더보기 버튼입니다.  -->
+									<div class="tabmore">
+										<button type="submit" class="btn_more" onclick="ttn">
+											<span aria-hidden="true">더보기(More)</span>
+										</button>
+									</div>
+								</div>
+								<!-------- 타투이스트 게시판 끝! -------->
 
+							</form>
 						</div>
 						<!-- artist부분  -->
 
-						<button type="button" class="tabmore">더보기</button>
 					</div>
 				</div>
 			</div>
@@ -126,18 +140,7 @@
 		
 	</script>
 	<script type="text/javascript">
-		//클릭하자!
-		//#art로 클릭을 했을 때, tab1 = block / tab2 = none
-		//#tat로 클릭을 했을 때, tab1 = none / tab2 = block
-
-		/* var art = document.getElementById("#art");
-		var tat
-		if(art.click != null){
-		   $('#art').on('click', function() { $('#tab1').style.display = 'block';
-		   $('#tab2').style.display = 'none'; });
-		}
-		 */
-
+		//tab메뉴  
 		function art() {
 			console.log('art함수');
 			$('#tab1').css('display', 'block');
@@ -148,6 +151,35 @@
 			console.log('tat함수');
 			$('#tab1').css('display', 'none');
 			$('#tab2').css('display', 'block');
+		}
+
+		//onclick으로 더보기 해보자!
+		//뮤지션
+		function mtn() {
+			console.log('mtn');
+
+		}
+
+		//타투이스트
+		function ttn() {
+			console.log('ttn');
+		}
+		
+		//개인페이지로 이동합니다.
+		function mAttow(nickname) {
+         $.ajax({
+            url: '/springmvc/artist/artistpage.do',
+            type: 'GET',
+            data: {
+               'artist_nick' : nickname
+            },
+            success: function(res) {
+              	if(res == true) {
+            	   location.href='<%=request.getContextPath()%>/artist/loadartpage.do';
+							} 
+							/* console.log(res); */
+						}
+					});
 		}
 	</script>
 </body>

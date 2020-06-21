@@ -39,20 +39,23 @@
 			<div class="container">
 				<div class="row">
 					<div class="artForm">
-						<form name="artistform" action="<%=request.getContextPath()%>/artist/artistpage.do">
+						<form name="artistform"
+							action="<%=request.getContextPath()%>/artist/artistpage.do">
 							<div class="art-Table">
 								<div class="art-id">
-									<h3>아티스트</h3>
+									<h3>${nickname}</h3>
 									<img class="atprofile"
-										src="/springmvc/resources/upload/${loginInfo.member.rename_filepath}" />
+										src="/springmvc/resources/upload/${music.rename_filepath}" />
+										
 									<div class="art-modify">
 										<label for="artPicture" class="at_file"> <input
 											type="file" name="profile" id="userPicture"
 											accept="image/jpg,image/jpeg,image/png,image/gif,image/bmp" /></label>
 									</div>
 									<div class="art-text">
-										<p id="test">안녕하세요 잠자는 골방의 <br>
-										버스커 잠골버입니다.</p>
+										<p id="test">
+											안녕하세요 잠자는 골방의 <br> 버스커 잠골버입니다.
+										</p>
 									</div>
 								</div>
 								<div class="art-menu">
@@ -97,8 +100,9 @@
 											<h6>공연 일정</h6>
 											<ul>
 												<c:forEach items="${aslist}" var="artsclist">
-													<li><a href="<%=request.getContextPath()%>/artist/artistschedule.do">
-													${artsclist.ats_content}</a><span>${fn:substring(artsclist.ats_start_date,0,10)}</span></li>
+													<li><a
+														href="<%=request.getContextPath()%>/artist/artistschedule.do">
+															${artsclist.ats_content}</a><span>${fn:substring(artsclist.ats_start_date,0,10)}</span></li>
 													<%-- <li><a href="<%=request.getContextPath()%>/artist/artistschedule.do">member + myartist 내역 불러와서 foreach로
 															돌릴 예정</a></li>
 													<li><a href="<%=request.getContextPath()%>/artist/artistschedule.do">member + myartist 내역 불러와서 foreach로
@@ -109,10 +113,11 @@
 															돌릴 예정</a></li> --%>
 												</c:forEach>
 											</ul>
-											<c:if test="${fn:length(aslist) == 5}"> 
-												<a href="<%=request.getContextPath()%>/artist/artistschedule.do"
+											<c:if test="${fn:length(aslist) == 5}">
+												<a
+													href="<%=request.getContextPath()%>/artist/artistschedule.do"
 													class="more" title="더 보기">More</a>
-											</c:if> 
+											</c:if>
 										</div>
 
 										<div class="art-board">
@@ -129,7 +134,8 @@
 												<li><a href="#">member + myartist 내역 불러와서 foreach로
 														돌릴 예정</a></li>
 											</ul>
-											<a href="<%=request.getContextPath()%>/artist/artboardList.do"
+											<a
+												href="<%=request.getContextPath()%>/artist/artboardList.do"
 												class="more" title="더 보기">More</a>
 										</div>
 									</div>

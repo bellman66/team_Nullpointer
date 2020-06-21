@@ -16,7 +16,6 @@ public interface ArtistService {
 	public List<Schedule> scheduleList(String m_id);
 	public List<Member> selectArtist();
 	public List<Member> selectTattooist();
-	public List<Map> selectArtList();
 	public int aWordModify(ArtistPlus artistplus);
 	public int aWordInsert(ArtistPlus artistplus);
 	public String aWord(String m_id);
@@ -27,5 +26,10 @@ public interface ArtistService {
 	public List<Artist> schedule();
 	public int scheduleadd(Artist artist);
 	public int artScDelete(String scdelete);
-
+	
+	//작성자 : 이하진
+	//아티스트 개인페이지 관련
+	public List<Artist>selectArtPage();
+	public List<Member>selectProfile();
+	public List<ArtistPlus>selectAll();
 }

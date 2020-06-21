@@ -62,4 +62,8 @@
 		INSERT INTO tb_file VALUES(
 		LAST_INSERT_ID(),#{originFileName},#{renameFile},#{savePath})
 	</insert>
+	
+	<select id="selectArtPage" resultType="Member">
+		select RENAME_FILEPATH from TB_MEMBER where M_NICKNAME = #{m_nickname}
+	</select>
 </mapper>
