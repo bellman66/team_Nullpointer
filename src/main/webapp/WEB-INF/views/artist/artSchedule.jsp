@@ -109,10 +109,13 @@
 							<div id='calendar' style="margin-top: 5%; margin-bottom: 10%;"></div>
 							
 							<%-- <c:if test=""> 로그인 한 아이디와 아티스트 상세페이지 아이디가 같을떄--%>
-								<div class="artist_schedule_add">
+								<%-- <div class="artist_schedule_add">
 									<a style="color:white;" href="<%= request.getContextPath() %>/artist/artistscheduleaddshow.do">행사 등록</a>
-								</div>
+								</div> --%>
+								<button class="artist_schedule_add" onclick="location.href='<%= request.getContextPath() %>/artist/artistscheduleaddshow.do'">행사 등록</button>
 							<%-- </c:if> --%>
+								<button class="artist_schedule_cancel" onclick="location.href='<%= request.getContextPath() %>/artist/artist.do'">취소</button>
+							
 						</div>
 						<!-- </form> -->
 					</div>

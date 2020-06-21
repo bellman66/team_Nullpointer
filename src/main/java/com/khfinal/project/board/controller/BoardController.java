@@ -379,6 +379,9 @@ public class BoardController {
 		System.out.println("///" + res.get("paging"));
 		
 		
+		for (String key : res.keySet()) {
+			System.out.println("검색시 컨트롤러" + res.get(key));
+		}
 		
 		
 		mav.addObject("paging", res.get("paging"));

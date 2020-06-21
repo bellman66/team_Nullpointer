@@ -141,29 +141,35 @@
 															돌릴 예정</a></li> --%>
 											</c:forEach>
 										</ul>
-										<c:if test="${fn:length(aslist) == 5}">
+										<c:if test="${fn:length(aslist) > 5 || fn:length(aslist) == 0}">
 											<a
 												href="<%=request.getContextPath()%>/artist/artistschedule.do"
-												class="more" title="더 보기">More</a>
+												class="more" title="더 보기" style="margin-top:100px;">More</a>
 										</c:if>
 									</div>
 
-									<div class="art-board">
-										<h6>소통 게시판</h6>
-										<ul>
-											<li><a href="#">member + myartist 내역 불러와서 foreach로
-													돌릴 예정</a></li>
-											<li><a href="#">member + myartist 내역 불러와서 foreach로
-													돌릴 예정</a></li>
-											<li><a href="#">member + myartist 내역 불러와서 foreach로
-													돌릴 예정</a></li>
-											<li><a href="#">member + myartist 내역 불러와서 foreach로
-													돌릴 예정</a></li>
-											<li><a href="#">member + myartist 내역 불러와서 foreach로
-													돌릴 예정</a></li>
-										</ul>
-										<a href="<%=request.getContextPath()%>/artist/artboardList.do"
-											class="more" title="더 보기">More</a>
+										<div class="art-board">
+											<h6>소통 게시판</h6>
+											<ul>
+												<c:forEach items="${artboardlist.blist}" var="artboardlist">
+													<li><a href="<%= request.getContextPath() %>/artist/aboardRead.do?b_num=${artboardlist.b_num}"><!-- 상세보기 페이지로 이동시킬것 -->
+													${artboardlist.b_title}</a><span style="float: right;">작성자 : ${artboardlist.m_id}</span></li>
+												<!-- <li><a href="#">member + myartist 내역 불러와서 foreach로
+														돌릴 예정</a></li>
+												<li><a href="#">member + myartist 내역 불러와서 foreach로
+														돌릴 예정</a></li>
+												<li><a href="#">member + myartist 내역 불러와서 foreach로
+														돌릴 예정</a></li>
+												<li><a href="#">member + myartist 내역 불러와서 foreach로
+														돌릴 예정</a></li>
+												<li><a href="#">member + myartist 내역 불러와서 foreach로
+														돌릴 예정</a></li> -->
+												</c:forEach>
+											</ul>
+											<c:if test="${fn:length(artboardlist.blist) > 5 || fn:length(artboardlist.blist) == 0}">
+												<a href="<%=request.getContextPath()%>/artist/artboardlist.do"
+													class="more" title="더 보기" style="margin-top:100px;">More</a>
+											</c:if>
 									</div>
 								</div>
 							</div>

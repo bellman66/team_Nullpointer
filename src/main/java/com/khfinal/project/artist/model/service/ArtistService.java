@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.khfinal.project.artist.model.vo.Artist;
 import com.khfinal.project.artist.model.vo.ArtistPlus;
+import com.khfinal.project.board.model.vo.Board;
 import com.khfinal.project.member.model.vo.Member;
 import com.khfinal.project.schedule.model.vo.Schedule;
 
@@ -25,7 +26,7 @@ public interface ArtistService {
 	
 	//작성자 : 김경호
 	//스케줄 관련 서비스
-	public List<Artist> schedule();
+	public List<Artist> schedule(String m_nickname);
 	public int scheduleadd(Artist artist);
 	public int artScDelete(String scdelete);
 	
@@ -35,4 +36,13 @@ public interface ArtistService {
 	public List<Artist> selectArtPage(String m_nickname);
 	public Member selectProfile(String m_nickname);
 	public ArtistPlus selectAll(String m_nickname);
+	
+	//작성자 : 김경호
+	//게시판 관련 서비스
+	public Map<String, Object> selectBoardList(int currentPage, int cntPerPage, String m_nickname);
+	public Map<String, Object> aboardRead(int b_num);
+	public int aboardUpload(Board board);
+	public int aboardDelect(int b_num);
+	public Map<String , Object> aboardSearch(String searchType, String searchWord, int currentPage, int cntPerPage, String m_nickname);
+
 }

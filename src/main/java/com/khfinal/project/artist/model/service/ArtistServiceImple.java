@@ -14,9 +14,12 @@ import org.springframework.stereotype.Service;
 import com.khfinal.project.artist.model.dao.ArtistDao;
 import com.khfinal.project.artist.model.vo.Artist;
 import com.khfinal.project.artist.model.vo.ArtistPlus;
+import com.khfinal.project.board.model.vo.Board;
 import com.khfinal.project.member.model.dao.MemberDao;
 import com.khfinal.project.member.model.vo.Member;
 import com.khfinal.project.schedule.model.vo.Schedule;
+
+import common.util.Paging;
 
 @Service
 public class ArtistServiceImple implements ArtistService {
@@ -231,10 +234,10 @@ public class ArtistServiceImple implements ArtistService {
 	 * 작성자 : 김경호 설명 : 스케줄 관련 서비스
 	 */
 	@Override
-	public List<Artist> schedule() {
+	public List<Artist> schedule(String m_nickname) {
 		Map<String, Object> res = new HashMap<String, Object>();
 
-		List<Artist> aslist = ad.artSchedule();
+		List<Artist> aslist = ad.artSchedule(m_nickname);
 
 		/* res.put("aslist", aslist); */
 
@@ -294,5 +297,76 @@ public class ArtistServiceImple implements ArtistService {
 		// 쿼리 작동을 위한 매개변수설정
 		return ad.selectAll(m_nickname);
 	}
+	
+	/**
+	 * 작성자 : 김경호
+	 * 설명 : 게시판 관련 서비스
+	 */
+	@Override
+	public Map<String, Object> selectBoardList(int currentPage, int cntPerPage, String m_nickname) {
+		
+		Map<String, Object> res = new HashMap<String, Object>();
+		Paging page = new Paging(ad.contentCnt(m_nickname), currentPage, cntPerPage);
+
+		List<Artist> blist = ad.selectBoardList(page, m_nickname);
+		res.put("paging", page);
+		res.put("blist", blist);
+
+		return res;
+		
+	}
+
+	@Override
+	public Map<String, Object> aboardRead(int b_num) {
+		Map<String, Object> res = new HashMap<String, Object>();
+		
+		Board artRead = ad.aboardRead(b_num); 
+		//파일 읽어주는 코드
+//		List<Map<String, String>> flist = bd.boardResdFile(b_num);
+				
+		res.put("artRead", artRead);
+//		res.put("flist", flist);
+				
+		return res;
+	}
+
+	@Override
+	public int aboardUpload(Board board) {
+		
+		int res = ad.aboardUpload(board);
+		return res;
+	}
+
+	@Override
+	public int aboardDelect(int b_num) {
+		return ad.aboardDelect(b_num);
+	}
+
+	@Override
+	public Map<String, Object> aboardSearch(String searchType, String searchWord, int currentPage, int cntPerPage, String m_nickname) {
+		Map<String, Object> res = new HashMap<String, Object>();
+
+		if(searchType.equals("write")) {
+			Paging page = new Paging(ad.contentWrSeCnt(searchWord, m_nickname), currentPage, cntPerPage);
+			List<Board> blist = ad.searchWrBoardList(searchWord, page, m_nickname);
+			res.put("paging", page);
+			res.put("blist", blist);
+		}else if(searchType.equals("title")){
+			Paging page = new Paging(ad.contentTiSeCnt(searchWord, m_nickname), currentPage, cntPerPage);
+			List<Board> blist = ad.searchTiBoardList(searchWord, page, m_nickname);
+			res.put("paging", page);
+			res.put("blist", blist);
+		}else {
+			Paging page = new Paging(ad.contentWTSeCnt(searchWord, m_nickname), currentPage, cntPerPage);
+			List<Board> blist = ad.searchWTBoardList(searchWord, page, m_nickname);
+			res.put("paging", page);
+			res.put("blist", blist);
+		}
+		
+		
+		
+		return res;
+	}
+
 
 }

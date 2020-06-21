@@ -19,13 +19,13 @@
 
 	<!-- 스케줄 보여주는 쿼리 -->
 	<select id="artschedule" resultType="Artist">
-		select * from tb_artistschedule where m_id = 'artist1'
+		select * from tb_artistschedule where m_nickname = #{m_nickname}
 	</select>
 
 	<!-- 스케줄 추가하는 쿼리 -->
   	<insert id="artscheduleadd">
 		INSERT INTO tb_artistschedule VALUES
-		(ats_num ,'artist1'
+		(ats_num ,#{m_nickname}
 		, #{ats_start_date}
 		, #{ats_end_date}
 		, #{ats_content}, null)
@@ -37,6 +37,77 @@
 	
 	<select id="selectArtPage" resultType="Artist">
 		select * from TB_ARTIST_UPLOAD where M_NICKNAME = #{m_nickname}
+	</select>
+	
+	<!-- 게시판 페이징 코드 -->
+	 <select id="boardCount" resultType="int">
+		select count(*) from tb_board WHERE b_art = #{m_nickname}
+	</select>
+	<!-- 매개변수로 아이디랑 타투인지 가져오면 여기서 타투랑 아이디 비교 해서 보드에 뿌려준다. -->
+	
+	<!-- 게시판 리스트 코드 -->
+	<select id="selectBoardList" resultType="Board">
+		SELECT * FROM(
+		SELECT 
+		ROW_NUMBER() OVER(ORDER BY B_NUM DESC) AS RNUM,B_CATEGORY
+		,B_NUM,M_ID,B_DATE,B_CONTENT,B_FILE, B_TITLE 
+		FROM TB_BOARD 
+		WHERE b_art = #{m_nickname}
+		ORDER BY B_NUM DESC)AS TB 
+		where rnum between #{page.start} and #{page.end}
+	</select>
+	
+	<!-- 게시판 읽을때 불러오는 코드 -->
+	<select id="aboardRead" resultType="Board">
+	      select * from tb_board
+	      where b_num = #{b_num}
+   </select>
+   
+   <!-- 게시판 글 추가하는 코드 -->
+   <insert id="aboardUpload">
+   		INSERT INTO TB_BOARD VALUES(
+   		3 ,B_NUM, #{boardWriter}, sysdate(), #{b_content}, 'test/test/test', #{b_title}, #{m_nickname})
+   </insert>
+   
+   <!-- 게시판 삭제하는 코드 -->
+   <delete id="aboardDelect">
+   		delete from tb_board where b_num = #{b_num}
+   </delete>
+   
+   <!-- 게시판 검색해서 페이징 코드 -->
+      <!-- 검색 목록 나타태주는 쿼리 -->
+   <select id="contentWrSeCnt" resultType="int">
+		select count(*) from tb_board WHERE b_art = #{m_nickname} and m_id like CONCAT ('%',#{searchWord},'%')
+	</select>
+	
+	<select id="contentTiSeCnt" resultType="int">
+		select count(*) from tb_board WHERE b_art = #{m_nickname} and b_title like CONCAT ('%',#{searchWord},'%')
+	</select>
+	
+	<select id="contentWTSeCnt" resultType="int">
+		select count(*) from tb_board WHERE b_art = #{m_nickname} and (b_title like CONCAT ('%',#{searchWord},'%') and m_id like CONCAT ('%',#{searchWord},'%'))
+	</select>
+	
+	<!-- 게시판 검색리스트 가져오는 코드 -->
+	<select id="searchWrBoardList" resultType="Board">
+		SELECT * FROM(SELECT 
+			ROW_NUMBER() OVER(ORDER BY B_NUM DESC) AS RNUM,B_CATEGORY,B_NUM,M_ID,B_DATE,B_CONTENT,B_FILE, B_TITLE 
+			FROM TB_BOARD WHERE B_ART LIKE #{m_nickname} and m_id like CONCAT ('%',#{searchWord},'%')
+			ORDER BY B_NUM DESC)AS TB where rnum between #{page.start} and #{page.end}
+	</select>
+	
+	<select id="searchTiBoardList" resultType="Board">
+			SELECT * FROM(SELECT 
+			ROW_NUMBER() OVER(ORDER BY B_NUM DESC) AS RNUM,B_CATEGORY,B_NUM,M_ID,B_DATE,B_CONTENT,B_FILE, B_TITLE 
+			FROM TB_BOARD WHERE B_ART LIKE #{m_nickname} and b_title like CONCAT ('%',#{searchWord},'%')
+			ORDER BY B_NUM DESC)AS TB where rnum between #{page.start} and #{page.end}
+	</select>
+		
+	<select id="searchWTBoardList" resultType="Board">
+			SELECT * FROM(SELECT 
+			ROW_NUMBER() OVER(ORDER BY B_NUM DESC) AS RNUM,B_CATEGORY,B_NUM,M_ID,B_DATE,B_CONTENT,B_FILE, B_TITLE 
+			FROM TB_BOARD WHERE B_ART LIKE #{m_nickname}  and (b_title like CONCAT ('%',#{searchWord},'%') or m_id like CONCAT ('%',#{searchWord},'%'))
+			ORDER BY B_NUM DESC)AS TB where rnum between #{page.start} and #{page.end}
 	</select>
 
 </mapper>

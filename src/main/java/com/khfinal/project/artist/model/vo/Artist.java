@@ -117,6 +117,7 @@ public class Artist {
 		this.ats_time = ats_time;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Artist [au_num=" + au_num + ", m_id=" + m_id + ", m_nickname=" + m_nickname + ", au_date=" + au_date
@@ -124,6 +125,7 @@ public class Artist {
 				+ ats_num + ", ats_start_date=" + ats_start_date + ", ats_end_date=" + ats_end_date + ", ats_content="
 				+ ats_content + ", ats_time=" + ats_time + "]";
 	}
+
 	
 	
 }
