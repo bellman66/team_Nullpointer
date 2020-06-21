@@ -1,6 +1,7 @@
 package com.khfinal.project.member.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,26 @@ public class MyArtistDao {
 	 */
 	public int myArtistDelete(MyArtist myartist) {
 		return session.delete("MyArtist.myArtistDelete", myartist);
+	}
+	
+	/**
+	 * @method : selectSame()
+	 * @date : 2020. 6. 21.
+	 * @buildBy : 박혜연
+	 * @comment : 일반회원 마이 페이지 내의 'My Artist' 목록 중 중복값 확인
+	 */
+	public int selectSame(MyArtist myartist) {
+		return session.selectOne("MyArtist.selectSame", myartist);
+	}
+	
+	/**
+	 * @method : maplusprofile()
+	 * @date : 2020. 6. 21.
+	 * @buildBy : 박혜연
+	 * @comment : 일반회원 마이 페이지 내의 'My Artist' 목록 + 프로필사진 가져오기
+	 */
+	public List<Map<String, Object>> maplusprofile(MyArtist myartist) {
+		return session.selectList("MyArtist.maplusprofile", myartist);
 	}
 	
 }

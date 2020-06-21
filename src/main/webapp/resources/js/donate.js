@@ -81,7 +81,9 @@ function layer_popup(el) {
 		                    }
 		                });
 		                // 성공시 이동할 페이지
-		                location.href='<%=request.getContextPath()%>/main/index.do?msg='+msg;
+		                location.reload(true);
+		                msg = '결제가 완료되었습니다.';
+		                alert(msg);
 		            } else {
 		                msg = '결제에 실패하였습니다.';
 		                msg += '에러내용 : ' + rsp.error_msg;
@@ -98,13 +100,16 @@ function layer_popup(el) {
 		//구독 버튼 클릭 확인 버튼 클릭 시, 마이페이지 이동
 		$el.find('a.btn-yes').click(function() {
 			isDim ? $('#dim-layer-sub').fadeOut() : $el.fadeOut();
-			location.href = "<%=request.getContextPath()%>/member/myPage.do"
+			location.href = "/springmvc/member/myPage.do";
 		});
 	}
 	
 	// 닫기 버튼을 클릭하면 레이어가 닫힌다.
 	$el.find('a.btn-layerClose').click(function() {
 		isDim ? $('.dim-layer').fadeOut() : $el.fadeOut();
+
+        // 구독자 수 갱신을 위한 페이지 리로드
+        location.reload(true);
 		return false;
 	});
 }
@@ -142,11 +147,12 @@ function subscribe() {
 			success : function(res) {
 				
 				console.log(res);
+				
 				if(res == true) {
 					// 확인 팝업
 			        layer_popup('#layer3');
 				} else {
-					alert('시스템 오류로 구독에 실패했습니다. 관리자에게 문의하세요.');
+					alert('이미 구독한 아티스트 입니다.');
 				}
 			}
 		});

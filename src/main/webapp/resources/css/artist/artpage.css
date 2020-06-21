@@ -55,6 +55,16 @@
 	/* border:1px solid red; */
 }
 
+/* 구독자 수 */
+.art-Table .art-id .art-subscribe {
+	font-size:18px;
+	font-weight:700;
+	text-align:center;
+	padding: 3%;
+	color: #e20a4e;
+	/* border:1px solid red; */
+}
+
 .art-Table .art-menu {
 	position:relative;
 }

@@ -47,6 +47,9 @@
 								<div class="art-text">
 									<p id="test">${aplist.a_word}</p>
 								</div>
+								<div class="art-subscribe">
+									♥${aplist.a_subscribe}
+								</div>
 							</div>
 							<div class="art-menu">
 								<div class="art-fan1">

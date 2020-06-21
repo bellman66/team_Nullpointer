@@ -199,4 +199,14 @@ public class MemberServiceImple implements MemberService {
 		return madao.insertMyArtist(myartist);
 	}
 
+	@Override
+	public int selectSame(MyArtist myartist) {
+		return madao.selectSame(myartist);
+	}
+
+	@Override
+	public List<Map<String, Object>> maplusprofile(MyArtist myartist) {
+		return madao.maplusprofile(myartist);
+	}
+
 }

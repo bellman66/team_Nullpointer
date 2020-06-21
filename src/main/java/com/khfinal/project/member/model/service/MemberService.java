@@ -22,4 +22,6 @@ public interface MemberService {
 	public boolean idCheck(String m_id);
 	public void mailSending(Map<String, Object> commandMap) throws SQLException;
 	public int insertMyArtist(MyArtist myartist);
+	public int selectSame(MyArtist myaritst);
+	public List<Map<String, Object>> maplusprofile(MyArtist myartist);
 }

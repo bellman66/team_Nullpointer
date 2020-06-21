@@ -174,7 +174,8 @@
 									varStatus="myartistnum">
 									<c:if test="${myartistnum.index < 5}">
 										<li>
-											<a href="#" id="${myartist.ma_num}">${myartist.m_nickname}</a>
+											<a href="<%=request.getContextPath()%>/artist/artistpage.do?artist_nick=${myartist.m_nickname}" 
+												id="${myartist.ma_num}">${myartist.m_nickname}</a>
 											<button class="listdelete" id="del${myartist.ma_num}"
 												onclick="myArtistDelete('#del${myartist.ma_num}')">삭제</button>
 										</li>
@@ -182,7 +183,8 @@
 								</c:forEach>
 							</ul>
 							<c:if test="${fn:length(myArtistList) > 5}">
-								<a href="#" class="more" title="더 보기">More</a>
+								<a href="<%=request.getContextPath()%>/member/myartistlist.do" 
+									class="more" title="더 보기">More</a>
 							</c:if>
 						</div>
 						<!-- 팔로우한 아티스트 부분 끝 -->
