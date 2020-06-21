@@ -31,14 +31,13 @@ public class ArtistController {
 	 */
 
 	@RequestMapping("/artist/artist.do")
-	@ResponseBody
-	public boolean selectArtist() {
+	public ModelAndView selectArtist() {
 		ModelAndView mav = new ModelAndView();
 		// artist페이지가 열릴때 보여지는 페이지는 artistTab부분이어야함!
-		//boolean이라 true라고 뜬다 왜지?ㅜㅜㅜ
+		// boolean이라 true라고 뜬다 왜지?ㅜㅜㅜ
 		System.out.println("오자ㅜㅜ");
 		// 아티스트
-		if(true) {
+		if (true) {
 			List<Member> music = as.selectArtist();
 			mav.addObject("music", music);
 			// 타투이스트
@@ -47,10 +46,10 @@ public class ArtistController {
 			mav.addObject("tattoo", tattoo);
 			mav.setViewName("tabmenu/artmenu");
 		}
-		
-		return true;
+
+		return mav;
 	}
-	
+
 	@RequestMapping("/artist/loadartpage.do")
 	public ModelAndView loadartpage() {
 		ModelAndView mav = new ModelAndView();
@@ -88,8 +87,8 @@ public class ArtistController {
 	 * @comment : artist main페이지에서 선택한 아티스트의 개인 페이지로 넘어야합니다.
 	 */
 	@RequestMapping("/artist/artistpage.do")
-
-	public ModelAndView artpageList(HttpServletRequest request) {
+	@ResponseBody
+	public boolean artpageList(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		// 작성자 : 이하진
 		// 탭메뉴페이지에서 닉네임값을 받아옵니다.
