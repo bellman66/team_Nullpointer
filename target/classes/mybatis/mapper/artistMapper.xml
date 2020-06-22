@@ -25,14 +25,14 @@
 	<!-- 스케줄 추가하는 쿼리 -->
   	<insert id="artscheduleadd">
 		INSERT INTO tb_artistschedule VALUES
-		(ats_num ,#{m_nickname}
+		(ats_num , #{m_id},#{m_nickname}
 		, #{ats_start_date}
 		, #{ats_end_date}
 		, #{ats_content}, null)
 	</insert>
 	
 	<delete id="scDelect">
-		delete from tb_artistschedule where ats_num = #{scdelete}
+		delete from tb_artistschedule where ats_num = #{scdelete} and m_id = #{m_id} and m_nickname = #{m_nickname}
 	</delete>
 	
 	<select id="selectArtPage" resultType="Artist">

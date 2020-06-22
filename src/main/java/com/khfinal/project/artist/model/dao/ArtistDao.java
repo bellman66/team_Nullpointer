@@ -85,8 +85,13 @@ public class ArtistDao {
 		return session.insert("Artist.artscheduleadd", artist);
 	}
 	
-	public int artScDelete(String scdelete) {
-		return session.delete("Artist.scDelect", scdelete);
+	public int artScDelete(String scdelete, String  m_id, String m_nickname) {
+		
+		Map<String, Object> data = new HashMap<String, Object>();
+		data.put("scdelete", scdelete);
+		data.put("m_id", m_id);
+		data.put("m_nickname", m_nickname);
+		return session.delete("Artist.scDelect", data);
 	}
 	
 	/**

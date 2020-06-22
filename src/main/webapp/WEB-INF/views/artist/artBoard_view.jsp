@@ -46,10 +46,10 @@
 							<form name="aboardView" action="">
 								<table>
 									<tbody>
-										<tr>
+										<!-- <tr>
 											<th id="aview_board">게시판종류</th>
 											<td class="aview_board"></td>
-										</tr>
+										</tr> -->
 										<tr>
 											<th class="aview_title">제목</th>
 											<td class="aview_td">${readMap.artRead.b_title}</td>
@@ -66,10 +66,10 @@
 											<th class="aview_content">내용</th>
 											<td class="aview_td">${readMap.artRead.b_content}</td>
 										</tr>
-										<tr>
+										<%-- <tr>
 											<th class="aview_file">파일</th>
 											<td class="aview_td">${readMap.artRead.b_file}</td>
-										</tr>
+										</tr> --%>
 										<%-- <tr>
 											<th class="aview_linke">링크</th>
 											<td class="aview_td">${readMap.artRead.b_title}NULL</td>
@@ -82,7 +82,7 @@
 								<c:if test="${sessionScope.loginInfo.member.m_id eq readMap.artRead.m_id}">
 									<button class="btn_modify" type="button" onclick="location.href='<%= request.getContextPath() %>/artist/aboardDelect.do?b_num=${readMap.artRead.b_num}'">삭제</button>
 								</c:if>
-								<button class="btn_pass" type="button">취소</button>
+								<button class="btn_pass" type="button" onclick="location.href='<%= request.getContextPath() %>/artist/artboardlist.do'">취소</button>
 							</div>
 						</div>
 					</div>

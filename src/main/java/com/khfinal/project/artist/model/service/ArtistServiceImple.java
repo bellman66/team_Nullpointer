@@ -252,9 +252,9 @@ public class ArtistServiceImple implements ArtistService {
 	}
 
 	@Override
-	public int artScDelete(String scdelete) {
+	public int artScDelete(String scdelete, String  m_id, String m_nickname) {
 
-		int res = ad.artScDelete(scdelete);
+		int res = ad.artScDelete(scdelete, m_id, m_nickname);
 
 		return res;
 	}

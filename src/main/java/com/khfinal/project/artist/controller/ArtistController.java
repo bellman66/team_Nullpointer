@@ -247,6 +247,7 @@ public class ArtistController {
 		List<Artist> res = as.schedule(m_nickname);
 
 		mav.addObject("artScList", res);
+		mav.addObject("m_nickname", m_nickname);
 		/* mav.setViewName("artist/artSchedule"); */
 		mav.setViewName("artist/artSchedule");
 		return mav;
@@ -273,24 +274,54 @@ public class ArtistController {
 	 * @comment : // 아티스트 스케줄을 추가했을때 데이터값을 가져와서 디비에 추가해주는 메서드
 	 */
 	@RequestMapping("/artist/artistscheduleadd.do")
-	public ModelAndView artistscheduleadd(String artstartYear, String artstartMonth, String artstartDay,
+	public ModelAndView artistscheduleadd(HttpServletRequest request, String artstartYear, String artstartMonth, String artstartDay,
 			String artstartHour, String artstartMinute, String artendYear, String artendMonth, String artendDay,
 			String artendHour, String artendMinute, String atr_as_content, Artist artist) {
 		ModelAndView mav = new ModelAndView();
 
 		String start = artstartYear + artstartMonth + artstartDay + artstartHour + artstartMinute;
 		String end = artendYear + artendMonth + artendDay + artendHour + artendMinute;
+		
+		HttpSession session = request.getSession();
+	    Map<String, Object> login =  (Map<String, Object>) session.getAttribute("loginInfo");
+	    Member member = (Member) login.get("member");
 
 		artist.setAts_start_date(start);
 		artist.setAts_end_date(end);
 		artist.setAts_content(atr_as_content);
 		artist.setM_nickname(m_nickname);
+		artist.setM_id(member.getM_id());
 
 		int res = as.scheduleadd(artist);
 
 		mav.addObject("url", "/springmvc/artist/artistschedule.do");
 		mav.setViewName("common/result");
 
+		return mav;
+	}
+	
+	@RequestMapping("/artist/artScDelete.do")
+	public ModelAndView artScDelete(HttpServletRequest request, String scdelete) {
+		ModelAndView mav = new ModelAndView();
+		
+		HttpSession session = request.getSession();
+	    Map<String, Object> login =  (Map<String, Object>) session.getAttribute("loginInfo");
+	    Member member = (Member) login.get("member");
+	    
+	    String m_id = member.getM_id();
+	    
+	    int res = as.artScDelete(scdelete, m_id, m_nickname);
+	    
+	    if(res < 1) {
+			mav.addObject("alertMsg", "일정을 삭제 할수 없습니다.");
+			mav.addObject("url", "/artist/artistschedule.do");
+			mav.setViewName("common/result");
+		}else {
+			mav.addObject("alertMsg", "일정이 삭제 되었습니다.");
+			mav.addObject("url", "/artist/artistschedule.do");
+			mav.setViewName("common/result");
+		}
+	    
 		return mav;
 	}
 
@@ -373,6 +404,8 @@ public class ArtistController {
 	@RequestMapping("/artist/aboardWrite.do")
 	public ModelAndView aboardWrite() {
 		ModelAndView mav = new ModelAndView();
+		
+		
 		
 		mav.setViewName("artist/artWrite");
 		return mav;

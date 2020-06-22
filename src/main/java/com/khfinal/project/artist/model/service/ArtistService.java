@@ -28,7 +28,7 @@ public interface ArtistService {
 	//스케줄 관련 서비스
 	public List<Artist> schedule(String m_nickname);
 	public int scheduleadd(Artist artist);
-	public int artScDelete(String scdelete);
+	public int artScDelete(String scdelete, String  m_id, String m_nickname);
 	
 	//작성자 : 이하진
 	//수정자 : 박혜연
