@@ -134,22 +134,33 @@ public class MemberController {
 			mav.addObject("url", request.getContextPath() + "/member/login.do");
 			mav.setViewName("common/result");
 		} else {
-			HttpSession session = request.getSession();
-
-			Map<String, Object> map = new HashMap<String, Object>();
 			// 수정자 : 박혜연
-			// 기존 user_name 키값의 경우 사용 시 혼동의 소지가 있어 vo 및 db에 기록된 컬럼명으로 변경
-			// > 기존 loginInfo에 id 값만 들어가 있어 mypage 로드 시, 기타 정보 누락되어 member 전체 내용 저장
-			map.put("member", member);
-			session.setAttribute("loginInfo", map);
+			// 회원 탈퇴 후 로그인 제한
+			String leaveYN = member.getM_leave_yn();
 
-			// 수정자: 박혜연
-			// 수정 필요 내용 : main 페이지 진입 시, 랜덤/베스트 콘텐츠 노출을 위해
-			// mainController 의 index() 메소드 필요함
-			mav.addObject("todayList", as.todayList());
-			mav.addObject("bestContent", as.bestContent());
+			if (leaveYN.equals("N")) {
+				// 탈퇴하지 않았다면 정상 로그인
+				HttpSession session = request.getSession();
 
-			mav.setViewName("main/index");
+				Map<String, Object> map = new HashMap<String, Object>();
+				// 수정자 : 박혜연
+				// 기존 user_name 키값의 경우 사용 시 혼동의 소지가 있어 vo 및 db에 기록된 컬럼명으로 변경
+				// > 기존 loginInfo에 id 값만 들어가 있어 mypage 로드 시, 기타 정보 누락되어 member 전체 내용 저장
+				map.put("member", member);
+				session.setAttribute("loginInfo", map);
+
+				// 수정자: 박혜연
+				// 수정 필요 내용 : main 페이지 진입 시, 랜덤/베스트 콘텐츠 노출을 위해
+				// mainController 의 index() 메소드 필요함
+				mav.addObject("todayList", as.todayList());
+				mav.addObject("bestContent", as.bestContent());
+
+				mav.setViewName("main/index");
+			} else {
+				mav.addObject("alertMsg", "탈퇴한 회원입니다. 로그인하시려면 다시 회원가입해주세요.");
+				mav.addObject("url", request.getContextPath() + "/member/login.do");
+				mav.setViewName("common/result");
+			}
 		}
 
 		return mav;
