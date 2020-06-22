@@ -106,10 +106,16 @@
 		            <input id="streamTitle" class="form-control" value="" type="text">
 		          </div>
 		        </div>
-		        
-		     	<div>
-		     		<button id="livebutton" class="live-on"> Live On </button>
-		     	</div>
+		        <c:if test="${onStream eq 1}">
+			     	<div>
+			     		<button id="livebutton" class="live-on"> Live On </button>
+			     	</div>
+		     	</c:if>
+		     	<c:if test="${onStream eq 2}">
+			     	<div>
+			     		<button id="livebutton" class="live-off"> Live Off </button>
+			     	</div>
+		     	</c:if>
 		        
 		      </div>
 		  </div>

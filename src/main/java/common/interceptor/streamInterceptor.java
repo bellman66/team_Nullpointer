@@ -42,7 +42,7 @@ public class streamInterceptor implements HandlerInterceptor {
 		HttpSession session = request.getSession();
 		
 		String[] splitString = request.getRequestURI().split("/");
-		String midString = splitString[3];
+		String midString = splitString[splitString.length-1];
 		String streamId = midString.substring(0,midString.length()-3);
 		
 		// 스트림이 열려있는지 확인

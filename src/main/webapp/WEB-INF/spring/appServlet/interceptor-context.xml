@@ -13,10 +13,40 @@
    		</interceptor>
    		
    		<interceptor>
-   			<mapping path="/**"/>
-   			<exclude-mapping path="/streamMapping/**"/>
+   			<mapping path="/main/**"/>
    			<beans:bean class="common.interceptor.basicInterceptor"></beans:bean>
    		</interceptor>
+   		
+   		<interceptor>
+   			<mapping path="/stream/**"/>
+   			<beans:bean class="common.interceptor.basicInterceptor"></beans:bean>
+   		</interceptor>
+   		
+   		<interceptor>
+   			<mapping path="/artist/**"/>
+   			<beans:bean class="common.interceptor.basicInterceptor"></beans:bean>
+   		</interceptor>
+   		
+   		<interceptor>
+   			<mapping path="/schedule/**"/>
+   			<beans:bean class="common.interceptor.basicInterceptor"></beans:bean>
+   		</interceptor>
+   		
+   		<interceptor>
+   			<mapping path="/board/**"/>
+   			<beans:bean class="common.interceptor.basicInterceptor"></beans:bean>
+   		</interceptor>
+   		
+   		<interceptor>
+   			<mapping path="/member/**"/>
+   			<beans:bean class="common.interceptor.basicInterceptor"></beans:bean>
+   		</interceptor>
+   		
+   		<!-- <interceptor>
+   			<mapping path="/**/*"/>
+   			<exclude-mapping path="/streamMapping/*"/>
+   			<beans:bean class="common.interceptor.basicInterceptor"></beans:bean>
+   		</interceptor> -->
    </interceptors>
    
 </beans:beans>

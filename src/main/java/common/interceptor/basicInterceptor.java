@@ -38,6 +38,7 @@ public class basicInterceptor implements HandlerInterceptor {
 		// true반환시 : 컨트롤러를 정상적으로 호출
 		// false 반환시 : 컨트롤러를 호출하지않음
 		logger.info("[interceptor] : basicInterceptor preHandle");
+		
 		HttpSession session = request.getSession();
 		
 		// 현재 스트리밍 상태를 가진 session 값 인경우 처리 - 스트리밍에서 나왔다고 판단.

@@ -56,6 +56,14 @@ public class streamController {
 			mav.addObject("userHashCode" , userHashCode.hashCode());
 			mav.addObject("userid" , member.getM_id());
 			
+			// 현재 스트리밍 되는 상태
+			if(streamservice.get(member.getM_id()) == null) {
+				mav.addObject("onStream", 1);
+			}
+			else {
+				mav.addObject("onStream", 2);
+			}
+			
 			mav.setViewName("stream/usersetting");
 		}
 		else {
