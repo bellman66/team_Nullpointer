@@ -48,7 +48,7 @@
 										varStatus="artStatus">
 										<li class="amovie_box">
 											<span class="movie_box">
-												<iframe src="https://www.youtube.com/embed/j-6ExGL0ld4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+												<iframe src="https://www.youtube.com/embed/${artlist.au_file}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 											</span><br />
 											<span class="aphTitle">글내용 | ${artlist.au_content}</span><br />
 											<span class="aphNicname">닉네임 | ${artlist.au_date}</span>
