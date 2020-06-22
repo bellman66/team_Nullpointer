@@ -41,10 +41,12 @@ public interface ArtistService {
 	//게시판 관련 서비스
 	public Map<String, Object> selectBoardList(int currentPage, int cntPerPage, String m_nickname);
 	public Map<String, Object> aboardRead(int b_num);
-	public int aboardUpload(Board board);
+	public int aboardUpload(Board board, List<Map<String, Object>> file);
+	public int aboardFileUpload(List<Map<String, Object>> file);
 	public int aboardDelect(int b_num);
 	public Map<String , Object> aboardSearch(String searchType, String searchWord, int currentPage, int cntPerPage, String m_nickname);
 	
+	public int artCategory(String m_nickname);
 	//작성자 : 이하진
 	//사진 게시판 관련
 	public List<Board>selectPhotoList();

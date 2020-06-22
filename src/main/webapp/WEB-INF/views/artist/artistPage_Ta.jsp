@@ -129,6 +129,13 @@
 								<div class="tatto-fan2">
 									<div class="tatto-schedule">
 										<h6>예약 일정</h6>
+										
+										<%-- <c:if test="${fn:length(aslist) > 5 || fn:length(aslist) == 0}"> --%>
+												<a
+												href="<%=request.getContextPath()%>/artist/artistschedule.do"
+												class="more" title="더 보기" style="margin-top:125px;">More</a>
+											<%-- </c:if>	 --%>
+										
 										<ul>
 											<c:forEach items="${aslist}" var="artsclist">
 												<li><a
@@ -136,15 +143,17 @@
 														${artsclist.ats_content}</a><span>${fn:substring(artsclist.ats_start_date,0,10)}</span></li>
 											</c:forEach>
 										</ul>
-											<c:if test="${fn:length(aslist) > 5 || fn:length(aslist) == 0}">
-												<a
-												href="<%=request.getContextPath()%>/artist/artistschedule.do"
-												class="more" title="더 보기" style="margin-top:100px;">More</a>
-											</c:if>	
+											
 										
 									</div>
 									<div class="tatto-board">
 										<h6>후기 게시판</h6>
+										
+										<%-- <c:if test="${fn:length(artboardlist.blist) > 5 || fn:length(artboardlist.blist) == 0}"> --%>
+												<a href="<%=request.getContextPath()%>/artist/artboardlist.do"
+													class="more" title="더 보기" style="margin-top:125px;">More</a>
+											<%-- </c:if> --%>	
+										
 											<ul>
 												<c:forEach items="${artboardlist.blist}" var="artboardlist">
 													<li><a href="<%= request.getContextPath() %>/artist/aboardRead.do?b_num=${artboardlist.b_num}">
@@ -152,10 +161,7 @@
 
 												</c:forEach>
 											</ul>
-											<c:if test="${fn:length(artboardlist.blist) > 5 || fn:length(artboardlist.blist) == 0}">
-												<a href="<%=request.getContextPath()%>/artist/artboardlist.do"
-													class="more" title="더 보기" style="margin-top:100px;">More</a>
-											</c:if>		
+												
 									</div>
 								</div>
 							</div>

@@ -26,11 +26,12 @@ public class Board implements Serializable{
 //	게시판쓸때 세션에 있는 아이디값 받아와서 여기에 담아준다 
 	private String boardWriter;
 	private String m_nickname;
+	private String b_link;
 	
 	public Board(){}
 
 	public Board(int b_category, int b_num, String m_id, Date b_date, String b_title, String b_content, String b_file,
-			int rnum, String boardWriter, String m_nickname) {
+			int rnum, String boardWriter, String m_nickname, String b_link) {
 		super();
 		this.b_category = b_category;
 		this.b_num = b_num;
@@ -42,6 +43,7 @@ public class Board implements Serializable{
 		this.rnum = rnum;
 		this.boardWriter = boardWriter;
 		this.m_nickname = m_nickname;
+		this.b_link = b_link;
 	}
 
 	public int getB_category() {
@@ -124,6 +126,14 @@ public class Board implements Serializable{
 		this.m_nickname = m_nickname;
 	}
 
+	public String getB_link() {
+		return b_link;
+	}
+
+	public void setB_link(String b_link) {
+		this.b_link = b_link;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -132,11 +142,10 @@ public class Board implements Serializable{
 	public String toString() {
 		return "Board [b_category=" + b_category + ", b_num=" + b_num + ", m_id=" + m_id + ", b_date=" + b_date
 				+ ", b_title=" + b_title + ", b_content=" + b_content + ", b_file=" + b_file + ", rnum=" + rnum
-				+ ", boardWriter=" + boardWriter + ", m_nickname=" + m_nickname + "]";
+				+ ", boardWriter=" + boardWriter + ", m_nickname=" + m_nickname + ", b_link=" + b_link + "]";
 	}
 
 	
-
 	
 	
 }

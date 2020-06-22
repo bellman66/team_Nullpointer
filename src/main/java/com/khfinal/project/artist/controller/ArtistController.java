@@ -1,6 +1,8 @@
 package com.khfinal.project.artist.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,7 +13,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.khfinal.project.artist.model.service.ArtistService;
@@ -330,11 +334,11 @@ public class ArtistController {
 	    
 	    if(res < 1) {
 			mav.addObject("alertMsg", "일정을 삭제 할수 없습니다.");
-			mav.addObject("url", "/artist/artistschedule.do");
+			mav.addObject("url", "/springmvc/artist/artistschedule.do");
 			mav.setViewName("common/result");
 		}else {
 			mav.addObject("alertMsg", "일정이 삭제 되었습니다.");
-			mav.addObject("url", "/artist/artistschedule.do");
+			mav.addObject("url", "/springmvc/artist/artistschedule.do");
 			mav.setViewName("common/result");
 		}
 	    
@@ -393,7 +397,16 @@ public class ArtistController {
 	public ModelAndView aboardRead(int b_num) {
 		ModelAndView mav = new ModelAndView();
 		Map<String, Object> readMap = as.aboardRead(b_num);
-
+		
+		int category = as.artCategory(m_nickname) + 1;
+		
+		if(category == 3) {
+			mav.addObject("artist", "band");
+		}else {
+			mav.addObject("artist", "tattoo");
+		}
+		
+		
 		mav.addObject("readMap", readMap);
 		mav.setViewName("artist/artBoard_view");
 
@@ -405,7 +418,13 @@ public class ArtistController {
 	public ModelAndView aboardWrite() {
 		ModelAndView mav = new ModelAndView();
 		
+		int category = as.artCategory(m_nickname) + 1;
 		
+		if(category == 3) {
+			mav.addObject("artist", "band");
+		}else {
+			mav.addObject("artist", "tattoo");
+		}
 		
 
 		mav.setViewName("artist/artWrite");
@@ -414,17 +433,46 @@ public class ArtistController {
 
 	// 게시판 디비에 저장되는 메서드
 	@RequestMapping("/artist/aboardUpload.do")
-	public ModelAndView aboardUpload(HttpServletRequest request, Board board) {
+	public ModelAndView aboardUpload(HttpServletRequest request, Board board, @RequestParam List<MultipartFile> bfile) {
 		ModelAndView mav = new ModelAndView();
+		//파일 업로드 코드
+		List<Map<String, Object>> file = new ArrayList<Map<String, Object>>();
+		String root = request.getSession().getServletContext().getRealPath("/");
 
+		int i = 0;
+		for (MultipartFile mf : bfile) {
+			String savePath = root + "resources/upload/";
+			String originFileName = mf.getOriginalFilename();
+			HashMap<String, Object> data = new HashMap<>();
+
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+
+			String renameFile = sdf.format(new Date()) + i + "."
+					+ originFileName.substring(originFileName.lastIndexOf(".") + 1);
+
+			savePath += renameFile;
+
+			data.put("originFileName", originFileName);
+			data.put("renameFile", renameFile);
+			data.put("savePath", savePath);
+			data.put("file", mf);
+
+			file.add(data);
+			i++;
+		}
+		// 파일을 뺀 나머지 값 넣는 코드
 		HttpSession session = request.getSession();
 		Map<String, Object> login = (Map<String, Object>) session.getAttribute("loginInfo");
 		Member member = (Member) login.get("member");
+		
+		int category = as.artCategory(m_nickname) + 1;
 
+		System.out.println("컨트롤러 " + category);
+		board.setB_category(category);
 		board.setBoardWriter(member.getM_id());
 		board.setM_nickname(m_nickname);
 
-		int res = as.aboardUpload(board);
+		int res = as.aboardUpload(board, file);
 
 		mav.setViewName("redirect:artboardlist.do");
 		return mav;

@@ -63,11 +63,28 @@
 	      where b_num = #{b_num}
    </select>
    
+   <select id="aboardResdFile" resultMap="file">
+   		select * from tb_file
+     	 where b_num = #{b_num}
+   </select>
+   
    <!-- 게시판 글 추가하는 코드 -->
    <insert id="aboardUpload">
    		INSERT INTO TB_BOARD VALUES(
-   		3 ,B_NUM, #{boardWriter}, sysdate(), #{b_content}, 'test/test/test', #{b_title}, #{m_nickname})
+   		#{b_category} ,B_NUM, #{boardWriter}, sysdate(), #{b_content}, 'test/test/test', #{b_title}, #{m_nickname}, #{b_link})
    </insert>
+   
+   <insert id="aboardFileUpload">
+   		INSERT INTO tb_file VALUES(
+         LAST_INSERT_ID(),#{originFileName},#{renameFile},#{savePath})
+   </insert>
+   
+    <resultMap type="map" id="file">
+		<result column="originFileName" property="originFileName"/>
+	    <result column="renameFile" property="renameFile"/>
+	    <result column="SAVEPATH" property="SAVEPATH"/>
+	    <result column="B_NUM" property="B_NUM"/>
+   </resultMap>
    
    <!-- 게시판 삭제하는 코드 -->
    <delete id="aboardDelect">
@@ -111,7 +128,8 @@
 	</select>
 	
 	<!-- resultMap으로 board부분 합체해줍니다. -->
-	<select id="selectPhotoList" resultType="Map" parameterType="">
+	<select id="artCategory" resultType="int">
+		SELECT M_CLASS FROM TB_MEMBER WHERE m_nickname = #{m_nickname}
 	</select>
 	
 

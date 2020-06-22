@@ -39,12 +39,19 @@
 				<div class="row">
 					<div class="artwrite_table">
 						<div class="artpath">
+						<c:if test="${artist eq 'band'}">
 							<h3>소통게시판</h3>
 							<p>소통게시판입니다.</p>
+						</c:if>	
+						
+						<c:if test="${artist eq 'tattoo'}">
+							<h3>후기게시판</h3>
+							<p>후기게시판입니다.</p>
+						</c:if>	
 						</div>
 						<div class="aboardView-table">
 							<form name="artView"
-								action="<%=request.getContextPath()%>/artist/aboardUpload.do">
+								action="<%=request.getContextPath()%>/artist/aboardUpload.do" method="post" enctype="multipart/form-data">
 								<table>
 									<tbody>
 
@@ -64,11 +71,13 @@
 										</tr>
 										<tr>
 											<th class="aview_file">파일 등록</th>
-											<td class="aview_td"><input type="file"></td>
+											<td class="aview_td"><input type="file" name="bfile" multiple></td>
 										</tr>
 										<tr>
 											<th class="aview_link">링크 등록</th>
-											<td class="aview_td"></td>
+											<td class="aview_td">
+												<input type="text" class="artLink" name="b_link">
+											</td>
 										</tr>
 									</tbody>
 								</table>
@@ -78,7 +87,7 @@
 
 
 								<button class="btn_pass" type="button"
-									onclick="location.href='<%=request.getContextPath()%>/artist/artboardlist.do'">취소</button>
+									onclick="location.href='<%=request.getContextPath()%>/artist/artist.do'">취소</button>
 							</div>
 						</div>
 					</div>
