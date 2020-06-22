@@ -42,6 +42,10 @@
 							action="<%=request.getContextPath()%>/artist/artistartmovie.do">
 							<h3>공연 영상</h3>
 							<div class="amovie_board">
+							<!-- artist게시판들 클래스 다들 동일 클래스 사용  -->
+							<c:if test="${loginInfo.member.m_id eq artist_nick}">
+								<button class="atwrite" type="button">글쓰기</button>
+							</c:if>
 								<!-- 영상 콘텐츠 시작 -->
 								<ul>
 									<c:forEach items="${artlistvideo}" var="artlist"
@@ -62,25 +66,6 @@
 								</ul>
 							</div>
 							<!-- 영상 콘텐츠 끝 -->
-							<!-- artist게시판들 클래스 다들 동일 클래스 사용  -->
-							<c:if test="${loginInfo.member.m_id eq artist_nick}">
-								<button class="atwrite" type="button">글쓰기</button>
-							</c:if>
-							<!-- 페이징 처리 기능부분  -->
-							<div class="artPaging">
-								<a href="#">페이지처리할꺼임</a>
-							</div>
-							<!-- 페이징 처리 기능부분  -->
-
-							<!-- 검색 창 -->
-							<div class="artSearch">
-								<select name="searchType">
-									<option value="write">작성자</option>
-									<option value="title">제목</option>
-									<option value="wrti">작성자 + 제목</option>
-								</select> <input class="art_searchText" type="text" name="searchWord" />
-								<button class="art_searchbar">검색</button>
-							</div>
 						</form>
 					</div>
 					<!-- 검색 창 -->

@@ -132,22 +132,6 @@
 
 								<!-- artist게시판들 클래스 다들 동일 클래스 사용  -->
 								<button class="atwrite" type="button">글쓰기</button>
-
-								<!-- 페이징 처리 기능부분  -->
-								<div class="artPaging">
-									<a href="#">페이지처리할꺼임</a>
-								</div>
-								<!-- 페이징 처리 기능부분  -->
-
-								<!-- 검색 창 -->
-								<div class="artSearch">
-									<select name="searchType">
-										<option value="write">작성자</option>
-										<option value="title">제목</option>
-										<option value="wrti">작성자 + 제목</option>
-									</select> <input class="art_searchText" type="text" name="searchWord" />
-									<button class="art_searchbar">검색</button>
-								</div>
 							</form>
 						</div>
 					</div>
