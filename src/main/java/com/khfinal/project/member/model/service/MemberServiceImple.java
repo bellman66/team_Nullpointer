@@ -205,8 +205,8 @@ public class MemberServiceImple implements MemberService {
 	}
 
 	@Override
-	public List<Map<String, Object>> maplusprofile(MyArtist myartist) {
-		return madao.maplusprofile(myartist);
+	public List<Map<String, Object>> maplusprofile(String m_id) {
+		return madao.maplusprofile(m_id);
 	}
 
 }

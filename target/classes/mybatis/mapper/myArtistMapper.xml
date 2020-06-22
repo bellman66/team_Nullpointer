@@ -18,12 +18,12 @@
   <select id="selectSame" parameterType="MyArtist" resultType="int">
   	select count(*) from tb_myartist where m_id = #{m_id} and m_nickname = #{m_nickname}
   </select>
-  <select id="maplusprofile" parameterType="MyArtist" resultMap="martist">
+  <select id="maplusprofile" parameterType="string" resultMap="martist">
   	select a.ma_num, a.m_id, a.m_nickname, m.m_class, m.rename_filepath
   	from tb_myartist a
   	join tb_member m
   	on a.m_nickname = m.m_nickname
-  	where a.m_id = #{m_id} and a.m_nickname = #{m_nickname}
+  	where a.m_id = #{m_id}
   	
   </select>
   <resultMap type="HashMap" id="martist">

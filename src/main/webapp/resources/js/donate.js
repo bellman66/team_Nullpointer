@@ -45,7 +45,7 @@ function layer_popup(el) {
 		            pg : 'kakaopay',
 		            pay_method : 'card',
 		            merchant_uid : 'merchant_' + new Date().getTime(),
-		            name : 'test',
+		            name : 'Insert The Title 사이트 내 후원 결제',
 		            amount : '2000원',
 		            buyer_email : 'eternita9210@gmail.com',
 		            buyer_name : 'testtest',
@@ -88,7 +88,7 @@ function layer_popup(el) {
 		                msg = '결제에 실패하였습니다.';
 		                msg += '에러내용 : ' + rsp.error_msg;
 		                // 실패시 이동할 페이지
-		                location.href="<%=request.getContextPath()%>/artist/artist.do";
+		                location.reload();
 		                alert(msg);
 		            }
 		        });
