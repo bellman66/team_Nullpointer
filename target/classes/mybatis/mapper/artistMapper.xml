@@ -109,5 +109,10 @@
 			FROM TB_BOARD WHERE B_ART LIKE #{m_nickname}  and (b_title like CONCAT ('%',#{searchWord},'%') or m_id like CONCAT ('%',#{searchWord},'%'))
 			ORDER BY B_NUM DESC)AS TB where rnum between #{page.start} and #{page.end}
 	</select>
+	
+	<!-- resultMap으로 board부분 합체해줍니다. -->
+	<select id="selectPhotoList" resultType="Map" parameterType="">
+	</select>
+	
 
 </mapper>

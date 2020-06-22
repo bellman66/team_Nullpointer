@@ -43,7 +43,7 @@
 							<p>공연사진게시판입니다.</p>
 						</div>
 						<div class="artTable">
-							<form name="aPhotoView" action="">
+							<form name="aPhotoView" action="<%=request.getContextPath()%>/artist/artphotoview.do">
 								<div class="aphotoForm">
 									<div id="aview_board">게시판종류</div>
 									<div class="aview_board">b_Category</div>

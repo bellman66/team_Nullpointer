@@ -363,9 +363,18 @@ public class ArtistServiceImple implements ArtistService {
 			res.put("blist", blist);
 		}
 		
-		
-		
 		return res;
+	}
+
+	/**
+	 * @method : selectPhotoList
+	 * @date : 2020. 6. 21.
+	 * @buildBy : hajin
+	 * @comment : 아티스트 개인 페이지 사진게시판관련
+	 */
+	@Override
+	public List<Board> selectPhotoList() {
+		return ad.selectPhotoList();
 	}
 
 

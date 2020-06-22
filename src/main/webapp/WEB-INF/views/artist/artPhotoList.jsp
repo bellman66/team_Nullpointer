@@ -39,7 +39,7 @@
 				<div class="row">
 					<div class="artphoto_list">
 							<form name="artphoto"
-								action="<%=request.getContextPath()%>/artist/artistvideo.do">
+								action="<%=request.getContextPath()%>/artist/artistphoto.do">
 								<h3>공연 사진</h3>
 								<div class="aphoto_board">
 									<ul>
@@ -48,6 +48,7 @@
 										<span class="photo_box"><img src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg"></span><br/> 
 										<span class="aphTitle">글내용 | </span><br/> 
 										<span class="aphNicname">닉네임 | </span>
+										<span class="a_date">20.06.22</span>
 											<div class="btn_phoani">
 												<a href="#"> <span class="aboard_rd"></span>
 												</a>
@@ -57,7 +58,7 @@
 										<span class="photo_box"><img src="<%=request.getContextPath()%>/resources/img/artist/today.jpg"></span><br/> 
 										<span class="aphTitle">글내용 | </span><br/> 
 										<span class="aphNicname">닉네임 | </span>
-											<div class="btn_phoani">
+																					<div class="btn_phoani">
 												<a href="#"> <span class="aboard_rd"></span>
 												</a>
 											</div>
@@ -66,6 +67,7 @@
 										<span class="photo_box"><img src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg"></span><br/> 
 										<span class="aphTitle">글내용 | </span><br/> 
 										<span class="aphNicname">닉네임 | </span>
+										<span class="a_date">20.06.22</span>
 											<div class="btn_phoani">
 												<a href="#"> <span class="aboard_rd"></span>
 												</a>
@@ -75,6 +77,7 @@
 										<span class="photo_box"><img src="<%=request.getContextPath()%>/resources/img/artist/today.jpg"></span><br/> 
 										<span class="aphTitle">글내용 | </span><br/> 
 										<span class="aphNicname">닉네임 | </span>
+										<span class="a_date">20.06.22</span>
 											<div class="btn_phoani">
 												<a href="#"> <span class="aboard_rd"></span>
 												</a>
@@ -87,6 +90,7 @@
 										<span class="photo_box"><img src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg"></span><br/> 
 										<span class="aphTitle">글내용 | </span><br/> 
 										<span class="aphNicname">닉네임 | </span>
+										<span class="a_date">20.06.22</span>
 											<div class="btn_phoani">
 												<a href="#"> <span class="aboard_rd"></span>
 												</a>
@@ -96,6 +100,7 @@
 										<span class="photo_box"><img src="<%=request.getContextPath()%>/resources/img/artist/today.jpg"></span><br/> 
 										<span class="aphTitle">글내용 | </span><br/> 
 										<span class="aphNicname">닉네임 | </span>
+										<span class="a_date">20.06.22</span>
 											<div class="btn_phoani">
 												<a href="#"> <span class="aboard_rd"></span>
 												</a>
@@ -105,6 +110,7 @@
 										<span class="photo_box"><img src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg"></span><br/> 
 										<span class="aphTitle">글내용 | </span><br/> 
 										<span class="aphNicname">닉네임 | </span>
+										<span class="a_date">20.06.22</span>
 											<div class="btn_phoani">
 												<a href="#"> <span class="aboard_rd"></span>
 												</a>
@@ -114,6 +120,7 @@
 										<span class="photo_box"><img src="<%=request.getContextPath()%>/resources/img/artist/today.jpg"></span><br/> 
 										<span class="aphTitle">글내용 | </span><br/> 
 										<span class="aphNicname">닉네임 | </span>
+										<span class="a_date">20.06.22</span>
 											<div class="btn_phoani">
 												<a href="#"> <span class="aboard_rd"></span>
 												</a>
