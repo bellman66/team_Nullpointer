@@ -1,5 +1,7 @@
 package com.khfinal.project.artist.model.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -10,6 +12,7 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.khfinal.project.artist.model.dao.ArtistDao;
 import com.khfinal.project.artist.model.vo.Artist;
@@ -335,20 +338,47 @@ public class ArtistServiceImple implements ArtistService {
 		
 		Board artRead = ad.aboardRead(b_num); 
 		//파일 읽어주는 코드
-//		List<Map<String, String>> flist = bd.boardResdFile(b_num);
+		List<Map<String, String>> flist = ad.aboardResdFile(b_num);
 				
 		res.put("artRead", artRead);
-//		res.put("flist", flist);
+		res.put("flist", flist);
 				
 		return res;
 	}
 
 	@Override
-	public int aboardUpload(Board board) {
+	public int aboardUpload(Board board, List<Map<String, Object>> file) {
 		
 		int res = ad.aboardUpload(board);
+		aboardFileUpload(file);
 		return res;
 	}
+	
+	@Override
+	public int aboardFileUpload(List<Map<String, Object>> file) {
+		int res = 0;
+		for(Map<String, Object> fileData : file) {
+			ad.aboardFileUpload(fileData);
+			
+			MultipartFile mf = (MultipartFile) fileData.get("file");
+			File f = new File((String) fileData.get("savePath"));
+			
+			try {
+				mf.transferTo(f);
+			} catch (IllegalStateException e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+			
+			
+			
+		}
+		return res;
+	}
+	
 
 	@Override
 	public int aboardDelect(int b_num) {
@@ -378,6 +408,26 @@ public class ArtistServiceImple implements ArtistService {
 		
 		return res;
 	}
+
+	/**
+	 * @method : selectPhotoList
+	 * @date : 2020. 6. 21.
+	 * @buildBy : hajin
+	 * @comment : 아티스트 개인 페이지 사진게시판관련
+	 */
+	@Override
+	public List<Board> selectPhotoList() {
+		return ad.selectPhotoList();
+	}
+
+	//아티스트 닉네임 값으로 클래스 값을 가져오는쿼리
+	@Override
+	public int artCategory(String m_nickname) {
+		
+		return ad.artCategory(m_nickname);
+	}
+
+	
 
 	
 

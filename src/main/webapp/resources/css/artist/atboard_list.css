@@ -114,3 +114,21 @@
 	background-color:#fff;
 	border:1px solid #0c0c13;
 }
+
+.artist_board_cancel{
+	width:10%;
+	height:30px;
+	font-size: 14px;
+	font-family: sans-serif;
+   	margin-left : 500px;
+    margin-top:3%;
+    margin-right:20px;
+	color:#fff;
+	background-color: #0c0c13;
+}
+
+.artist_board_cancel:hover{
+	color:#0c0c13;
+	background-color:#fff;
+	border:1px solid #0c0c13;
+}

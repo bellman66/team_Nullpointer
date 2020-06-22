@@ -140,9 +140,17 @@ public class ArtistDao {
 	public Board aboardRead(int b_num) {
 		return session.selectOne("Artist.aboardRead", b_num);
 	}
+	
+	public List<Map<String, String>> aboardResdFile(int b_num){
+		return session.selectList("Artist.aboardResdFile", b_num);
+	}
 
 	public int aboardUpload(Board board) {
 		return session.insert("Artist.aboardUpload", board);
+	}
+	
+	public int aboardFileUpload(Map<String, Object> file) {
+		return session.insert("Artist.aboardFileUpload", file);
 	}
 
 	public int aboardDelect(int b_num) {
@@ -212,4 +220,14 @@ public class ArtistDao {
 
 	}
 	
+	// 사진 게시판 전체 목록 리스트
+	public List<Board>selectPhotoList(){
+		return session.selectList("Board.selectPhotoList");
+	}
+	
+	//
+	public int artCategory(String m_nickname) {
+		return session.selectOne("Artist.artCategory", m_nickname);
+	}
+
 }

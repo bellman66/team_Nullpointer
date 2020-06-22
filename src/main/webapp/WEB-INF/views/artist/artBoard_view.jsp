@@ -39,8 +39,15 @@
 				<div class="row">
 					<div class="artView">
 						<div class="artpath">
-							<h3>소통게시판</h3>
-							<p>소통게시판입니다.</p>
+							<c:if test="${artist eq 'band'}">
+								<h3>소통게시판</h3>
+								<p>소통게시판입니다.</p>
+							</c:if>	
+						
+							<c:if test="${artist eq 'tattoo'}">
+								<h3>후기게시판</h3>
+								<p>후기게시판입니다.</p>
+							</c:if>	
 						</div>
 						<div class="artTable">
 							<form name="aboardView" action="">
@@ -66,14 +73,21 @@
 											<th class="aview_content">내용</th>
 											<td class="aview_td">${readMap.artRead.b_content}</td>
 										</tr>
-										<%-- <tr>
+										<c:forEach items="${readMap.flist }" var="filename">
+										<tr>
 											<th class="aview_file">파일</th>
-											<td class="aview_td">${readMap.artRead.b_file}</td>
-										</tr> --%>
-										<%-- <tr>
+											<td class="aview_td">
+												<a href="<%=request.getContextPath() %>/resources/upload/${filename.renameFile}">
+												${filename.originFileName}</a>
+											</td>
+										</tr>
+										</c:forEach>
+										
+										<tr>
 											<th class="aview_linke">링크</th>
-											<td class="aview_td">${readMap.artRead.b_title}NULL</td>
-										</tr> --%>
+											<td class="aview_td"><a href="${readMap.artRead.b_link}">${readMap.artRead.b_link}</a></td>
+											
+										</tr>
 									</tbody>
 								</table>
 							</form>

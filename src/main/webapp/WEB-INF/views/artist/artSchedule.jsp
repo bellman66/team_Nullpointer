@@ -113,8 +113,15 @@
 										<button class="artist_schedule_add" onclick="location.href='<%= request.getContextPath() %>/artist/artistscheduleaddshow.do'">행사 등록</button>
 									</c:if>
 								 
-								<button class="artist_schedule_cancel" onclick="location.href='<%= request.getContextPath() %>/artist/artist.do'">취소</button>
-							
+								<%-- <c:if test="${sessionScope.loginInfo.member.m_class == 2}">
+									<button class="artist_schedule_cancel" onclick="location.href='<%= request.getContextPath() %>/artist/artistpage.do?${m_nickname}'">뒤로가기</button>
+								</c:if>
+								
+								<c:if test="${sessionScope.loginInfo.member.m_class == 3}">
+									<button class="artist_schedule_cancel" onclick="location.href='<%= request.getContextPath() %>/artist/tattoopage.do?${m_nickname}'">뒤로가기</button>
+								</c:if> --%>
+								
+								<button class="artist_schedule_cancel" onclick="location.href='<%= request.getContextPath() %>/artist/artist.do'">뒤로가기</button>
 						</div>
 						<!-- </form> -->
 					</div>
