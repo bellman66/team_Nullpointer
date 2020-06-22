@@ -220,11 +220,17 @@ public class ArtistController {
 	 * @comment : 아티스트 영상 목록을 받아!!
 	 */
 	@RequestMapping("/artist/artistvideo.do")
-	public ModelAndView artistvideo() {
+	public ModelAndView artistvideo(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		
 		// 수정자: 박혜연
 		// 업로드 전체 페이지 로드
+		m_nickname = request.getParameter("artist_nick");
+		System.out.println(m_nickname);
+
+		// 영상 콘텐츠
+		List<Artist> artlistvideo = as.selectArtPageVideo(m_nickname);
+		mav.addObject("artlistvideo", artlistvideo);
 
 		mav.setViewName("artist/artMovieList");
 		return mav;
@@ -257,9 +263,9 @@ public class ArtistController {
 	 * @comment : 아티스트 개인 페이지의 사진게시판 보여주는 페이지
 	 */
 	@RequestMapping("/artist/artphotoview.do")
-	public ModelAndView artphotoView() {
+	public ModelAndView artphotoView(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
-
+		
 		mav.setViewName("artist/artPhoto_view");
 		return mav;
 	}

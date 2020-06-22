@@ -57,13 +57,13 @@
 											<c:forEach items="${artlistvideo}" var="artlist"
 												varStatus="artStatus"  begin="0" end="4">
 												<li><a href="#"> <img
-														src="/springmvc/resources/img/artist/${artlist.thumbnail}">
+														src="/springmvc/resources/upload/${artlist.au_thumbnail}">
 												</a></li>
 
 											</c:forEach>
 
 										</ul>
-										<a href="<%=request.getContextPath()%>/artist/artistvideo.do"
+										<a href="<%=request.getContextPath()%>/artist/artistvideo.do?artist_nick=${mlist.m_nickname}"
 											class="more" title="더 보기">More</a>
 
 									</div>
@@ -73,7 +73,7 @@
 											<c:forEach items="${artlistphoto}" var="artlist"
 												varStatus="status" begin="0" end="4">
 												<li><a href="#"><img class="atprofile"
-														src="/springmvc/${artlist.au_file}" /></a></li>
+														src="/springmvc/resources/upload/${artlist.au_file}" /></a></li>
 											</c:forEach>
 										</ul>
 										<a
