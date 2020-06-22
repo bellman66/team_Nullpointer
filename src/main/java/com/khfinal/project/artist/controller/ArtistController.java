@@ -74,6 +74,7 @@ public class ArtistController {
 		 * return mav; }
 		 */
 	String m_nickname;
+
 	/**
 	 * @method : artistpage
 	 * @date : 2020. 6. 17.
@@ -117,12 +118,10 @@ public class ArtistController {
 			}
 		}
 		System.out.println("컨트롤러 " + aslist);
-		
-		
-				
-		//작성자 : 김경호
-		//메인 화면에 게시판 목록 5개 뿌려주는 코드
-		//매개변수로 타투인지 밴드인지 받고 아이디값이나 닉넴값 받고 보낸다
+
+		// 작성자 : 김경호
+		// 메인 화면에 게시판 목록 5개 뿌려주는 코드
+		// 매개변수로 타투인지 밴드인지 받고 아이디값이나 닉넴값 받고 보낸다
 		int currentPage = 1;
 		int cntPerPage = 5;
 		Map<String, Object> artboardlist = as.selectBoardList(currentPage, cntPerPage, m_nickname);
@@ -168,13 +167,13 @@ public class ArtistController {
 		// 아티스트의 프로필 사진 받아오기
 		Member mlist = as.selectProfile(m_nickname);
 		mav.addObject("mlist", mlist);
-		
+
 		// 작성자 : 김경호
 		// 메인 화면에 행사 일정을 을 뿌려주는 코드
-			List<Artist> aslist = as.schedule(m_nickname);
+		List<Artist> aslist = as.schedule(m_nickname);
 
 		if (aslist.size() < 5) {
-				mav.addObject("aslist", aslist);
+			mav.addObject("aslist", aslist);
 		} else {
 			List<Artist> aslist_more = new ArrayList<Artist>();
 			for (int i = 0; i < 5; i++) {
@@ -183,12 +182,10 @@ public class ArtistController {
 			}
 		}
 		System.out.println("컨트롤러 " + aslist);
-				
-				
-						
-		//작성자 : 김경호
-		//메인 화면에 게시판 목록 5개 뿌려주는 코드
-		//매개변수로 타투인지 밴드인지 받고 아이디값이나 닉넴값 받고 보낸다
+
+		// 작성자 : 김경호
+		// 메인 화면에 게시판 목록 5개 뿌려주는 코드
+		// 매개변수로 타투인지 밴드인지 받고 아이디값이나 닉넴값 받고 보낸다
 		int currentPage = 1;
 		int cntPerPage = 5;
 		Map<String, Object> artboardlist = as.selectBoardList(currentPage, cntPerPage, m_nickname);
@@ -220,18 +217,37 @@ public class ArtistController {
 		return mav;
 	}
 
-	//
 	/**
 	 * @method : artistphoto
 	 * @date : 2020. 6. 17.
 	 * @buildBy : hajin
-	 * @comment : 아티스트 사진목록을 받아!!
+	 * @comment : 아티스트 개인 페이지의 사진게시판 전체목록
 	 */
 	@RequestMapping("/artist/artistphoto.do")
-	public ModelAndView artistphoto() {
+	public ModelAndView artistphoto(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
+		// String m_nickname을 통해 닉네임값으로 받아서 게시판 목록을 받아줍니다.
+		String m_nickname = request.getParameter("art_nickname");
+
+		List<Board> blist = as.selectPhotoList();
+		mav.addObject("blist", blist);
+		System.out.println(blist);
 
 		mav.setViewName("artist/artPhotoList");
+		return mav;
+	}
+
+	/**
+	 * @method : artphotoView
+	 * @date : 2020. 6. 22.
+	 * @buildBy : hajin
+	 * @comment : 아티스트 개인 페이지의 사진게시판 보여주는 페이지
+	 */
+	@RequestMapping("/artist/artistphoto.do")
+	public ModelAndView artphotoView() {
+		ModelAndView mav = new ModelAndView();
+
+		mav.setViewName("artist/artPhoto_view");
 		return mav;
 	}
 
@@ -325,19 +341,6 @@ public class ArtistController {
 		return mav;
 	}
 
-//	/**
-//	 * @method : aboardList
-//	 * @date : 2020. 6. 17.
-//	 * @buildBy : hajin
-//	 * @comment : 아티스트 게시판목록을 받아!!
-//	 */
-//	@RequestMapping("/artist/artboardlist.do")
-//	public ModelAndView aboardList() {
-//		ModelAndView mav = new ModelAndView();
-//
-//		mav.setViewName("artist/artboardList");
-//		return mav;
-//	}
 //
 //	/**
 //	 * @method : artWrite
@@ -352,7 +355,7 @@ public class ArtistController {
 //		mav.setViewName("artist/artWrite");
 //		return mav;
 //	}
-	
+
 	/**
 	 * @method : aboardList
 	 * @date : 2020. 6. 17.
@@ -363,8 +366,7 @@ public class ArtistController {
 	@RequestMapping("/artist/artboardlist.do")
 	public ModelAndView aboardList(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
-		
-		
+
 		int currentPage = 1;
 		int cntPerPage = 5;
 
@@ -379,85 +381,81 @@ public class ArtistController {
 		Map<String, Object> artboardlist = as.selectBoardList(currentPage, cntPerPage, m_nickname);
 		mav.addObject("paging", artboardlist.get("paging"));
 		System.out.println(artboardlist.get("paging"));
-		
+
 		mav.addObject("aboard", "aboard");
 		mav.addObject("artboardlist", artboardlist);
 		mav.setViewName("artist/artboardList");
 		return mav;
 	}
-	
-	//게시판 읽는 메소드
+
+	// 게시판 읽는 메소드
 	@RequestMapping("/artist/aboardRead.do")
 	public ModelAndView aboardRead(int b_num) {
 		ModelAndView mav = new ModelAndView();
 		Map<String, Object> readMap = as.aboardRead(b_num);
-		
 
-		
 		mav.addObject("readMap", readMap);
 		mav.setViewName("artist/artBoard_view");
-		
+
 		return mav;
 	}
-	
-	//게시판 쓰는 페이지로 이동 메서드
+
+	// 게시판 쓰는 페이지로 이동 메서드
 	@RequestMapping("/artist/aboardWrite.do")
 	public ModelAndView aboardWrite() {
 		ModelAndView mav = new ModelAndView();
 		
 		
 		
+
 		mav.setViewName("artist/artWrite");
 		return mav;
 	}
-	
-	//게시판 디비에 저장되는 메서드
+
+	// 게시판 디비에 저장되는 메서드
 	@RequestMapping("/artist/aboardUpload.do")
 	public ModelAndView aboardUpload(HttpServletRequest request, Board board) {
 		ModelAndView mav = new ModelAndView();
-		
-		
+
 		HttpSession session = request.getSession();
 		Map<String, Object> login = (Map<String, Object>) session.getAttribute("loginInfo");
 		Member member = (Member) login.get("member");
-		
-		
-		
+
 		board.setBoardWriter(member.getM_id());
 		board.setM_nickname(m_nickname);
-		
+
 		int res = as.aboardUpload(board);
-		
-		
+
 		mav.setViewName("redirect:artboardlist.do");
 		return mav;
 	}
-	
-	//게시글 삭제 메서드
+
+	// 게시글 삭제 메서드
 	@RequestMapping("/artist/aboardDelect.do")
 	public ModelAndView aboardDelect(int b_num) {
 		ModelAndView mav = new ModelAndView();
-		
+
 		int res = as.aboardDelect(b_num);
-		
+
 		if (res > 0) {
 			mav.addObject("alertMsg", "게시글이 삭제가 되었습니다");
 			mav.addObject("url", "/springmvc/artist/artboardlist.do");
 			mav.setViewName("common/result");
-		}else {
+		} else {
 			mav.addObject("alertMsg", "존재하지 않는 게시물입니다.");
 			mav.addObject("back", "/springmvc/artist/artboardlist.do");
 			mav.setViewName("common/result");
 		}
 		return mav;
 	}
-	
+
 	@RequestMapping("/artist/aboardSearch.do")
-	public ModelAndView aboardSearch(HttpServletRequest request, String searchType, String searchWord, String boardsearch) {
+	public ModelAndView aboardSearch(HttpServletRequest request, String searchType, String searchWord,
+			String boardsearch) {
 		ModelAndView mav = new ModelAndView();
-		
+
 //		String m_nickname = request.getParameter("artist_nick");
-		
+
 		int currentPage = 1;
 		int cntPerPage = 5;
 
@@ -470,11 +468,9 @@ public class ArtistController {
 		}
 
 		Map<String, Object> res = new HashMap<String, Object>();
-		
+
 		res = as.aboardSearch(searchType, searchWord, currentPage, cntPerPage, m_nickname);
-		
-		
-		
+
 		mav.addObject("paging", res.get("paging"));
 		mav.addObject("artboardlist", res);
 		mav.addObject("searchType", searchType);

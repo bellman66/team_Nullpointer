@@ -82,7 +82,6 @@
 									<!-- artTab 부분  -->
 								</div>
 								<!-------- 아티스트 게시판 끝! -------->
-
 								<!-------- 타투이스트 게시판 시작! -------->
 								<div id="tab2" class="content" style="display: none">
 									<ul class="grid">
@@ -116,11 +115,9 @@
 									</div>
 								</div>
 								<!-------- 타투이스트 게시판 끝! -------->
-
 							</form>
 						</div>
 						<!-- artist부분  -->
-
 					</div>
 				</div>
 			</div>

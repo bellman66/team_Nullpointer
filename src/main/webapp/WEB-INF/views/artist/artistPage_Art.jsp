@@ -73,20 +73,16 @@
 									<div class="art-photo">
 										<h6>공연 사진</h6>
 										<ul>
-											<li><a href="#"><img
-													src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg"></a></li>
-											<li><a href="#"><img
-													src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg"></a></li>
-											<li><a href="#"><img
-													src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg"></a></li>
-											<li><a href="#"><img
-													src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg"></a></li>
-											<li><a href="#"><img
-													src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg"></a></li>
+											<c:forEach items="${artlist}" var="artlist"
+												varStatus="status" begin="0" end="4">
+												<li><a href="#"><img class="atprofile"
+														src="/springmvc/${artlist.au_file}" /></a></li>
+											</c:forEach>
 										</ul>
-										<a href="<%=request.getContextPath()%>/artist/artistphoto.do"
+										<a href="<%=request.getContextPath()%>/artist/artistphoto.do?art_nickname=${artlist.m_nickname}"
 											class="more" title="더 보기">More</a>
 									</div>
+									
 									<div class="ta_cash" id="${loginInfo.member.m_id}">
 										<button type="button" onclick="donate()">후원</button>
 										<div class="dim-layer" id="dim-layer-do">
@@ -194,6 +190,6 @@
 		src="<%=request.getContextPath()%>/resources/js/donate.js"></script>
 	<script type="text/javascript"
 		src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-
+	
 </body>
 </html>

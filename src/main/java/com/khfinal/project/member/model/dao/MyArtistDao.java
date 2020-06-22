@@ -61,8 +61,8 @@ public class MyArtistDao {
 	 * @buildBy : 박혜연
 	 * @comment : 일반회원 마이 페이지 내의 'My Artist' 목록 + 프로필사진 가져오기
 	 */
-	public List<Map<String, Object>> maplusprofile(MyArtist myartist) {
-		return session.selectList("MyArtist.maplusprofile", myartist);
+	public List<Map<String, Object>> maplusprofile(String m_id) {
+		return session.selectList("MyArtist.maplusprofile", m_id);
 	}
 	
 }

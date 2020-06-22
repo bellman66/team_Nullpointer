@@ -29,6 +29,8 @@ import com.khfinal.project.member.model.vo.MyArtist;
 import com.khfinal.project.schedule.model.vo.Schedule;
 import com.khfinal.project.stream.service.streamService;
 
+import common.util.Paging;
+
 @Controller
 public class MemberController {
 
@@ -47,18 +49,19 @@ public class MemberController {
 	}
 
 	@RequestMapping("/member/joinimple.do")
-	public ModelAndView joinImple(@RequestParam Map<String, Object> commandMap, HttpServletRequest request) throws SQLException {
+	public ModelAndView joinImple(@RequestParam Map<String, Object> commandMap, HttpServletRequest request)
+			throws SQLException {
 		ModelAndView mav = new ModelAndView();
-		
+
 		int res = ms.insertMember(commandMap);
 		if (res < 1) {
 			mav.addObject("alertMsg", "회원가입에 실패하였습니다.");
-			mav.addObject("url" , request.getContextPath()+"/main/index.do");
+			mav.addObject("url", request.getContextPath() + "/main/index.do");
 			mav.setViewName("common/result");
 
 		} else {
 			mav.addObject("alertMsg", "회원가입이 완료되었습니다..");
-			mav.addObject("url" , request.getContextPath()+"/member/login.do");
+			mav.addObject("url", request.getContextPath() + "/member/login.do");
 			mav.setViewName("common/result");
 		}
 		return mav;
@@ -90,15 +93,15 @@ public class MemberController {
 
 		return mav;
 	}
-	
+
 	@RequestMapping("/member/logout.do")
-	public ModelAndView logout(HttpSession session,HttpServletRequest request) throws SQLException{
+	public ModelAndView logout(HttpSession session, HttpServletRequest request) throws SQLException {
 
 		ModelAndView mav = new ModelAndView();
 		Member user = (Member) ((Map<String, Object>) session.getAttribute("loginInfo")).get("member");
 		String id = user.getM_id();
-		
-		if(streamservice.get(id) != null) {
+
+		if (streamservice.get(id) != null) {
 			streamservice.delete(id);
 		}
 
@@ -106,6 +109,10 @@ public class MemberController {
 			session.removeAttribute("loginInfo");
 		}
 
+		// 수정자: 박혜연
+		// 수정 필요 내용 : 로그아웃 후 main 페이지 진입 시, 랜덤/베스트 콘텐츠 노출
+		mav.addObject("todayList", as.todayList());
+		mav.addObject("bestContent", as.bestContent());
 		mav.setViewName("main/index");
 		return mav;
 	}
@@ -127,22 +134,33 @@ public class MemberController {
 			mav.addObject("url", request.getContextPath() + "/member/login.do");
 			mav.setViewName("common/result");
 		} else {
-			HttpSession session = request.getSession();
-
-			Map<String, Object> map = new HashMap<String, Object>();
 			// 수정자 : 박혜연
-			// 기존 user_name 키값의 경우 사용 시 혼동의 소지가 있어 vo 및 db에 기록된 컬럼명으로 변경
-			// > 기존 loginInfo에 id 값만 들어가 있어 mypage 로드 시, 기타 정보 누락되어 member 전체 내용 저장
-			map.put("member", member);
-			session.setAttribute("loginInfo", map);
+			// 회원 탈퇴 후 로그인 제한
+			String leaveYN = member.getM_leave_yn();
 
-			// 수정자: 박혜연
-			// 수정 필요 내용 : main 페이지 진입 시, 랜덤/베스트 콘텐츠 노출을 위해
-			// mainController 의 index() 메소드 필요함
-			mav.addObject("todayList", as.todayList());
-			mav.addObject("bestContent", as.bestContent());
+			if (leaveYN.equals("N")) {
+				// 탈퇴하지 않았다면 정상 로그인
+				HttpSession session = request.getSession();
 
-			mav.setViewName("main/index");
+				Map<String, Object> map = new HashMap<String, Object>();
+				// 수정자 : 박혜연
+				// 기존 user_name 키값의 경우 사용 시 혼동의 소지가 있어 vo 및 db에 기록된 컬럼명으로 변경
+				// > 기존 loginInfo에 id 값만 들어가 있어 mypage 로드 시, 기타 정보 누락되어 member 전체 내용 저장
+				map.put("member", member);
+				session.setAttribute("loginInfo", map);
+
+				// 수정자: 박혜연
+				// 수정 필요 내용 : main 페이지 진입 시, 랜덤/베스트 콘텐츠 노출을 위해
+				// mainController 의 index() 메소드 필요함
+				mav.addObject("todayList", as.todayList());
+				mav.addObject("bestContent", as.bestContent());
+
+				mav.setViewName("main/index");
+			} else {
+				mav.addObject("alertMsg", "탈퇴한 회원입니다. 로그인하시려면 다시 회원가입해주세요.");
+				mav.addObject("url", request.getContextPath() + "/member/login.do");
+				mav.setViewName("common/result");
+			}
 		}
 
 		return mav;
@@ -218,7 +236,7 @@ public class MemberController {
 
 		return mav;
 	}
-	
+
 	/**
 	 * @method : myArtistDelete()
 	 * @date : 2020. 6. 19.
@@ -228,7 +246,7 @@ public class MemberController {
 	@RequestMapping("/member/myArtistDelete.do")
 	@ResponseBody
 	public Boolean myArtistDelete(HttpServletRequest request) {
-		
+
 		int res = 0;
 		Boolean decrementRes = true;
 		// 삭제 버튼 클릭 시, 해당 버튼이 속한 아티스트의 닉네임 get
@@ -238,20 +256,20 @@ public class MemberController {
 		MyArtist user_ma = new MyArtist();
 		user_ma.setM_id(user.getM_id());
 		user_ma.setm_nickname(artist_nick);
-		
+
 		// 회원의 myArtist 중 해당 닉네임 삭제
-		
+
 		int deleteRes = ms.myArtistDelete(user_ma);
-		
-		if(deleteRes > 0) {
+
+		if (deleteRes > 0) {
 			// 회원의 myArtist 에서 삭제되면 해당 nickname을 가진 아티스트의 a_subscribe -1
 			res = as.decrementSubscribe(artist_nick);
-			
-			if(res < 0) {
+
+			if (res < 0) {
 				decrementRes = false;
 			}
 		}
-		
+
 		return decrementRes;
 	}
 
@@ -366,7 +384,7 @@ public class MemberController {
 				aRewrite.setA_word(word);
 				System.out.println(aRewrite);
 				aRewriteRes = as.aWordModify(aRewrite);
-				if(aRewriteRes == 0) {
+				if (aRewriteRes == 0) {
 					as.aWordInsert(aRewrite);
 				}
 			}
@@ -437,9 +455,10 @@ public class MemberController {
 
 		return mav;
 	}
-	
+
 	@RequestMapping("/member/sign_in.do")
-	public ModelAndView sign_in(ModelAndView mav ,HttpServletRequest request ,@RequestParam Map<String, Object> commandMap) throws SQLException {
+	public ModelAndView sign_in(ModelAndView mav, HttpServletRequest request,
+			@RequestParam Map<String, Object> commandMap) throws SQLException {
 //		m_id
 //		m_pass
 //		m_class
@@ -462,38 +481,38 @@ public class MemberController {
 //		String original_filepath = request.getParameter("USER_ID"); // 생성
 //		String rename_filepath = request.getParameter("USER_ID");	// 생성.
 //		String m_word = request.getParameter("USER_ID");			// 공란 - 차후에 생성
-		
+
 		String path = request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
 		commandMap.put("urlPath", path);
 		ms.mailSending(commandMap);
-		
+
 		mav.addObject("alertMsg", "이메일로 인증번호가 발송되었습니다.");
 		mav.addObject("url", request.getContextPath() + "/main/index.do");
 		mav.setViewName("common/result");
 		return mav;
 	}
-	
+
 	@RequestMapping("/member/idCheck.do")
 	@ResponseBody
 	public boolean idCheck(@RequestParam String id) {
 		return ms.idCheck(id);
 	}
-	
+
 	@ExceptionHandler(value = SQLException.class)
-	public ModelAndView handleException(ModelAndView mav,HttpServletRequest request,Exception e) {
+	public ModelAndView handleException(ModelAndView mav, HttpServletRequest request, Exception e) {
 
 //		String getMessage() : 발생된 예외의 메시지를 리턴한다. 
 //		String toString() : 발생된 예외 클래스명과 메시지를 리턴한다. 
 //		String pritnStackTrace() : 발생된 예외를 역추적하기 위해 표준 예외 스트림을 출력한다. 
 //		예외 발생시 예외가 발생한 곳을 알아낼 때 주로 사용된다. 
-		
-		mav.addObject("alertMsg", e.getMessage() );
-		mav.addObject("url" , request.getContextPath()+"/main/index.do");
+
+		mav.addObject("alertMsg", e.getMessage());
+		mav.addObject("url", request.getContextPath() + "/main/index.do");
 		mav.setViewName("common/result");
 		return mav;
 
 	}
-	
+
 	/**
 	 * @method : updatemyArtist()
 	 * @date : 2020. 6. 21.
@@ -503,7 +522,7 @@ public class MemberController {
 	@RequestMapping("/member/insertMyArtist.do")
 	@ResponseBody
 	public Boolean insertMyArtist(HttpServletRequest request) {
-		
+
 		// 최종 결과
 		Boolean result = true;
 		// 업데이트 결과
@@ -514,63 +533,64 @@ public class MemberController {
 		Member user = (Member) info.get("member");
 		String m_id = user.getM_id();
 		System.out.println(m_id);
-		
+
 		// 해당 페이지의 아티스트 nickname
 		String m_nickname = request.getParameter("artist_nick");
 		System.out.println(m_nickname);
-		
+
 		// 회원의 myartist 추가
 		MyArtist myArtist = new MyArtist();
 		myArtist.setM_id(m_id);
 		myArtist.setm_nickname(m_nickname);
-		
+
 		// 추가 전 myartist에 중복값 있는지 확인
 		int same = ms.selectSame(myArtist);
-		
+
 		System.out.println(same);
-		
-		if(same == 0) { 
+
+		if (same == 0) {
 			// myartist 추가
 			insertRes = ms.insertMyArtist(myArtist);
 			result = true;
-			
+
 			// 아티스트의 구독자수 a_subscribe +1
-			if(insertRes > 0) {
+			if (insertRes > 0) {
 				updateRes = as.plusSubscribe(m_nickname);
 				result = true;
-				
-				if(updateRes < 0) {
+
+				if (updateRes < 0) {
 					result = false;
 				}
 			}
-			
+
 		} else {
 			result = false;
 		}
-		
+
 		return result;
-		
+
 	}
-	
+
 	/**
 	 * @method : myArtistList()
 	 * @date : 2020. 6. 21.
 	 * @buildBy : 박혜연
-	 * @comment : 구독한 아티스트 목록 모두 보기 페이지로 이동
+	 * @comment : 구독한 아티스트 목록 모두 보기 페이지로 이동 + 페이징
 	 */
 	@RequestMapping("/member/myartistlist.do")
 	public ModelAndView myArtistList(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
-		
-		// 나의 아티스트 목록  + 아티스트의 프로필 사진
-		MyArtist myartist = (MyArtist) request.getAttribute("myartist");
-		List<Map<String, Object>> plusprofile = ms.maplusprofile(myartist);
-		
-		System.out.println(plusprofile.size());
-		
+
+		// 나의 아티스트 목록 + 아티스트의 프로필 사진
+		Map<String, Object> info = (Map<String, Object>) request.getSession().getAttribute("loginInfo");
+		Member user = (Member) info.get("member");
+		String m_id = user.getM_id();
+		// 전체 받아오기
+		List<Map<String, Object>> plusprofile = ms.maplusprofile(m_id);
+
 		mav.addObject("myartistlistall", plusprofile);
 		mav.setViewName("member/myArtistList");
-		
+
 		return mav;
 	}
 
