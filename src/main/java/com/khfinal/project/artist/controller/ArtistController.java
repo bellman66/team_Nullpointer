@@ -228,10 +228,8 @@ public class ArtistController {
 		ModelAndView mav = new ModelAndView();
 		// String m_nickname을 통해 닉네임값으로 받아서 게시판 목록을 받아줍니다.
 		String m_nickname = request.getParameter("art_nickname");
-
-		List<Board> blist = as.selectPhotoList();
-		mav.addObject("blist", blist);
-		System.out.println(blist);
+		
+		
 
 		mav.setViewName("artist/artPhotoList");
 		return mav;
