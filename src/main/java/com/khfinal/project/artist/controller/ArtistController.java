@@ -243,7 +243,7 @@ public class ArtistController {
 	 * @buildBy : hajin
 	 * @comment : 아티스트 개인 페이지의 사진게시판 보여주는 페이지
 	 */
-	@RequestMapping("/artist/artistphoto.do")
+	@RequestMapping("/artist/artphotoview.do")
 	public ModelAndView artphotoView() {
 		ModelAndView mav = new ModelAndView();
 
