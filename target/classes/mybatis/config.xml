@@ -12,6 +12,7 @@
 		<typeAlias type="com.khfinal.project.schedule.model.vo.Schedule" alias="Schedule"/>
 		<typeAlias type="com.khfinal.project.member.model.vo.MyArtist" alias="MyArtist"/>
 		<typeAlias type="com.khfinal.project.artist.model.vo.ArtistPlus" alias="ArtistPlus"/>
+		<typeAlias type="com.khfinal.project.member.model.vo.MyRecord" alias="MyRecord"/>
 	</typeAliases>
 	
 	<mappers>
@@ -21,6 +22,7 @@
 		<mapper resource="/mybatis/mapper/scheduleMapper.xml"/>
 		<mapper resource="/mybatis/mapper/myArtistMapper.xml"/>
 		<mapper resource="/mybatis/mapper/artistPlusMapper.xml"/>
+		<mapper resource="/mybatis/mapper/myRecordMapper.xml"/>
 	</mappers>
 	
 </configuration>

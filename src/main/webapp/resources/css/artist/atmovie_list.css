@@ -56,6 +56,20 @@
 	/* border:1px solid cyan; */
 }
 
+.artmovie_list .amovie_board li .movie_box iframe{
+	width:90%;
+	height:180px;
+	padding:10px 10px 5px 5px;
+	/* border:1px solid cyan; */
+}
+
+.artmovie_list .amovie_board li .movie_box iframe{
+	width:90%;
+	height:180px;
+	padding:10px 10px 5px 5px;
+	/* border:1px solid cyan; */
+}
+
 /* 페이징 처리 기능부분,검색 창은 동일 class값 사용 */
 
 /* 글쓰기 버튼 */

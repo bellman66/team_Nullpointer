@@ -154,11 +154,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 			ORDER BY B_NUM DESC)AS TB where rnum between #{page.start} and #{page.end}
 		</select>
 		
-		<!-- 아티스트 개인 페이지 소통/후기 게시판  -->
-		<!-- resultMap으로 board부분 합체해줍니다. -->
-		<select id="selectPhotoList" resultType="Board">
-			SELECT * FROM TB_BOARD WHERE B_CATEGORY = 5 
-		</select>
-	
-   
 </mapper> 

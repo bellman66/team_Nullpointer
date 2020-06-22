@@ -71,7 +71,9 @@
 						<h2>Today Content</h2>
 						<div class="todayVideo">
 							<c:forEach items="${todayList}" var="list" varStatus="listnum">
-								<div id="tv${listnum.index}">${list.m_id}, ${list.au_file}</div>
+								<div id="tv${listnum.index}">
+									<a href="#"><img src="https://img.youtube.com/vi/${list.au_thumbnail}/0.jpg" width="100%" height="100%"></a> 
+								</div>
 							</c:forEach>
 						</div>
 					</div>
@@ -86,7 +88,7 @@
 						<div class="bestVideo">
 							<c:forEach items="${bestContent}" var="bcon" varStatus="listnum">
 								<div id="bv${listnum.index+1}">
-									${bcon.au_file}
+									<a href="#"><img src="https://img.youtube.com/vi/${bcon.au_thumbnail}/0.jpg" width="100%" height="100%"></a> 
 								</div>
 							</c:forEach>
 						</div>

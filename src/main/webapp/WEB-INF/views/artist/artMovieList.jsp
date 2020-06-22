@@ -42,82 +42,30 @@
 							action="<%=request.getContextPath()%>/artist/artistartmovie.do">
 							<h3>공연 영상</h3>
 							<div class="amovie_board">
+								<!-- 영상 콘텐츠 시작 -->
 								<ul>
-									<!-- forEach야 힘내거라!!! -->
-									<li class="amovie_box"><span class="movie_box"><img
-											src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg"></span><br />
-										<span class="aphTitle">글내용 | </span><br /> <span
-										class="aphNicname">닉네임 | </span>
-										<div class="btn_phoani">
-											<a href="#"> <span class="aboard_rd"></span>
-											</a>
-										</div></li>
-									<li class="amovie_box"><span class="movie_box"><img
-											src="<%=request.getContextPath()%>/resources/img/artist/today.jpg"></span><br />
-										<span class="aphTitle">글내용 | </span><br /> <span
-										class="aphNicname">닉네임 | </span>
-										<div class="btn_phoani">
-											<a href="#"> <span class="aboard_rd"></span>
-											</a>
-										</div></li>
-									<li class="amovie_box"><span class="movie_box"><img
-											src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg"></span><br />
-										<span class="aphTitle">글내용 | </span><br /> <span
-										class="aphNicname">닉네임 | </span>
-										<div class="btn_phoani">
-											<a href="#"> <span class="aboard_rd"></span>
-											</a>
-										</div></li>
-									<li class="amovie_box"><span class="movie_box"><img
-											src="<%=request.getContextPath()%>/resources/img/artist/today.jpg"></span><br />
-										<span class="aphTitle">글내용 | </span><br /> <span
-										class="aphNicname">닉네임 | </span>
-										<div class="btn_phoani">
-											<a href="#"> <span class="aboard_rd"></span>
-											</a>
-										</div></li>
-									<!-- forEach야 힘내거라!!! -->
-
-									<!-- forEach야 힘내거라!!! -->
-									<li class="amovie_box"><span class="movie_box"><img
-											src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg"></span><br />
-										<span class="aphTitle">글내용 | </span><br /> <span
-										class="aphNicname">닉네임 | </span>
-										<div class="btn_phoani">
-											<a href="#"> <span class="aboard_rd"></span>
-											</a>
-										</div></li>
-									<li class="amovie_box"><span class="movie_box"><img
-											src="<%=request.getContextPath()%>/resources/img/artist/today.jpg"></span><br />
-										<span class="aphTitle">글내용 | </span><br /> <span
-										class="aphNicname">닉네임 | </span>
-										<div class="btn_phoani">
-											<a href="#"> <span class="aboard_rd"></span>
-											</a>
-										</div></li>
-									<li class="amovie_box"><span class="movie_box"><img
-											src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg"></span><br />
-										<span class="aphTitle">글내용 | </span><br /> <span
-										class="aphNicname">닉네임 | </span>
-										<div class="btn_phoani">
-											<a href="#"> <span class="aboard_rd"></span>
-											</a>
-										</div></li>
-									<li class="amovie_box"><span class="movie_box"><img
-											src="<%=request.getContextPath()%>/resources/img/artist/today.jpg"></span><br />
-										<span class="aphTitle">글내용 | </span><br /> <span
-										class="aphNicname">닉네임 | </span>
-										<div class="btn_phoani">
-											<a href="#"> <span class="aboard_rd"></span>
-											</a>
-										</div></li>
-									<!-- forEach야 힘내거라!!! -->
+									<c:forEach items="${artlistvideo}" var="artlist"
+										varStatus="artStatus">
+										<li class="amovie_box">
+											<span class="movie_box">
+												<iframe src="https://www.youtube.com/embed/${artlist.au_file}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+											</span><br />
+											<span class="aphTitle">글내용 | ${artlist.au_content}</span><br />
+											<span class="aphNicname">닉네임 | ${artlist.au_date}</span>
+											<div class="btn_phoani">
+												<a href="#">
+													<span class="aboard_rd"></span>
+												</a>
+											</div>
+										</li>
+									</c:forEach>
 								</ul>
 							</div>
-
+							<!-- 영상 콘텐츠 끝 -->
 							<!-- artist게시판들 클래스 다들 동일 클래스 사용  -->
-							<button class="atwrite" type="button">글쓰기</button>
-
+							<c:if test="${loginInfo.member.m_id eq artist_nick}">
+								<button class="atwrite" type="button">글쓰기</button>
+							</c:if>
 							<!-- 페이징 처리 기능부분  -->
 							<div class="artPaging">
 								<a href="#">페이지처리할꺼임</a>

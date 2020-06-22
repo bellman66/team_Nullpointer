@@ -57,7 +57,7 @@
 										<h6>타투 진행영상</h6>
 										<ul>
 											<li><a href="#"><img
-													src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg)"></a></li>
+													src="https://img.youtube.com/vi/j-6ExGL0ld4/0.jpg" width="100%" height="100%"></a></li>
 											<li><a href="#"><img
 													src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg)"></a></li>
 											<li><a href="#"><img
@@ -67,7 +67,7 @@
 											<li><a href="#"><img
 													src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg)"></a></li>
 										</ul>
-										<a href="<%=request.getContextPath()%>/artist/artist-video"
+										<a href="<%=request.getContextPath()%>/artist/artistvideo.do"
 											class="more" title="더 보기">More</a>
 									</div>
 									<div class="tatto-photo">
@@ -75,16 +75,8 @@
 										<ul>
 											<li><a href="#"><img
 													src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg)"></a></li>
-											<li><a href="#"><img
-													src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg)"></a></li>
-											<li><a href="#"><img
-													src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg)"></a></li>
-											<li><a href="#"><img
-													src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg)"></a></li>
-											<li><a href="#"><img
-													src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg)"></a></li>
 										</ul>
-										<a href="<%=request.getContextPath()%>/artist/artist-photo"
+										<a href="<%=request.getContextPath()%>/artist/artistphoto.do?art_nickname=${artlist.m_nickname}"
 											class="more" title="더 보기">More</a>
 									</div>
 									<div class="ta_cash" id="${loginInfo.member.m_id}">

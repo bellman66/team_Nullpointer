@@ -12,6 +12,8 @@ public class Artist {
 	private String au_content;
 	private String au_file;
 	private int au_like;
+	private String au_thumbnail;
+	private int au_type;
 	
 	private int ats_num;
 	private String ats_start_date;
@@ -122,8 +124,25 @@ public class Artist {
 	public String toString() {
 		return "Artist [au_num=" + au_num + ", m_id=" + m_id + ", m_nickname=" + m_nickname + ", au_date=" + au_date
 				+ ", au_content=" + au_content + ", au_file=" + au_file + ", au_like=" + au_like + ", ats_num="
+				+ ", au_thumbnail=" + au_thumbnail + ", au_type=" + au_type
 				+ ats_num + ", ats_start_date=" + ats_start_date + ", ats_end_date=" + ats_end_date + ", ats_content="
 				+ ats_content + ", ats_time=" + ats_time + "]";
+	}
+
+	public String getAu_thumbnail() {
+		return au_thumbnail;
+	}
+
+	public void setAu_thumbnail(String au_thumbnail) {
+		this.au_thumbnail = au_thumbnail;
+	}
+
+	public int getAu_type() {
+		return au_type;
+	}
+
+	public void setAu_type(int au_type) {
+		this.au_type = au_type;
 	}
 
 	

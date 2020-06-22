@@ -191,20 +191,24 @@
 						<!-- 시청 기록 부분 시작 -->
 						<div class="mypage_history">
 							<h6>나의 시청 기록</h6>
-							<!-- member + myrecord 내역 불러와서 foreach로 돌릴 예정 -->
 							<ul>
-								<li><a href="#">member + myrecord 내역 불러와서 foreach로 돌릴
-										예정</a></li>
-								<li><a href="#">member + myrecord 내역 불러와서 foreach로 돌릴
-										예정</a></li>
-								<li><a href="#">member + myrecord 내역 불러와서 foreach로 돌릴
-										예정</a></li>
-								<li><a href="#">member + myrecord 내역 불러와서 foreach로 돌릴
-										예정</a></li>
-								<li><a href="#">member + myrecord 내역 불러와서 foreach로 돌릴
-										예정</a></li>
+								<c:forEach items="${myRecordList}" var="myreclist"
+									varStatus="myrecordnum">
+									<c:if test="${myrecordnum.index < 5}">
+										<li>
+										<!-- 영상 / 사진으로 나누어야 할 듯 -->
+											<a href="<%=request.getContextPath()%>/artist/artmovieview.do?au_num=${myreclist.au_num}" 
+												id="${myreclist.ma_num}">${myreclist.m_nickname}</a>
+											<button class="listdelete" id="del${myreclist.ma_num}"
+												onclick="myRecordDelete('#del${myreclist.ma_num}')">삭제</button>
+										</li>
+									</c:if>
+								</c:forEach>
 							</ul>
-							<a href="#" class="more" title="더 보기">More</a>
+							<c:if test="${fn:length(myRecordList) > 5}">
+								<a href="#" 
+									class="more" title="더 보기">More</a>
+							</c:if>
 						</div>
 						<!-- 시청 기록 부분 끝 -->
 						<!-- 지원 내역 부분 시작 -->
