@@ -193,7 +193,7 @@
 	top: 16px;
 }
 
-.mypage-box .mypage_follow .listdelete {
+.mypage-box .mypage_follow .listdelete, .mypage-box .mypage_history .listdelete {
 	float: right;
 	display: inline-block;
 	height: 19px;
@@ -211,7 +211,7 @@
 }
 
 
-.mypage-box .mypage_follow .listdelete:hover {
+.mypage-box .mypage_follow .listdelete:hover, .mypage-box .mypage_history .listdelete:hover {
 	color: #0c0c13;
 	background-color: #fff;
 	border: 1px solid #0c0c13;

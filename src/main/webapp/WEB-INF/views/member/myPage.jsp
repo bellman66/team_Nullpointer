@@ -198,15 +198,15 @@
 										<li>
 										<!-- 영상 / 사진으로 나누어야 할 듯 -->
 											<a href="<%=request.getContextPath()%>/artist/artmovieview.do?au_num=${myreclist.au_num}" 
-												id="${myreclist.ma_num}">${myreclist.m_nickname}</a>
-											<button class="listdelete" id="del${myreclist.ma_num}"
-												onclick="myRecordDelete('#del${myreclist.ma_num}')">삭제</button>
+												id="${myreclist.mr_num}">${myreclist.m_nickname}</a>
+											<button class="listdelete" id="del${myreclist.mr_num}"
+												onclick="myRecordDelete('#del${myreclist.mr_num}')">삭제</button>
 										</li>
 									</c:if>
 								</c:forEach>
 							</ul>
 							<c:if test="${fn:length(myRecordList) > 5}">
-								<a href="#" 
+								<a href="<%=request.getContextPath()%>/member/myRecordList.do" 
 									class="more" title="더 보기">More</a>
 							</c:if>
 						</div>

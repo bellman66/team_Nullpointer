@@ -17,6 +17,14 @@
 	/* border: 1px solid blue; */
 }
 
+#boardTab h3 {
+	font-size: 23px;
+	font-weight: 800;
+	color: #0c0c13;
+	padding-left: 2%;
+	padding-bottom: 2%;
+}
+
 /* tab메뉴 */
 .tabs {
 	width: 100%;

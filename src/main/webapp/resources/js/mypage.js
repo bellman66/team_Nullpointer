@@ -192,7 +192,7 @@ function validata() {
 
 }
 
-// 삭제 버튼 클릭 시, 해당 버튼이 위치한 li 삭제
+// 나의 아티스트 삭제 버튼 클릭 시, 해당 버튼이 위치한 li 삭제
 function myArtistDelete(button) {
 	
 	// 클릭한 삭제 버튼이 해당되는 아티스트 닉네임 get
@@ -211,6 +211,30 @@ function myArtistDelete(button) {
 				location.href='/springmvc/member/myPage.do';
 			} else {
 				alert('구독 취소에 실패하였습니다. 새로고침 후 다시 시도해주세요.');
+			}
+		}
+		
+	});
+	
+}
+
+// 나의 시청기록 삭제 버튼 클릭 시, 해당 버튼이 위치한 li 삭제
+function myRecordDelete(button) {
+	
+	// 클릭한 삭제 버튼이 해당되는 아티스트 닉네임 get
+	var mrNum = $(button).prev().attr('id');
+	
+	$.ajax({
+		url: '/springmvc/member/myRecordDelete.do',
+		type: 'GET',
+		data: {
+			"mrNum" : mrNum
+			},
+		success: function(res) {
+			if(res != null) {
+				location.href='/springmvc/member/myPage.do';
+			} else {
+				alert('기록 삭제에 실패하였습니다. 새로고침 후 다시 시도해주세요.');
 			}
 		}
 		

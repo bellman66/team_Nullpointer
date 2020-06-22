@@ -52,6 +52,10 @@ public class MyRecordDao {
 		return session.selectList("MyRecord.selectMRList", data);
 	}
 	
+	public int myRecordDelete(MyRecord myrecord) {
+		return session.delete("MyRecord.myRecordDelete", myrecord);
+	}
+	
 	
 
 }

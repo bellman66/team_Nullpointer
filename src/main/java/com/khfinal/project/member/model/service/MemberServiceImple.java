@@ -234,4 +234,9 @@ public class MemberServiceImple implements MemberService {
 		return mrdao.myRecordList(m_id);
 	}
 
+	@Override
+	public int myRecordDelete(MyRecord myrecord) {
+		return mrdao.myRecordDelete(myrecord);
+	}
+
 }
