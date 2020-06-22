@@ -33,7 +33,8 @@ public interface ArtistService {
 	//작성자 : 이하진
 	//수정자 : 박혜연
 	//아티스트 개인페이지 관련
-	public List<Artist> selectArtPage(String m_nickname);
+	public List<Artist> selectArtPageVideo(String m_nickname);
+	public List<Artist> selectArtPagePhoto(String m_nickname);
 	public Member selectProfile(String m_nickname);
 	public ArtistPlus selectAll(String m_nickname);
 	

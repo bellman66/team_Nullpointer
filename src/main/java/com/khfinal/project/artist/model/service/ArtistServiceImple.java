@@ -266,10 +266,23 @@ public class ArtistServiceImple implements ArtistService {
 	 * @comment : 아티스트 개인 페이지관련
 	 */
 	@Override
-	public List<Artist> selectArtPage(String m_nickname) {
+	public List<Artist> selectArtPageVideo(String m_nickname) {
 		// 수정자 : 박혜연
 		// 쿼리 작동을 위한 매개변수설정
-		return ad.selectArtPage(m_nickname);
+		return ad.selectArtPageVideo(m_nickname);
+	}
+	
+	/**
+	 * @method : selectArtPage
+	 * @date : 2020. 6. 21.
+	 * @buildBy : hajin
+	 * @comment : 아티스트 개인 페이지관련
+	 */
+	@Override
+	public List<Artist> selectArtPagePhoto(String m_nickname) {
+		// 수정자 : 박혜연
+		// 쿼리 작동을 위한 매개변수설정
+		return ad.selectArtPagePhoto(m_nickname);
 	}
 
 	/**

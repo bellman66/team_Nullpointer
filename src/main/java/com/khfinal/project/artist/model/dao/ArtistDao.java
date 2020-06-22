@@ -99,10 +99,20 @@ public class ArtistDao {
 	 * @method : selectArtPage
 	 * @date : 2020. 6. 21.
 	 * @buildBy : hajin
-	 * @comment : 아티스트 개인 페이지관련
+	 * @comment : 아티스트 개인 페이지관련(비디오)
 	 */
-	public List<Artist> selectArtPage(String m_nickname) {
-		return session.selectList("Artist.selectArtPage", m_nickname);
+	public List<Artist> selectArtPageVideo(String m_nickname) {
+		return session.selectList("Artist.selectArtPageVideo", m_nickname);
+	}
+	
+	/**
+	 * @method : selectArtPage
+	 * @date : 2020. 6. 22.
+	 * @buildBy : 박혜연
+	 * @comment : 아티스트 개인 페이지관련(사진)
+	 */
+	public List<Artist> selectArtPagePhoto(String m_nickname) {
+		return session.selectList("Artist.selectArtPagePhoto", m_nickname);
 	}
 
 	public ArtistPlus selectAll(String m_nickname) {
