@@ -16,6 +16,11 @@
 		select * from
 		TB_ARTIST_UPLOAD where m_id = #{m_id}
 	</select>
+	
+	<select id="selectvideoview" resultType="Artist">
+		select * from
+		TB_ARTIST_UPLOAD where AU_FILE = #{select_file}
+	</select>
 
 	<!-- 스케줄 보여주는 쿼리 -->
 	<select id="artschedule" resultType="Artist">

@@ -239,6 +239,16 @@ public class ArtistController {
 		mav.setViewName("artist/artMovieList");
 		return mav;
 	}
+	
+	@RequestMapping("/artist/artistvideoview.do")
+	public ModelAndView artistvideoview(HttpServletRequest request , @RequestParam String select_file) {
+		ModelAndView mav = new ModelAndView();
+		
+		Artist selectvideo = as.selectvideoview(select_file);
+		mav.addObject("selectvideo", selectvideo);
+		mav.setViewName("artist/artMovie_view");
+		return mav;
+	}
 
 	/**
 	 * @method : artistphoto
