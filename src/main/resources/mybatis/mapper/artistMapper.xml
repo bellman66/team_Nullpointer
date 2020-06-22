@@ -114,9 +114,4 @@
 			ORDER BY B_NUM DESC)AS TB where rnum between #{page.start} and #{page.end}
 	</select>
 	
-	<!-- resultMap으로 board부분 합체해줍니다. -->
-	<!-- <select id="selectPhotoList" resultType="Map" parameterType="">
-	</select> -->
-	
-
 </mapper>

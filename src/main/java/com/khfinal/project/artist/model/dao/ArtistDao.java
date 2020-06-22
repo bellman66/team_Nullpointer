@@ -212,9 +212,4 @@ public class ArtistDao {
 
 	}
 	
-	// 사진 게시판 전체 목록 리스트
-	public List<Board>selectPhotoList(){
-		return session.selectList("Board.selectPhotoList");
-	}
-
 }

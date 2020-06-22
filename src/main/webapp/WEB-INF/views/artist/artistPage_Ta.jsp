@@ -75,16 +75,8 @@
 										<ul>
 											<li><a href="#"><img
 													src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg)"></a></li>
-											<li><a href="#"><img
-													src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg)"></a></li>
-											<li><a href="#"><img
-													src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg)"></a></li>
-											<li><a href="#"><img
-													src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg)"></a></li>
-											<li><a href="#"><img
-													src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg)"></a></li>
 										</ul>
-										<a href="<%=request.getContextPath()%>/artist/artist-photo"
+										<a href="<%=request.getContextPath()%>/artist/artistphoto.do?art_nickname=${artlist.m_nickname}"
 											class="more" title="더 보기">More</a>
 									</div>
 									<div class="ta_cash" id="${loginInfo.member.m_id}">
