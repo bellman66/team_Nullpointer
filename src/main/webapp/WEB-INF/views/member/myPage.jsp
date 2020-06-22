@@ -197,7 +197,7 @@
 									<c:if test="${myrecordnum.index < 5}">
 										<li>
 										<!-- 영상 / 사진으로 나누어야 할 듯 -->
-											<a href="<%=request.getContextPath()%>/artist/artmovieview.do?au_num=${myreclist.au_num}" 
+											<a href="<%=request.getContextPath()%>/artist/artistvideoview.do?select_file=${myreclist.au_file}" 
 												id="${myreclist.mr_num}">${myreclist.m_nickname}</a>
 											<button class="listdelete" id="del${myreclist.mr_num}"
 												onclick="myRecordDelete('#del${myreclist.mr_num}')">삭제</button>

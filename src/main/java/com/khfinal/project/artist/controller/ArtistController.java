@@ -22,6 +22,7 @@ import com.khfinal.project.artist.model.service.ArtistService;
 import com.khfinal.project.artist.model.vo.Artist;
 import com.khfinal.project.artist.model.vo.ArtistPlus;
 import com.khfinal.project.board.model.vo.Board;
+import com.khfinal.project.member.model.service.MemberService;
 import com.khfinal.project.member.model.vo.Member;
 
 @Controller
@@ -29,6 +30,8 @@ public class ArtistController {
 
 	@Autowired
 	ArtistService as;
+	@Autowired
+	MemberService ms;
 
 	/**
 	 * @method : selectArtist
@@ -244,7 +247,20 @@ public class ArtistController {
 	public ModelAndView artistvideoview(HttpServletRequest request , @RequestParam String select_file) {
 		ModelAndView mav = new ModelAndView();
 		
+		// 수정자 : 박혜연
+		// 일반 회원의 시청 기록에 추가
+		HttpSession session = request.getSession();
+		Map<String, Object> info = (Map<String, Object>) session.getAttribute("loginInfo");
+		Member user = (Member) info.get("member");
+
 		Artist selectvideo = as.selectvideoview(select_file);
+		
+		Map<String, Object> myrecord = new HashMap<>();
+		myrecord.put("m_id", user.getM_id());
+		myrecord.put("selectvideo", selectvideo);
+		
+		int insertRes = ms.insertMyRecord(myrecord);
+		
 		mav.addObject("selectvideo", selectvideo);
 		mav.setViewName("artist/artMovie_view");
 		return mav;

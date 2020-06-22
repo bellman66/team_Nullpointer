@@ -653,7 +653,7 @@ public class MemberController {
 	 * @method : myRecordDelete()
 	 * @date : 2020. 6. 19.
 	 * @buildBy : 박혜연
-	 * @comment : 마이페이지(일반회원) 나의 아티스트 목록 삭제(ajax)
+	 * @comment : 마이페이지(일반회원) 나의 시청 기록 목록 삭제(ajax)
 	 */
 	@RequestMapping("/member/myRecordDelete.do")
 	@ResponseBody

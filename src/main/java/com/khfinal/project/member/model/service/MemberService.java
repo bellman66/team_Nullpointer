@@ -28,4 +28,5 @@ public interface MemberService {
 	public List<MyRecord> myRecordList(String m_id);
 	public Map<String, Object> selectAllMRList(String m_id, int currentPage, int cntPerPage);
 	public int myRecordDelete(MyRecord myrecord);
+	public int insertMyRecord(Map<String, Object> myrecord);
 }

@@ -56,6 +56,8 @@ public class MyRecordDao {
 		return session.delete("MyRecord.myRecordDelete", myrecord);
 	}
 	
-	
+	public int insertMyRecord(Map<String, Object> myrecord) {
+		return session.insert("MyRecord.insertMyRecord",myrecord);
+	}
 
 }
