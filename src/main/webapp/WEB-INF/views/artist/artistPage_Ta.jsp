@@ -45,9 +45,10 @@
 								<img class="atprofile"
 									src="/springmvc/resources/upload/${mlist.rename_filepath}" />
 								<div class="tatto-text">
-									<p>
-										${aplist.a_word}
-									</p>
+									<p>${aplist.a_word}</p>
+								</div>
+								<div class="art-subscribe">
+									♥${aplist.a_subscribe}
 								</div>
 							</div>
 							<div class="tatto-menu">
