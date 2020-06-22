@@ -26,10 +26,9 @@ import com.khfinal.project.artist.model.vo.ArtistPlus;
 import com.khfinal.project.member.model.service.MemberService;
 import com.khfinal.project.member.model.vo.Member;
 import com.khfinal.project.member.model.vo.MyArtist;
+import com.khfinal.project.member.model.vo.MyRecord;
 import com.khfinal.project.schedule.model.vo.Schedule;
 import com.khfinal.project.stream.service.streamService;
-
-import common.util.Paging;
 
 @Controller
 public class MemberController {
@@ -186,6 +185,8 @@ public class MemberController {
 		mav.addObject("myArtistList", myArtistList);
 
 		// 페이지 로드 시, 시청 기록 목록 session에 담기
+		List<MyRecord> myRecordList = ms.myRecordList(user.getM_id());
+		mav.addObject("myRecordList", myRecordList);
 
 		mav.setViewName("member/myPage");
 
@@ -575,7 +576,7 @@ public class MemberController {
 	 * @method : myArtistList()
 	 * @date : 2020. 6. 21.
 	 * @buildBy : 박혜연
-	 * @comment : 구독한 아티스트 목록 모두 보기 페이지로 이동 + 페이징
+	 * @comment : 구독한 아티스트 목록 모두 보기 페이지로 이동
 	 */
 	@RequestMapping("/member/myartistlist.do")
 	public ModelAndView myArtistList(HttpServletRequest request) {
@@ -591,6 +592,55 @@ public class MemberController {
 		mav.addObject("myartistlistall", plusprofile);
 		mav.setViewName("member/myArtistList");
 
+		return mav;
+	}
+
+	/**
+	 * @method : myRecordList()
+	 * @date : 2020. 6. 22.
+	 * @buildBy : 박혜연
+	 * @comment : 기록 리스트 모두 보기 페이지로 이동
+	 */
+	@RequestMapping("/member/myRecordList.do")
+	public ModelAndView myRecordList(HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+
+		mrListPaging(request);
+		mav.setViewName("member/myRecordList");
+
+		return mav;
+	}
+
+	public ModelAndView mrListPaging(HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		
+		Map<String, Object> info = (Map<String, Object>) request.getSession().getAttribute("loginInfo");
+		Member user = (Member) info.get("member");
+		String m_id = user.getM_id();
+		
+		int currentPage = 1;
+		int cntPerPage = 5;
+
+		if (request.getParameter("cPage") != null) {
+			currentPage = Integer.parseInt(request.getParameter("cPage"));
+		}
+
+		if (request.getParameter("cntPerPage") != null) {
+			currentPage = Integer.parseInt(request.getParameter("cntPerPage"));
+		}
+
+		Map<String, Object> res = ms.selectAllMRList(m_id, currentPage, cntPerPage);
+		mav.addObject("paging", res.get("paging"));
+		System.out.println(res.get("paging"));
+
+		//res에 뭐가 들어있는지 다 보여주는 코드
+		for (String key : res.keySet()) {
+			System.out.println(res.get(key));
+		}
+
+		mav.addObject("MyRecordList", res);
+		mav.setViewName("member/myRecordList");
+		
 		return mav;
 	}
 

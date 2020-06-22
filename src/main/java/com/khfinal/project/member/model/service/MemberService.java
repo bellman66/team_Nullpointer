@@ -6,6 +6,7 @@ import java.util.Map;
 
 import com.khfinal.project.member.model.vo.Member;
 import com.khfinal.project.member.model.vo.MyArtist;
+import com.khfinal.project.member.model.vo.MyRecord;
 
 public interface MemberService {
 	
@@ -24,4 +25,6 @@ public interface MemberService {
 	public int insertMyArtist(MyArtist myartist);
 	public int selectSame(MyArtist myaritst);
 	public List<Map<String, Object>> maplusprofile(String m_id);
+	public List<MyRecord> myRecordList(String m_id);
+	public Map<String, Object> selectAllMRList(String m_id, int currentPage, int cntPerPage);
 }

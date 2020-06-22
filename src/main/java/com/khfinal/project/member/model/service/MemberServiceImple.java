@@ -1,8 +1,9 @@
 package com.khfinal.project.member.model.service;
 
-import java.io.File; 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,8 +20,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.khfinal.project.member.model.dao.MemberDao;
 import com.khfinal.project.member.model.dao.MyArtistDao;
+import com.khfinal.project.member.model.dao.MyRecordDao;
 import com.khfinal.project.member.model.vo.Member;
 import com.khfinal.project.member.model.vo.MyArtist;
+import com.khfinal.project.member.model.vo.MyRecord;
+
+import common.util.Paging;
 
 @Service
 public class MemberServiceImple implements MemberService {
@@ -29,6 +34,8 @@ public class MemberServiceImple implements MemberService {
 	MemberDao mdao;
 	@Autowired
 	MyArtistDao madao;
+	@Autowired
+	MyRecordDao mrdao;
 	@Autowired
 	JavaMailSender mailSender;
 	
@@ -207,6 +214,24 @@ public class MemberServiceImple implements MemberService {
 	@Override
 	public List<Map<String, Object>> maplusprofile(String m_id) {
 		return madao.maplusprofile(m_id);
+	}
+
+	@Override
+	public Map<String, Object> selectAllMRList(String m_id, int currentPage, int cntPerPage) {
+		Map<String, Object> result = new HashMap<String, Object>();
+		
+		Paging page = new Paging(mrdao.contentCntMr(m_id), currentPage, cntPerPage);
+
+		List<MyRecord> mrlist = mrdao.selectMRList(m_id, page);
+		result.put("paging", page);
+		result.put("mrlist", mrlist);
+		
+		return result;
+	}
+
+	@Override
+	public List<MyRecord> myRecordList(String m_id) {
+		return mrdao.myRecordList(m_id);
 	}
 
 }
