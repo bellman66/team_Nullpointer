@@ -54,12 +54,12 @@
 									<div class="art-video">
 										<h6>공연 영상</h6>
 										<ul>
+											<!--  artlist.AU_FILE , artlist.AU_THUMBNAIL 사용  -->
 											<c:forEach items="${artlistvideo}" var="artlist"
 												varStatus="artStatus"  begin="0" end="4">
-												<li><a href="#"> <img
-														src="/springmvc/resources/upload/${artlist.au_thumbnail}">
-												</a></li>
-
+												<li>
+													<a href="#"><img src="https://img.youtube.com/vi/${artlist.au_thumbnail}/0.jpg" width="100%" height="100%"></a> 
+												</li>
 											</c:forEach>
 
 										</ul>
