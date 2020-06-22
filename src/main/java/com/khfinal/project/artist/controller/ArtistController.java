@@ -93,8 +93,13 @@ public class ArtistController {
 		// 수정자 : 박혜연
 		// 매개변수 설정
 		// 아티스트의 업로드 콘텐츠 받아오기
-		List<Artist> artlist = as.selectArtPage(m_nickname);
-		mav.addObject("artlist", artlist);
+		// 영상 콘텐츠
+		List<Artist> artlistvideo = as.selectArtPageVideo(m_nickname);
+		mav.addObject("artlistvideo", artlistvideo);
+
+		// 사진 콘텐츠
+		List<Artist> artlistphoto = as.selectArtPagePhoto(m_nickname);
+		mav.addObject("artlistphoto", artlistphoto);
 
 		// 아티스트의 한줄소개, 구독자수 받아오기
 		ArtistPlus aplist = as.selectAll(m_nickname);
@@ -157,8 +162,13 @@ public class ArtistController {
 		m_nickname = request.getParameter("artist_nick");
 		System.out.println(m_nickname);
 
-		List<Artist> artlist = as.selectArtPage(m_nickname);
-		mav.addObject("artlist", artlist);
+		// 영상 콘텐츠
+		List<Artist> artlistvideo = as.selectArtPageVideo(m_nickname);
+		mav.addObject("artlistvideo", artlistvideo);
+
+		// 사진 콘텐츠
+		List<Artist> artlistphoto = as.selectArtPagePhoto(m_nickname);
+		mav.addObject("artlistphoto", artlistphoto);
 
 		// 아티스트의 한줄소개, 구독자수 받아오기
 		ArtistPlus aplist = as.selectAll(m_nickname);
@@ -212,6 +222,9 @@ public class ArtistController {
 	@RequestMapping("/artist/artistvideo.do")
 	public ModelAndView artistvideo() {
 		ModelAndView mav = new ModelAndView();
+		
+		// 수정자: 박혜연
+		// 업로드 전체 페이지 로드
 
 		mav.setViewName("artist/artMovieList");
 		return mav;
@@ -288,17 +301,17 @@ public class ArtistController {
 	 * @comment : // 아티스트 스케줄을 추가했을때 데이터값을 가져와서 디비에 추가해주는 메서드
 	 */
 	@RequestMapping("/artist/artistscheduleadd.do")
-	public ModelAndView artistscheduleadd(HttpServletRequest request, String artstartYear, String artstartMonth, String artstartDay,
-			String artstartHour, String artstartMinute, String artendYear, String artendMonth, String artendDay,
-			String artendHour, String artendMinute, String atr_as_content, Artist artist) {
+	public ModelAndView artistscheduleadd(HttpServletRequest request, String artstartYear, String artstartMonth,
+			String artstartDay, String artstartHour, String artstartMinute, String artendYear, String artendMonth,
+			String artendDay, String artendHour, String artendMinute, String atr_as_content, Artist artist) {
 		ModelAndView mav = new ModelAndView();
 
 		String start = artstartYear + artstartMonth + artstartDay + artstartHour + artstartMinute;
 		String end = artendYear + artendMonth + artendDay + artendHour + artendMinute;
-		
+
 		HttpSession session = request.getSession();
-	    Map<String, Object> login =  (Map<String, Object>) session.getAttribute("loginInfo");
-	    Member member = (Member) login.get("member");
+		Map<String, Object> login = (Map<String, Object>) session.getAttribute("loginInfo");
+		Member member = (Member) login.get("member");
 
 		artist.setAts_start_date(start);
 		artist.setAts_end_date(end);
@@ -313,29 +326,29 @@ public class ArtistController {
 
 		return mav;
 	}
-	
+
 	@RequestMapping("/artist/artScDelete.do")
 	public ModelAndView artScDelete(HttpServletRequest request, String scdelete) {
 		ModelAndView mav = new ModelAndView();
-		
+
 		HttpSession session = request.getSession();
-	    Map<String, Object> login =  (Map<String, Object>) session.getAttribute("loginInfo");
-	    Member member = (Member) login.get("member");
-	    
-	    String m_id = member.getM_id();
-	    
-	    int res = as.artScDelete(scdelete, m_id, m_nickname);
-	    
-	    if(res < 1) {
+		Map<String, Object> login = (Map<String, Object>) session.getAttribute("loginInfo");
+		Member member = (Member) login.get("member");
+
+		String m_id = member.getM_id();
+
+		int res = as.artScDelete(scdelete, m_id, m_nickname);
+
+		if (res < 1) {
 			mav.addObject("alertMsg", "일정을 삭제 할수 없습니다.");
 			mav.addObject("url", "/artist/artistschedule.do");
 			mav.setViewName("common/result");
-		}else {
+		} else {
 			mav.addObject("alertMsg", "일정이 삭제 되었습니다.");
 			mav.addObject("url", "/artist/artistschedule.do");
 			mav.setViewName("common/result");
 		}
-	    
+
 		return mav;
 	}
 
@@ -402,9 +415,6 @@ public class ArtistController {
 	@RequestMapping("/artist/aboardWrite.do")
 	public ModelAndView aboardWrite() {
 		ModelAndView mav = new ModelAndView();
-		
-		
-		
 
 		mav.setViewName("artist/artWrite");
 		return mav;

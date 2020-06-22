@@ -35,8 +35,12 @@
 		delete from tb_artistschedule where ats_num = #{scdelete} and m_id = #{m_id} and m_nickname = #{m_nickname}
 	</delete>
 	
-	<select id="selectArtPage" resultType="Artist">
-		select * from TB_ARTIST_UPLOAD where M_NICKNAME = #{m_nickname}
+	<select id="selectArtPageVideo" resultType="Artist">
+		select * from TB_ARTIST_UPLOAD where au_type = 2 and M_NICKNAME = #{m_nickname}
+	</select>
+	
+	<select id="selectArtPagePhoto" resultType="Artist">
+		select * from TB_ARTIST_UPLOAD where au_type = 1 and M_NICKNAME = #{m_nickname}
 	</select>
 	
 	<!-- 게시판 페이징 코드 -->
