@@ -40,22 +40,25 @@
 					<div class="artphoto_list">
 						<form name="artphoto"
 							action="<%=request.getContextPath()%>/artist/artistphoto.do">
+							<!-- 아티스트가 뮤지션일 경우 -->
 							<c:if test="">
 								<h3>공연 사진</h3>
 							</c:if>
+							<!-- 아티스트가 타투이스트 일 경우 -->
 							<c:if test="">
-								<h3>타투 진행영상</h3>
+								<h3>타투 진행사진</h3>
 							</c:if>
+
 							<div class="aphoto_board">
 								<ul>
 									<!-- forEach야 힘내거라!!! -->
 									<c:forEach items="${artlistphoto}" var="artlist"
 										varStatus="status">
-										<li class="amovie_box"><span class="photo_box"><img
-												src="/springmvc/upload/${artlist.au_file}"></span> <br /> <span
-											class="aphTitle">${artlist.au_content}</span> <br /> <span
-											class="aphNicname">${artlist.m_nickname}</span> <br /> <span
-											class="auLike">${artlist.au_like}</span>
+										<li class="amovie_box"><span class="photo_box">
+												<img src="<%=request.getContextPath()%>/resources/upload/${artlist.au_file}"></span>
+											<br /> <span class="aphTitle">${artlist.au_content}</span> <br />
+											<span class="aphNicname">${artlist.m_nickname}</span> <br />
+											<span class="auLike">${artlist.au_like}</span>
 											<div class="btn_phoani">
 												<a href="#"> <span class="aboard_rd"></span>
 												</a>
@@ -84,12 +87,12 @@
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 
 	<!-- footer부분 끝 -->
-	
+
 	<!-- javascript -->
 	<script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/jquery/jquery-3.4.1.js"></script>
 	<script type="text/javascript"
-		src="<%=request.getContextPath()%>/resources/js/photoList.js"></script>	
+		src="<%=request.getContextPath()%>/resources/js/photoList.js"></script>
 
 </body>
 </html>

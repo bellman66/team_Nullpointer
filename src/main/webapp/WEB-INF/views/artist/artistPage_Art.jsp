@@ -56,16 +56,18 @@
 										<ul>
 											<!--  artlist.AU_FILE , artlist.AU_THUMBNAIL 사용  -->
 											<c:forEach items="${artlistvideo}" var="artlist"
-												varStatus="artStatus"  begin="0" end="4">
-												<li>
-													<a href="${pageContext.request.contextPath}/artist/artistvideoview.do?select_file=${artlist.au_file}">
-														<img src="https://img.youtube.com/vi/${artlist.au_thumbnail}/0.jpg" width="100%" height="100%">
-													</a> 
-												</li>
+												varStatus="artStatus" begin="0" end="4">
+												<li><a
+													href="${pageContext.request.contextPath}/artist/artistvideoview.do?select_file=${artlist.au_file}">
+														<img
+														src="https://img.youtube.com/vi/${artlist.au_thumbnail}/0.jpg"
+														width="100%" height="100%">
+												</a></li>
 											</c:forEach>
 
 										</ul>
-										<a href="<%=request.getContextPath()%>/artist/artistvideo.do?artist_nick=${mlist.m_nickname}"
+										<a
+											href="<%=request.getContextPath()%>/artist/artistvideo.do?artist_nick=${mlist.m_nickname}"
 											class="more" title="더 보기">More</a>
 
 									</div>
@@ -76,14 +78,14 @@
 												varStatus="status" begin="0" end="4">
 												<li><a href="#"><img
 														src="<%=request.getContextPath()%>/springmvc/resources/upload/${artlist.au_file}" /></a>
-														</li>
+												</li>
 											</c:forEach>
 										</ul>
 										<c:if test="${fn:length(artlistphoto) > 5}">
-										<a
-											href="<%=request.getContextPath()%>/artist/artistphoto.do?artist_nick=${artlist.m_nickname}"
-											class="more" title="더 보기">More</a>
-										</c:if>	
+											<a
+												href="<%=request.getContextPath()%>/artist/artistphoto.do?artist_nick=${aplist.m_nickname}"
+												class="more" title="더 보기">More</a>
+										</c:if>
 									</div>
 
 									<div class="ta_cash" id="${loginInfo.member.m_id}">
@@ -130,24 +132,33 @@
 								<div class="art-fan2">
 									<div class="art-schedule">
 										<h6>공연 일정</h6>
-										
+
 										<%-- <c:if test="${fn:length(aslist) > 5 || fn:length(aslist) == 0}"> --%>
-											<a
-												href="<%=request.getContextPath()%>/artist/artistschedule.do"
-												class="more" title="더 보기" style="margin-top:125px;">More</a>
+										<a
+											href="<%=request.getContextPath()%>/artist/artistschedule.do"
+											class="more" title="더 보기" style="margin-top: 125px;">More</a>
 										<%-- </c:if> --%>
-										
+
 										<ul>
 											<c:forEach items="${aslist}" var="artsclist">
-												<li>
-												<c:if test="${fn:substring(artsclist.ats_start_date,0,10) eq fn:substring(artsclist.ats_end_date,0,10)}">
-												<a href="<%=request.getContextPath()%>/artist/artistschedule.do">
-														${artsclist.ats_content}</a><span style="float: right;">공연일정 : ${fn:substring(artsclist.ats_start_date,0,10)}</span></li>
+												<li><c:if
+														test="${fn:substring(artsclist.ats_start_date,0,10) eq fn:substring(artsclist.ats_end_date,0,10)}">
+														<a
+															href="<%=request.getContextPath()%>/artist/artistschedule.do">
+															${artsclist.ats_content}</a>
+														<span style="float: right;">공연일정 :
+															${fn:substring(artsclist.ats_start_date,0,10)}</span></li>
 												</c:if>
-												
-												<c:if test="${fn:substring(artsclist.ats_start_date,0,10) != fn:substring(artsclist.ats_end_date,0,10)}">
-													<a href="<%=request.getContextPath()%>/artist/artistschedule.do">
-														${artsclist.ats_content}</a><span style="float: right;">공연일정 : ${fn:substring(artsclist.ats_start_date,0,10)} ~ ${fn:substring(artsclist.ats_end_date,0,10)}</span></li>
+
+												<c:if
+													test="${fn:substring(artsclist.ats_start_date,0,10) != fn:substring(artsclist.ats_end_date,0,10)}">
+													<a
+														href="<%=request.getContextPath()%>/artist/artistschedule.do">
+														${artsclist.ats_content}</a>
+													<span style="float: right;">공연일정 :
+														${fn:substring(artsclist.ats_start_date,0,10)} ~
+														${fn:substring(artsclist.ats_end_date,0,10)}</span>
+													</li>
 												</c:if>
 												<%-- <li><a href="<%=request.getContextPath()%>/artist/artistschedule.do">member + myartist 내역 불러와서 foreach로
 															돌릴 예정</a></li>
@@ -159,23 +170,25 @@
 															돌릴 예정</a></li> --%>
 											</c:forEach>
 										</ul>
-										
+
 									</div>
 
 									<div class="art-board">
 										<h6>소통 게시판</h6>
 										<%-- <c:if test="${fn:length(artboardlist.blist) > 5 || fn:length(artboardlist.blist) == 0}"> --%>
-												<a href="<%=request.getContextPath()%>/artist/artboardlist.do"
-													class="more" title="더 보기" style="margin-top:125px;">More</a>
-											<%-- </c:if> --%>	
-										
-											<ul>
-												<c:forEach items="${artboardlist.blist}" var="artboardlist">
-													<li><a href="<%= request.getContextPath() %>/artist/aboardRead.do?b_num=${artboardlist.b_num}">
-													${artboardlist.b_title}</a><span style="float: right;">작성자 : ${artboardlist.m_id}</span></li>
+										<a href="<%=request.getContextPath()%>/artist/artboardlist.do"
+											class="more" title="더 보기" style="margin-top: 125px;">More</a>
+										<%-- </c:if> --%>
 
-												</c:forEach>
-											</ul>
+										<ul>
+											<c:forEach items="${artboardlist.blist}" var="artboardlist">
+												<li><a
+													href="<%= request.getContextPath() %>/artist/aboardRead.do?b_num=${artboardlist.b_num}">
+														${artboardlist.b_title}</a><span style="float: right;">작성자
+														: ${artboardlist.m_id}</span></li>
+
+											</c:forEach>
+										</ul>
 									</div>
 								</div>
 							</div>
