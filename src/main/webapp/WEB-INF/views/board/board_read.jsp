@@ -60,7 +60,7 @@
 									</a><br>
 								</c:forEach>
 							</div>
-                            <div class="read_content">${read.board.b_content}</div>
+                            <div class="read_content"><textarea cols="300" rows="20" style="width:100%">${read.board.b_content}</textarea></div>
                             <div class="read_num" style="display:none;">${read.board.b_num}</div>
                         </div>
                         

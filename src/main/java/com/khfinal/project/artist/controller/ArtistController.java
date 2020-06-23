@@ -261,28 +261,14 @@ public class ArtistController {
 		
 		// String m_nickname을 통해 닉네임값으로 받아서 게시판 목록을 받아줍니다.
 
-		String m_nickname = request.getParameter("art_nickname");
+		m_nickname = request.getParameter("art_nickname");
 		System.out.println(m_nickname);
 		
 		List<Artist>artlistphoto = as.selectArtPagePhoto(m_nickname);
 		mav.addObject("artlistphoto",artlistphoto);
-		System.out.println(artlistphoto);
+		System.out.println("와라와라"+artlistphoto);
 
 		mav.setViewName("artist/artPhotoList");
-		return mav;
-	}
-
-	/**
-	 * @method : artphotoView
-	 * @date : 2020. 6. 22.
-	 * @buildBy : hajin
-	 * @comment : 아티스트 개인 페이지의 사진게시판 보여주는 페이지
-	 */
-	@RequestMapping("/artist/artphotoview.do")
-	public ModelAndView artphotoView(HttpServletRequest request) {
-		ModelAndView mav = new ModelAndView();
-
-		mav.setViewName("artist/artPhoto_view");
 		return mav;
 	}
 
