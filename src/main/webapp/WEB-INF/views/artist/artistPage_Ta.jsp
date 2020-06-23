@@ -134,10 +134,12 @@
 											class="more" title="더 보기" style="margin-top: 125px;">More</a>
 										<%-- </c:if>	 --%>
 										<ul>
-											<c:forEach items="${aslist}" var="artsclist">
-												<li><a href="<%=request.getContextPath()%>/artist/artistschedule.do">
-														${artsclist.ats_content}</a><span style="float: right;">예약시간 : ${fn:substring(artsclist.ats_start_date,0,16)}</span>
-												</li>
+											<c:forEach items="${aslist}" var="artsclist" varStatus="art">
+												<c:if test="${art.index < 5}">
+													<li><a href="<%=request.getContextPath()%>/artist/artistschedule.do">
+															${artsclist.ats_content}</a><span style="float: right;">예약시간 : ${fn:substring(artsclist.ats_start_date,0,16)}</span>
+													</li>
+												</c:if>	
 											</c:forEach>
 										</ul>
 

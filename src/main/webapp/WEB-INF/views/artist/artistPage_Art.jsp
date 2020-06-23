@@ -140,26 +140,25 @@
 										<%-- </c:if> --%>
 
 										<ul>
-											<c:forEach items="${aslist}" var="artsclist">
-												<li><c:if
-														test="${fn:substring(artsclist.ats_start_date,0,10) eq fn:substring(artsclist.ats_end_date,0,10)}">
-														<a
-															href="<%=request.getContextPath()%>/artist/artistschedule.do">
+											<c:forEach items="${aslist}" var="artsclist" varStatus="art">
+												<c:if test="${art.index < 5}">
+													<li>
+														<c:if test="${fn:substring(artsclist.ats_start_date,0,10) eq fn:substring(artsclist.ats_end_date,0,10)}">
+															<a href="<%=request.getContextPath()%>/artist/artistschedule.do">
+																${artsclist.ats_content}</a>
+															<span style="float: right;">공연일정 :
+																${fn:substring(artsclist.ats_start_date,0,10)}</span>
+														</c:if>
+	
+													<c:if test="${fn:substring(artsclist.ats_start_date,0,10) != fn:substring(artsclist.ats_end_date,0,10)}">
+														<a href="<%=request.getContextPath()%>/artist/artistschedule.do">
 															${artsclist.ats_content}</a>
 														<span style="float: right;">공연일정 :
-															${fn:substring(artsclist.ats_start_date,0,10)}</span></li>
-												</c:if>
-
-												<c:if
-													test="${fn:substring(artsclist.ats_start_date,0,10) != fn:substring(artsclist.ats_end_date,0,10)}">
-													<a
-														href="<%=request.getContextPath()%>/artist/artistschedule.do">
-														${artsclist.ats_content}</a>
-													<span style="float: right;">공연일정 :
-														${fn:substring(artsclist.ats_start_date,0,10)} ~
-														${fn:substring(artsclist.ats_end_date,0,10)}</span>
+															${fn:substring(artsclist.ats_start_date,0,10)} ~
+															${fn:substring(artsclist.ats_end_date,0,10)}</span>
+													</c:if>
 													</li>
-												</c:if>
+												</c:if>	
 												<%-- <li><a href="<%=request.getContextPath()%>/artist/artistschedule.do">member + myartist 내역 불러와서 foreach로
 															돌릴 예정</a></li>
 													<li><a href="<%=request.getContextPath()%>/artist/artistschedule.do">member + myartist 내역 불러와서 foreach로
