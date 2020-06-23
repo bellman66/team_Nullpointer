@@ -139,6 +139,15 @@ public class MemberServiceImple implements MemberService {
 		return true;
 	}
 	
+	@Override
+	public boolean pwCheck(String m_id) {
+		// TODO Auto-generated method stub
+		String id = mdao.pwCheck(m_id);
+		
+		if(id != null) return false;
+		return true;
+	}
+	
 	public void mailSending(Map<String, Object> commandMap) {
 //		m_id
 //		m_pass
@@ -202,6 +211,47 @@ public class MemberServiceImple implements MemberService {
 		});
 	}
 	
+	public void idMailSending(Map<String, Object> commandMap) {
+
+		String from = "enswjs62@gmail.com";
+		String tomail = (String) commandMap.get("id_email");
+		String title = "홈페이지 ID 찾기 ";
+		String htmlBody = "<div> "
+				+ "요청하신 ID : " + commandMap.get("m_id") + " 입니다 " +
+				"</div>";
+
+		mailSender.send(new MimeMessagePreparator() {
+			public void prepare(MimeMessage mimeMessage) throws MessagingException {
+				MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, "UTF-8");
+				message.setFrom(from);
+				message.setTo(tomail);
+				message.setSubject(title);
+				message.setText(htmlBody, true);
+			}
+		});
+	}
+	
+
+	@Override
+	public void pwMailSending(Map<String, Object> commandMap) throws SQLException {
+		String from = "enswjs62@gmail.com";
+		String tomail = (String) commandMap.get("pwd_email");
+		String title = "홈페이지 ID 찾기 ";
+		String htmlBody = "<div> "
+				+ "요청하신 PASSWORD : " + commandMap.get("m_pass") + " 입니다 " +
+				"</div>";
+
+		mailSender.send(new MimeMessagePreparator() {
+			public void prepare(MimeMessage mimeMessage) throws MessagingException {
+				MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, "UTF-8");
+				message.setFrom(from);
+				message.setTo(tomail);
+				message.setSubject(title);
+				message.setText(htmlBody, true);
+			}
+		});
+	}
+	
 	public int insertMyArtist(MyArtist myartist) {
 		return madao.insertMyArtist(myartist);
 	}
@@ -243,5 +293,19 @@ public class MemberServiceImple implements MemberService {
 	public int insertMyRecord(Map<String, Object> myrecord) {
 		return mrdao.insertMyRecord(myrecord);
 	}
+
+	
+	// 사용자 아이디 비밀번호 찾기 
+	@Override
+	public String findId(String id_email) {
+		// TODO Auto-generated method stub
+		return mdao.findId(id_email);
+	}
+
+	@Override
+	public String findPwd(String pwd_id, String pwd_email) {
+		return mdao.findPwd(pwd_id , pwd_email);
+	}
+
 
 }

@@ -498,6 +498,57 @@ public class MemberController {
 	public boolean idCheck(@RequestParam String id) {
 		return ms.idCheck(id);
 	}
+	
+	// 제작자 : 윤종민
+	// 사용자가 아이디 찾기눌렀을시 이메일 sending
+	// 이메일 체크후 맞는 아이디 이메일 sending
+	@RequestMapping("/member/findId.do")
+	public ModelAndView findId(ModelAndView mav , HttpServletRequest request ,@RequestParam String id_email) throws SQLException {
+		
+		String result = ms.findId(id_email);
+		
+		if(result != null) {
+			Map<String , Object> commandMap = new HashMap<String, Object>();
+			commandMap.put("id_email", id_email);
+			commandMap.put("m_id", result);
+			
+			ms.idMailSending(commandMap);
+			mav.addObject("alertMsg", "이메일로 아이디가 발송되었습니다.");
+			mav.addObject("url", request.getContextPath() + "/member/login.do");
+			mav.setViewName("common/result");
+		}
+		else {
+			mav.addObject("alertMsg", "일치하는 아이디가 존재하지 않습니다.");
+			mav.addObject("url", request.getContextPath() + "/main/index.do");
+			mav.setViewName("common/result");
+		}
+		return mav;
+	}
+	
+	// 제작자 : 윤종민
+	// 사용자가 비밀번호 찾기눌렀을시 이메일 sending
+	// 아이디와 이메일 매칭시 pwd 이메일 sending
+	@RequestMapping("/member/findPwd.do")
+	public ModelAndView findPwd(ModelAndView mav , HttpServletRequest request,  @RequestParam String pwd_id , @RequestParam String pwd_email) throws SQLException {
+		String result = ms.findPwd(pwd_id, pwd_email);
+		
+		if(result != null) {
+			Map<String , Object> commandMap = new HashMap<String, Object>();
+			commandMap.put("pwd_email", pwd_email);
+			commandMap.put("m_pass", result);
+			
+			ms.pwMailSending(commandMap);
+			mav.addObject("alertMsg", "이메일로 비밀번호가 발송되었습니다.");
+			mav.addObject("url", request.getContextPath() + "/member/login.do");
+			mav.setViewName("common/result");
+		}
+		else {
+			mav.addObject("alertMsg", "일치하는 비밀번호가 존재하지 않습니다.");
+			mav.addObject("url", request.getContextPath() + "/main/index.do");
+			mav.setViewName("common/result");
+		}
+		return mav;
+	}
 
 	@ExceptionHandler(value = SQLException.class)
 	public ModelAndView handleException(ModelAndView mav, HttpServletRequest request, Exception e) {
