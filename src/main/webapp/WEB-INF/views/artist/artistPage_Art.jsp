@@ -66,10 +66,11 @@
 											</c:forEach>
 
 										</ul>
+										<c:if test="${fn:length(artlistvideo) > 5}">
 										<a
 											href="<%=request.getContextPath()%>/artist/artistvideo.do?artist_nick=${mlist.m_nickname}"
 											class="more" title="더 보기">More</a>
-
+										</c:if>
 									</div>
 									<div class="art-photo">
 										<h6>공연 사진</h6>

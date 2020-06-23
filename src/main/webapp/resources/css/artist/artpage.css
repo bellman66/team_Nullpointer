@@ -56,7 +56,7 @@
 }
 
 /* 구독자 수 */
-.art-Table .art-id .art-subscribe, .tatto-Table .tatto-id .art-subscribe {
+.art-Table .art-id .art-subscribe {
 	font-size:18px;
 	font-weight:700;
 	text-align:center;

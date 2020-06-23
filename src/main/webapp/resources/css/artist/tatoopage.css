@@ -18,10 +18,10 @@
 
 .tattoform .tatto-Table .tatto-id {
 	width: 20%;
-	height: 320px;
+	height: 400px;
 	float: left;
 	padding: 2%;
-	margin-top: 5%;
+	margin-top: 1.5%;
 	position: relative;
 	/* border: 1px solid green; */
 }
@@ -49,6 +49,16 @@
 	text-align:center;
 	padding: 3%;
 	color: #0c0c13;
+}
+
+/* 구독자 수 */
+.tatto-Table .tatto-id .art-subscribe {
+	font-size:18px;
+	font-weight:700;
+	text-align:center;
+	padding: 3%;
+	color: #e20a4e;
+	/* border:1px solid red; */
 }
 
 .tatto-Table .tatto-menu {

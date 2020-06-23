@@ -65,8 +65,10 @@
 												</a></li>
 											</c:forEach>
 										</ul>
-										<a href="<%=request.getContextPath()%>/artist/artistvideo.do"
-											class="more" title="더 보기">More</a>
+										<c:if test="${fn:length(artlistvideo) > 5}">
+											<a href="<%=request.getContextPath()%>/artist/artistvideo.do"
+												class="more" title="더 보기">More</a>
+										</c:if>	
 									</div>
 									<div class="tatto-photo">
 										<h6>타투 사진</h6>
