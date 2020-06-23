@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+#content_artphView{
+	background: #fff;
+	font-family: sans-serif;
+}
+
+.artView{
+	margin:0 auto;
+}
+
+.artView .artpath{
+	border:1px solid red;
+	padding:2%;
+}
+
+.artView .artpath h3 {
+	font-size: 23px;
+	color:#0c0c13;
+	font-weight: 800;
+}
+
+.artView .artpath p{
+	font-size: 18px;
+	color:#0c0c13;
+}
+
+.artView .artTable{
+	padding:2%;
+}
