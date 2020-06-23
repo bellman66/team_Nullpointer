@@ -54,17 +54,16 @@
 									<div class="tatto-video">
 										<h6>타투 진행영상</h6>
 										<ul>
-											<li><a href="#"><img
-													src="https://img.youtube.com/vi/j-6ExGL0ld4/0.jpg"
-													width="100%" height="100%"></a></li>
-											<li><a href="#"><img
-													src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg)"></a></li>
-											<li><a href="#"><img
-													src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg)"></a></li>
-											<li><a href="#"><img
-													src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg)"></a></li>
-											<li><a href="#"><img
-													src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg)"></a></li>
+											<!--  artlist.AU_FILE , artlist.AU_THUMBNAIL 사용  -->
+											<c:forEach items="${artlistvideo}" var="artlist"
+												varStatus="artStatus" begin="0" end="4">
+												<li><a
+													href="${pageContext.request.contextPath}/artist/artistvideoview.do?select_file=${artlist.au_file}">
+														<img
+														src="https://img.youtube.com/vi/${artlist.au_thumbnail}/0.jpg"
+														width="100%" height="100%">
+												</a></li>
+											</c:forEach>
 										</ul>
 										<a href="<%=request.getContextPath()%>/artist/artistvideo.do"
 											class="more" title="더 보기">More</a>
