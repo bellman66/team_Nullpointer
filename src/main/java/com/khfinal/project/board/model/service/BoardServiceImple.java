@@ -105,7 +105,14 @@ public class BoardServiceImple implements BoardService {
 	@Override
 	public int boardUploadSh(Board board , List<Map<String, Object>> file) {
 		int res = bd.boardUploadSh(board);
-		boardFile(file);
+		
+		
+		if(file.get(0).get("originFileName").equals("")) {
+			
+		}else {
+			boardFile(file);
+		}
+		
 		return res;
 	}
 
@@ -118,7 +125,12 @@ public class BoardServiceImple implements BoardService {
 	@Override
 	public int boardUploadPr(Board board , List<Map<String, Object>> file) {
 		int res = bd.boardUploadPr(board);
-		boardFile(file);
+		
+		if(file.get(0).get("originFileName").equals("")) {
+			
+		}else {
+			boardFile(file);
+		}
 		return res;
 	}
 

@@ -44,7 +44,7 @@
 							<div class="rentVideo">
 								<img alt="test"
 									src="http://rndso15.synology.me:8080/hls/${topStream.userHashCode}/${topStream.userHashCode}_thumbnail.png" 
-									onerror="this.src='<%=request.getContextPath()%>/resources/img/maintest.jpg'" />
+									onerror="this.src='<%=request.getContextPath()%>/resources/img/stream/wait2.png'" />
 							</div>
 						</c:if>
 						
@@ -52,7 +52,7 @@
 							<h1>Top Stream Live</h1>
 							<div class="rentVideo">
 								<img alt="test"
-									src="<%=request.getContextPath()%>/resources/img/maintest.jpg" />
+									src="<%=request.getContextPath()%>/resources/img/stream/wait2.png" />
 							</div>
 						</c:if>
 					</div>
