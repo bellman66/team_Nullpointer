@@ -71,11 +71,20 @@
 						<h2>Today Content</h2>
 						<div class="todayVideo">
 							<c:forEach items="${todayList}" var="list" varStatus="listnum">
-								<div id="tv${listnum.index}">
-									<a href="${pageContext.request.contextPath}/artist/artistvideoview.do?select_file=${list.au_file}">
-									<img src="https://img.youtube.com/vi/${list.au_thumbnail}/0.jpg" width="100%" height="100%">
-									</a> 
-								</div>
+								<c:if test="${list.au_thumbnail != null}">
+									<div id="tv${listnum.index}">
+										<a href="${pageContext.request.contextPath}/artist/artistvideoview.do?select_file=${list.au_file}">
+										<img src="https://img.youtube.com/vi/${list.au_thumbnail}/0.jpg" width="100%" height="100%">
+										</a> 
+									</div>
+								</c:if>
+								<c:if test="${list.au_thumbnail == null}">
+									<div id="tv${listnum.index}">
+										<a href="${pageContext.request.contextPath}/artist/artphotoview.do?select_file=${list.au_file}">
+										<img src="<%=request.getContextPath()%>/resources/upload/${list.au_file}" width="100%" height="100%">
+										</a> 
+									</div>
+								</c:if>
 							</c:forEach>
 						</div>
 					</div>
@@ -89,10 +98,19 @@
 						<h2>Best Content</h2>
 						<div class="bestVideo">
 							<c:forEach items="${bestContent}" var="bcon" varStatus="listnum">
-								<div id="bv${listnum.index+1}">
-									<a href="${pageContext.request.contextPath}/artist/artistvideoview.do?select_file=${bcon.au_file}">
-									<img src="https://img.youtube.com/vi/${bcon.au_thumbnail}/0.jpg" width="100%" height="100%"></a> 
-								</div>
+								<c:if test="${bcon.au_thumbnail != null}">
+									<div id="bv${listnum.index+1}">
+										<a href="${pageContext.request.contextPath}/artist/artistvideoview.do?select_file=${bcon.au_file}">
+										<img src="https://img.youtube.com/vi/${bcon.au_thumbnail}/0.jpg" width="100%" height="100%"></a> 
+									</div>
+								</c:if>
+								<c:if test="${bcon.au_thumbnail == null}">
+									<div id="bv${listnum.index+1}">
+										<a href="${pageContext.request.contextPath}/artist/artphotoview.do?select_file=${bcon.au_file}">
+										<img src="<%=request.getContextPath()%>/resources/upload/${bcon.au_file}" width="100%" height="100%">
+										</a> 
+									</div>
+								</c:if>
 							</c:forEach>
 						</div>
 					</div>
@@ -101,28 +119,6 @@
 		</article>
 	</section>
 	<!-- content2부분 끝 -->
-
-	<!-- content3부분 시작  -->
-	<section id="content3">
-		<article class="category">
-			<div class="container">
-				<div class="row">
-					<div class="categorylist">
-						<h2>Artist 카테고리</h2>
-						<div class="categoryArtist">
-							<div id="ca1"></div>
-							<div id="ca2"></div>
-							<div id="ca3"></div>
-							<div id="ca4"></div>
-							<div id="ca5"></div>
-							<div id="ca6"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</article>
-	</section>
-	<!-- content3부분 끝 -->
 
 	<!-- footer부분 시작 -->
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>

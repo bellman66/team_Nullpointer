@@ -21,7 +21,10 @@ public interface MemberService {
 	public Member reload(String m_id);
 	public int leave(String m_id);
 	public boolean idCheck(String m_id);
+	public boolean pwCheck(String m_id);
 	public void mailSending(Map<String, Object> commandMap) throws SQLException;
+	public void idMailSending(Map<String, Object> commandMap) throws SQLException;
+	public void pwMailSending(Map<String, Object> commandMap) throws SQLException;
 	public int insertMyArtist(MyArtist myartist);
 	public int selectSame(MyArtist myaritst);
 	public List<Map<String, Object>> maplusprofile(String m_id);
@@ -29,4 +32,8 @@ public interface MemberService {
 	public Map<String, Object> selectAllMRList(String m_id, int currentPage, int cntPerPage);
 	public int myRecordDelete(MyRecord myrecord);
 	public int insertMyRecord(Map<String, Object> myrecord);
+	
+	public String findId(String id_email);
+	public String findPwd(String pwd_id , String pwd_email);
+	
 }

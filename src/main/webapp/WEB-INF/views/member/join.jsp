@@ -107,7 +107,8 @@
 								<td class="join-text">* Class </td>
 								<td>
 									<b>Basic</b> <input type="radio" name="m_class" value="1" checked="checked"> <br>
-									<b>Artist</b> <input type="radio" name="m_class" value="2">
+									<b>Musician</b> <input type="radio" name="m_class" value="2"> <br>
+									<b>Tattooist</b> <input type="radio" name="m_class" value="3">
 								</td>
 							</tr>
 							<tr>
