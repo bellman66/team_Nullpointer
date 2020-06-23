@@ -71,16 +71,19 @@
 					<%-- <c:if test="${logInInfo.m_id eq read.board.m_id}"> --%>	
 							
 							<c:if test="${sessionScope.loginInfo.member.m_id eq read.board.m_id}">
-					           <div class="read_delete">
+					          <%--  <div class="read_delete">
 					            	 <a href="<%=request.getContextPath()%>/board/boardDelete.do?b_num=${read.board.b_num}">삭제</a>
 					            	 <!-- <button>삭제</button> -->
-					           </div>
+					           </div> --%>
+					           <button class="read_delete" onclick="location.href='<%= request.getContextPath() %>/board/boardDelete.do?b_num=${read.board.b_num}'">삭제</button>
 					         </c:if>  
 			        
 			        <%-- </c:if> --%>
-				        <div class="read_list">
+				        <%-- <div class="read_list">
 				        	<a href="<%=request.getContextPath()%>/board/boardRead_list.do?b_category=${read.board.b_category}">목록</a>
-				        </div>
+				        </div> --%>
+				        <button class="read_list" onclick="location.href='<%= request.getContextPath() %>/board/boardRead_list.do?b_category=${read.board.b_category}'">목록</button>
+					        
 			       <!-- </form> --> 
 			       </div>  
 				</div>

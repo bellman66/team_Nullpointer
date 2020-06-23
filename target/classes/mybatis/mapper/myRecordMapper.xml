@@ -21,5 +21,12 @@
 		ORDER BY MR_NUM DESC)AS TB 
 		where rnum between #{page.start} and #{page.end}
 	</select>
+	<delete id="myRecordDelete" parameterType="MyRecord">
+		delete from tb_myrecord where m_id = #{m_id} and mr_num = #{mr_num}
+	</delete>
+	<insert id="insertMyRecord" parameterType="HashMap">
+		insert into tb_myrecord values(mr_num, #{m_id}, #{selectvideo.au_num},
+		 #{selectvideo.m_nickname}, now(), #{selectvideo.au_file})
+	</insert>
   
   </mapper>

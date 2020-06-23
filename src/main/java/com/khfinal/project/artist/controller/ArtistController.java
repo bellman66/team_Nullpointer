@@ -22,6 +22,7 @@ import com.khfinal.project.artist.model.service.ArtistService;
 import com.khfinal.project.artist.model.vo.Artist;
 import com.khfinal.project.artist.model.vo.ArtistPlus;
 import com.khfinal.project.board.model.vo.Board;
+import com.khfinal.project.member.model.service.MemberService;
 import com.khfinal.project.member.model.vo.Member;
 
 @Controller
@@ -29,6 +30,8 @@ public class ArtistController {
 
 	@Autowired
 	ArtistService as;
+	@Autowired
+	MemberService ms;
 
 	/**
 	 * @method : selectArtist
@@ -205,7 +208,7 @@ public class ArtistController {
 	@RequestMapping("/artist/artistvideo.do")
 	public ModelAndView artistvideo(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
-		
+
 		// 수정자: 박혜연
 		// 업로드 전체 페이지 로드
 		m_nickname = request.getParameter("artist_nick");
@@ -216,6 +219,33 @@ public class ArtistController {
 		mav.addObject("artlistvideo", artlistvideo);
 
 		mav.setViewName("artist/artMovieList");
+		return mav;
+	}
+
+	@RequestMapping("/artist/artistvideoview.do")
+	public ModelAndView artistvideoview(HttpServletRequest request, @RequestParam String select_file) {
+		ModelAndView mav = new ModelAndView();
+
+		Artist selectvideo = as.selectvideoview(select_file);
+		
+		// 수정자 : 박혜연
+		// 일반 회원의 시청 기록에 추가
+		HttpSession session = request.getSession();
+		Map<String, Object> info = (Map<String, Object>) session.getAttribute("loginInfo");
+
+		if (info != null) {
+			Member user = (Member) info.get("member");
+
+			Map<String, Object> myrecord = new HashMap<>();
+			myrecord.put("m_id", user.getM_id());
+			myrecord.put("selectvideo", selectvideo);
+
+			int insertRes = ms.insertMyRecord(myrecord);
+			
+		}
+		
+		mav.addObject("selectvideo", selectvideo);
+		mav.setViewName("artist/artMovie_view");
 		return mav;
 	}
 
@@ -230,14 +260,14 @@ public class ArtistController {
 		ModelAndView mav = new ModelAndView();
 		
 		// String m_nickname을 통해 닉네임값으로 받아서 게시판 목록을 받아줍니다.
-		m_nickname = request.getParameter("artist_nick");
+
+		String m_nickname = request.getParameter("art_nickname");
 		System.out.println(m_nickname);
 		
 		List<Artist>artlistphoto = as.selectArtPagePhoto(m_nickname);
-		List<Artist>alist = new ArrayList<Artist>();
 		mav.addObject("artlistphoto",artlistphoto);
 		System.out.println(artlistphoto);
-		
+
 		mav.setViewName("artist/artPhotoList");
 		return mav;
 	}
@@ -251,7 +281,7 @@ public class ArtistController {
 	@RequestMapping("/artist/artphotoview.do")
 	public ModelAndView artphotoView(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
-		
+
 		mav.setViewName("artist/artPhoto_view");
 		return mav;
 	}
@@ -383,6 +413,15 @@ public class ArtistController {
 			currentPage = Integer.parseInt(request.getParameter("cntPerPage"));
 		}
 
+		// 게시판 구분해주는 코드
+		int category = as.artCategory(m_nickname) + 1;
+
+		if (category == 3) {
+			mav.addObject("artist", "band");
+		} else {
+			mav.addObject("artist", "tattoo");
+		}
+
 		Map<String, Object> artboardlist = as.selectBoardList(currentPage, cntPerPage, m_nickname);
 		mav.addObject("paging", artboardlist.get("paging"));
 		System.out.println(artboardlist.get("paging"));
@@ -398,16 +437,15 @@ public class ArtistController {
 	public ModelAndView aboardRead(int b_num) {
 		ModelAndView mav = new ModelAndView();
 		Map<String, Object> readMap = as.aboardRead(b_num);
-		
+
 		int category = as.artCategory(m_nickname) + 1;
-		
-		if(category == 3) {
+
+		if (category == 3) {
 			mav.addObject("artist", "band");
-		}else {
+		} else {
 			mav.addObject("artist", "tattoo");
 		}
-		
-		
+
 		mav.addObject("readMap", readMap);
 		mav.setViewName("artist/artBoard_view");
 
@@ -418,15 +456,14 @@ public class ArtistController {
 	@RequestMapping("/artist/aboardWrite.do")
 	public ModelAndView aboardWrite() {
 		ModelAndView mav = new ModelAndView();
-		
+
 		int category = as.artCategory(m_nickname) + 1;
-		
-		if(category == 3) {
+
+		if (category == 3) {
 			mav.addObject("artist", "band");
-		}else {
+		} else {
 			mav.addObject("artist", "tattoo");
 		}
-		
 
 		mav.setViewName("artist/artWrite");
 		return mav;
@@ -436,7 +473,7 @@ public class ArtistController {
 	@RequestMapping("/artist/aboardUpload.do")
 	public ModelAndView aboardUpload(HttpServletRequest request, Board board, @RequestParam List<MultipartFile> bfile) {
 		ModelAndView mav = new ModelAndView();
-		//파일 업로드 코드
+		// 파일 업로드 코드
 		List<Map<String, Object>> file = new ArrayList<Map<String, Object>>();
 		String root = request.getSession().getServletContext().getRealPath("/");
 
@@ -465,7 +502,7 @@ public class ArtistController {
 		HttpSession session = request.getSession();
 		Map<String, Object> login = (Map<String, Object>) session.getAttribute("loginInfo");
 		Member member = (Member) login.get("member");
-		
+
 		int category = as.artCategory(m_nickname) + 1;
 
 		System.out.println("컨트롤러 " + category);

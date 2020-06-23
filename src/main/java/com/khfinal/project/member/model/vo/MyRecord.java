@@ -12,6 +12,7 @@ public class MyRecord implements Serializable {
 	private int au_num;
 	private String m_nickname;
 	private Date mr_date;
+	private String au_file;
 
 	public MyRecord() {
 		
@@ -57,9 +58,17 @@ public class MyRecord implements Serializable {
 		this.mr_date = mr_date;
 	}
 
+	public String getAu_file() {
+		return au_file;
+	}
+
+	public void setAu_file(String au_file) {
+		this.au_file = au_file;
+	}
+	
 	@Override
 	public String toString() {
 		return "MyRecord [mr_num=" + mr_num + ", m_id=" + m_id + ", au_num=" + au_num + ", m_nickname=" + m_nickname
-				+ ", mr_date=" + mr_date + "]";
+				+ ", mr_date=" + mr_date + ", au_file=" + au_file + "]";
 	}
 }

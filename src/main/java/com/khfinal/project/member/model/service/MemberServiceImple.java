@@ -234,4 +234,14 @@ public class MemberServiceImple implements MemberService {
 		return mrdao.myRecordList(m_id);
 	}
 
+	@Override
+	public int myRecordDelete(MyRecord myrecord) {
+		return mrdao.myRecordDelete(myrecord);
+	}
+
+	@Override
+	public int insertMyRecord(Map<String, Object> myrecord) {
+		return mrdao.insertMyRecord(myrecord);
+	}
+
 }

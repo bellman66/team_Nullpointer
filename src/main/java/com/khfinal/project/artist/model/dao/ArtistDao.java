@@ -223,5 +223,10 @@ public class ArtistDao {
 	public int artCategory(String m_nickname) {
 		return session.selectOne("Artist.artCategory", m_nickname);
 	}
+	
+	public Artist selectvideoview(String select_file) {
+		// TODO Auto-generated method stub
+		return session.selectOne("Artist.selectvideoview", select_file);
+	}
 
 }

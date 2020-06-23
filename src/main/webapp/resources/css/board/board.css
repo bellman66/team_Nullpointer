@@ -17,6 +17,14 @@
 	/* border: 1px solid blue; */
 }
 
+#boardTab h3 {
+	font-size: 23px;
+	font-weight: 800;
+	color: #0c0c13;
+	padding-left: 2%;
+	padding-bottom: 2%;
+}
+
 /* tab메뉴 */
 .tabs {
 	width: 100%;
@@ -200,4 +208,14 @@
 	board : 1%;
 }
 
+#bdWrite:hover{
+	color:#0c0c13;
+	background-color:#fff;
+	border:1px solid #0c0c13;
+}
 
+.dbSearch:hover{
+	color:#0c0c13;
+	background-color:#fff;
+	border:1px solid #0c0c13;
+}

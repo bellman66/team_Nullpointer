@@ -403,7 +403,12 @@ public class ArtistServiceImple implements ArtistService {
 		return ad.artCategory(m_nickname);
 	}
 
-	
+	@Override
+	public Artist selectvideoview(String select_file) {
+		// TODO Auto-generated method stub
+		
+		return ad.selectvideoview(select_file);
+	}
 
 	
 

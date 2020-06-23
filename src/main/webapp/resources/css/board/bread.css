@@ -4,7 +4,7 @@
 	height: 70px;
     width: 100%;
     color: black;
-    font-size: 2vw;
+    font-size: 30px;
     position: absolute;
     margin-top: -50px;
     
@@ -60,13 +60,15 @@
 }
 
 .read_delete{
-	position: absolute;
 	width:10%;
-	height: 50px;
-	background-color: black;
-	text-align: center;
-	font-size: 20px;
-	margin-left:73%;
+	height:30px;
+	font-size: 14px;
+	font-family: sans-serif;
+    float:right;
+    margin-top:3%;
+    margin-right:20px;
+	color:#fff;
+	background-color: #0c0c13;
 }
 .read_delete a{
 	color:white;
@@ -74,13 +76,28 @@
 
 .read_list{
 	width:10%;
-	height: 50px;
-	float: right;
-	background-color: black;
-	text-align: center;
-	font-size: 20px;
+	height:30px;
+	font-size: 14px;
+	font-family: sans-serif;
+   	margin-left : 72%;
+    margin-top:2.77%;
+    margin-right:20px;
+	color:#fff;
+	background-color: #0c0c13;
+	position: absolute;
 }
 .read_list a{
 	color:white;
 }
 
+.read_delete:hover{
+	color:#0c0c13;
+	background-color:#fff;
+	border:1px solid #0c0c13;
+}
+
+.read_list:hover{
+	color:#0c0c13;
+	background-color:#fff;
+	border:1px solid #0c0c13;
+}

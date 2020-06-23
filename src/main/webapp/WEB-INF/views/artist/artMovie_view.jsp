@@ -22,6 +22,46 @@
             alert("현재 당신이 보는 브라우저는 지원하지 않습니다. 최신 브라우저로 업데이트해주세요!");
         </script>
     <![endif]-->
+    
+    <style type="text/css">
+        #content_artmvView{
+    	    width: 100%;
+    		height: 100%;
+    	}
+    	.artmvView_box{
+    	    width: 100%;
+    		height: 100%;
+    	}
+    	.container{
+    	    width: 100%;
+    		height: 100%;
+    	}
+    	.row{
+    	  	width: 90%;
+    		height: 100%;
+    		margin-left: 5%;
+    		margin-right: 5%
+    	}
+    	.artView{
+    	    width: 100%;
+    		height: 100%;
+    		max-width: 100%;
+    		max-height: 100%;
+
+    	}
+    	
+    	.artpath {
+    		width: 100%;
+    	}
+    	.artTable {
+    		width: 100%;
+    		height: 100%;
+    	}
+    	.amovieForm{
+    	    width: 100%;
+    		height: 95%;
+    	}
+    </style>
 </head>
 <body>
 	<!-- header부분 시작  -->
@@ -39,34 +79,22 @@
 				<div class="row">
 					<div class="artView">
 						<div class="artpath">
-							<h3>공연영상</h3>
-							<p>공연영상게시판입니다.</p>
+							<h2><b> ${selectvideo.m_nickname} / ${selectvideo.au_date} </b></h2>
 						</div>
 						<div class="artTable">
-							<form name="aMovieView" action="">
-								<div class="amovieForm">
-									<div id="aview_board">게시판종류</div>
-									<div class="aview_board">b_Category</div>
-									<!-- 공연사진값을 안의 div에 던져주자!!! 스크립트랑 css로 잡아줄것! -->
-									<div class="av_view">
-										<div>slick1</div>
-										<div>slick2</div>
-										<div>slick3</div>
-										<div>slick4</div>
-										<div>slick5</div>
-									</div>
-									<!-- 공연사진값을 안의 div에 던져주자!!! -->
-								</div>
-							</form>
+						
+							<div class="amovieForm">
+								<iframe height="100%" width="100%" src="https://www.youtube.com/embed/${selectvideo.au_file}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+							</div>
 							
-
 							<!-- 목록, 수정(작성한 아이디만), 취소 -->
-							<div class="aboard_btn">
+							<!-- <div class="aboard_btn">
 								<button class="btn_list" type="button">목록</button>
 								<button class="btn_modify" type="button">수정</button>
 								<button class="btn_pass" type="button">취소</button>
-							</div>
+							</div> -->
 						</div>
+						
 					</div>
 				</div>
 			</div>

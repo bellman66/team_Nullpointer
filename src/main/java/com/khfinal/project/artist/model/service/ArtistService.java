@@ -49,4 +49,8 @@ public interface ArtistService {
 	
 	public int artCategory(String m_nickname);
 
+	//작성자 : 윤종민
+	// video view 
+	public Artist selectvideoview(String select_file);
+
 }

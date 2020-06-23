@@ -6,7 +6,7 @@
   <mapper namespace="MyRecord">
   
   	<select id="myRecordList" resultType="MyRecord">
-  		select * from tb_myrecord where m_id = #{m_id}
+  		select * from tb_myrecord where m_id = #{m_id} ORDER BY MR_NUM DESC
   	</select>
   	<select id="contentCntMr" resultType="int">
 		select count(*) from tb_myrecord WHERE m_id = #{m_id}
@@ -15,11 +15,18 @@
 		SELECT * FROM(
 		SELECT 
 		ROW_NUMBER() OVER(ORDER BY MR_NUM DESC) AS RNUM,MR_NUM
-		,M_ID,AU_NUM,M_NICKNAME, MR_DATE 
+		,M_ID,AU_NUM,M_NICKNAME, MR_DATE, AU_FILE 
 		FROM TB_MYRECORD
 		WHERE M_ID = #{m_id}
 		ORDER BY MR_NUM DESC)AS TB 
 		where rnum between #{page.start} and #{page.end}
 	</select>
+	<delete id="myRecordDelete" parameterType="MyRecord">
+		delete from tb_myrecord where m_id = #{m_id} and mr_num = #{mr_num}
+	</delete>
+	<insert id="insertMyRecord" parameterType="HashMap">
+		insert into tb_myrecord values(mr_num, #{m_id}, #{selectvideo.au_num},
+		 #{selectvideo.m_nickname}, now(), #{selectvideo.au_file})
+	</insert>
   
   </mapper>

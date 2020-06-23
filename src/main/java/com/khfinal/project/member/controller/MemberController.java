@@ -604,15 +604,6 @@ public class MemberController {
 	@RequestMapping("/member/myRecordList.do")
 	public ModelAndView myRecordList(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
-
-		mrListPaging(request);
-		mav.setViewName("member/myRecordList");
-
-		return mav;
-	}
-
-	public ModelAndView mrListPaging(HttpServletRequest request) {
-		ModelAndView mav = new ModelAndView();
 		
 		Map<String, Object> info = (Map<String, Object>) request.getSession().getAttribute("loginInfo");
 		Member user = (Member) info.get("member");
@@ -640,6 +631,21 @@ public class MemberController {
 
 		mav.addObject("MyRecordList", res);
 		mav.setViewName("member/myRecordList");
+
+		return mav;
+	}
+
+	/**
+	 * @method : mrListPaging()
+	 * @date : 2020. 6. 22.
+	 * @buildBy : 박혜연
+	 * @comment : 기록 리스트 페이징
+	 */
+	@RequestMapping("/member/myRecordListall.do")
+	public ModelAndView mrListPaging(HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		
+		
 		
 		return mav;
 	}
@@ -652,6 +658,40 @@ public class MemberController {
 		
 		mav.setViewName("member/memberFind");
 		return mav;
+	}
+	
+	/**
+	 * @method : myRecordDelete()
+	 * @date : 2020. 6. 19.
+	 * @buildBy : 박혜연
+	 * @comment : 마이페이지(일반회원) 나의 시청 기록 목록 삭제(ajax)
+	 */
+	@RequestMapping("/member/myRecordDelete.do")
+	@ResponseBody
+	public Boolean myRecordDelete(HttpServletRequest request) {
+
+		int res = 0;
+		Boolean delRes = true;
+		// 삭제 버튼 클릭 시, 해당 버튼이 속한 아티스트의 닉네임 get
+		int contentNo = Integer.parseInt((String) request.getParameter("mrNum"));
+		Map<String, Object> info = (Map<String, Object>) request.getSession().getAttribute("loginInfo");
+		Member user = (Member) info.get("member");
+		MyRecord user_mr = new MyRecord();
+		user_mr.setM_id(user.getM_id());
+		user_mr.setMr_num(contentNo);;
+		
+		System.out.println(contentNo);
+
+		// 회원의 myRecord 중 해당 번호 삭제
+		int deleteRes = ms.myRecordDelete(user_mr);
+		
+		System.out.println(deleteRes);
+
+		if (deleteRes < 0) {
+			delRes = false;
+		}
+
+		return delRes;
 	}
 
 }

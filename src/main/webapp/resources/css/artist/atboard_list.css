@@ -120,11 +120,12 @@
 	height:30px;
 	font-size: 14px;
 	font-family: sans-serif;
-   	margin-left : 500px;
+   	margin-left : 77%;
     margin-top:3%;
     margin-right:20px;
 	color:#fff;
 	background-color: #0c0c13;
+	position: absolute;
 }
 
 .artist_board_cancel:hover{

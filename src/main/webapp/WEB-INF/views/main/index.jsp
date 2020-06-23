@@ -72,7 +72,9 @@
 						<div class="todayVideo">
 							<c:forEach items="${todayList}" var="list" varStatus="listnum">
 								<div id="tv${listnum.index}">
-									<a href="#"><img src="https://img.youtube.com/vi/${list.au_thumbnail}/0.jpg" width="100%" height="100%"></a> 
+									<a href="${pageContext.request.contextPath}/artist/artistvideoview.do?select_file=${list.au_file}">
+									<img src="https://img.youtube.com/vi/${list.au_thumbnail}/0.jpg" width="100%" height="100%">
+									</a> 
 								</div>
 							</c:forEach>
 						</div>
@@ -88,7 +90,8 @@
 						<div class="bestVideo">
 							<c:forEach items="${bestContent}" var="bcon" varStatus="listnum">
 								<div id="bv${listnum.index+1}">
-									<a href="#"><img src="https://img.youtube.com/vi/${bcon.au_thumbnail}/0.jpg" width="100%" height="100%"></a> 
+									<a href="${pageContext.request.contextPath}/artist/artistvideoview.do?select_file=${bcon.au_file}">
+									<img src="https://img.youtube.com/vi/${bcon.au_thumbnail}/0.jpg" width="100%" height="100%"></a> 
 								</div>
 							</c:forEach>
 						</div>

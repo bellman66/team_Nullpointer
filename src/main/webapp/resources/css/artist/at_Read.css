@@ -1,1 +1,50 @@
 @charset "UTF-8";
+
+.aview_td{
+	top: 28%;
+	 border: 2px solid black;
+	height: 230px;
+	font-size: 17px;
+	 margin-left: 5%;
+	padding: 1%;
+	width: 1500%;
+}
+
+.btn_list{
+	width:10%;
+	height:30px;
+	font-size: 14px;
+	font-family: sans-serif;
+    float:right;
+    margin-top:3%;
+    margin-right:20px;
+	color:#fff;
+	background-color: #0c0c13;
+}
+
+.btn_pass{
+	width:10%;
+	height:30px;
+	font-size: 14px;
+	font-family: sans-serif;
+   	margin-left : 72%;
+    margin-top:2.77%;
+    margin-right:20px;
+	color:#fff;
+	background-color: #0c0c13;
+	position: absolute;
+}
+
+
+
+.btn_list:hover{
+	color:#0c0c13;
+	background-color:#fff;
+	border:1px solid #0c0c13;
+}
+
+.btn_pass:hover{
+	color:#0c0c13;
+	background-color:#fff;
+	border:1px solid #0c0c13;
+}
