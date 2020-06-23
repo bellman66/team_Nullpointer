@@ -96,9 +96,9 @@ public class ArtistDao {
 	}
 
 	/**
-	 * @method : selectArtPage
+	 * @method : selectArtPageVideo
 	 * @date : 2020. 6. 21.
-	 * @buildBy : hajin
+	 * @buildBy : 박혜연
 	 * @comment : 아티스트 개인 페이지관련(비디오)
 	 */
 	public List<Artist> selectArtPageVideo(String m_nickname) {
@@ -106,7 +106,7 @@ public class ArtistDao {
 	}
 	
 	/**
-	 * @method : selectArtPage
+	 * @method : selectArtPagePhoto
 	 * @date : 2020. 6. 22.
 	 * @buildBy : 박혜연
 	 * @comment : 아티스트 개인 페이지관련(사진)
@@ -194,8 +194,8 @@ public class ArtistDao {
 		data.put("page", page);
 		data.put("searchWord", searchWord);
 		data.put("m_nickname", m_nickname);
+		
 		return session.selectList("Artist.searchWrBoardList", data);
-
 	}
 
 	// 게시판 제목 검색 리스트
@@ -220,12 +220,6 @@ public class ArtistDao {
 
 	}
 	
-	// 사진 게시판 전체 목록 리스트
-	public List<Board>selectPhotoList(){
-		return session.selectList("Board.selectPhotoList");
-	}
-	
-	//
 	public int artCategory(String m_nickname) {
 		return session.selectOne("Artist.artCategory", m_nickname);
 	}

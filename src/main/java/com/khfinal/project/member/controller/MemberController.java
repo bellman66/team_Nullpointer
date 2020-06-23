@@ -643,5 +643,15 @@ public class MemberController {
 		
 		return mav;
 	}
+	
+	//아이디 비밀번호 찾기
+	@RequestMapping("/member/memberfind.do")
+	public ModelAndView memberFind() {
+		ModelAndView mav = new ModelAndView();
+		
+		
+		mav.setViewName("member/memberFind");
+		return mav;
+	}
 
 }

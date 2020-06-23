@@ -6,13 +6,13 @@
 
 /* member */
 @import "member/login.css";
-@import "member/loginImple.css";
 @import "member/join.css";
 @import "member/joinImple.css";
 @import "member/mypage.css";
 @import "member/mypage_art.css";
 @import "member/popup.css";
 @import "member/withdrawal.css";
+@import "member/memberfind.css";
 
 /* artist */
 @import "artist/artist.css";

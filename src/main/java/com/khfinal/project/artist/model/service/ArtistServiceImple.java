@@ -193,17 +193,6 @@ public class ArtistServiceImple implements ArtistService {
 	 * @method : selectArtList
 	 * @date : 2020. 6. 19.
 	 * @buildBy : hajin
-	 * @comment : 뮤지션만 받아주는 tab
-	 */
-	/*
-	 * @Override public List<Member> selectArtTab(String m_class) { return
-	 * ad.selectArtTab(m_class); }
-	 */
-
-	/**
-	 * @method : selectArtList
-	 * @date : 2020. 6. 19.
-	 * @buildBy : hajin
 	 * @comment : 타투이스트만 받아주는 tab
 	 */
 	@Override
@@ -373,8 +362,6 @@ public class ArtistServiceImple implements ArtistService {
 				e.printStackTrace();
 			}
 			
-			
-			
 		}
 		return res;
 	}
@@ -407,17 +394,6 @@ public class ArtistServiceImple implements ArtistService {
 		}
 		
 		return res;
-	}
-
-	/**
-	 * @method : selectPhotoList
-	 * @date : 2020. 6. 21.
-	 * @buildBy : hajin
-	 * @comment : 아티스트 개인 페이지 사진게시판관련
-	 */
-	@Override
-	public List<Board> selectPhotoList() {
-		return ad.selectPhotoList();
 	}
 
 	//아티스트 닉네임 값으로 클래스 값을 가져오는쿼리

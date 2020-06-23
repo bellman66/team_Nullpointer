@@ -34,17 +34,32 @@
 	<!-- nav부분 끝 -->
 
 	<!-- content부분 시작 -->
-	<section id="content">
+	<section id="content_mfind">
 		<article class="memberfind_box">
 			<div class="container">
 				<div class="row">
 					<div class="memberfind">
+					<form name="findM" action="<%=request.getContextPath()%>/member/memberfind.do" >
 						<div class="idfind_box">
 							<h2>아이디 찾기</h2>
+							<label id="findId" class="findInput" for="id">아이디</label>
+							&nbsp;&nbsp;
+							<input id="id" name="id" type="text"maxlength="30" /><br/>
+							<label class="findInput" for="id">이메일주소</label>
+							&nbsp;&nbsp;
+							<input id="id" name="id" type="text"maxlength="30" /><br/>
+							<button id="idfind" class="find" type="submit" onclick="">검색</button>
 						</div>
+						
 						<div class="pwdfind_box">
 							<h2>비밀번호 찾기</h2>
+							<label class="findInput" for="pwd">찾으시려는 비밀번호의 아이디를 입력해주세요</label>
+							&nbsp;&nbsp;
+							<input id="id" name="id" type="text"maxlength="30" />
+							<button id="pwfind" class="find" type="submit" onclick="">검색</button>
 						</div>
+						
+					</form>
 					</div>
 				</div>
 			</div>

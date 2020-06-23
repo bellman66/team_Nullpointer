@@ -91,6 +91,11 @@
 	/* border:1px solid red; */
 }
 
+.tatto-Table .tatto-menu .tatto-photo li img{
+	width:100%;
+	height:150px;
+}
+
 .tatto-Table .tatto-menu .tatto-video .more{
 	color: #0c0c13;
 	text-transform: uppercase;

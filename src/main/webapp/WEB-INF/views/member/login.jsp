@@ -72,9 +72,9 @@
 							<div class="findUser">
 								<ul>
 									<li class="find_text"><a
-										href="<%=request.getContextPath()%>/member/memberFind.do">아이디찾기</a>&nbsp;|&nbsp;</li>
+										href="<%=request.getContextPath()%>/member/memberfind.do">아이디찾기</a>&nbsp;|&nbsp;</li>
 									<li class="find_text"><a
-										href="<%=request.getContextPath()%>/member/memberFind.do">비밀번호찾기</a>&nbsp;|&nbsp;</li>
+										href="<%=request.getContextPath()%>/member/memberfind.do">비밀번호찾기</a>&nbsp;|&nbsp;</li>
 									<li class="find_text"><a
 										href="<%=request.getContextPath()%>/member/join.do">회원가입</a></li>
 								</ul>

@@ -48,7 +48,6 @@ public class ArtistController {
 			List<Member> music = as.selectArtist();
 			mav.addObject("music", music);
 			// 타투이스트
-
 			List<Member> tattoo = as.selectTattooist();
 			mav.addObject("tattoo", tattoo);
 			mav.setViewName("tabmenu/artmenu");
@@ -57,26 +56,6 @@ public class ArtistController {
 		return mav;
 	}
 
-	/**
-	 * @method : moreContent
-	 * @date : 2020. 6. 21.
-	 * @buildBy : hajin
-	 * @comment : 내용을 쓰세요.
-	 *//*
-		 * @RequestMapping("/artist/getmore.do") public ModelAndView
-		 * moreContent(HttpServletRequest request) { ModelAndView mav = new
-		 * ModelAndView(); //페이징처리에 사용되는 int를 불러 더보기로 쓰자 //더보기를 한번 onclick 할 때마다 아티스트의
-		 * 수가 다 불러올 때 까지 추가된다. //현재 페이지 int currentPage = 1; //페이지당 추가되는 아티스트 카데고리 수 int
-		 * cntPerPage = 8;
-		 * 
-		 * if(request.getParameter("cPage") != null) { currentPage =
-		 * Integer.parseInt(request.getParameter("cPage")); }
-		 * if(request.getParameter("cntPerPage") != null) { currentPage =
-		 * Integer.parseInt(request.getParameter("cntPerPage")); } List<Member>music =
-		 * as.moreContentArt(currentPage, cntPerPage);
-		 * 
-		 * return mav; }
-		 */
 	String m_nickname;
 
 	/**
@@ -104,7 +83,8 @@ public class ArtistController {
 		// 사진 콘텐츠
 		List<Artist> artlistphoto = as.selectArtPagePhoto(m_nickname);
 		mav.addObject("artlistphoto", artlistphoto);
-
+		
+		
 		// 아티스트의 한줄소개, 구독자수 받아오기
 		ArtistPlus aplist = as.selectAll(m_nickname);
 		mav.addObject("aplist", aplist);
@@ -145,7 +125,6 @@ public class ArtistController {
 		}
 
 		mav.setViewName("artist/artistPage_Art");
-
 		return mav;
 	}
 
@@ -162,7 +141,6 @@ public class ArtistController {
 		// 수정자 : 박혜연
 		// 매개변수 설정
 		// 아티스트의 업로드 콘텐츠 받아오기
-
 		m_nickname = request.getParameter("artist_nick");
 		System.out.println(m_nickname);
 
@@ -173,6 +151,7 @@ public class ArtistController {
 		// 사진 콘텐츠
 		List<Artist> artlistphoto = as.selectArtPagePhoto(m_nickname);
 		mav.addObject("artlistphoto", artlistphoto);
+		System.out.println(artlistphoto);
 
 		// 아티스트의 한줄소개, 구독자수 받아오기
 		ArtistPlus aplist = as.selectAll(m_nickname);
@@ -241,19 +220,24 @@ public class ArtistController {
 	}
 
 	/**
-	 * @method : artistphoto
+	 * @method : artistphotoList
 	 * @date : 2020. 6. 17.
 	 * @buildBy : hajin
 	 * @comment : 아티스트 개인 페이지의 사진게시판 전체목록
 	 */
 	@RequestMapping("/artist/artistphoto.do")
-	public ModelAndView artistphoto(HttpServletRequest request) {
+	public ModelAndView artistphotoList(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
+		
 		// String m_nickname을 통해 닉네임값으로 받아서 게시판 목록을 받아줍니다.
-		String m_nickname = request.getParameter("art_nickname");
+		m_nickname = request.getParameter("artist_nick");
+		System.out.println(m_nickname);
 		
+		List<Artist>artlistphoto = as.selectArtPagePhoto(m_nickname);
+		List<Artist>alist = new ArrayList<Artist>();
+		mav.addObject("artlistphoto",artlistphoto);
+		System.out.println(artlistphoto);
 		
-
 		mav.setViewName("artist/artPhotoList");
 		return mav;
 	}

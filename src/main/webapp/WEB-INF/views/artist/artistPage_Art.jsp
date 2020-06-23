@@ -72,13 +72,16 @@
 										<ul>
 											<c:forEach items="${artlistphoto}" var="artlist"
 												varStatus="status" begin="0" end="4">
-												<li><a href="#"><img class="atprofile"
-														src="/springmvc/resources/upload/${artlist.au_file}" /></a></li>
+												<li><a href="#"><img
+														src="<%=request.getContextPath()%>/springmvc/resources/upload/${artlist.au_file}" /></a>
+														</li>
 											</c:forEach>
 										</ul>
+										<c:if test="${fn:length(artlistphoto) > 5}">
 										<a
-											href="<%=request.getContextPath()%>/artist/artistphoto.do?art_nickname=${mlist.m_nickname}"
+											href="<%=request.getContextPath()%>/artist/artistphoto.do?artist_nick=${artlist.m_nickname}"
 											class="more" title="더 보기">More</a>
+										</c:if>	
 									</div>
 
 									<div class="ta_cash" id="${loginInfo.member.m_id}">

@@ -47,9 +47,7 @@
 								<div class="tatto-text">
 									<p>${aplist.a_word}</p>
 								</div>
-								<div class="art-subscribe">
-									♥${aplist.a_subscribe}
-								</div>
+								<div class="art-subscribe">♥${aplist.a_subscribe}</div>
 							</div>
 							<div class="tatto-menu">
 								<div class="tatto-fan1">
@@ -57,7 +55,8 @@
 										<h6>타투 진행영상</h6>
 										<ul>
 											<li><a href="#"><img
-													src="https://img.youtube.com/vi/j-6ExGL0ld4/0.jpg" width="100%" height="100%"></a></li>
+													src="https://img.youtube.com/vi/j-6ExGL0ld4/0.jpg"
+													width="100%" height="100%"></a></li>
 											<li><a href="#"><img
 													src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg)"></a></li>
 											<li><a href="#"><img
@@ -73,12 +72,19 @@
 									<div class="tatto-photo">
 										<h6>타투 사진</h6>
 										<ul>
-											<li><a href="#"><img
-													src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg)"></a></li>
+											<c:forEach items="${artlistphoto}" var="artlist"
+												varStatus="status" begin="0" end="4">
+												<li><a href="#"><img
+														src="<%=request.getContextPath()%>/resources/upload/${artlist.au_file}"></a></li>
+											</c:forEach>
 										</ul>
-										<a href="<%=request.getContextPath()%>/artist/artistphoto.do?art_nickname=${artlist.m_nickname}"
+										<c:if test="${fn:length(artlistphoto) > 5}">
+										<a
+											href="<%=request.getContextPath()%>/artist/artistphoto.do?artist_nick=${artlist.m_nickname}"
 											class="more" title="더 보기">More</a>
+										</c:if>	
 									</div>
+
 									<div class="ta_cash" id="${loginInfo.member.m_id}">
 										<button type="button" onclick="donate()">후원</button>
 										<div class="dim-layer" id="dim-layer-do">
@@ -87,11 +93,11 @@
 												<div class="pop-container">
 													<div class="pop-conts">
 														<!--content //-->
-														<p class="ctxt mb20">${mlist.m_nickname} 님을 후원하시겠습니까? 후원하시려면 아래 '확인'
-															버튼을 눌러주세요.</p>
+														<p class="ctxt mb20">${mlist.m_nickname}님을후원하시겠습니까?
+															후원하시려면 아래 '확인' 버튼을 눌러주세요.</p>
 														<div class="btn-r">
-															<a href="#" class="btn-yes">확인</a>
-															<a href="#" class="btn-layerClose">취소</a>
+															<a href="#" class="btn-yes">확인</a> <a href="#"
+																class="btn-layerClose">취소</a>
 														</div>
 														<!--// content-->
 													</div>
@@ -105,10 +111,11 @@
 												<div class="pop-container">
 													<div class="pop-conts">
 														<!--content //-->
-														<p class="ctxt mb20">${artist.m_nickname} 님을 구독하였습니다. 마이페이지에서 확인하시겠습니까?</p>
+														<p class="ctxt mb20">${artist.m_nickname}님을구독하였습니다.
+															마이페이지에서 확인하시겠습니까?</p>
 														<div class="btn-r">
-															<a href="#" class="btn-yes">확인</a>
-															<a href="#" class="btn-layerClose">취소</a>
+															<a href="#" class="btn-yes">확인</a> <a href="#"
+																class="btn-layerClose">취소</a>
 														</div>
 														<!--// content-->
 													</div>
@@ -121,13 +128,13 @@
 								<div class="tatto-fan2">
 									<div class="tatto-schedule">
 										<h6>예약 일정</h6>
-										
+
 										<%-- <c:if test="${fn:length(aslist) > 5 || fn:length(aslist) == 0}"> --%>
-												<a
-												href="<%=request.getContextPath()%>/artist/artistschedule.do"
-												class="more" title="더 보기" style="margin-top:125px;">More</a>
-											<%-- </c:if>	 --%>
-										
+										<a
+											href="<%=request.getContextPath()%>/artist/artistschedule.do"
+											class="more" title="더 보기" style="margin-top: 125px;">More</a>
+										<%-- </c:if>	 --%>
+
 										<ul>
 											<c:forEach items="${aslist}" var="artsclist">
 												<li><a
@@ -135,25 +142,27 @@
 														${artsclist.ats_content}</a><span>${fn:substring(artsclist.ats_start_date,0,10)}</span></li>
 											</c:forEach>
 										</ul>
-											
-										
+
+
 									</div>
 									<div class="tatto-board">
 										<h6>후기 게시판</h6>
-										
-										<%-- <c:if test="${fn:length(artboardlist.blist) > 5 || fn:length(artboardlist.blist) == 0}"> --%>
-												<a href="<%=request.getContextPath()%>/artist/artboardlist.do"
-													class="more" title="더 보기" style="margin-top:125px;">More</a>
-											<%-- </c:if> --%>	
-										
-											<ul>
-												<c:forEach items="${artboardlist.blist}" var="artboardlist">
-													<li><a href="<%= request.getContextPath() %>/artist/aboardRead.do?b_num=${artboardlist.b_num}">
-													${artboardlist.b_title}</a><span style="float: right;">작성자 : ${artboardlist.m_id}</span></li>
 
-												</c:forEach>
-											</ul>
-												
+										<%-- <c:if test="${fn:length(artboardlist.blist) > 5 || fn:length(artboardlist.blist) == 0}"> --%>
+										<a href="<%=request.getContextPath()%>/artist/artboardlist.do"
+											class="more" title="더 보기" style="margin-top: 125px;">More</a>
+										<%-- </c:if> --%>
+
+										<ul>
+											<c:forEach items="${artboardlist.blist}" var="artboardlist">
+												<li><a
+													href="<%= request.getContextPath() %>/artist/aboardRead.do?b_num=${artboardlist.b_num}">
+														${artboardlist.b_title}</a><span style="float: right;">작성자
+														: ${artboardlist.m_id}</span></li>
+
+											</c:forEach>
+										</ul>
+
 									</div>
 								</div>
 							</div>

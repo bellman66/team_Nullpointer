@@ -38,105 +38,44 @@
 			<div class="container">
 				<div class="row">
 					<div class="artphoto_list">
-							<form name="artphoto"
-								action="<%=request.getContextPath()%>/artist/artistphoto.do">
+						<form name="artphoto"
+							action="<%=request.getContextPath()%>/artist/artistphoto.do">
+							<c:if test="">
 								<h3>공연 사진</h3>
-								<div class="aphoto_board">
-									<ul>
-										<!-- forEach야 힘내거라!!! -->
-										<li class="amovie_box">
-										<span class="photo_box"><img src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg"></span><br/> 
-										<span class="aphTitle">글내용 | </span><br/> 
-										<span class="aphNicname">닉네임 | </span>
-										<span class="a_date">20.06.22</span>
+							</c:if>
+							<c:if test="">
+								<h3>타투 진행영상</h3>
+							</c:if>
+							<div class="aphoto_board">
+								<ul>
+									<!-- forEach야 힘내거라!!! -->
+									<c:forEach items="${artlistphoto}" var="artlist"
+										varStatus="status">
+										<li class="amovie_box"><span class="photo_box"><img
+												src="/springmvc/upload/${artlist.au_file}"></span> <br /> <span
+											class="aphTitle">${artlist.au_content}</span> <br /> <span
+											class="aphNicname">${artlist.m_nickname}</span> <br /> <span
+											class="auLike">${artlist.au_like}</span>
 											<div class="btn_phoani">
 												<a href="#"> <span class="aboard_rd"></span>
 												</a>
-											</div>
-											</li>
-											<li class="amovie_box">
-										<span class="photo_box"><img src="<%=request.getContextPath()%>/resources/img/artist/today.jpg"></span><br/> 
-										<span class="aphTitle">글내용 | </span><br/> 
-										<span class="aphNicname">닉네임 | </span>
-																					<div class="btn_phoani">
-												<a href="#"> <span class="aboard_rd"></span>
-												</a>
-											</div>
-											</li>
-											<li class="amovie_box">
-										<span class="photo_box"><img src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg"></span><br/> 
-										<span class="aphTitle">글내용 | </span><br/> 
-										<span class="aphNicname">닉네임 | </span>
-										<span class="a_date">20.06.22</span>
-											<div class="btn_phoani">
-												<a href="#"> <span class="aboard_rd"></span>
-												</a>
-											</div>
-											</li>
-											<li class="amovie_box">
-										<span class="photo_box"><img src="<%=request.getContextPath()%>/resources/img/artist/today.jpg"></span><br/> 
-										<span class="aphTitle">글내용 | </span><br/> 
-										<span class="aphNicname">닉네임 | </span>
-										<span class="a_date">20.06.22</span>
-											<div class="btn_phoani">
-												<a href="#"> <span class="aboard_rd"></span>
-												</a>
-											</div>
-											</li>
-										<!-- forEach야 힘내거라!!! -->
-										
-										<!-- forEach야 힘내거라!!! -->
-										<li class="amovie_box">
-										<span class="photo_box"><img src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg"></span><br/> 
-										<span class="aphTitle">글내용 | </span><br/> 
-										<span class="aphNicname">닉네임 | </span>
-										<span class="a_date">20.06.22</span>
-											<div class="btn_phoani">
-												<a href="#"> <span class="aboard_rd"></span>
-												</a>
-											</div>
-											</li>
-											<li class="amovie_box">
-										<span class="photo_box"><img src="<%=request.getContextPath()%>/resources/img/artist/today.jpg"></span><br/> 
-										<span class="aphTitle">글내용 | </span><br/> 
-										<span class="aphNicname">닉네임 | </span>
-										<span class="a_date">20.06.22</span>
-											<div class="btn_phoani">
-												<a href="#"> <span class="aboard_rd"></span>
-												</a>
-											</div>
-											</li>
-											<li class="amovie_box">
-										<span class="photo_box"><img src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg"></span><br/> 
-										<span class="aphTitle">글내용 | </span><br/> 
-										<span class="aphNicname">닉네임 | </span>
-										<span class="a_date">20.06.22</span>
-											<div class="btn_phoani">
-												<a href="#"> <span class="aboard_rd"></span>
-												</a>
-											</div>
-											</li>
-											<li class="amovie_box">
-										<span class="photo_box"><img src="<%=request.getContextPath()%>/resources/img/artist/today.jpg"></span><br/> 
-										<span class="aphTitle">글내용 | </span><br/> 
-										<span class="aphNicname">닉네임 | </span>
-										<span class="a_date">20.06.22</span>
-											<div class="btn_phoani">
-												<a href="#"> <span class="aboard_rd"></span>
-												</a>
-											</div>
-											</li>
-										<!-- forEach야 힘내거라!!! -->
-									</ul>
-								</div>
+											</div></li>
+									</c:forEach>
+								</ul>
+							</div>
 
-								<!-- artist게시판들 클래스 다들 동일 클래스 사용  -->
-								<button class="atwrite" type="button">글쓰기</button>
-							</form>
-						</div>
+							<!-- artist게시판들 클래스 다들 동일 클래스 사용  -->
+							<button class="atwrite" type="button">글쓰기</button>
+							<div class="tabmore">
+								<button type="submit" class="btn_more" onclick="more()">
+									<span aria-hidden="true">더보기(More)</span>
+								</button>
+							</div>
+						</form>
 					</div>
-					<!-- 검색 창 -->
 				</div>
+				<!-- 검색 창 -->
+			</div>
 		</article>
 	</section>
 	<!-- content부분 끝 -->
@@ -145,6 +84,12 @@
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 
 	<!-- footer부분 끝 -->
+	
+	<!-- javascript -->
+	<script type="text/javascript"
+		src="<%=request.getContextPath()%>/resources/js/jquery/jquery-3.4.1.js"></script>
+	<script type="text/javascript"
+		src="<%=request.getContextPath()%>/resources/js/photoList.js"></script>	
 
 </body>
 </html>

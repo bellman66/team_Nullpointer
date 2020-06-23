@@ -105,6 +105,11 @@
 	/* border:1px solid red; */
 }
 
+.art-Table .art-menu .art-video li img{
+	width:100%;
+	height:150px;
+}
+
 .art-Table .art-menu .art-video .more{
 	color: #0c0c13;
 	text-transform: uppercase;
