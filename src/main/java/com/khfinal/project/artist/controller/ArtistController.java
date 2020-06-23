@@ -229,7 +229,7 @@ public class ArtistController {
 	@RequestMapping("/artist/artistvideo.do")
 	public ModelAndView artistvideo(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
-		
+
 		// 수정자: 박혜연
 		// 업로드 전체 페이지 로드
 		m_nickname = request.getParameter("artist_nick");
@@ -242,24 +242,28 @@ public class ArtistController {
 		mav.setViewName("artist/artMovieList");
 		return mav;
 	}
-	
+
 	@RequestMapping("/artist/artistvideoview.do")
-	public ModelAndView artistvideoview(HttpServletRequest request , @RequestParam String select_file) {
+	public ModelAndView artistvideoview(HttpServletRequest request, @RequestParam String select_file) {
 		ModelAndView mav = new ModelAndView();
+
+		Artist selectvideo = as.selectvideoview(select_file);
 		
 		// 수정자 : 박혜연
 		// 일반 회원의 시청 기록에 추가
 		HttpSession session = request.getSession();
 		Map<String, Object> info = (Map<String, Object>) session.getAttribute("loginInfo");
-		Member user = (Member) info.get("member");
 
-		Artist selectvideo = as.selectvideoview(select_file);
-		
-		Map<String, Object> myrecord = new HashMap<>();
-		myrecord.put("m_id", user.getM_id());
-		myrecord.put("selectvideo", selectvideo);
-		
-		int insertRes = ms.insertMyRecord(myrecord);
+		if (info != null) {
+			Member user = (Member) info.get("member");
+
+			Map<String, Object> myrecord = new HashMap<>();
+			myrecord.put("m_id", user.getM_id());
+			myrecord.put("selectvideo", selectvideo);
+
+			int insertRes = ms.insertMyRecord(myrecord);
+			
+		}
 		
 		mav.addObject("selectvideo", selectvideo);
 		mav.setViewName("artist/artMovie_view");
@@ -277,8 +281,6 @@ public class ArtistController {
 		ModelAndView mav = new ModelAndView();
 		// String m_nickname을 통해 닉네임값으로 받아서 게시판 목록을 받아줍니다.
 		String m_nickname = request.getParameter("art_nickname");
-		
-		
 
 		mav.setViewName("artist/artPhotoList");
 		return mav;
@@ -293,7 +295,7 @@ public class ArtistController {
 	@RequestMapping("/artist/artphotoview.do")
 	public ModelAndView artphotoView(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
-		
+
 		mav.setViewName("artist/artPhoto_view");
 		return mav;
 	}
@@ -424,13 +426,13 @@ public class ArtistController {
 		if (request.getParameter("cntPerPage") != null) {
 			currentPage = Integer.parseInt(request.getParameter("cntPerPage"));
 		}
-		
-		//게시판 구분해주는 코드
+
+		// 게시판 구분해주는 코드
 		int category = as.artCategory(m_nickname) + 1;
-		
-		if(category == 3) {
+
+		if (category == 3) {
 			mav.addObject("artist", "band");
-		}else {
+		} else {
 			mav.addObject("artist", "tattoo");
 		}
 
@@ -449,16 +451,15 @@ public class ArtistController {
 	public ModelAndView aboardRead(int b_num) {
 		ModelAndView mav = new ModelAndView();
 		Map<String, Object> readMap = as.aboardRead(b_num);
-		
+
 		int category = as.artCategory(m_nickname) + 1;
-		
-		if(category == 3) {
+
+		if (category == 3) {
 			mav.addObject("artist", "band");
-		}else {
+		} else {
 			mav.addObject("artist", "tattoo");
 		}
-		
-		
+
 		mav.addObject("readMap", readMap);
 		mav.setViewName("artist/artBoard_view");
 
@@ -469,15 +470,14 @@ public class ArtistController {
 	@RequestMapping("/artist/aboardWrite.do")
 	public ModelAndView aboardWrite() {
 		ModelAndView mav = new ModelAndView();
-		
+
 		int category = as.artCategory(m_nickname) + 1;
-		
-		if(category == 3) {
+
+		if (category == 3) {
 			mav.addObject("artist", "band");
-		}else {
+		} else {
 			mav.addObject("artist", "tattoo");
 		}
-		
 
 		mav.setViewName("artist/artWrite");
 		return mav;
@@ -487,7 +487,7 @@ public class ArtistController {
 	@RequestMapping("/artist/aboardUpload.do")
 	public ModelAndView aboardUpload(HttpServletRequest request, Board board, @RequestParam List<MultipartFile> bfile) {
 		ModelAndView mav = new ModelAndView();
-		//파일 업로드 코드
+		// 파일 업로드 코드
 		List<Map<String, Object>> file = new ArrayList<Map<String, Object>>();
 		String root = request.getSession().getServletContext().getRealPath("/");
 
@@ -516,7 +516,7 @@ public class ArtistController {
 		HttpSession session = request.getSession();
 		Map<String, Object> login = (Map<String, Object>) session.getAttribute("loginInfo");
 		Member member = (Member) login.get("member");
-		
+
 		int category = as.artCategory(m_nickname) + 1;
 
 		System.out.println("컨트롤러 " + category);
