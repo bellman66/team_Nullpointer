@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,19 +37,21 @@
 		<article class="scheadd_box">
 			<div class="container">
 				<div class="row">
+					<!-- 스케줄 div 시작 -->
 					<div class="scheadd_table">
-						<div class="scAddTitle">스케줄 입력</div>
-						<br><br>
-						<div class="scStart" style="font-size: 2em;">시작일</div>
-						<form name="sh" action="<%=request.getContextPath()%>/schedule/scheduleadd.do">
-							<select name="startYear" class="startYear">
+						<div class="scAddTitle">스케줄 등록</div>
+						<!-- form 시작 -->
+						<div class="schformtag">
+							<form name="sh"
+								action="<%=request.getContextPath()%>/schedule/scheduleadd.do">
+								<div class="scStart">시작일</div>
+								<select name="startYear" class="startYear">
 									<option value="selected disabled hidden">년도</option>
 									<option value="2020-">2020년</option>
 									<option value="2021-">2021년</option>
 									<option value="2022-">2022년</option>
-							</select> 
-							
-							<select name="startMonth" class="startMonth">
+								</select>
+								<select name="startMonth" class="startMonth">
 									<option value="selected disabled hidden">월</option>
 									<option value="01-">1월</option>
 									<option value="02-">2월</option>
@@ -63,9 +65,8 @@
 									<option value="10-">10월</option>
 									<option value="11-">11월</option>
 									<option value="12-">12월</option>
-							</select>
-							
-							<select name="startDay" class="startDay">
+								</select>
+								<select name="startDay" class="startDay">
 									<option value="selected disabled hidden">일</option>
 									<option value="01">1일</option>
 									<option value="02">2일</option>
@@ -98,10 +99,9 @@
 									<option value="29">29일</option>
 									<option value="30">30일</option>
 									<option value="31">31일</option>
-							</select>
-							
-							<select name="startHour" class="startYear">
-								<option value="selected disabled hidden">시</option>
+								</select>
+								<select name="startHour" class="startYear">
+									<option value="selected disabled hidden">시</option>
 									<option value="T24:">0시</option>
 									<option value="T01:">1시</option>
 									<option value="T02:">2시</option>
@@ -126,28 +126,24 @@
 									<option value="T21:">21시</option>
 									<option value="T22:">22시</option>
 									<option value="T23:">23시</option>
-							</select>
-							
-							<select name="startMinute" class="startMinute">
-								<option value="selected disabled hidden">분</option>
+								</select>
+								<select name="startMinute" class="startMinute">
+									<option value="selected disabled hidden">분</option>
 									<option value="00:00">00분</option>
 									<option value="10:00">10분</option>
 									<option value="20:00">20분</option>
 									<option value="30:00">30분</option>
 									<option value="40:00">40분</option>
 									<option value="50:00">50분</option>
-							</select>
-
-							<br><br><br><br><br>
-						<div class="scEnd" style="font-size: 2em;">종료일</div>
-							<select name="endYear" class="endYear">
+								</select>
+								<div class="scEnd">종료일</div>
+								<select name="endYear" class="endYear">
 									<option value="selected disabled hidden">년도</option>
 									<option value="2020-">2020년</option>
 									<option value="2021-">2021년</option>
 									<option value="2022-">2022년</option>
-							</select> 
-							
-							<select name="endMonth" class="endMonth">
+								</select>
+								<select name="endMonth" class="endMonth">
 									<option value="selected disabled hidden">월</option>
 									<option value="01-">1월</option>
 									<option value="02-">2월</option>
@@ -161,9 +157,8 @@
 									<option value="10-">10월</option>
 									<option value="11-">11월</option>
 									<option value="12-">12월</option>
-							</select>
-							
-							<select name="endDay" class="endDay">
+								</select>
+								<select name="endDay" class="endDay">
 									<option value="selected disabled hidden">일</option>
 									<option value="01">1일</option>
 									<option value="02">2일</option>
@@ -196,10 +191,9 @@
 									<option value="29">29일</option>
 									<option value="30">30일</option>
 									<option value="31">31일</option>
-							</select> 
-							
-							<select name="endHour" class="endHour">
-								<option value="selected disabled hidden">시</option>
+								</select>
+								<select name="endHour" class="endHour">
+									<option value="selected disabled hidden">시</option>
 									<option value="T24:">0시</option>
 									<option value="T01:">1시</option>
 									<option value="T02:">2시</option>
@@ -224,35 +218,35 @@
 									<option value="T21:">21시</option>
 									<option value="T22:">22시</option>
 									<option value="T23:">23시</option>
-							</select>
-							
-							<select name="endMinute" class="endMinute">
-								<option value="selected disabled hidden">분</option>
+								</select>
+								<select name="endMinute" class="endMinute">
+									<option value="selected disabled hidden">분</option>
 									<option value="00:00">00분</option>
 									<option value="10:00">10분</option>
 									<option value="20:00">20분</option>
 									<option value="30:00">30분</option>
 									<option value="40:00">40분</option>
 									<option value="50:00">50분</option>
-							</select> 
-							
-							일정 제목 : <input type="text" name="as_content" class="as_content"/>
-							
-							<button class="dbSearch">추가하기</button>
-						<!-- <input class="sub" value="sub" style="display:none;"></input> -->
-						</form>
+								</select>
+								<div class="schTitle"> 일정 제목  </div>
+								<input type="text" name="as_content" class="as_content" />
+								<button class="dbSearch">추가하기</button>
+							</form>
+						</div>
+						<!-- form 끝 -->
 					</div>
+					<!-- 스케줄 div 끝-->
 				</div>
-			</div>	
+			</div>
 		</article>
 	</section>
 	<!-- content부분 끝 -->
 
-<!-- footer부분 시작 -->
+	<!-- footer부분 시작 -->
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 	<!-- footer부분 끝 -->
 
-<script type="text/javascript">
+	<script type="text/javascript">
 
 	
  	function sub(){
@@ -266,33 +260,31 @@
 		var endDay = document.querySelector(".endDay").value;
 		$.ajax({
 			href :'<%=request.getContextPath()%>/schedule/scheduleadd.do',
-			data : 
-			{
-				"startYear" : startYear,
-				"startMonth" : startMonth,
-				"startDay" : startDay,
-				"endYear" : endYear,
-				"endMonth" : endMonth,
-				"endDay" : endDay
-			},
-			success : function(xh)
-					{									
-						window.close();
-					}
-		});
-	}
+				data : {
+					"startYear" : startYear,
+					"startMonth" : startMonth,
+					"startDay" : startDay,
+					"endYear" : endYear,
+					"endMonth" : endMonth,
+					"endDay" : endDay
+				},
+				success : function(xh) {
+					window.close();
+				}
+			});
+		}
 
-/*  var sub = document.querySelector('.sub');
- 
-	function sub(){
-		 
-	
-			 
-			 window.close();
-			 return true;
-	
-	 }; */
-</script>
+		/*  var sub = document.querySelector('.sub');
+		
+		 function sub(){
+		
+		
+		
+		 window.close();
+		 return true;
+		
+		 }; */
+	</script>
 
 
 

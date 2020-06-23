@@ -1,1 +1,33 @@
 @charset "UTF-8";
+
+/* 콘텐츠 전체 div */
+.rent_table {
+	margin-top: 50px;
+	margin-bottom: 50px; 
+	/* border: 1px solid red; */
+}
+
+/* 제목 */
+.rentTitle {
+	font-size: 41px;
+	font-weight: 650;
+	padding-left: 43%;
+	/* border: 1px solid blue; */
+}
+
+/* formtag */
+.rentformtag {
+	padding: 25px 10px 10px 480px;
+	/* border: 1px solid black; */
+}
+
+.rentformtag form select {
+	margin-top:10px;
+	margin-bottom:20px;
+}
+
+.rent_table .rentNotice {
+	margin-top:10px;
+	padding-left:390px;
+	/* border:1px solid red; */
+}
