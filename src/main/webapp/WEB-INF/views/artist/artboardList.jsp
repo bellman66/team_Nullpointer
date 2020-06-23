@@ -92,7 +92,7 @@
 								<c:if test="${sessionScope.loginInfo != null }">
 									<button class="atwrite" type="button"  onclick="location.href='<%= request.getContextPath() %>/artist/aboardWrite.do'">글쓰기</button>
 								</c:if>
-								<button class="artist_board_cancel" onclick="location.href='<%= request.getContextPath() %>/artist/artistpage.do'">뒤로가기</button>
+								<%-- <button class="artist_board_cancel" onclick="location.href='<%= request.getContextPath() %>/artist/artist.do'">뒤로가기</button> --%>
 							</form>
 						</div>
 

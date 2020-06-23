@@ -86,8 +86,7 @@ public class ArtistController {
 		// 사진 콘텐츠
 		List<Artist> artlistphoto = as.selectArtPagePhoto(m_nickname);
 		mav.addObject("artlistphoto", artlistphoto);
-		
-		
+
 		// 아티스트의 한줄소개, 구독자수 받아오기
 		ArtistPlus aplist = as.selectAll(m_nickname);
 		mav.addObject("aplist", aplist);
@@ -258,15 +257,15 @@ public class ArtistController {
 	@RequestMapping("/artist/artistphoto.do")
 	public ModelAndView artistphotoList(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
-		
+
 		// String m_nickname을 통해 닉네임값으로 받아서 게시판 목록을 받아줍니다.
 
 		m_nickname = request.getParameter("art_nickname");
 		System.out.println(m_nickname);
-		
-		List<Artist>artlistphoto = as.selectArtPagePhoto(m_nickname);
-		mav.addObject("artlistphoto",artlistphoto);
-		System.out.println("와라와라"+artlistphoto);
+
+		List<Artist> artlistphoto = as.selectArtPagePhoto(m_nickname);
+		mav.addObject("artlistphoto", artlistphoto);
+		System.out.println("와라와라" + artlistphoto);
 
 		mav.setViewName("artist/artPhotoList");
 		return mav;
@@ -460,29 +459,33 @@ public class ArtistController {
 	public ModelAndView aboardUpload(HttpServletRequest request, Board board, @RequestParam List<MultipartFile> bfile) {
 		ModelAndView mav = new ModelAndView();
 		// 파일 업로드 코드
-		List<Map<String, Object>> file = new ArrayList<Map<String, Object>>();
-		String root = request.getSession().getServletContext().getRealPath("/");
 
-		int i = 0;
-		for (MultipartFile mf : bfile) {
-			String savePath = root + "resources/upload/";
-			String originFileName = mf.getOriginalFilename();
-			HashMap<String, Object> data = new HashMap<>();
+		List<Map<String, Object>> file = null;
+		if (bfile != null) {
+			file = new ArrayList<Map<String, Object>>();
+			String root = request.getSession().getServletContext().getRealPath("/");
 
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+			int i = 0;
+			for (MultipartFile mf : bfile) {
+				String savePath = root + "resources/upload/";
+				String originFileName = mf.getOriginalFilename();
+				HashMap<String, Object> data = new HashMap<>();
 
-			String renameFile = sdf.format(new Date()) + i + "."
-					+ originFileName.substring(originFileName.lastIndexOf(".") + 1);
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
 
-			savePath += renameFile;
+				String renameFile = sdf.format(new Date()) + i + "."
+						+ originFileName.substring(originFileName.lastIndexOf(".") + 1);
 
-			data.put("originFileName", originFileName);
-			data.put("renameFile", renameFile);
-			data.put("savePath", savePath);
-			data.put("file", mf);
+				savePath += renameFile;
 
-			file.add(data);
-			i++;
+				data.put("originFileName", originFileName);
+				data.put("renameFile", renameFile);
+				data.put("savePath", savePath);
+				data.put("file", mf);
+
+				file.add(data);
+				i++;
+			}
 		}
 		// 파일을 뺀 나머지 값 넣는 코드
 		HttpSession session = request.getSession();
