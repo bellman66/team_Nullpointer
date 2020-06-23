@@ -362,12 +362,7 @@ public class BoardController {
 		
 		
 		System.out.println("controller 에서 전체     " + res.get("nlist"));
-
-		if (board.equals("pr")) {
-			res = bs.boardSearchPR(searchType, searchWord, currentPage, cntPerPage);
-		} else if (board.equals("sh")) {
-			res = bs.boardSearchSH(searchType, searchWord, currentPage, cntPerPage);
-		}
+		
 
 		System.out.println("board " + board);
 

@@ -1,6 +1,7 @@
 package com.khfinal.project.member.model.dao;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -73,6 +74,11 @@ public class MemberDao {
 		return session.selectOne("Member.idExist",commandMap);
 	}
 	
+	public String pwCheck(String m_pass) {
+		// TODO Auto-generated method stub
+		return session.selectOne("Member.pwExist",m_pass);
+	}
+	
 	/**
 	 * @method : selectProfile
 	 * @date : 2020. 6. 21.
@@ -83,5 +89,36 @@ public class MemberDao {
 		return session.selectOne("Member.profile", m_nickname);
 	}
 
+	public String findId(String id_email) {
+		// TODO Auto-generated method stub
+		String[] splitString = id_email.split("@");
+
+		
+		if(splitString.length > 1) {
+			Map<String,Object> commandMap = new HashMap<String, Object>();
+			commandMap.put("m_email1", splitString[0]);
+			commandMap.put("m_email2", splitString[1]);
+			return session.selectOne("Member.findId", commandMap);
+		}
+		return null;
+	}
+
+	public String findPwd(String pwd_id , String pwd_email) {
+		// TODO Auto-generated method stub
+		String[] splitString = pwd_email.split("@");
+		for (String string : splitString) {
+			System.out.println("string : " + string);
+			
+		}
+		
+		if(splitString.length > 1) {
+			Map<String,Object> commandMap = new HashMap<String, Object>();
+			commandMap.put("pwd_id", pwd_id);
+			commandMap.put("m_email1", splitString[0]);
+			commandMap.put("m_email2", splitString[1]);
+			return session.selectOne("Member.findPwd", commandMap);
+		}
+		return null;
+	}
 
 }

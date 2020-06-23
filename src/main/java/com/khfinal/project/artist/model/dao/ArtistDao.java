@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.khfinal.project.artist.model.vo.Artist;
-import com.khfinal.project.member.model.vo.Member;
 import com.khfinal.project.artist.model.vo.ArtistPlus;
 import com.khfinal.project.board.model.vo.Board;
+import com.khfinal.project.member.model.vo.Member;
 import com.khfinal.project.schedule.model.vo.Schedule;
 
 import common.util.Paging;
