@@ -141,11 +141,5 @@
 		SELECT M_CLASS FROM TB_MEMBER WHERE m_nickname = #{m_nickname}
 	</select>
 	
-	<insert id="artConUpload" parameterType="Artist">
-		insert into tb_artist_upload values(
-			AU_NUM, #{m_id}, #{m_nickname}, now(), #{au_content}, #{au_file},
-			0, #{au_thumbnail}, #{au_type}
-		);
-	</insert>
 
 </mapper>

@@ -50,19 +50,25 @@
 									<!-- 공연사진값을 안의 div에 던져주자!!! 스크립트랑 css로 잡아줄것! -->
 									<div class="av_view">
 										<div>slick1</div>
+										<div>slick2</div>
+										<div>slick3</div>
+										<div>slick4</div>
+										<div>slick5</div>
+										<div>slick6</div>
+										<div>slick7</div>
+										<div>slick8</div>
 									</div>
 									<!-- 공연사진값을 안의 div에 던져주자!!! -->
 								</div>
-							
+							</form>
 							
 
-							<!-- 목록, 수정, 확인 (작성한 아티스트만) -->
+							<!-- 목록, 수정(작성한 아이디만), 취소 -->
 							<div class="aboard_btn">
 								<button class="btn_list" type="button">목록</button>
 								<button class="btn_modify" type="button">수정</button>
 								<button class="btn_pass" type="button">취소</button>
 							</div>
-							</form>
 						</div>
 					</div>
 				</div>
