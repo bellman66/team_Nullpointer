@@ -157,3 +157,13 @@
 	border: 1px solid #0c0c13;
 }
 
+/* 더보기 버튼  */
+.artmovie_list .tabmore .btn_more {
+	float: right;
+	margin-right: 10px;
+	width: 120px;
+	height: 25px;
+	border-radius: 5px;
+	color: #fff;
+	background-color: #0c0c13;
+}

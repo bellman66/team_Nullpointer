@@ -1,28 +1,62 @@
 @charset "UTF-8";
 
+/* 스케줄 부분 전체 밀기 */
+.schedule_list {
+	padding-left: 7%;
+}
 
- .sc_main_rent, .schedule_add, .sc_main{
+/* 페이지 제목 */
+.schedule_box .container .scheduleHead {
+	font-weight: 600;
+	color: #0c0c13;
+	text-align: center;
+	margin-top: 20px;
+	padding-top: 8px;
+	text-align: center;
+	font-size: 30px;
+	/* border: 1px solid red;  */
+}
+
+.schedule_box .container .scheduleHead:hover {
+	color: #f5b041;
+}
+
+/* 달력  */
+#calendar {
+	max-width: 900px;
+	margin: 0 auto;
+}
+
+/*  */
+.sc_main_rent, .schedule_add, .sc_main {
 	background-color: black;
+	font-size: 12px;
+	font-weight: 660;
 	color: white;
 	width: 10%;
-	height: 50px;
-	margin:2%;
-	margin-top : -7%;
+	height: 38px;
+	margin: 2%;
+	margin-top: -7%;
+	border-radius: 5px;
 }
 
-.schedule_add{
-	margin-left : 80%;
+.sc_main_rent:hover, .schedule_add:hover, .sc_main:hover {
+	color: #f5b041;
+}
+
+.schedule_add {
+	margin-left: 80%;
 	position: absolute;
 	text-align: center;
 }
 
-.sc_main_rent{
-	margin-left : 69%;
+.sc_main_rent {
+	margin-left: 69%;
 	position: absolute;
 	text-align: center;
 }
 
-.sc_main{
-	margin-left : 58%;
+.sc_main {
+	margin-left: 58%;
 	position: absolute;
 }

@@ -66,10 +66,11 @@
 											</c:forEach>
 
 										</ul>
+										<c:if test="${fn:length(artlistvideo) > 5}">
 										<a
 											href="<%=request.getContextPath()%>/artist/artistvideo.do?artist_nick=${mlist.m_nickname}"
 											class="more" title="더 보기">More</a>
-
+										</c:if>
 									</div>
 									<div class="art-photo">
 										<h6>공연 사진</h6>
@@ -140,26 +141,25 @@
 										<%-- </c:if> --%>
 
 										<ul>
-											<c:forEach items="${aslist}" var="artsclist">
-												<li><c:if
-														test="${fn:substring(artsclist.ats_start_date,0,10) eq fn:substring(artsclist.ats_end_date,0,10)}">
-														<a
-															href="<%=request.getContextPath()%>/artist/artistschedule.do">
+											<c:forEach items="${aslist}" var="artsclist" varStatus="art">
+												<c:if test="${art.index < 5}">
+													<li>
+														<c:if test="${fn:substring(artsclist.ats_start_date,0,10) eq fn:substring(artsclist.ats_end_date,0,10)}">
+															<a href="<%=request.getContextPath()%>/artist/artistschedule.do">
+																${artsclist.ats_content}</a>
+															<span style="float: right;">공연일정 :
+																${fn:substring(artsclist.ats_start_date,0,10)}</span>
+														</c:if>
+	
+													<c:if test="${fn:substring(artsclist.ats_start_date,0,10) != fn:substring(artsclist.ats_end_date,0,10)}">
+														<a href="<%=request.getContextPath()%>/artist/artistschedule.do">
 															${artsclist.ats_content}</a>
 														<span style="float: right;">공연일정 :
-															${fn:substring(artsclist.ats_start_date,0,10)}</span></li>
-												</c:if>
-
-												<c:if
-													test="${fn:substring(artsclist.ats_start_date,0,10) != fn:substring(artsclist.ats_end_date,0,10)}">
-													<a
-														href="<%=request.getContextPath()%>/artist/artistschedule.do">
-														${artsclist.ats_content}</a>
-													<span style="float: right;">공연일정 :
-														${fn:substring(artsclist.ats_start_date,0,10)} ~
-														${fn:substring(artsclist.ats_end_date,0,10)}</span>
+															${fn:substring(artsclist.ats_start_date,0,10)} ~
+															${fn:substring(artsclist.ats_end_date,0,10)}</span>
+													</c:if>
 													</li>
-												</c:if>
+												</c:if>	
 												<%-- <li><a href="<%=request.getContextPath()%>/artist/artistschedule.do">member + myartist 내역 불러와서 foreach로
 															돌릴 예정</a></li>
 													<li><a href="<%=request.getContextPath()%>/artist/artistschedule.do">member + myartist 내역 불러와서 foreach로

@@ -98,7 +98,7 @@
 	                        <div class="img-event">
 	                        	<a href="/springmvc/streamMapping/${vo.id}.do">
 	                            	<img class="group list-group-image img-fluid" src="http://rndso15.synology.me:8080/hls/${vo.userHashCode}/${vo.userHashCode}_thumbnail.png"
-	                            		 onerror="this.src='<%=request.getContextPath()%>/resources/img/maintest.jpg'" alt="" />
+	                            		 onerror="this.src='<%=request.getContextPath()%>/resources/img/stream/wait2.png'" alt="" />
 	                        	</a>
 	                        </div>
 	                        

@@ -1,22 +1,50 @@
 @charset "UTF-8";
 
-.scheadd_table{
-	margin-bottom: 100px;
-	margin-top:100px;
+/* 콘텐츠 전체 div */
+.scheadd_table {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	/* border: 1px solid red; */
 }
 
-
-.scAddTitle{
-	width : 100%;
-	text-align: center;
-	font-size: 5em;
-	height : 100%;
+/* 제목 */
+.scAddTitle {
+	font-size: 41px;
+	font-weight: 650;
+	padding-left: 43%;
+	/* border: 1px solid blue; */
 }
 
-.scStart{
-	font-size: 3em;
+/* formtag */
+.schformtag {
+	padding: 25px 10px 10px 480px;
+	/* border:1px solid black; */
 }
 
-.scEnd{
-	font-size: 3em;
+.schformtag form select {
+	margin-top:10px;
+	margin-bottom:20px;
+}
+
+.scStart, .scEnd, .schTitle {
+	font-size: 21px;
+	font-weight: 600;
+	/* border:1px solid orange; */
+}
+
+.schTitle {
+	margin-bottom:10px;
+}
+
+/* 일정 추가 버튼 */
+.dbSearch {
+	background-color: black;
+	font-size: 12px;
+	font-weight: 660;
+	color: white;
+	width: 80px;
+	height: 25px;
+	margin: 2%;
+	margin-top: -7%;
+	border-radius: 5px;
 }

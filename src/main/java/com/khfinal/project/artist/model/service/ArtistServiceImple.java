@@ -338,7 +338,12 @@ public class ArtistServiceImple implements ArtistService {
 	public int aboardUpload(Board board, List<Map<String, Object>> file) {
 
 		int res = ad.aboardUpload(board);
-		aboardFileUpload(file);
+		
+		if(file.get(0).get("originFileName").equals("")) {
+			
+		}else {
+			aboardFileUpload(file);
+		}
 		return res;
 	}
 

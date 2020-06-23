@@ -107,11 +107,6 @@
     font-size: 14px;
   }
 
-  #calendar {
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
 </style>
     
 </head>
@@ -129,54 +124,43 @@
 		<article class="schedule_box">
 			<div class="container">
 				<div class="row">
-					<c:if test="${rent eq 'rent'}">
-						<div style="text-align:center;font-size:50px;" >&lt;메인페이지 영상 스케줄 입니다 &gt;</div>
-					</c:if>
-					<c:if test="${sessionScope.loginInfo.member.m_class == '1'}">
-						<div style="text-align:center;font-size:50px;" >&lt;메인페이지 영상 스케줄 입니다 &gt;</div>
-					</c:if>
-					
-					<c:if test="${sessionScope.loginInfo != null }">
-						<c:if test="${sessionScope.loginInfo.member.m_class != '1'}">
-							<c:if test="${rent != 'rent'}">
-								<div style="text-align:center;font-size:60px;" >&lt;${sessionScope.loginInfo.member.m_nickname}'s Schedule&gt;</div>
+				<!-- 스케줄 부분 시작 -->
+					<div class="schedule_list">
+						<!-- 페이지 제목 부분 시작 -->
+						<c:if test="${rent eq 'rent'}">
+							<div class="scheduleHead">메인 페이지 영상 스케줄 </div>
+						</c:if>
+						<c:if test="${sessionScope.loginInfo.member.m_class == '1'}">
+							<div class="scheduleHead">메인 페이지 영상 스케줄 </div>
+						</c:if>
+						<c:if test="${sessionScope.loginInfo != null }">
+							<c:if test="${sessionScope.loginInfo.member.m_class != '1'}">
+								<c:if test="${rent != 'rent'}">
+									<div class="scheduleHead">${sessionScope.loginInfo.member.m_nickname}'s Schedule</div>
+								</c:if>
+							</c:if>
+						</c:if>	
+						<!-- 페이지 제목 부분 끝 -->
+						<!-- 달력 부분 시작 -->	
+						<div id='calendar' style="margin-top: 5%; margin-bottom: 10%;"></div>
+						<!-- 달력 부분 끝 -->
+						<!-- 스케줄 관련 버튼 부분 시작 -->
+						<c:if test="${sessionScope.loginInfo != null }">
+							<c:if test="${sessionScope.loginInfo.member.m_class != '1'}">
+								<button class="sc_main" onclick="location.href='<%= request.getContextPath() %>/schedule/rendSchedule.do'">메인 영상 스케줄</button> 
+								<button class="sc_main_rent" onclick="location.href='<%= request.getContextPath() %>/schedule/rentAdd.do'">메인 영상 대여</button> 
+								<button class="schedule_add" onclick="location.href='<%= request.getContextPath() %>/schedule/add.do'">스케줄 등록</button> 
+								
 							</c:if>
 						</c:if>
-					</c:if>	
-					
-					<div id='calendar' style="margin-top: 5%; margin-bottom: 10%;"></div>
-					
-					<c:if test="${sessionScope.loginInfo != null }">
-						<c:if test="${sessionScope.loginInfo.member.m_class != '1'}">
-							<%-- <div class="sc_main">
-								<a style="color:white;" href="<%= request.getContextPath() %>/schedule/rendSchedule.do">메인 영상 스케줄</a>
-							</div> --%>
-							
-							<button class="sc_main" onclick="location.href='<%= request.getContextPath() %>/schedule/rendSchedule.do'">메인 영상 스케줄</button> 
-							
-						
-							<%-- <div class="sc_main_rent">
-								<a style="color:white;" href="<%= request.getContextPath() %>/schedule/rentAdd.do">메인 영상 대여</a>
-							</div> --%>
-							
-							<button class="sc_main_rent" onclick="location.href='<%= request.getContextPath() %>/schedule/rentAdd.do'">메인 영상 대여</button> 
-							
-							<!-- <button class="schedule_add" onclick="schedule_add()">스케줄 등록</button> -->
-							<%-- <div class="schedule_add">
-								<a style="color:white;" href="<%= request.getContextPath() %>/schedule/add.do">스케줄 등록</a>
-							</div> --%>
-							
-							<button class="schedule_add" onclick="location.href='<%= request.getContextPath() %>/schedule/add.do'">스케줄 등록</button> 
-							
-						</c:if>
-					</c:if>
-					
-					<form name="del" action="<%= request.getContextPath() %>/schedule/delete.do">
-						<input style="display:none;" name="scdelete" class="scdelete" value=""/>
-						<input style="display:none;" name="scdeleteid" class="scdeleteid" value=""/>
-					</form>
+						<!-- 스케줄 관련 버튼 부분 끝 -->
+						<form name="del" action="<%= request.getContextPath() %>/schedule/delete.do">
+							<input style="display:none;" name="scdelete" class="scdelete" value=""/>
+							<input style="display:none;" name="scdeleteid" class="scdeleteid" value=""/>
+						</form>
+					</div>
+					<!-- 스케줄 부분 끝 -->
 				</div>
-				
 			</div>	
 		</article>
 	</section>

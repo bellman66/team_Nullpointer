@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,19 +38,21 @@
 		<article class="rent_box">
 			<div class="container">
 				<div class="row">
+					<!-- 대여 div 시작 -->
 					<div class="rent_table">
-					<div class="scAddTitle">메인 영상 대여</div>
-						<br><br>
-						<div class="scStart" style="font-size: 2em;">시작일</div>
-						<form name="sh" action="<%=request.getContextPath()%>/schedule/rentadd.do">
-							<select name="startYear" class="startYear">
+						<div class="rentTitle">메인 영상 대여</div>
+						<!-- form 시작 -->
+						<div class="rentformtag">
+							<form name="sh"
+								action="<%=request.getContextPath()%>/schedule/rentadd.do">
+								<div class="scStart">시작일</div>
+								<select name="startYear" class="startYear">
 									<option value="selected disabled hidden">년도</option>
 									<option value="2020-">2020년</option>
 									<option value="2021-">2021년</option>
 									<option value="2022-">2022년</option>
-							</select> 
-							
-							<select name="startMonth" class="startMonth">
+								</select>
+								<select name="startMonth" class="startMonth">
 									<option value="selected disabled hidden">월</option>
 									<option value="01-">1월</option>
 									<option value="02-">2월</option>
@@ -64,9 +66,8 @@
 									<option value="10-">10월</option>
 									<option value="11-">11월</option>
 									<option value="12-">12월</option>
-							</select>
-							
-							<select name="startDay" class="startDay">
+								</select>
+								<select name="startDay" class="startDay">
 									<option value="selected disabled hidden">일</option>
 									<option value="01">1일</option>
 									<option value="02">2일</option>
@@ -99,10 +100,9 @@
 									<option value="29">29일</option>
 									<option value="30">30일</option>
 									<option value="31">31일</option>
-							</select>
-							
-							<select name="startHour" class="startYear">
-								<option value="selected disabled hidden">시</option>
+								</select>
+								<select name="startHour" class="startYear">
+									<option value="selected disabled hidden">시</option>
 									<option value="T24:">0시</option>
 									<option value="T01:">1시</option>
 									<option value="T02:">2시</option>
@@ -127,28 +127,24 @@
 									<option value="T21:">21시</option>
 									<option value="T22:">22시</option>
 									<option value="T23:">23시</option>
-							</select>
-							
-							<select name="startMinute" class="startMinute">
-								<option value="selected disabled hidden">분</option>
+								</select>
+								<select name="startMinute" class="startMinute">
+									<option value="selected disabled hidden">분</option>
 									<option value="00:00">00분</option>
 									<option value="10:00">10분</option>
 									<option value="20:00">20분</option>
 									<option value="30:00">30분</option>
 									<option value="40:00">40분</option>
 									<option value="50:00">50분</option>
-							</select>
-
-							<br><br><br><br><br>
-						<div class="scEnd" style="font-size: 2em;">종료일</div>
-							<select name="endYear" class="endYear">
+								</select>
+								<div class="scEnd">종료일</div>
+								<select name="endYear" class="endYear">
 									<option value="selected disabled hidden">년도</option>
 									<option value="2020-">2020년</option>
 									<option value="2021-">2021년</option>
 									<option value="2022-">2022년</option>
-							</select> 
-							
-							<select name="endMonth" class="endMonth">
+								</select>
+								<select name="endMonth" class="endMonth">
 									<option value="selected disabled hidden">월</option>
 									<option value="01-">1월</option>
 									<option value="02-">2월</option>
@@ -162,9 +158,8 @@
 									<option value="10-">10월</option>
 									<option value="11-">11월</option>
 									<option value="12-">12월</option>
-							</select>
-							
-							<select name="endDay" class="endDay">
+								</select>
+								<select name="endDay" class="endDay">
 									<option value="selected disabled hidden">일</option>
 									<option value="01">1일</option>
 									<option value="02">2일</option>
@@ -197,10 +192,9 @@
 									<option value="29">29일</option>
 									<option value="30">30일</option>
 									<option value="31">31일</option>
-							</select> 
-							
-							<select name="endHour" class="endHour">
-								<option value="selected disabled hidden">시</option>
+								</select>
+								<select name="endHour" class="endHour">
+									<option value="selected disabled hidden">시</option>
 									<option value="T24:">0시</option>
 									<option value="T01:">1시</option>
 									<option value="T02:">2시</option>
@@ -225,34 +219,34 @@
 									<option value="T21:">21시</option>
 									<option value="T22:">22시</option>
 									<option value="T23:">23시</option>
-							</select>
-							
-							<select name="endMinute" class="endMinute">
-								<option value="selected disabled hidden">분</option>
+								</select>
+								<select name="endMinute" class="endMinute">
+									<option value="selected disabled hidden">분</option>
 									<option value="00:00">00분</option>
 									<option value="10:00">10분</option>
 									<option value="20:00">20분</option>
 									<option value="30:00">30분</option>
 									<option value="40:00">40분</option>
 									<option value="50:00">50분</option>
-							</select> 
-							
-							일정 제목 : <input type="text" name="as_content" class="as_content"/>
-							
-							<button class="dbSearch">추가하기</button>
-							<pre style="margin-left:-500px;">
-								<strong>
-								
-								
-								※ 메인 페이지 영상 대여!
-								※ 당일 예약은 불가하며 신청시 담당자가 확인 후 확인 전화 드릴 예정이니 전화 확인 부탁드립니다.
-								</strong>
-							</pre>
-						<!-- <input class="sub" value="sub" style="display:none;"></input> -->
-						</form>
+								</select> 
+								<div class="schTitle"> 일정 제목  </div>
+								<input type="text" name="as_content" class="as_content" />
+
+								<button class="dbSearch">추가하기</button>
+							</form>
+							<!-- form 끝 -->
+						</div>
+						<div class="rentNotice">
+							<strong>
+							※ 메인 페이지 중앙에 위치한 영상 대여 신청란입니다.<br>
+							※ 신청하시기 전, 메인 영상 스케줄을 확인하시고 비어있는 날짜 / 시간을 선택해주세요.<br>
+							※ 당일 예약은 불가하며 신청시 담당자가 확인 후 확인 전화 드릴 예정이니 전화 확인 부탁드립니다.
+							</strong>
+						</div>
 					</div>
+					<!-- 대여 div 끝 -->
 				</div>
-			</div>	
+			</div>
 		</article>
 	</section>
 	<!-- content부분 끝 -->

@@ -54,20 +54,21 @@
 									<div class="tatto-video">
 										<h6>타투 진행영상</h6>
 										<ul>
-											<li><a href="#"><img
-													src="https://img.youtube.com/vi/j-6ExGL0ld4/0.jpg"
-													width="100%" height="100%"></a></li>
-											<li><a href="#"><img
-													src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg)"></a></li>
-											<li><a href="#"><img
-													src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg)"></a></li>
-											<li><a href="#"><img
-													src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg)"></a></li>
-											<li><a href="#"><img
-													src="<%=request.getContextPath()%>/resources/img/artist/bus.jpg)"></a></li>
+											<!--  artlist.AU_FILE , artlist.AU_THUMBNAIL 사용  -->
+											<c:forEach items="${artlistvideo}" var="artlist"
+												varStatus="artStatus" begin="0" end="4">
+												<li><a
+													href="${pageContext.request.contextPath}/artist/artistvideoview.do?select_file=${artlist.au_file}">
+														<img
+														src="https://img.youtube.com/vi/${artlist.au_thumbnail}/0.jpg"
+														width="100%" height="100%">
+												</a></li>
+											</c:forEach>
 										</ul>
-										<a href="<%=request.getContextPath()%>/artist/artistvideo.do"
-											class="more" title="더 보기">More</a>
+										<c:if test="${fn:length(artlistvideo) > 5}">
+											<a href="<%=request.getContextPath()%>/artist/artistvideo.do"
+												class="more" title="더 보기">More</a>
+										</c:if>	
 									</div>
 									<div class="tatto-photo">
 										<h6>타투 사진</h6>
@@ -80,7 +81,7 @@
 										</ul>
 										<c:if test="${fn:length(artlistphoto) > 5}">
 										<a
-											href="<%=request.getContextPath()%>/artist/artistphoto.do?art_nickname=${mlist.m_nickname}"
+											href="<%=request.getContextPath()%>/artist/artistphoto.do?artist_nick=${mlist.m_nickname}"
 											class="more" title="더 보기">More</a>
 										</c:if>	
 									</div>
@@ -135,10 +136,12 @@
 											class="more" title="더 보기" style="margin-top: 125px;">More</a>
 										<%-- </c:if>	 --%>
 										<ul>
-											<c:forEach items="${aslist}" var="artsclist">
-												<li><a href="<%=request.getContextPath()%>/artist/artistschedule.do">
-														${artsclist.ats_content}</a><span style="float: right;">예약시간 : ${fn:substring(artsclist.ats_start_date,0,16)}</span>
-												</li>
+											<c:forEach items="${aslist}" var="artsclist" varStatus="art">
+												<c:if test="${art.index < 5}">
+													<li><a href="<%=request.getContextPath()%>/artist/artistschedule.do">
+															${artsclist.ats_content}</a><span style="float: right;">예약시간 : ${fn:substring(artsclist.ats_start_date,0,16)}</span>
+													</li>
+												</c:if>	
 											</c:forEach>
 										</ul>
 

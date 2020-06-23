@@ -39,42 +39,62 @@
 				<div class="row">
 					<div class="artphoto_list">
 						<form name="artphoto"
-							action="<%=request.getContextPath()%>/artist/artistphoto.do">
-							<!-- 아티스트가 뮤지션일 경우 -->
-							<c:if test="">
-								<h3>공연 사진</h3>
-							</c:if>
-							<!-- 아티스트가 타투이스트 일 경우 -->
-							<c:if test="">
-								<h3>타투 진행사진</h3>
-							</c:if>
-
+							action="<%=request.getContextPath()%>/artist/artContentUpload.do">
+							<div>
+								<h3>사진 콘텐츠</h3>
+								<c:if test="${loginInfo.member != null && loginInfo.member.m_id == param.artist_nick}">
+									<button class="atwrite" type="button">글쓰기</button>
+								</c:if>
+							</div>
 							<div class="aphoto_board">
+								<!-- 영상 콘텐츠 시작 -->
 								<ul>
-									<!-- forEach야 힘내거라!!! -->
 									<c:forEach items="${artlistphoto}" var="artlist"
 										varStatus="status">
-										<li class="amovie_box"><span class="photo_box">
-												<img src="<%=request.getContextPath()%>/resources/upload/${artlist.au_file}"></span>
-											<br /> <span class="aphTitle">${artlist.au_content}</span> <br />
-											<span class="aphNicname">${artlist.m_nickname}</span> <br />
-											<span class="auLike">${artlist.au_like}</span>
-											<div class="btn_phoani">
-												<a href="#"> <span class="aboard_rd"></span>
-												</a>
-											</div></li>
+										<c:choose>
+											<c:when test="${status.index < 8}">
+												<li class="amovie_box">
+													<span class="photo_box">
+														<img src="<%=request.getContextPath()%>/resources/upload/${artlist.au_file}">
+													</span>
+													<br /> 
+													<span class="aphTitle">content | ${artlist.au_content}</span> <br />
+													<span class="aphNicname">artist | ${artlist.m_nickname}</span> <br />
+													<span class="auLike">like | ${artlist.au_like}</span>
+													<div class="btn_phoani">
+														<a href="#">
+															<span class="aboard_rd"></span>
+														</a>
+													</div>
+												</li>
+											</c:when>
+											<c:otherwise>
+												<li class="amovie_box" style="display:none">
+													<span class="photo_box">
+														<img src="<%=request.getContextPath()%>/resources/upload/${artlist.au_file}">
+													</span>
+													<br /> 
+													<span class="aphTitle">content | ${artlist.au_content}</span> <br />
+													<span class="aphNicname">artist | ${artlist.m_nickname}</span> <br />
+													<span class="auLike">like | ${artlist.au_like}</span>
+													<div class="btn_phoani">
+														<a href="#">
+															<span class="aboard_rd"></span>
+														</a>
+													</div>
+												</li>
+											</c:otherwise>
+										</c:choose>
 									</c:forEach>
 								</ul>
-							</div>
-
-							<!-- artist게시판들 클래스 다들 동일 클래스 사용  -->
-							<button class="atwrite" type="button">글쓰기</button>
-							<div class="tabmore">
-								<button type="submit" class="btn_more" onclick="more()">
-									<span aria-hidden="true">더보기(More)</span>
-								</button>
+								<!-- 영상 콘텐츠 끝 -->
 							</div>
 						</form>
+						<div class="tabmore">
+							<button type="button" class="btn_more" onclick="more()">
+								<span aria-hidden="true">더보기(More)</span>
+							</button>
+						</div>
 					</div>
 				</div>
 				<!-- 검색 창 -->
@@ -93,6 +113,14 @@
 		src="<%=request.getContextPath()%>/resources/js/jquery/jquery-3.4.1.js"></script>
 	<script type="text/javascript"
 		src="<%=request.getContextPath()%>/resources/js/photoList.js"></script>
+		
+	<script type="text/javascript">
+	
+	function more() {
+		$('.amovie_box').css('display', 'block');
+	}
+	
+	</script>
 
 </body>
 </html>

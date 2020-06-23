@@ -44,7 +44,7 @@
 							<div class="rentVideo">
 								<img alt="test"
 									src="http://rndso15.synology.me:8080/hls/${topStream.userHashCode}/${topStream.userHashCode}_thumbnail.png" 
-									onerror="this.src='<%=request.getContextPath()%>/resources/img/maintest.jpg'" />
+									onerror="this.src='<%=request.getContextPath()%>/resources/img/stream/wait2.png'" />
 							</div>
 						</c:if>
 						
@@ -52,7 +52,7 @@
 							<h1>Top Stream Live</h1>
 							<div class="rentVideo">
 								<img alt="test"
-									src="<%=request.getContextPath()%>/resources/img/maintest.jpg" />
+									src="<%=request.getContextPath()%>/resources/img/stream/wait2.png" />
 							</div>
 						</c:if>
 					</div>
@@ -80,7 +80,7 @@
 								</c:if>
 								<c:if test="${list.au_thumbnail == null}">
 									<div id="tv${listnum.index}">
-										<a href="${pageContext.request.contextPath}/artist/artphotoview.do?select_file=${list.au_file}">
+										<a href="<%=request.getContextPath()%>/artist/artistphoto.do?artist_nick=${list.m_nickname}">
 										<img src="<%=request.getContextPath()%>/resources/upload/${list.au_file}" width="100%" height="100%">
 										</a> 
 									</div>
@@ -106,7 +106,7 @@
 								</c:if>
 								<c:if test="${bcon.au_thumbnail == null}">
 									<div id="bv${listnum.index+1}">
-										<a href="${pageContext.request.contextPath}/artist/artphotoview.do?select_file=${bcon.au_file}">
+										<a href="<%=request.getContextPath()%>/artist/artistphoto.do?artist_nick=${bcon.m_nickname}">
 										<img src="<%=request.getContextPath()%>/resources/upload/${bcon.au_file}" width="100%" height="100%">
 										</a> 
 									</div>

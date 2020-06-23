@@ -39,6 +39,9 @@
 			<div class="container">
 				<div class="row">
 					<div class="memberfind">
+					
+					
+				<!-- === === === ==  -->
 					<form name="findM" action="<%=request.getContextPath()%>/member/findId.do" >
 						<div class="idfind_box">
 							<h2>아이디 찾기</h2>
