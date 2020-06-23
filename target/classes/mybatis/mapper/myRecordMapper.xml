@@ -6,7 +6,7 @@
   <mapper namespace="MyRecord">
   
   	<select id="myRecordList" resultType="MyRecord">
-  		select * from tb_myrecord where m_id = #{m_id} ORDER BY MR_NUM DESC
+  		select * from tb_myrecord where m_id = #{m_id}
   	</select>
   	<select id="contentCntMr" resultType="int">
 		select count(*) from tb_myrecord WHERE m_id = #{m_id}
@@ -15,7 +15,7 @@
 		SELECT * FROM(
 		SELECT 
 		ROW_NUMBER() OVER(ORDER BY MR_NUM DESC) AS RNUM,MR_NUM
-		,M_ID,AU_NUM,M_NICKNAME, MR_DATE, AU_FILE 
+		,M_ID,AU_NUM,M_NICKNAME, MR_DATE 
 		FROM TB_MYRECORD
 		WHERE M_ID = #{m_id}
 		ORDER BY MR_NUM DESC)AS TB 

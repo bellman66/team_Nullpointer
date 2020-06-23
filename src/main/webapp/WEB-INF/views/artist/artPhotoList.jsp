@@ -40,25 +40,24 @@
 					<div class="artphoto_list">
 						<form name="artphoto"
 							action="<%=request.getContextPath()%>/artist/artistphoto.do">
-							
-							<!--  -->
-							
-								<h3>사진 앨범</h3>
-							
+							<c:if test="">
+								<h3>공연 사진</h3>
+							</c:if>
+							<c:if test="">
+								<h3>타투 진행영상</h3>
+							</c:if>
 							<div class="aphoto_board">
 								<ul>
 									<!-- forEach야 힘내거라!!! -->
 									<c:forEach items="${artlistphoto}" var="artlist"
 										varStatus="status">
-										<li class="amovie_box">
-										<span class="photo_box">
-										<a href="<%=request.getContextPath()%>/artist/artphotoview.do">
-										<img src="<%=request.getContextPath()%>/resources/upload/${artlist.au_file}"></a></span> <br /> 
-												<span class="aphTitle">${artlist.au_content}</span> <br /> <span
+										<li class="amovie_box"><span class="photo_box"><img
+												src="/springmvc/upload/${artlist.au_file}"></span> <br /> <span
+											class="aphTitle">${artlist.au_content}</span> <br /> <span
 											class="aphNicname">${artlist.m_nickname}</span> <br /> <span
 											class="auLike">${artlist.au_like}</span>
 											<div class="btn_phoani">
-												<a href="#"><span class="aboard_rd"></span>
+												<a href="#"> <span class="aboard_rd"></span>
 												</a>
 											</div></li>
 									</c:forEach>
