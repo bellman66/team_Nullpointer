@@ -81,7 +81,7 @@
 										</ul>
 										<c:if test="${fn:length(artlistphoto) > 5}">
 										<a
-											href="<%=request.getContextPath()%>/artist/artistphoto.do?artist_nick=${artlist.m_nickname}"
+											href="<%=request.getContextPath()%>/artist/artistphoto.do?artist_nick=${mlist.m_nickname}"
 											class="more" title="더 보기">More</a>
 										</c:if>	
 									</div>
