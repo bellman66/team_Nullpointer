@@ -80,7 +80,7 @@
 
 									<!-- 페이지부분 -->
 									<div class="bdpage" id="bdpage">
-										<!-- 홍보게시판 페이징 처리기능 -->
+										<!-- 나의 시청기록 페이징 처리기능 -->
 										<div class="bdpaging">
 											<a
 												href="<%=request.getContextPath()%>/member/myRecordList.do"

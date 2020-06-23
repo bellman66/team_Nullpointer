@@ -255,7 +255,7 @@ public class ArtistServiceImple implements ArtistService {
 	}
 
 	@Override
-	public int artScDelete(String scdelete, String  m_id, String m_nickname) {
+	public int artScDelete(String scdelete, String m_id, String m_nickname) {
 
 		int res = ad.artScDelete(scdelete, m_id, m_nickname);
 
@@ -274,7 +274,7 @@ public class ArtistServiceImple implements ArtistService {
 		// 쿼리 작동을 위한 매개변수설정
 		return ad.selectArtPageVideo(m_nickname);
 	}
-	
+
 	/**
 	 * @method : selectArtPage
 	 * @date : 2020. 6. 21.
@@ -313,14 +313,13 @@ public class ArtistServiceImple implements ArtistService {
 		// 쿼리 작동을 위한 매개변수설정
 		return ad.selectAll(m_nickname);
 	}
-	
+
 	/**
-	 * 작성자 : 김경호
-	 * 설명 : 게시판 관련 서비스
+	 * 작성자 : 김경호 설명 : 게시판 관련 서비스
 	 */
 	@Override
 	public Map<String, Object> selectBoardList(int currentPage, int cntPerPage, String m_nickname) {
-		
+
 		Map<String, Object> res = new HashMap<String, Object>();
 		Paging page = new Paging(ad.contentCnt(m_nickname), currentPage, cntPerPage);
 
@@ -329,40 +328,40 @@ public class ArtistServiceImple implements ArtistService {
 		res.put("blist", blist);
 
 		return res;
-		
+
 	}
 
 	@Override
 	public Map<String, Object> aboardRead(int b_num) {
 		Map<String, Object> res = new HashMap<String, Object>();
-		
-		Board artRead = ad.aboardRead(b_num); 
-		//파일 읽어주는 코드
+
+		Board artRead = ad.aboardRead(b_num);
+		// 파일 읽어주는 코드
 		List<Map<String, String>> flist = ad.aboardResdFile(b_num);
-				
+
 		res.put("artRead", artRead);
 		res.put("flist", flist);
-				
+
 		return res;
 	}
 
 	@Override
 	public int aboardUpload(Board board, List<Map<String, Object>> file) {
-		
+
 		int res = ad.aboardUpload(board);
 		aboardFileUpload(file);
 		return res;
 	}
-	
+
 	@Override
 	public int aboardFileUpload(List<Map<String, Object>> file) {
 		int res = 0;
-		for(Map<String, Object> fileData : file) {
+		for (Map<String, Object> fileData : file) {
 			ad.aboardFileUpload(fileData);
-			
+
 			MultipartFile mf = (MultipartFile) fileData.get("file");
 			File f = new File((String) fileData.get("savePath"));
-			
+
 			try {
 				mf.transferTo(f);
 			} catch (IllegalStateException e) {
@@ -372,13 +371,10 @@ public class ArtistServiceImple implements ArtistService {
 				// TODO: handle exception
 				e.printStackTrace();
 			}
-			
-			
-			
+
 		}
 		return res;
 	}
-	
 
 	@Override
 	public int aboardDelect(int b_num) {
@@ -386,26 +382,27 @@ public class ArtistServiceImple implements ArtistService {
 	}
 
 	@Override
-	public Map<String, Object> aboardSearch(String searchType, String searchWord, int currentPage, int cntPerPage, String m_nickname) {
+	public Map<String, Object> aboardSearch(String searchType, String searchWord, int currentPage, int cntPerPage,
+			String m_nickname) {
 		Map<String, Object> res = new HashMap<String, Object>();
 
-		if(searchType.equals("write")) {
+		if (searchType.equals("write")) {
 			Paging page = new Paging(ad.contentWrSeCnt(searchWord, m_nickname), currentPage, cntPerPage);
 			List<Board> blist = ad.searchWrBoardList(searchWord, page, m_nickname);
 			res.put("paging", page);
 			res.put("blist", blist);
-		}else if(searchType.equals("title")){
+		} else if (searchType.equals("title")) {
 			Paging page = new Paging(ad.contentTiSeCnt(searchWord, m_nickname), currentPage, cntPerPage);
 			List<Board> blist = ad.searchTiBoardList(searchWord, page, m_nickname);
 			res.put("paging", page);
 			res.put("blist", blist);
-		}else {
+		} else {
 			Paging page = new Paging(ad.contentWTSeCnt(searchWord, m_nickname), currentPage, cntPerPage);
 			List<Board> blist = ad.searchWTBoardList(searchWord, page, m_nickname);
 			res.put("paging", page);
 			res.put("blist", blist);
 		}
-		
+
 		return res;
 	}
 
@@ -420,20 +417,27 @@ public class ArtistServiceImple implements ArtistService {
 		return ad.selectPhotoList();
 	}
 
-	//아티스트 닉네임 값으로 클래스 값을 가져오는쿼리
+	// 아티스트 닉네임 값으로 클래스 값을 가져오는쿼리
 	@Override
 	public int artCategory(String m_nickname) {
-		
+
 		return ad.artCategory(m_nickname);
 	}
 
 	@Override
 	public Artist selectvideoview(String select_file) {
 		// TODO Auto-generated method stub
-		
+
 		return ad.selectvideoview(select_file);
 	}
 
-	
+	@Override
+	public int artConUpload(Artist artist, List<Map<String, Object>> file) {
+
+		int res = ad.artConUpload(artist);
+		aboardFileUpload(file);
+
+		return res;
+	}
 
 }

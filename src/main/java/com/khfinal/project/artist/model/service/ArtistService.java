@@ -55,5 +55,7 @@ public interface ArtistService {
 	//작성자 : 윤종민
 	// video view 
 	public Artist selectvideoview(String select_file);
+	
+	public int artConUpload(Artist artitst, List<Map<String, Object>> file);
 
 }

@@ -39,12 +39,12 @@
 				<div class="row">
 					<div class="artmovie_list">
 						<form name="artmovie"
-							action="<%=request.getContextPath()%>/artist/artistartmovie.do">
+							action="<%=request.getContextPath()%>/artist/artContentUpload.do">
 							<h3>공연 영상</h3>
 							<div class="amovie_board">
 							<!-- artist게시판들 클래스 다들 동일 클래스 사용  -->
-							<c:if test="${loginInfo.member.m_id eq artist_nick}">
-								<button class="atwrite" type="button">글쓰기</button>
+							<c:if test="${loginInfo.member != null || loginInfo.member.m_id eq artist_nick}">
+								<button class="atwrite" type="submit">글쓰기</button>
 							</c:if>
 								<!-- 영상 콘텐츠 시작 -->
 								<ul>

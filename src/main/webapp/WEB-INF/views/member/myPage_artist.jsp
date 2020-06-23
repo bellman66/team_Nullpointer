@@ -185,7 +185,7 @@
 								</c:forEach>
 							</ul>
 							<c:if test="${fn:length(uploadList) > 5}">
-								<a href="#" class="more" title="더 보기">More</a>
+								<a href="<%=request.getContextPath()%>/artist/artistvideo.do?artist_nick=${loginInfo.member.m_nickname}" class="more" title="더 보기">More</a>
 							</c:if>
 						</div>
 						<!-- 업로드 목록 부분 끝 -->

@@ -39,19 +39,11 @@
 				<div class="row">
 					<div class="artwrite_table">
 						<div class="artpath">
-							<c:if test="${artist eq 'band'}">
-								<h3>소통게시판</h3>
-								<p>소통게시판입니다.</p>
-							</c:if>
-
-							<c:if test="${artist eq 'tattoo'}">
-								<h3>후기게시판</h3>
-								<p>후기게시판입니다.</p>
-							</c:if>
+							<h3>콘텐츠 업로드</h3>
 						</div>
 						<div class="aboardView-table">
 							<form name="artView"
-								action="<%=request.getContextPath()%>/artist/aboardUpload.do"
+								action="<%=request.getContextPath()%>/artist/artConUpload.do"
 								method="post" enctype="multipart/form-data">
 
 								<table>
@@ -60,26 +52,29 @@
 										<tr>
 											<th id="aview_title">제목</th>
 											<td class="aview_td"><input type="text" class="artTitle"
-												name="b_title"></td>
+												name="au_content"></td>
 										</tr>
 										<tr>
 											<th class="aview_writer">작성자</th>
 											<td class="aview_td">M_NICKNAME</td>
 										</tr>
 										<tr>
-											<th class="aview_content">내용</th>
-											<td class="aview_td"><textarea cols="300" rows="15"
-													name="b_content" style="width: 100%"></textarea></td>
+											<th class="aview_link">콘텐츠 종류</th>
+											<td><b>사진</b>
+											<input type="radio" name="au_type"
+												value="1" onclick="filechoice"> <br>
+												 <b>영상</b> <input type="radio"
+												name="au_type" value="2" onclick="filechoice()"></td>
 										</tr>
-										<tr>
-											<th class="aview_file">파일 등록</th>
-											<td class="aview_td"><input type="file" name="bfile"
+										<tr id="aview_photo" style="display: block;">
+											<th class="aview_file">파일 등록1</th>
+											<td class="aview_td"><input type="file" name="au_file"
 												multiple></td>
 										</tr>
-										<tr>
-											<th class="aview_link">링크 등록</th>
-											<td class="aview_td"><input type="text" class="artLink"
-												name="b_link"></td>
+										<tr id="aview_video" style="display: none;">
+											<th class="aview_file">파일 등록2</th>
+											<td class="aview_td"><input type="text"
+												name="au_thumbnail" /></td>
 										</tr>
 									</tbody>
 								</table>
@@ -102,6 +97,24 @@
 	<!-- footer부분 시작 -->
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 	<!-- footer부분 끝 -->
+
+	<script type="text/javascript">
+		
+		function filechoice() {
+
+			var file = document.getElementsByName('au_type');
+			console.log(file);
+
+			if (file[0].checked == true) {
+				document.querySelector('#aview_photo').style.display = 'block';
+				document.querySelector('#aview_video').style.display = 'none';
+			} else {
+				document.querySelector('#aview_photo').style.display = 'none';
+				document.querySelector('#aview_video').style.display = 'block';
+			}
+
+		}
+	</script>
 
 </body>
 </html>

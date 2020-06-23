@@ -234,5 +234,9 @@ public class ArtistDao {
 		// TODO Auto-generated method stub
 		return session.selectOne("Artist.selectvideoview", select_file);
 	}
+	
+	public int artConUpload(Artist artist) {
+		return session.insert("Artist.artConUpload", artist);
+	}
 
 }

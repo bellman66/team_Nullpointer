@@ -248,7 +248,7 @@ public class ArtistController {
 		ModelAndView mav = new ModelAndView();
 
 		Artist selectvideo = as.selectvideoview(select_file);
-		
+
 		// 수정자 : 박혜연
 		// 일반 회원의 시청 기록에 추가
 		HttpSession session = request.getSession();
@@ -262,9 +262,9 @@ public class ArtistController {
 			myrecord.put("selectvideo", selectvideo);
 
 			int insertRes = ms.insertMyRecord(myrecord);
-			
+
 		}
-		
+
 		mav.addObject("selectvideo", selectvideo);
 		mav.setViewName("artist/artMovie_view");
 		return mav;
@@ -577,6 +577,77 @@ public class ArtistController {
 		mav.addObject("searchWord", searchWord);
 		mav.addObject("aboard", "search");
 		mav.setViewName("artist/artboardList");
+		return mav;
+	}
+
+	@RequestMapping("/artist/artContentUpload.do")
+	public ModelAndView artContentUpload() {
+		ModelAndView mav = new ModelAndView();
+
+		mav.setViewName("artist/artUploadWrite");
+
+		return mav;
+	}
+
+	@RequestMapping("/artist/artConUpload.do")
+	public ModelAndView artConUpload(HttpServletRequest request, @RequestParam List<MultipartFile> afile) {
+		ModelAndView mav = new ModelAndView();
+
+		List<Map<String, Object>> file = null;
+		String savePath = null;
+		String originFileName = null;
+		HashMap<String, Object> data = null;
+		String renameFile = null;
+
+		if (afile != null) {
+			// 파일 업로드 코드
+			file = new ArrayList<Map<String, Object>>();
+			String root = request.getSession().getServletContext().getRealPath("/");
+
+			int i = 0;
+			for (MultipartFile mf : afile) {
+				savePath = root + "resources/upload/";
+				originFileName = mf.getOriginalFilename();
+				data = new HashMap<>();
+
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+
+				renameFile = sdf.format(new Date()) + i + "."
+						+ originFileName.substring(originFileName.lastIndexOf(".") + 1);
+
+				savePath += renameFile;
+
+				data.put("originFileName", originFileName);
+				data.put("renameFile", renameFile);
+				data.put("savePath", savePath);
+				data.put("file", mf);
+
+				file.add(data);
+				i++;
+			}
+
+		}
+		// 파일을 뺀 나머지 값 넣는 코드
+		HttpSession session = request.getSession();
+		Map<String, Object> login = (Map<String, Object>) session.getAttribute("loginInfo");
+		Member member = (Member) login.get("member");
+
+		Artist artist = new Artist();
+		artist.setM_id(member.getM_id());
+		artist.setM_nickname(member.getM_nickname());
+		artist.setAu_content(request.getParameter("au_content"));
+		if (request.getParameter("au_type").equals("1")) {
+			artist.setAu_file(renameFile);
+		} else {
+			artist.setAu_file(request.getParameter("au_thumbnail"));
+		}
+		artist.setAu_thumbnail(request.getParameter("au_thumbnail"));
+		artist.setAu_type(Integer.parseInt(request.getParameter("au_type")));
+
+		int res = as.artConUpload(artist, file);
+
+		mav.setViewName("redirect:artist/artistvideo.do");
+
 		return mav;
 	}
 
