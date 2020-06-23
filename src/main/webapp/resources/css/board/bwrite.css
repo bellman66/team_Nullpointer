@@ -10,7 +10,7 @@
 	height: 70px;
     width: 100%;
     color: black;
-    font-size: 2vw;
+    font-size: 30px;
     position: absolute;
     margin-top: -70px;
     
@@ -27,14 +27,14 @@
 }
 
 .bdwrite_button{
-	width:120px;
+	width:10%;
 	height:30px;
-	float:right;
-	margin-top:20px;
-	font-size: 15px;
+	font-size: 14px;
 	font-family: sans-serif;
-	text-align: center;
-	color: #fff;
+    float:right;
+    margin-top:3%;
+    margin-right:20px;
+	color:#fff;
 	background-color: #0c0c13;
 }
 
@@ -48,16 +48,26 @@
 }
 
 .bdWriteCancel{
-	width: 120px;
-    height: 30px;
-    margin-top: -5px;
-    font-size: 15px;
-    font-family: sans-serif;
-    text-align: center;
-    color: #fff;
-    background-color: #0c0c13;
-    margin-left: 79%;
+	width:10%;
+	height:30px;
+	font-size: 14px;
+	font-family: sans-serif;
+   	margin-left : 77%;
+    margin-top:1%;
+    margin-right:20px;
+	color:#fff;
+	background-color: #0c0c13;
 	position: absolute;
 }
 
+.bdWriteCancel:hover{
+	color:#0c0c13;
+	background-color:#fff;
+	border:1px solid #0c0c13;
+}
 
+.bdwrite_button:hover{
+	color:#0c0c13;
+	background-color:#fff;
+	border:1px solid #0c0c13;
+}

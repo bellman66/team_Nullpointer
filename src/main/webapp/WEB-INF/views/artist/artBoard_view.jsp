@@ -40,7 +40,7 @@
 					<div class="artView">
 						<div class="artpath">
 							<c:if test="${artist eq 'band'}">
-								<h3>소통게시판</h3>
+								<div style="font-size: 30px;">소통게시판</div>
 								<p>소통게시판입니다.</p>
 							</c:if>	
 						
@@ -71,7 +71,15 @@
 										</tr>
 										<tr>
 											<th class="aview_content">내용</th>
-											<td class="aview_td">${readMap.artRead.b_content}</td>
+											<td class="aview_td"  style="top: 28%;
+																		    border: 2px solid black;
+																		    height: 230px;
+																		    font-size: 17px;
+																		    margin-left: 5%;
+																		    padding: 1%;
+																		    width: 1500%;">
+																		    ${readMap.artRead.b_content}
+											</td>
 										</tr>
 										<c:forEach items="${readMap.flist }" var="filename">
 										<tr>

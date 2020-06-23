@@ -41,7 +41,15 @@
 						<div class="artboard-table">
 							<form name="artboard"
 								action="<%=request.getContextPath()%>/artist/artboardlist.do">
-								<h3>소통 게시판</h3>
+								<div class="artpath">
+									<c:if test="${artist eq 'band'}">
+										<h3>소통게시판</h3>
+									</c:if>	
+						
+									<c:if test="${artist eq 'tattoo'}">
+										<h3>후기게시판</h3>
+									</c:if>	
+						</div>
 								<table>
 									<colgroup>
 										<!-- 넓이 지정  -->

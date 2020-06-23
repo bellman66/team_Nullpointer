@@ -424,6 +424,15 @@ public class ArtistController {
 		if (request.getParameter("cntPerPage") != null) {
 			currentPage = Integer.parseInt(request.getParameter("cntPerPage"));
 		}
+		
+		//게시판 구분해주는 코드
+		int category = as.artCategory(m_nickname) + 1;
+		
+		if(category == 3) {
+			mav.addObject("artist", "band");
+		}else {
+			mav.addObject("artist", "tattoo");
+		}
 
 		Map<String, Object> artboardlist = as.selectBoardList(currentPage, cntPerPage, m_nickname);
 		mav.addObject("paging", artboardlist.get("paging"));

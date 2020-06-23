@@ -123,16 +123,15 @@
 										<h6>예약 일정</h6>
 										
 										<%-- <c:if test="${fn:length(aslist) > 5 || fn:length(aslist) == 0}"> --%>
-												<a
-												href="<%=request.getContextPath()%>/artist/artistschedule.do"
+												<a href="<%=request.getContextPath()%>/artist/artistschedule.do"
 												class="more" title="더 보기" style="margin-top:125px;">More</a>
 											<%-- </c:if>	 --%>
 										
 										<ul>
 											<c:forEach items="${aslist}" var="artsclist">
-												<li><a
-													href="<%=request.getContextPath()%>/artist/artistschedule.do">
-														${artsclist.ats_content}</a><span>${fn:substring(artsclist.ats_start_date,0,10)}</span></li>
+												<li><a href="<%=request.getContextPath()%>/artist/artistschedule.do">
+														${artsclist.ats_content}</a><span style="float: right;">예약시간 : ${fn:substring(artsclist.ats_start_date,0,16)}</span>
+												</li>
 											</c:forEach>
 										</ul>
 											
