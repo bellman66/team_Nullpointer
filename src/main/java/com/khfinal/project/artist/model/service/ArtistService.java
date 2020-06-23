@@ -48,10 +48,7 @@ public interface ArtistService {
 	public Map<String , Object> aboardSearch(String searchType, String searchWord, int currentPage, int cntPerPage, String m_nickname);
 	
 	public int artCategory(String m_nickname);
-	//작성자 : 이하진
-	//사진 게시판 관련
-	public List<Board>selectPhotoList();
-	
+
 	//작성자 : 윤종민
 	// video view 
 	public Artist selectvideoview(String select_file);
