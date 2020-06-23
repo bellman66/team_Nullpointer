@@ -49,8 +49,6 @@
 
 						<!-- artist부분  -->
 						<div id="subContent">
-							<form name="artTab"
-								action="<%=request.getContextPath()%>/artist/artist.do">
 								<!-- artTab 부분  -->
 								<!-------- 아티스트 게시판 시작! -------->
 								<div id="tab1" class="content">
@@ -58,24 +56,44 @@
 									<ul class="grid">
 										<!-- 뮤지션 시작!M_Class = 2 -->
 										<c:forEach items="${music}" var="music" varStatus="status">
-											<li class="btn_link">
-												<span class="img_box">${music.rename_filepath}</span> 
-												<span class="title">${music.m_nickname}</span>
-												<div class="btn_ani">
-													<a href="<%=request.getContextPath()%>/artist/artistpage.do?artist_nick=${music.m_nickname}"
-													class="btn_link">
-														<span class="arrow"> 
-															<img src="<%=request.getContextPath()%>/resources/img/icon/arrow.png" />
-														</span>
-													</a>
-												</div>
-											</li>
+											<c:choose>
+												<c:when test="${status.index < 8}">
+													<li class="btn_link">
+														<img class="img_box"
+															src="/springmvc/resources/upload/${music.rename_filepath}" />
+														<span class="title">${music.m_nickname}</span>
+														<div class="btn_ani">
+															<a href="<%=request.getContextPath()%>/artist/artistpage.do?artist_nick=${music.m_nickname}"
+																class="btn_link">
+																<span class="arrow">
+																	<img src="<%=request.getContextPath()%>/resources/img/icon/arrow.png" />
+																</span>
+															</a>
+														</div>
+													</li>
+												</c:when>
+												<c:otherwise>
+													<li class="btn_link" id="moremusic" style="display: none">
+														<img class="img_box"
+															src="/springmvc/resources/upload/${music.rename_filepath}" />
+														<span class="title">${music.m_nickname}</span>
+														<div class="btn_ani">
+															<a href="<%=request.getContextPath()%>/artist/artistpage.do?artist_nick=${music.m_nickname}"
+																class="btn_link">
+																<span class="arrow">
+																	<img src="<%=request.getContextPath()%>/resources/img/icon/arrow.png" />
+																</span>
+															</a>
+														</div>
+													</li>
+												</c:otherwise>
+											</c:choose>
 										</c:forEach>
 										<!-- 뮤지션 끝! -->
 									</ul>
 									<!-- music_더보기 버튼입니다  -->
 									<div class="tabmore">
-										<button type="submit" class="btn_more" onclick="mtn">
+										<button type="submit" class="btn_more" onclick="moremusic()">
 											<span aria-hidden="true">더보기(More)</span>
 										</button>
 									</div>
@@ -87,35 +105,55 @@
 									<ul class="grid">
 										<!-- 타투이스트 시작! M_Class=3 -->
 										<c:forEach items="${tattoo}" var="tattoo" varStatus="status">
-											<li class="btn_link">
-												<div class="file_group">
-													<span class="img_box">${tattoo.rename_filepath}</span> <input
-														type="hidden" name="renameFile">
-												</div>
-												<div class="tit_group">
-													<span class="title">${tattoo.m_nickname}</span> <input
-														type="hidden" name="title">
-												</div>
-												<div class="btn_ani">
-													<a href="<%=request.getContextPath()%>/artist/tattoopage.do?artist_nick=${tattoo.m_nickname}"
-														class="btn_link"> <span class="arrow"> <img
-															src="<%=request.getContextPath()%>/resources/img/icon/arrow.png" />
-													</span>
-													</a>
-												</div>
-											</li>
+											<c:choose>
+												<c:when test="${status.index < 8}">
+													<li class="btn_link">
+														<div class="file_group">
+															<img class="img_box"
+																src="/springmvc/resources/upload/${tattoo.rename_filepath}" />
+															<input type="hidden" name="renameFile">
+														</div>
+														<div class="tit_group">
+															<span class="title">${tattoo.m_nickname}</span>
+															<input type="hidden" name="title">
+														</div>
+														<div class="btn_ani">
+															<a href="<%=request.getContextPath()%>/artist/tattoopage.do?artist_nick=${tattoo.m_nickname}"
+																class="btn_link">
+																<span class="arrow">
+																	<img src="<%=request.getContextPath()%>/resources/img/icon/arrow.png" />
+																</span>
+															</a>
+														</div>
+													</li>
+												</c:when>
+												<c:otherwise>
+													<li class="btn_link" id="moretattoo" style="display: none">
+														<img class="img_box"
+															src="/springmvc/resources/upload/${tattoo.rename_filepath}" />
+														<span class="title">${tattoo.m_nickname}</span>
+														<div class="btn_ani">
+															<a href="<%=request.getContextPath()%>/artist/artistpage.do?artist_nick=${tattoo.m_nickname}"
+																class="btn_link">
+																<span class="arrow">
+																	<img src="<%=request.getContextPath()%>/resources/img/icon/arrow.png" />
+																</span>
+															</a>
+														</div>
+													</li>
+												</c:otherwise>
+											</c:choose>
 										</c:forEach>
 										<!-- 타투이스트 끝! -->
 									</ul>
 									<!-- tattoo_더보기 버튼입니다.  -->
 									<div class="tabmore">
-										<button type="submit" class="btn_more" onclick="ttn">
+										<button type="submit" class="btn_more" onclick="moretattoo()">
 											<span aria-hidden="true">더보기(More)</span>
 										</button>
 									</div>
 								</div>
 								<!-------- 타투이스트 게시판 끝! -------->
-							</form>
 						</div>
 						<!-- artist부분  -->
 					</div>
@@ -152,16 +190,14 @@
 			$('#tab2').css('display', 'block');
 		}
 
-		//onclick으로 더보기 해보자!
-		//뮤지션
-		function mtn() {
-			console.log('mtn');
-
+		function moremusic() {
+			//더보기
+			$('#moremusic').css('display', 'block');
 		}
-
-		//타투이스트
-		function ttn() {
-			console.log('ttn');
+		
+		function moretattoo() {
+			//더보기
+			$('#moretattoo').css('display', 'block');
 		}
 		
 	</script>
