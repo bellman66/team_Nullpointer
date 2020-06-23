@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,48 +38,54 @@
 			<div class="container">
 				<div class="row">
 					<div class="bwrite_table">
-					
 						<div class="bwrite_list">
-							 <c:if test="${board eq 'sh'}">
-								<div class="write_category"><strong>공유게시판</strong></div>
-							</c:if>
-							
-							<c:if test="${board eq 'pr'}">
-								<div class="write_category"><strong>홍보게시판</strong></div>
-							</c:if>
-							
-							
-							
-							<form action="<%= request.getContextPath() %>/board/boardupload.do" method="post" enctype="multipart/form-data">
+							<form
+								action="<%=request.getContextPath()%>/board/boardupload.do"
+								method="post" enctype="multipart/form-data">
+
+								<c:if test="${board eq 'sh'}">
+									<div class="write_category">
+										<strong>공유게시판</strong>
+									</div>
+								</c:if>
+
+								<c:if test="${board eq 'pr'}">
+									<div class="write_category">
+										<strong>홍보게시판</strong>
+									</div>
+								</c:if>
+
 								<div class="write_detail">
 									<div class="title_file">
-										제목 : <input type="text" name="b_title" class="write_title"/>
-										파일 : <input type="file" name="bfile" id="contract_file" multiple/>
-									</div>
-									<br><br>
-									<div class="write_content">
-										<textarea cols="300" rows="15" name="b_content" style="width:100%"></textarea>
+										<label>제목 :</label> 
+										<input type="text" name="b_title" class="write_title" /><br /> 
+										<label>파일 :</label> 
+										<input type="file" name="bfile" id="contract_file" multiple /><br />
 									</div>
 									
+									<br/>
+									
+									<div class="write_content">
+										<textarea cols="300" rows="15" name="b_content"></textarea>
+									</div>
 									<div>
 										<button class="bdwrite_button">확인</button>
-										
-										
-										
+										<c:if test="${board eq 'sh'}">
+											<button class="bdWriteCancel"
+												onclick="location.href='<%=request.getContextPath()%>/board/boardSH.do'">취소</button>
+										</c:if>
+
+										<c:if test="${board eq 'pr'}">
+											<button class="bdWriteCancel"
+												onclick="location.href='<%=request.getContextPath()%>/board/boardPR.do'">취소</button>
+										</c:if>
 									</div>
 								</div>
 							</form>
-							<c:if test="${board eq 'sh'}">
-								<button class="bdWriteCancel" onclick="location.href='<%= request.getContextPath() %>/board/boardSH.do'">취소</button> 
-							</c:if>
-							
-							<c:if test="${board eq 'pr'}">
-								<button class="bdWriteCancel" onclick="location.href='<%= request.getContextPath() %>/board/boardPR.do'">취소</button> 
-						</c:if>
 						</div>
 					</div>
 				</div>
-			</div>	
+			</div>
 		</article>
 	</section>
 	<!-- content부분 끝 -->

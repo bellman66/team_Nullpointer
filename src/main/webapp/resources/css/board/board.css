@@ -2,103 +2,79 @@
 
 #content_board {
 	background-color: #fff;
+	font-family: sans-serif;
 }
 
+/* content_tab */
 .board {
-	width: 100%;
-	height: 620px;
-	position: relative;
+	margin: 0 auto;
 	/* border: 1px solid red; */
 }
 
 #boardTab {
-	height: 820px;
-	padding-top: 5%;
-	/* border: 1px solid blue; */
-}
-
-#boardTab h3 {
-	font-size: 23px;
-	font-weight: 800;
-	color: #0c0c13;
-	padding-left: 2%;
-	padding-bottom: 2%;
+	height:680px;
+	left:5%;
+	position:relative;
+	/* border:1px solid green; */
 }
 
 /* tab메뉴 */
 .tabs {
-	width: 100%;
-	height: 43px;
-	margin: 0;
-	padding: 0;
-	float: left;
-	list-style: none;
-	border-bottom: 1px solid #0c0c13;
-	border-left: 1px solid #0c0c13;
+	margin-top:1%;
+	height: 70px;
+	/* border:1px solid red; */
 }
 
 .tabs li {
+	width:45%;
+	height: 50px;
 	float: left;
-	margin: 0;
-	padding: 0;
-	width: 47%;
-	height: 43px;
-	line-height: 43px;
-	border: 1px solid #0c0c13;
-	border-left: none;
-	margin-bottom: -1px;
-	overflow: hidden;
-	position: relative;
-	background-color: #f5b041;
+	margin-left:2%;
+	
 }
 
 .tabs li a {
-	/* text-decoration: none; */
-	color: #0c0c13;
-	display: block;
+	width: 100%;
+	height: 35px;
+	position: relative;
+	padding-top: 3%;
+	margin:3%;
+	float: left;
 	font-size: 17px;
-	font-weight: 800;
-	font-family: sans-serif;
-	padding: 3px 10px;
-	border: 1px solid #fff;
-	outline: none;
+	font-weight: bold;
+	text-decoration: none;
+	color: #0c0c13;
+	border-bottom: 3px solid #0c0c13;
 }
 
 .tabs li a:hover {
 	color: #f5b041;
-	background-color: #0c0c13;
+	border-color: #f5b041;
 }
 
 .tabs li.active, .tabs li.active a:hover {
-	background: #fff;
-	border-bottom: 1px solid #fff;
+	background-color: #fff;
+	z-index: 3;
 }
 
 /* tab 게시판 부분 */
 .tab_container {
-	width: 100%;
-	overflow: hidden;
-	clear: both;
-	float: left;
-	background: #fff;
-	border-top: none;
-	border: 1px solid #0c0c13;
+	width:95%;
+	display:block;
+	padding:2% 1%;
+	position: relative;
 }
 
 .tab_content {
-	height: 290px;
-	padding: 20px;
+	padding: 1%;
 	font-size: 15px;
 	font-weight: 800;
-	font-family: sans-serif;
 }
 
 .bd-Table {
-	width: 97%;
+	width: 100%;
 	font-size: 16px;
-	font-family: sans-serif;
 	text-align: center;
-	margin-top: 25px;
 	margin-left:12px;
 	border: 1px solid 828282;
 }
@@ -108,110 +84,78 @@
 	font-size: 15px;
 	color: #fff;
 	background-color: #0c0c13;
-	font-size: 15px;
 }
 
 .bd-Table td {
-	height: 45px;
+	height: 50px;
 	color: #0c0c13;
 	font-size: 15px;
-	font-family: sans-serif;
+	font-weight:normal;
 	text-align: center;
 	border-bottom: 1px solid #eee;
 }
 
+.bd-Table .prTitle a:hover{
+	color:#f5b041;
+}
+
 /* 페이지 부분  */
 .bdpage{
-	text-align: center;
-}
-/* .bdpage {
-	width: 12%;
-	top:30px;u
-	left:45%;
-	margin: 5px;
+	width:30%;
+	height:40px;
+	padding-top:3%;
+	margin-left:35%;
 	position: relative;
-	border: 1px solid red;
+	/* border:1px solid red; */
 }
 
-.bdpage .bdpaging {
-	overflow: hidden;
-	display: block;
-}
-
-.bdpage .bdpaging li {
-	float: left;
-	padding-right: 5px;
-}
-
-.bdpage .bdpaging li a {
-	color: #808080;
-	font-size: 14px;
-	font-family: sans-serif;
+.bdpage .bdpaging{
 	text-align: center;
-	padding: 3px 2px;
 }
 
-.bdpage .bdpaging li a:hover {
-	color: #0c0c13;
-} */
+.bdpage .bdpaging a{
+	font-size: 14px;
+	color:#0c0c13;
+}
+
+.bdpage .bdpaging a:hover{
+	color:#f5b041;
+}
 
 /* 검색 부분  */
 .bdsearch {
-	width: 60%;
+	width: 48%;
 	height: 30px;
-	top:51px;
-	left:33%;
+	padding:1%;
+	top:8%;
+	left:30%;
 	position:relative;
-	/* border: 1px solid blue; */
+	/* border: 1px solid blue;  */
 }
 
 .bdsearch select {
-	height: 30px;
+	height: 25px;
 	bottom: 3px;
 	padding:2px;
-	position: relative;
+	/* position: relative; */
 }
 
-.bdsearch .searchText {
-	width:25%;
-	font-size: 15px;
-	font-family: sans-serif;
-	text-align: center;
-	padding:2px;
+.bdsearch .searchWord {
+	width:39%;
+	height: 22px;
+	font-size:15px;
 	color: #0c0c13;
+	padding-left:5px;
 }
 
 .bdsearch .dbSearch {
-	width:120px;
+	width:20%;
 	font-size: 15px;
-	font-family: sans-serif;
 	text-align: center;
 	padding:2px;
 	color: #fff;
+	border-radius:5px;
 	background-color: #0c0c13;
-}
-
-#bdWrite{
-	width:120px;
-	height:30px;
-	float:right;
-	margin-top:20px;
-	font-size: 15px;
-	font-family: sans-serif;
-	text-align: center;
-	color: #fff;
-	background-color: #0c0c13;
-}
-
-#bdWrite a{
-	color : white;
-	board : 1%;
-}
-
-#bdWrite:hover{
-	color:#0c0c13;
-	background-color:#fff;
-	border:1px solid #0c0c13;
 }
 
 .dbSearch:hover{
@@ -219,3 +163,24 @@
 	background-color:#fff;
 	border:1px solid #0c0c13;
 }
+
+/* 글쓰기  */
+#bdWrite{
+	width:120px;
+	height: 25px;
+	font-size: 15px;
+	text-align: center;
+	padding:2px;
+	color: #fff;
+	border-radius:5px;
+	margin-top:-9.5%;
+	float:right;
+	background-color: #0c0c13;
+}
+
+#bdWrite:hover,#bdWrite:focus, #bdWrite:checked,#bdWrite:link{
+	color:#0c0c13;
+	background-color:#fff;
+	border:1px solid #0c0c13;
+}
+
