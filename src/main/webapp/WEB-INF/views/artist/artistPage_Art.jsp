@@ -58,7 +58,9 @@
 											<c:forEach items="${artlistvideo}" var="artlist"
 												varStatus="artStatus"  begin="0" end="4">
 												<li>
-													<a href="#"><img src="https://img.youtube.com/vi/${artlist.au_thumbnail}/0.jpg" width="100%" height="100%"></a> 
+													<a href="${pageContext.request.contextPath}/artist/artistvideoview.do?select_file=${artlist.au_file}">
+														<img src="https://img.youtube.com/vi/${artlist.au_thumbnail}/0.jpg" width="100%" height="100%">
+													</a> 
 												</li>
 											</c:forEach>
 

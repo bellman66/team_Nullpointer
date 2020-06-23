@@ -67,7 +67,6 @@
 													<th id="bdDate">등록일</th>
 												</tr>
 											</thead>
-
 											<tbody>
 												<c:forEach items="${boardList.nlist}" var="board">
 												<input type="hidden" value="${board.b_num}" name="bnoList"/>

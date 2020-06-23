@@ -604,20 +604,6 @@ public class MemberController {
 	@RequestMapping("/member/myRecordList.do")
 	public ModelAndView myRecordList(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
-		mrListPaging(request);
-		mav.setViewName("member/myRecordList");
-
-		return mav;
-	}
-
-	/**
-	 * @method : mrListPaging()
-	 * @date : 2020. 6. 22.
-	 * @buildBy : 박혜연
-	 * @comment : 기록 리스트 페이징
-	 */
-	public ModelAndView mrListPaging(HttpServletRequest request) {
-		ModelAndView mav = new ModelAndView();
 		
 		Map<String, Object> info = (Map<String, Object>) request.getSession().getAttribute("loginInfo");
 		Member user = (Member) info.get("member");
@@ -645,6 +631,21 @@ public class MemberController {
 
 		mav.addObject("MyRecordList", res);
 		mav.setViewName("member/myRecordList");
+
+		return mav;
+	}
+
+	/**
+	 * @method : mrListPaging()
+	 * @date : 2020. 6. 22.
+	 * @buildBy : 박혜연
+	 * @comment : 기록 리스트 페이징
+	 */
+	@RequestMapping("/member/myRecordListall.do")
+	public ModelAndView mrListPaging(HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		
+		
 		
 		return mav;
 	}

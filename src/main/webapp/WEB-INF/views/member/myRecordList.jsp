@@ -45,89 +45,83 @@
 							<div class="tab_container" style="height: 420px;">
 								<!-- 공유게시판 부분 시작  -->
 								<div id="tab1" class="tab_content">
-									<form
-										action="<%=request.getContextPath()%>/member/myRecordList.do"
-										onsubmit="submit()">
-										<table class="bd-Table">
-											<colgroup>
-												<!-- 넓이 지정  -->
-												<col width="6%">
-												<col width="45%">
-												<col width="15%">
-												<col width="10%">
-											</colgroup>
-											<thead>
+									<table class="bd-Table">
+										<colgroup>
+											<!-- 넓이 지정  -->
+											<col width="6%">
+											<col width="45%">
+											<col width="15%">
+											<col width="10%">
+										</colgroup>
+										<thead>
+											<tr>
+												<th id="bdNo">삭제</th>
+												<th id="bdTitle">시청 콘텐츠</th>
+												<th id="bdWriter">아티스트</th>
+												<th id="bdDate">시청일</th>
+											</tr>
+										</thead>
+										<tbody>
+											<c:forEach items="${MyRecordList.mrlist}" var="recordlist"
+												varStatus="rlStatus">
 												<tr>
-													<th id="bdNo">번호</th>
-													<th id="bdTitle">시청 콘텐츠</th>
-													<th id="bdWriter">아티스트</th>
-													<th id="bdDate">시청일</th>
+													<td id="${recordlist.mr_num}"class="prNo" style="text-align: center;">
+														<button class="listdelete" id="del${recordlist.mr_num}"
+															onclick="myRecordDelete('#del${recordlist.mr_num}')">삭제</button>
+													</td>
+													<td class="prTitle"><a
+														href="<%=request.getContextPath()%>/artist/artistvideoview.do?select_file=${recordlist.au_file}">${recordlist.m_nickname}</a></td>
+													<td class="prWriter" style="text-align: center;">${recordlist.m_nickname}</td>
+													<td class="prDate" style="text-align: center;">${recordlist.mr_date}</td>
 												</tr>
-											</thead>
-											<tbody>
-												<c:forEach items="${MyRecordList}" var="mrlist">
-													<input type="hidden" value="${mrlist.mr_num}" name="mrList" />
-													<tr>
-														<td class="prNo" style="text-align: center;">${mrlist.rnum}</td>
-														<td class="prTitle"><a
-															href="<%= request.getContextPath() %>/board/boardRead.do?b_num=${mrlist.au_num}">${mrlist.m_nickname}</a></td>
-														<td class="prWriter" style="text-align: center;">${mrlist.m_nickname}</td>
-														<td class="prDate" style="text-align: center;">${mrlist.mr_date}</td>
-													</tr>
-												</c:forEach>
-											</tbody>
-										</table>
+											</c:forEach>
+										</tbody>
+									</table>
 
-										<!-- 페이지부분 -->
-										<div class="bdpage" id="bdpage">
-											<!-- 홍보게시판 페이징 처리기능 -->
-											<ul class="bdpaging">
-												<input class="prpr" style="display: none;"></input>
-												<a
-													href="<%=request.getContextPath()%>/member/myRecordList.do"
-													class="nav first" style="background-color: white">&lt;&lt;</a>
-												<c:choose>
-													<c:when test="${paging.currentPage > 1 }">
-														<a
-															href="<%= request.getContextPath() %>/member/myRecordList?cPage=${paging.currentPage-1}"
-															class="nav prev" style="background-color: white">
-															&lt;</a>
-													</c:when>
-													<c:otherwise>
-														<a
-															href="<%= request.getContextPath() %>/member/myRecordList?cPage=${paging.blockStart}"
-															class="nav prev" style="background-color: white">
-															&lt;</a>
-													</c:otherwise>
-												</c:choose>
-												<c:forEach begin="${paging.blockStart}"
-													end="${paging.blockEnd}" var="page">
+									<!-- 페이지부분 -->
+									<div class="bdpage" id="bdpage">
+										<!-- 홍보게시판 페이징 처리기능 -->
+										<div class="bdpaging">
+											<a
+												href="<%=request.getContextPath()%>/member/myRecordList.do"
+												class="nav first" style="background-color: white">&lt;&lt;</a>
+											<c:choose>
+												<c:when test="${paging.currentPage > 1 }">
 													<a
-														href="<%= request.getContextPath() %>/member/myRecordList?cPage=${page}"
-														class="num active"><span>${page}</span></a>
-												</c:forEach>
-												<c:choose>
-													<c:when test="${paging.currentPage+1 > paging.lastPage }">
-														<a
-															href="<%= request.getContextPath() %>/member/myRecordList?cPage=${paging.blockEnd}"
-															class="nav next" style="background-color: white">
-															&gt;</a>
-													</c:when>
+														href="<%= request.getContextPath() %>/member/myRecordList.do?cPage=${paging.currentPage-1}"
+														class="nav prev" style="background-color: white"> &lt;</a>
+												</c:when>
+												<c:otherwise>
+													<a
+														href="<%= request.getContextPath() %>/member/myRecordList.do?cPage=${paging.blockStart}"
+														class="nav prev" style="background-color: white"> &lt;</a>
+												</c:otherwise>
+											</c:choose>
+											<c:forEach begin="${paging.blockStart}"
+												end="${paging.blockEnd}" var="page">
+												<a
+													href="<%= request.getContextPath() %>/member/myRecordList.do?cPage=${page}"
+													class="num active"><span>${page}</span></a>
+											</c:forEach>
+											<c:choose>
+												<c:when test="${paging.currentPage+1 > paging.lastPage }">
+													<a
+														href="<%= request.getContextPath() %>/member/myRecordList.do?cPage=${paging.blockEnd}"
+														class="nav next" style="background-color: white"> &gt;</a>
+												</c:when>
 
-													<c:otherwise>
-														<a
-															href="<%= request.getContextPath() %>/member/myRecordList?cPage=${paging.currentPage+1}"
-															class="nav next" style="background-color: white">
-															&gt;</a>
-													</c:otherwise>
-												</c:choose>
-												<a href="<%= request.getContextPath() %>/member/myRecordList?cPage=${paging.lastPage}"
-													class="nav last" style="background-color: white">&gt;&gt;</a>
-											</ul>
+												<c:otherwise>
+													<a
+														href="<%= request.getContextPath() %>/member/myRecordList.do?cPage=${paging.currentPage+1}"
+														class="nav next" style="background-color: white"> &gt;</a>
+												</c:otherwise>
+											</c:choose>
+											<a
+												href="<%= request.getContextPath() %>/member/myRecordList.do?cPage=${paging.lastPage}"
+												class="nav last" style="background-color: white">&gt;&gt;</a>
 										</div>
-									</form>
+									</div>
 								</div>
-
 							</div>
 						</div>
 					</div>
@@ -149,12 +143,30 @@
 		src="<%=request.getContextPath()%>/resources/js/board.js"></script>
 
 	<script type="text/javascript">
+		function myRecordDelete(button) {
 
-		function prSubmit() {
-			console.dir("메롱");
-			document.pr.submit();
-			return true;
-		};
+			// 클릭한 삭제 버튼이 해당되는 아티스트 닉네임 get
+			var mrNum = $(button).parent().attr('id');
+			
+			console.log(mrNum);
+
+			$.ajax({
+				url : '/springmvc/member/myRecordDelete.do',
+				type : 'GET',
+				data : {
+					"mrNum" : mrNum
+				},
+				success : function(res) {
+					if (res != null) {
+						location.href = '/springmvc/member/myPage.do';
+					} else {
+						alert('기록 삭제에 실패하였습니다. 새로고침 후 다시 시도해주세요.');
+					}
+				}
+
+			});
+
+		}
 	</script>
 
 </body>
