@@ -69,4 +69,20 @@
 	<select id="profile" resultType="Member">
 		select * from tb_member where m_nickname = #{m_mickname}
 	</select>
+	
+			<!-- resultMap으로 board부분 합체해줍니다. -->
+	<select id="findId" parameterType="Map" resultType="String">
+		SELECT m_id 
+			   FROM tb_member
+			   where M_EMAIL1 = #{m_email1} AND M_EMAIL2 = #{m_email2}
+			   limit 1
+	</select>
+	
+		<!-- resultMap으로 board부분 합체해줍니다. -->
+	<select id="findPwd" parameterType="Map" resultType="String">
+		SELECT m_pass 
+			   FROM tb_member
+			   where M_EMAIL1 = #{m_email1} AND M_EMAIL2 = #{m_email2} AND m_id = #{pwd_id}
+			   limit 1
+	</select>
 </mapper>
