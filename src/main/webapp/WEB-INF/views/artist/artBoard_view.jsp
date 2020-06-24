@@ -40,13 +40,13 @@
 					<div class="artView">
 						<div class="artpath">
 							<c:if test="${artist eq 'band'}">
-								<div style="font-size: 30px;">소통게시판</div>
-								<p>소통게시판입니다.</p>
+								<h3>소통게시판</h3>
+								<p>- 소통게시판입니다.</p>
 							</c:if>	
 						
 							<c:if test="${artist eq 'tattoo'}">
 								<h3>후기게시판</h3>
-								<p>후기게시판입니다.</p>
+								<p>- 후기게시판입니다.</p>
 							</c:if>	
 						</div>
 						<div class="artTable">
