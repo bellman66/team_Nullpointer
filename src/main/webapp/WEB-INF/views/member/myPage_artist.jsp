@@ -201,7 +201,7 @@
 									</li>
 								</c:forEach>
 							</ul>
-							<c:if test="${fn:length(uploadList) == 5}">
+							<c:if test="${fn:length(uploadList) > 5}">
 								<a href="<%=request.getContextPath()%>/schedule/schedule.do" 
 									class="more" title="더 보기">More</a>
 							</c:if>
