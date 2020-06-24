@@ -78,7 +78,7 @@
 }
 
 .artphoto_list .aphoto_board li .aphTitle, .artphoto_list .aphoto_board li .aphNicname,
-	.artphoto_list .aphoto_board li .audate {
+	.artphoto_list .aphoto_board li .aulike, .artphoto_list .aphoto_board li .audate {
 	font-size: 15px;
 	font-weight: normal;
 	color: #0c0c13;

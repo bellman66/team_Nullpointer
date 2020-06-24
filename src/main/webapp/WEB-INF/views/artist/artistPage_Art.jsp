@@ -78,7 +78,7 @@
 											<c:forEach items="${artlistphoto}" var="artlist"
 												varStatus="status" begin="0" end="4">
 												<li><a href="#"><img
-														src="<%=request.getContextPath()%>/springmvc/resources/upload/${artlist.au_file}" /></a>
+														src="<%=request.getContextPath()%>/resources/upload/${artlist.au_file}" /></a>
 												</li>
 											</c:forEach>
 										</ul>

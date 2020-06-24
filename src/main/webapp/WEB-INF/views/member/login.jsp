@@ -56,7 +56,7 @@
 								</ul>
 							</div>
 						</div>
-						<form action="<%=request.getContextPath()%>/member/loginConfirm.do" class="log-formBox">
+						<form action="<%=request.getContextPath()%>/member/loginConfirm.do" method="POST" class="log-formBox">
 							<h2>로그인</h2>
 
 							<div class="log-form">

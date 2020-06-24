@@ -94,7 +94,7 @@
 }
 
 .artmovie_list .amovie_board li .aphTitle, .artmovie_list .amovie_board li .aphNicname,
-	.artmovie_list .amovie_board li .audate {
+	.artmovie_list .amovie_board li .aulike, .artmovie_list .amovie_board li .audate {
 	font-size: 15px;
 	font-weight: normal;
 	color: #0c0c13;

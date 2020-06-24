@@ -421,4 +421,9 @@ public class ArtistServiceImple implements ArtistService {
 		return res;
 	}
 
+	@Override
+	public int artLike(String au_file) {
+		return ad.artLike(au_file);
+	}
+
 }

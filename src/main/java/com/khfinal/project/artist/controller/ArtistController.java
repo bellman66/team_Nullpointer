@@ -565,7 +565,7 @@ public class ArtistController {
 	}
 
 	@RequestMapping("/artist/artConUpload.do")
-	public ModelAndView artConUpload(HttpServletRequest request, @RequestParam List<MultipartFile> afile) {
+	public ModelAndView artConUpload(HttpServletRequest request, @RequestParam List<MultipartFile> au_file) {
 		ModelAndView mav = new ModelAndView();
 
 		List<Map<String, Object>> file = null;
@@ -574,34 +574,32 @@ public class ArtistController {
 		HashMap<String, Object> data = null;
 		String renameFile = null;
 
-		if (afile != null) {
-			// 파일 업로드 코드
-			file = new ArrayList<Map<String, Object>>();
-			String root = request.getSession().getServletContext().getRealPath("/");
+		// 파일 업로드 코드
+		file = new ArrayList<Map<String, Object>>();
+		String root = request.getSession().getServletContext().getRealPath("/");
 
-			int i = 0;
-			for (MultipartFile mf : afile) {
-				savePath = root + "resources/upload/";
-				originFileName = mf.getOriginalFilename();
-				data = new HashMap<>();
+		int i = 0;
+		for (MultipartFile mf : au_file) {
+			savePath = root + "resources/upload/";
+			originFileName = mf.getOriginalFilename();
+			data = new HashMap<>();
 
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
 
-				renameFile = sdf.format(new Date()) + i + "."
-						+ originFileName.substring(originFileName.lastIndexOf(".") + 1);
+			renameFile = sdf.format(new Date()) + i + "."
+					+ originFileName.substring(originFileName.lastIndexOf(".") + 1);
 
-				savePath += renameFile;
+			savePath += renameFile;
 
-				data.put("originFileName", originFileName);
-				data.put("renameFile", renameFile);
-				data.put("savePath", savePath);
-				data.put("file", mf);
+			data.put("originFileName", originFileName);
+			data.put("renameFile", renameFile);
+			data.put("savePath", savePath);
+			data.put("file", mf);
 
-				file.add(data);
-				i++;
-			}
-
+			file.add(data);
+			i++;
 		}
+
 		// 파일을 뺀 나머지 값 넣는 코드
 		HttpSession session = request.getSession();
 		Map<String, Object> login = (Map<String, Object>) session.getAttribute("loginInfo");
@@ -621,9 +619,28 @@ public class ArtistController {
 
 		int res = as.artConUpload(artist, file);
 
-		mav.setViewName("redirect:artist/artistvideo.do");
+		mav.setViewName("artist/artist");
 
 		return mav;
+	}
+
+	@RequestMapping("/artist/artLike.do")
+	@ResponseBody
+	public Boolean artLike(HttpServletRequest request) {
+		Boolean result = true;
+
+		String au_file = request.getParameter("au_file");
+		System.out.println(au_file);
+
+		int like = as.artLike(au_file);
+
+		if (like > 0) {
+			result = true;
+		} else {
+			result = false;
+		}
+
+		return result;
 	}
 
 }

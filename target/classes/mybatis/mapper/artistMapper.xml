@@ -147,5 +147,8 @@
 			0, #{au_thumbnail}, #{au_type}
 		);
 	</insert>
+	<update id="artLike">
+		update tb_artist_upload set au_like = au_like + 1 where au_file = #{au_file}
+	</update>
 
 </mapper>
