@@ -147,10 +147,12 @@
 
 /* 더보기 버튼 */
 .artist_box .artist_tab .tabmore .btn_more {
+	width: 10%;
+	height: 30px;
+	font-size: 14px;
 	float: right;
-	margin-right: 10px;
-	width: 120px;
-	height: 25px;
+	margin-top:-3%;
+	margin-right:11%;
 	border-radius: 5px;
 	color: #fff;
 	background-color: #0c0c13;
