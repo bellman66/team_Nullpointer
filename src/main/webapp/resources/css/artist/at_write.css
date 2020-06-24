@@ -27,3 +27,69 @@
 	font-size: 15px;
 	color: #0c0c13;
 }
+
+.artView .artTable {
+	height:450px;
+	padding:2%;
+	position:relative;
+	/* border:1px solid red; */
+}
+
+.artView .artTable .aview_title,
+.artView .artTable .aview_writer,
+.artView .artTable .aview_Date,
+.artView .artTable .aview_content,
+.artView .artTable .aview_linke{
+	width:100px;
+	height:30px;
+	float:left;
+	padding:10px;
+	font-size: 15px;
+	color:#0c0c13;
+	border-bottom:2px solid #0c0c13;
+}
+
+.artView .artTable .aview_td{
+	width:1000px;
+	height:25px;
+	padding:1%;
+	margin-bottom:25px;
+	border-bottom:2px solid #0c0c13;
+}	
+
+.btn_pass {
+	width: 10%;
+	height: 30px;
+	font-size: 14px;
+	font-family: sans-serif;
+	margin-left: 72%;
+	margin-top: 2.77%;
+	margin-right: 20px;
+	color: #fff;
+	background-color: #0c0c13;
+	position: absolute;
+}
+
+.btn_list:hover {
+	color: #0c0c13;
+	background-color: #fff;
+	border: 1px solid #0c0c13;
+}
+
+.btn_pass:hover {
+	color: #0c0c13;
+	background-color: #fff;
+	border: 1px solid #0c0c13;
+}
+
+.aboard_btn{
+	height:25px;
+	padding:2%;
+	margin-top:20px;
+}
+
+.aboard_btn .btn_list:hover,.aboard_btn .btn_modify:hover, .aboard_btn .btn_pass:hover{
+	color: #0c0c13;
+	background-color: #fff;
+	border: 1px solid #0c0c13;
+}
