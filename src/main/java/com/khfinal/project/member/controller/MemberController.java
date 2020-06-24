@@ -8,10 +8,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.mail.AuthenticationFailedException;
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailAuthenticationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -459,7 +462,7 @@ public class MemberController {
 
 	@RequestMapping("/member/sign_in.do")
 	public ModelAndView sign_in(ModelAndView mav, HttpServletRequest request,
-			@RequestParam Map<String, Object> commandMap) throws SQLException {
+			@RequestParam Map<String, Object> commandMap) throws SQLException  {
 //		m_id
 //		m_pass
 //		m_class
@@ -503,7 +506,7 @@ public class MemberController {
 	// 사용자가 아이디 찾기눌렀을시 이메일 sending
 	// 이메일 체크후 맞는 아이디 이메일 sending
 	@RequestMapping("/member/findId.do")
-	public ModelAndView findId(ModelAndView mav , HttpServletRequest request ,@RequestParam String id_email) throws SQLException {
+	public ModelAndView findId(ModelAndView mav , HttpServletRequest request ,@RequestParam String id_email) throws SQLException,AuthenticationFailedException {
 		
 		String result = ms.findId(id_email);
 		
@@ -548,21 +551,6 @@ public class MemberController {
 			mav.setViewName("common/result");
 		}
 		return mav;
-	}
-
-	@ExceptionHandler(value = SQLException.class)
-	public ModelAndView handleException(ModelAndView mav, HttpServletRequest request, Exception e) {
-
-//		String getMessage() : 발생된 예외의 메시지를 리턴한다. 
-//		String toString() : 발생된 예외 클래스명과 메시지를 리턴한다. 
-//		String pritnStackTrace() : 발생된 예외를 역추적하기 위해 표준 예외 스트림을 출력한다. 
-//		예외 발생시 예외가 발생한 곳을 알아낼 때 주로 사용된다. 
-
-		mav.addObject("alertMsg", e.getMessage());
-		mav.addObject("url", request.getContextPath() + "/main/index.do");
-		mav.setViewName("common/result");
-		return mav;
-
 	}
 
 	/**
@@ -744,5 +732,24 @@ public class MemberController {
 
 		return delRes;
 	}
+
+	@ExceptionHandler(value= {Exception.class , MailAuthenticationException.class})
+	public ModelAndView handleException(Exception e , HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		
+//		String getMessage() : 발생된 예외의 메시지를 리턴한다. 
+//		String toString() : 발생된 예외 클래스명과 메시지를 리턴한다. 
+//		String pritnStackTrace() : 발생된 예외를 역추적하기 위해 표준 예외 스트림을 출력한다. 
+//		예외 발생시 예외가 발생한 곳을 알아낼 때 주로 사용된다. 
+		System.out.println(e.getMessage());
+		System.out.println("위치 요청 : " + request.getContextPath()+"/main/index.do");
+		
+		mav.addObject("alertMsg" , "시스템에 오류가 발생하였습니다. 운영자에게 문의해주세요.");
+		mav.addObject("url" , request.getContextPath()+"/main/index.do");
+		mav.setViewName("common/result");
+		return mav;
+
+	}
+
 
 }
