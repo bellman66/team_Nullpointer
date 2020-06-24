@@ -80,10 +80,9 @@
 								</table>
 								<button type="submit" class="btn_fin">등록하기</button>
 							</form>
-							<%-- <div class="aboard_btn">
-								<button class="btn_pass" type="button"
-									onclick="location.href='<%=request.getContextPath()%>/artist/artist.do'">취소</button>
-							</div> --%>
+								<%-- <button class="btn_pass" type="button"
+									onclick="location.href='<%=request.getContextPath()%>/artist/artist.do'">취소</button> --%>
+							</div>
 						</div>
 					</div>
 				</div>

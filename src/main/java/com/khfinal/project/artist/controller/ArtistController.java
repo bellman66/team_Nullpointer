@@ -619,7 +619,7 @@ public class ArtistController {
 
 		int res = as.artConUpload(artist, file);
 
-		mav.setViewName("artist/artist");
+		mav.setViewName("main/index");
 
 		return mav;
 	}
