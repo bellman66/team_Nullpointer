@@ -46,7 +46,7 @@
 						<div class="idfind_box">
 							<h2>아이디 찾기</h2>
 							&nbsp;&nbsp;
-							<label class="findInput" for="id_email">이메일주소 입력 : </label>
+							<label class="findInput" for="id_email">찾으시려는 아이디의 이메일주소를 입력해주세요 </label>
 							&nbsp;&nbsp;
 							<input id="id_email" name="id_email" type="text"maxlength="30" />
 							<button id="idFind" class="idFind" type="submit">검색</button>
@@ -59,7 +59,7 @@
 							<label class="findInput" for="pwd">찾으시려는 비밀번호의 아이디를 입력해주세요</label>
 							&nbsp;&nbsp;
 							<input id="pwd_id" name="pwd_id" type="text"maxlength="30" /> <br>
-							<label class="findInput" for="pwd_email">이메일주소 입력 : </label>
+							<label class="findInput" for="pwd_email">찾으시려는 비밀번호의 이메일주소를 입력해주세요 </label>
 							<input id="pwd_email" name="pwd_email" type="text"maxlength="30" /> <br>
 							<button id="pwfind" class="pwfind" type="submit" onclick="">검색</button>
 						</div>

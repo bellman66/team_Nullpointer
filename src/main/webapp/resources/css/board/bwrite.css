@@ -5,23 +5,23 @@
 	font-family: sans-serif;
 }
 
-/* content_tab */
+/* content */
 .bwrite_table {
 	margin: 0 auto;
 }
 
 .bwrite_table .bwrite_list {
-	height: 800px;
-	left: 5%;
-	border: 1px solid red;
+	height: 750px;
+	margin-left: 5%;
+	/* border: 1px solid red; */
 }
 
 .bwrite_table .bwrite_list .write_category {
 	height: 40px;
-	margin: 2% 2% 0 2%;
+	margin: 5% 2% 0 2%;
 	color: #fff;
 	font-size: 25px;
-	padding:0.7%;
+	padding: 0.7%;
 	background-color: #0c0c13;
 }
 
@@ -30,19 +30,20 @@
 }
 
 .bwrite_table .bwrite_list .write_detail {
-	width: 95%;
-	height: 450px;
+	height: 500px;
 	padding: 2%;
 }
 
 .bwrite_table .bwrite_list .write_detail .title_file {
-	padding: 1%;
-	border: 1px solid blue; 
+	height:85px;
+	padding: 1% 0.5% 1% 1%;
+	border: 1px solid #0c0c13;
 }
 
-.bwrite_table .bwrite_list .write_detail .write_content{
-	width: 95%;
+.bwrite_table .bwrite_list .write_detail .write_content textarea {
+	width: 95.7%;
 	font-size: 15px;
+	padding: 2%;
 }
 
 .bwrite_table .bwrite_list .write_detail .title_file label {
@@ -52,61 +53,57 @@
 }
 
 .bwrite_table .bwrite_list .write_detail .title_file .write_title {
+	width: 92%;
 	font-size: 15px;
 	padding-left: 5px;
+	margin:0 0 5px 15px;
 	color: #0c0c13;
 }
 
 .bwrite_table .bwrite_list .write_detail .title_file #contract_file {
 	font-size: 15px;
 	padding-left: 5px;
+	margin-top:1%;
+	margin-left:13px;
 	color: #0c0c13;
 }
 
-.bwrite_table .bdwrite_button {
-	width: 10%;
+.bwrite_table .write_btn {
+	height:30px;
+	padding:1%;
+	margin-top:1%;
+	/* border:1px solid blue; */
+}
+
+.bwrite_table .write_btn .bdwrite_button {
+	width: 12%;
 	height: 30px;
 	font-size: 14px;
-	font-family: sans-serif;
 	float: right;
-	margin-top: 3%;
-	margin-right: 20px;
+	border-radius:5px;
 	color: #fff;
 	background-color: #0c0c13;
 }
 
-.title_file {
-	font-size: 30px;
-}
-
-.write_title {
-	width: 50%;
-	height: 30px;
-}
-
-.bdWriteCancel {
-	width: 10%;
+.bwrite_table .write_btn .bdWriteCancel {
+	width: 12%;
 	height: 30px;
 	font-size: 14px;
-	font-family: sans-serif;
-	margin-left: 77%;
-	margin-top: 1%;
-	margin-right: 20px;
+	border-radius:5px;
+	float:right;
+	margin-right:15px;
 	color: #fff;
 	background-color: #0c0c13;
-	position: absolute;
 }
 
-.bdWriteCancel:hover {
+.bwrite_table .write_btn .bdWriteCancel:hover {
 	color: #0c0c13;
 	background-color: #fff;
 	border: 1px solid #0c0c13;
 }
 
-.bdwrite_button:hover {
+.bwrite_table .write_btn .bdwrite_button:hover {
 	color: #0c0c13;
 	background-color: #fff;
 	border: 1px solid #0c0c13;
 }
-*
-/

@@ -68,7 +68,7 @@
 									<div class="write_content">
 										<textarea cols="300" rows="15" name="b_content"></textarea>
 									</div>
-									<div>
+									<div class="write_btn">
 										<button class="bdwrite_button">확인</button>
 										<c:if test="${board eq 'sh'}">
 											<button class="bdWriteCancel"

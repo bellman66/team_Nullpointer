@@ -7,24 +7,23 @@
 }
 
 .artphoto_list {
-	height: 950px;
+	margin:0 auto;
 	/* border: 1px solid blue; */
 }
 
 /* 사진 게시판 부분 */
 .artphoto_list h3 {
-	font-size: 23px;
+	font-size: 25px;
 	font-weight: 800;
 	color: #0c0c13;
-	padding-top: 4%;
-	padding-left: 2%;
+	padding: 2% 0 0 3%;
 	/*  border: 1px solid red;  */
 }
 
 .artphoto_list .aphoto_board {
 	height: 570px;
 	margin:2%;
-	padding:1%;
+	padding:2%;
 }
 
 .artphoto_list .aphoto_board li {
@@ -41,11 +40,12 @@
 	box-shadow: 0 1px 4px rgba(0, 0, 0.1, 0.3);
 }
 
-.artphoto_list .aphoto_board li span {
-	padding: 1%;
+.artphoto_list .aphoto_board li .aphTitle,
+.artphoto_list .aphoto_board li .aphNicname,
+.artphoto_list .aphoto_board li .audate{
 	font-size: 15px;
-	font-weight: 600;
-	padding-left:5px;
+	font-weight: normal;
+	padding-left:10px;
 	color: #0c0c13;
 }
 

@@ -60,7 +60,7 @@
 													<br /> 
 													<span class="aphTitle">content | ${artlist.au_content}</span> <br />
 													<span class="aphNicname">artist | ${artlist.m_nickname}</span> <br />
-													<span class="auLike">like | ${artlist.au_like}</span>
+													<span class="audate">Date | ${artlist.au_date}</span>
 													<div class="btn_phoani">
 														<a href="#">
 															<span class="aboard_rd"></span>
