@@ -232,5 +232,9 @@ public class ArtistDao {
 	public int artConUpload(Artist artist) {
 		return session.insert("Artist.artConUpload", artist);
 	}
+	
+	public int artLike(String au_file) {
+		return session.update("Artist.artLike", au_file);
+	}
 
 }

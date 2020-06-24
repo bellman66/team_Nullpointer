@@ -38,68 +38,76 @@
 			<div class="container">
 				<div class="row">
 					<div class="artmovie_list">
-						<form name="artmovie"
-							action="<%=request.getContextPath()%>/artist/artContentUpload.do">
-							<div class="tabmore">
-								<h3>영상 콘텐츠</h3>
+
+						<div class="tabmore">
+							<h3>영상 콘텐츠</h3>
+							<form name="artmovie"
+								action="<%=request.getContextPath()%>/artist/artContentUpload.do">
 								<c:if
 									test="${loginInfo.member != null && loginInfo.member.m_nickname  == param.artist_nick}">
-									<button class="atwrite" type="button">글쓰기</button>
+									<button class="atwrite" type="submit">글쓰기</button>
 								</c:if>
-								<button type="button" class="btn_more" onclick="more()">
-									<span aria-hidden="true">더보기(More)</span>
-								</button>
-							</div>
-							<!-- 더보기 버튼 끝 -->
-							<div class="amovie_board">
-								<!-- 영상 콘텐츠 시작 -->
-								<ul>
-									<c:forEach items="${artlistvideo}" var="artlist"
-										varStatus="artStatus">
-										<c:choose>
-											<c:when test="${artStatus.index < 8}">
-												<li class="amovie_box"><span class="movie_box">
-														<iframe
-															src="https://www.youtube.com/embed/${artlist.au_file}"
-															frameborder="0"
-															allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-															allowfullscreen></iframe>
-												</span><br /> <a
-													href="${pageContext.request.contextPath}/artist/artistvideoview.do?select_file=${artlist.au_file}">
-														<span class="aphTitle">content |
-															${artlist.au_content}</span>
-												</a><br /> <span class="aphNicname">artist |
-														${artlist.m_nickname}</span><br /> <span class="audate">date
-														| ${artlist.au_date}</span>
-													<div class="btn_phoani">
-														<a href="#"> <span class="aboard_rd"></span>
-														</a>
-													</div></li>
-											</c:when>
-											<c:otherwise>
-												<li class="amovie_box" style="display: none"><span
-													class="movie_box"> <iframe
-															src="https://www.youtube.com/embed/${artlist.au_file}"
-															frameborder="0"
-															allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-															allowfullscreen></iframe>
-												</span><br /> <a
-													href="${pageContext.request.contextPath}/artist/artistvideoview.do?select_file=${artlist.au_file}">
-														<span class="aphTitle">content |
-															${artlist.au_content}</span>
-												</a><br /> <span class="aphNicname">artist |
-														${artlist.m_nickname}</span>
-													<div class="btn_phoani">
-														<a href="#"> <span class="aboard_rd"></span>
-														</a>
-													</div></li>
-											</c:otherwise>
-										</c:choose>
-									</c:forEach>
-								</ul>
-								<!-- 영상 콘텐츠 끝 -->
-							</div>
-						</form>
+							</form>
+							<button type="button" class="btn_more" onclick="more()">
+								<span aria-hidden="true">더보기(More)</span>
+							</button>
+						</div>
+
+						<!-- 더보기 버튼 끝 -->
+						<div class="amovie_board">
+							<!-- 영상 콘텐츠 시작 -->
+							<ul>
+								<c:forEach items="${artlistvideo}" var="artlist"
+									varStatus="artStatus">
+									<c:choose>
+										<c:when test="${artStatus.index < 8}">
+											<li class="amovie_box"><span class="movie_box"> <iframe
+														src="https://www.youtube.com/embed/${artlist.au_file}"
+														frameborder="0"
+														allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+														allowfullscreen></iframe>
+											</span><br /> <a
+												href="${pageContext.request.contextPath}/artist/artistvideoview.do?select_file=${artlist.au_file}">
+													<span class="aphTitle">content |
+														${artlist.au_content}</span>
+											</a><br /> <span class="audate">date | ${artlist.au_date}</span><br />
+												<span class="aulike" id="${artlist.au_file}">like |
+													${artlist.au_like}</span>
+												<button type="button" class="like_btn"
+													id="plus${artlist.au_file}"
+													onclick="like('#plus${artlist.au_file}')">추천</button>
+												<div class="btn_phoani">
+													<a href="#"> <span class="aboard_rd"></span>
+													</a>
+												</div></li>
+										</c:when>
+										<c:otherwise>
+											<li class="amovie_box" style="display: none"><span
+												class="movie_box"> <iframe
+														src="https://www.youtube.com/embed/${artlist.au_file}"
+														frameborder="0"
+														allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+														allowfullscreen> </iframe>
+											</span><br /> <a
+												href="${pageContext.request.contextPath}/artist/artistvideoview.do?select_file=${artlist.au_file}">
+													<span class="aphTitle">content |
+														${artlist.au_content}</span>
+											</a><br /> <span class="audate">date | ${artlist.au_date}</span><br />
+												<span class="aulike" id="${artlist.au_file}">like |
+													${artlist.au_like}</span>
+												<button type="button" class="like_btn"
+													id="plus${artlist.au_file}"
+													onclick="like('#plus${artlist.au_file}')">추천</button>
+												<div class="btn_phoani">
+													<a href="#"> <span class="aboard_rd"></span>
+													</a>
+												</div></li>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+							</ul>
+							<!-- 영상 콘텐츠 끝 -->
+						</div>
 					</div>
 				</div>
 			</div>
@@ -114,6 +122,28 @@
 	<script type="text/javascript">
 		function more() {
 			$('.amovie_box').css('display', 'block');
+		}
+
+		function like(button) {
+			var file = $(button).prev().attr('id');
+			console.log(file);
+
+			$.ajax({
+				url : '/springmvc/artist/artLike.do',
+				type : 'GET',
+				data : {
+					"au_file" : file
+				},
+				success : function(res) {
+					if (res != null) {
+						location.reload();
+					} else {
+						alert('추천에 실패하였습니다. 새로고침 후 다시 시도해주세요.');
+					}
+				}
+
+			});
+
 		}
 	</script>
 

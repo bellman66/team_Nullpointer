@@ -54,5 +54,6 @@ public interface ArtistService {
 	public Artist selectvideoview(String select_file);
 	
 	public int artConUpload(Artist artitst, List<Map<String, Object>> file);
+	public int artLike(String au_file);
 
 }

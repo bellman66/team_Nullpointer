@@ -56,13 +56,13 @@
 										</tr>
 										<tr>
 											<th class="aview_writer">작성자</th>
-											<td class="aview_td">M_NICKNAME</td>
+											<td class="aview_td">${loginInfo.member.m_nickname}</td>
 										</tr>
 										<tr>
 											<th class="aview_link">콘텐츠 종류</th>
 											<td><b>사진</b>
 											<input type="radio" name="au_type"
-												value="1" onclick="filechoice"> <br>
+												value="1" onclick="filechoice()"> <br>
 												 <b>영상</b> <input type="radio"
 												name="au_type" value="2" onclick="filechoice()"></td>
 										</tr>
@@ -78,14 +78,12 @@
 										</tr>
 									</tbody>
 								</table>
-								<button class="btn_fin">등록하기</button>
+								<button type="submit" class="btn_fin">등록하기</button>
 							</form>
-							<div class="aboard_btn">
-
-
+							<%-- <div class="aboard_btn">
 								<button class="btn_pass" type="button"
 									onclick="location.href='<%=request.getContextPath()%>/artist/artist.do'">취소</button>
-							</div>
+							</div> --%>
 						</div>
 					</div>
 				</div>
@@ -108,7 +106,7 @@
 			if (file[0].checked == true) {
 				document.querySelector('#aview_photo').style.display = 'block';
 				document.querySelector('#aview_video').style.display = 'none';
-			} else {
+			} else if(file[1].checked == true) {
 				document.querySelector('#aview_photo').style.display = 'none';
 				document.querySelector('#aview_video').style.display = 'block';
 			}
