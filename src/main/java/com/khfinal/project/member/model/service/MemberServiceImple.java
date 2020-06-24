@@ -9,6 +9,7 @@ import java.util.Map;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -16,7 +17,9 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.khfinal.project.member.model.dao.MemberDao;
 import com.khfinal.project.member.model.dao.MyArtistDao;
@@ -148,7 +151,7 @@ public class MemberServiceImple implements MemberService {
 		return true;
 	}
 	
-	public void mailSending(Map<String, Object> commandMap) {
+	public void mailSending(Map<String, Object> commandMap) throws SQLException{
 //		m_id
 //		m_pass
 //		m_class
@@ -199,7 +202,8 @@ public class MemberServiceImple implements MemberService {
 		// 전략패턴과 동일한 용도로 사용되는 디자인 패턴 > 주입되는 객체가 내부 익명클래스 이다.
 		mailSender.send(new MimeMessagePreparator() {
 			public void prepare(MimeMessage mimeMessage) throws MessagingException {
-				MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, "UTF-8");
+				MimeMessageHelper message;
+				message = new MimeMessageHelper(mimeMessage, true, "UTF-8");
 				message.setFrom(from);
 				message.setTo(tomail);
 				message.setSubject(title);
@@ -211,13 +215,13 @@ public class MemberServiceImple implements MemberService {
 		});
 	}
 	
-	public void idMailSending(Map<String, Object> commandMap) {
+	public void idMailSending(Map<String, Object> commandMap) throws SQLException{
 
 		String from = "enswjs62@gmail.com";
 		String tomail = (String) commandMap.get("id_email");
 		String title = "홈페이지 ID 찾기 ";
 		String htmlBody = "<div> "
-				+ "요청하신 ID : " + commandMap.get("m_id") + " 입니다 " +
+				+ "요청하신 ID는 " + commandMap.get("m_id") + " 입니다 " +
 				"</div>";
 
 		mailSender.send(new MimeMessagePreparator() {
@@ -233,21 +237,22 @@ public class MemberServiceImple implements MemberService {
 	
 
 	@Override
-	public void pwMailSending(Map<String, Object> commandMap) throws SQLException {
+	public void pwMailSending(Map<String, Object> commandMap) throws SQLException{
 		String from = "enswjs62@gmail.com";
 		String tomail = (String) commandMap.get("pwd_email");
-		String title = "홈페이지 ID 찾기 ";
+		String title = "홈페이지 PASS 찾기 ";
 		String htmlBody = "<div> "
-				+ "요청하신 PASSWORD : " + commandMap.get("m_pass") + " 입니다 " +
+				+ "요청하신 PASSWORD는 " + commandMap.get("m_pass") + " 입니다 " +
 				"</div>";
 
 		mailSender.send(new MimeMessagePreparator() {
-			public void prepare(MimeMessage mimeMessage) throws MessagingException {
-				MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, "UTF-8");
-				message.setFrom(from);
-				message.setTo(tomail);
-				message.setSubject(title);
-				message.setText(htmlBody, true);
+			public void prepare(MimeMessage mimeMessage) throws MessagingException  {
+				MimeMessageHelper message;
+					message = new MimeMessageHelper(mimeMessage, true, "UTF-8");
+					message.setFrom(from);
+					message.setTo(tomail);
+					message.setSubject(title);
+					message.setText(htmlBody, true);
 			}
 		});
 	}
@@ -306,6 +311,5 @@ public class MemberServiceImple implements MemberService {
 	public String findPwd(String pwd_id, String pwd_email) {
 		return mdao.findPwd(pwd_id , pwd_email);
 	}
-
 
 }

@@ -42,7 +42,7 @@
 					
 					
 				<!-- === === === ==  -->
-					<form name="findM" action="<%=request.getContextPath()%>/member/findId.do" >
+					<form name="findM" method="POST" action="<%=request.getContextPath()%>/member/findId.do" >
 						<div class="idfind_box">
 							<h2>아이디 찾기</h2>
 							&nbsp;&nbsp;
@@ -53,7 +53,7 @@
 						</div>
 					</form>
 					
-					<form name="findM" action="<%=request.getContextPath()%>/member/findPwd.do" >
+					<form name="findM" method="POST" action="<%=request.getContextPath()%>/member/findPwd.do" >
 						<div class="pwdfind_box">
 							<h2>비밀번호 찾기</h2>
 							<label class="findInput" for="pwd">찾으시려는 비밀번호의 아이디를 입력해주세요</label>
