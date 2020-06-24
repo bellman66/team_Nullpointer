@@ -1,1 +1,29 @@
 @charset "UTF-8";
+
+#content_artwrite {
+	background-color: #fff;
+	font-family: sans-serif;
+}
+
+.artwrite_table {
+	margin: 0 auto;
+	height: 890px;
+}
+
+.artwrite_table .artpath {
+	padding: 2%;
+	hegiht: 50px;
+	border: 1px solid red;
+}
+
+.artVie .artpath h3 {
+	font-size: 25px;
+	font-weight: 800;
+	color: #0c0c13;
+	padding-top: 10px;
+}
+
+.artVie .artpath p {
+	font-size: 15px;
+	color: #0c0c13;
+}

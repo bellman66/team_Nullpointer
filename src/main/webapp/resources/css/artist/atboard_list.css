@@ -5,66 +5,67 @@
 	font-family: sans-serif;
 }
 
+/* content */
 .artboard_form {
-	width: 100%;
-	height: 890px;
-	
+	margin:0 auto;
+	/* border:1px solid red; */
 }
-
+`
 /* 게시판 부분 */
 .artboard_form .artboard-table {
-	height: 650px;
-	border: 1px solid red;
+	padding:2%;
+	margin-top:10px;
 }
 
 .artboard_form .artboard-table h3{
-	font-size:23px;
+	font-size: 25px;
 	font-weight: 800;
-	font-family: sans-serif;
-	color:#0c0c13;
-	padding-top:2%;
-	padding-left:2%;
+	color: #0c0c13;
+	padding: 3% 0 1% 3%;
 }
 
 .artboard_form .artboard-table table{
-    width:90%;
-    height: 600px;
-    margin:2%;
-    padding-left:40px;
-   
+	width:98%;
+	height:300px;
+	padding:2% 1%;
+	position: relative;
 }
 
 .artboard_form .artboard-table th {
-    height:40px;
+    height: 45px;
 	font-size: 15px;
-	font-weight: 800;
-	font-family: sans-serif;
 	color: #fff;
-	background: #0c0c13;
+	background-color: #0c0c13;
 }
 
 .artboard_form .artboard-table td {
-	font-size: 15px;
-	font-family: sans-serif;
+	height: 50px;
 	color: #0c0c13;
-	padding:1%;
-	border-bottom:1px solid #828282;
+	font-size: 15px;
+	font-weight:normal;
+	text-align: center;
+	border-bottom: 1px solid #eee;
+}
+
+.artboard_form .artboard-table .artTitle a:hover{
+	color:#f5b041;
 }
 
 /* 게시판 검색부분 */
 .artboard_form .artSearch {
-	width:40%;
+	width: 48%;
+	height: 30px;
 	padding:1%;
-	top:8.5%;
-	margin-left:30%;
+	top:3%;
+	left:30%;
 	position:relative;
+	/* border: 1px solid blue;  */
 }
 
 .artboard_form .artSearch select {
     width:22%;
     height:30px;
 	font-size: 14px;
-	font-family: sans-serif;
 	text-align:center;
 	padding:5px;
 	color: #0c0c13;
@@ -74,18 +75,17 @@
 	width:45%;
 	height:27px;
 	font-size: 14px;
-	font-family: sans-serif;
 	color: #0c0c13;
 	padding-left:5px;
 }
 
 .artboard_form .artSearch .art_searchbar {
 	width:20%;
-	height:30px;
+	height:32px;
 	padding:5px;
 	font-size: 14px;
-	font-family: sans-serif;
 	text-align:center;
+	border-radius:5px;
 	color:#fff;
 	background-color: #0c0c13;
 }
@@ -101,10 +101,10 @@
 	width:10%;
 	height:30px;
 	font-size: 14px;
-	font-family: sans-serif;
     float:right;
     margin-top:3%;
     margin-right:20px;
+    border-radius:5px;
 	color:#fff;
 	background-color: #0c0c13;
 }
@@ -112,6 +112,7 @@
 .artboard_form .atwrite:hover{
 	color:#0c0c13;
 	background-color:#fff;
+	border-radius:5px;
 	border:1px solid #0c0c13;
 }
 
@@ -119,7 +120,6 @@
 	width:10%;
 	height:30px;
 	font-size: 14px;
-	font-family: sans-serif;
    	margin-left : 77%;
     margin-top:3%;
     margin-right:20px;
@@ -132,4 +132,25 @@
 	color:#0c0c13;
 	background-color:#fff;
 	border:1px solid #0c0c13;
+}
+
+/* 페이지 부분  */
+.artPaging {
+	width:30%;
+	height:40px;
+	padding-top:3%;
+	margin-left:35%;
+	text-align: center;
+	position: relative;
+	/* border:1px solid red; */
+}
+
+.artPaging a{
+	font-size: 14px;
+	color:#0c0c13;
+	padding-right:5px;
+}
+
+.artPaging a:hover{
+	color:#f5b041;
 }

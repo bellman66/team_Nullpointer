@@ -54,9 +54,9 @@
 									<colgroup>
 										<!-- 넓이 지정  -->
 										<col width="6%">
-										<col width="45%">
-										<col width="15%">
-										<col width="10%">
+										<col width="50%">
+										<col width="25%">
+										<col width="17%">
 									</colgroup>
 
 									<thead>
@@ -97,7 +97,7 @@
 						</div>
 
 						<!-- 페이징 처리 기능부분  -->
-						<div class="artPaging" style="text-align: center;">
+						<div class="artPaging">
 							<c:if test="${aboard  eq 'aboard'}"> 
 								<a href="<%= request.getContextPath() %>/artist/artboardlist.do" style="background-color:white">&lt;&lt;</a>
 								<c:choose>
